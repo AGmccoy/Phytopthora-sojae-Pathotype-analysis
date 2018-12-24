@@ -1,2 +1,2 @@
 # Phytopthora-sojae-Pathotype-analysis
-Analysis of Phytophthroa sojae pathotype complexities, distributions and diversity
+Analysis of Phytophthora sojae pathotype complexities, distributions and diversity
