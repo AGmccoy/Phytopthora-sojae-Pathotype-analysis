@@ -1,5 +1,7 @@
 # Phytopthora-sojae-Pathotype-analysis
 
+Authors: Austin McCoy and Zachary Noel
+
 These R scripts were produced to replicate the HaGiS worksheet and provide all necessary results for pathotype data analysis in R. Austin McCoy and Zachary Noel (GitHub = noelzach) produced these scripts at Michigan State University.
 
 Phytophthora sojae has been managed primarily via deployment of resistance genes (Rps genes, resistance to Phytophthora sojae) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing Phytophthora sojae, state-wide surveys must be conducted to determine the pathotype (previously referred to as "race") structure within sampled population of P. sojae.
