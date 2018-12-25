@@ -4,6 +4,10 @@ Authors: Austin McCoy and Zachary Noel
 
 These R scripts were produced to replicate the HaGiS worksheet and provide all necessary results for pathotype data analysis in R. Austin McCoy and Zachary Noel (GitHub = noelzach) produced these scripts at Michigan State University.
 
+## Citation
+Please use the following DOI to cite this data and associated functions/analyses.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2525857.svg)](https://doi.org/10.5281/zenodo.2525857)
+
 Phytophthora sojae has been managed primarily via deployment of resistance genes (Rps genes, resistance to Phytophthora sojae) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing Phytophthora sojae, state-wide surveys must be conducted to determine the pathotype (previously referred to as "race") structure within sampled population of P. sojae.
 
 The goal of these scripts was to provide all the necessary analyses needed when conducting a Phytophthora sojae pathotype survey, including: Distribution of susceptibilities (effective and non-effective Rps genes), Distribution of pathotype complexities with statistics, Pathotype frequency distribution, as well as diversity indices for pathotypes. 
