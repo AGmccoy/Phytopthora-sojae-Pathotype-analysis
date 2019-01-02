@@ -7,7 +7,7 @@ These R scripts were produced to replicate the HaGiS worksheet and provide all n
 ## Citation
 Please use the following DOI to cite this data and associated functions/analyses.
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2525857.svg)](https://doi.org/10.5281/zenodo.2525857)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.2526326.svg)](https://doi.org/10.5281/zenodo.2526326)
 
 Phytophthora sojae has been managed primarily via deployment of resistance genes (Rps genes, resistance to Phytophthora sojae) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing Phytophthora sojae, state-wide surveys must be conducted to determine the pathotype (previously referred to as "race") structure within sampled population of P. sojae.
 
