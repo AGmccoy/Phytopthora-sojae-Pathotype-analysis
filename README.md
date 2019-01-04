@@ -1,4 +1,4 @@
-# Phytopthora-sojae-Pathotype-analysis
+# Phytopthora sojae Pathotype analysis
 
 Authors: Austin McCoy and Zachary Noel
 
