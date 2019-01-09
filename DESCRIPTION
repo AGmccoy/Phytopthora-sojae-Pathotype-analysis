@@ -1,17 +1,12 @@
 Package: hagis
 Title: Tools for Analysis of Statewide Phytophthora sojae Survey Data 
 Version: 0.0.0.9000
-Authors@R: 
-    c(person(given = "Austin",
-           family = "McCoy",
-           role = c("aut", "cre"),
-           email = "mccoyaus@msu.edu",
-	   comment = c(ORCID = "0000-0003-2483-4184"),
-     (person(given = "Zachary",
-  	   family = "Noel",
-	   role =  "aut",
-	   email = "noelzach@msu.edu",
-	   comment = c(ORCID = "0000-0001-6375-8300")))
+Authors@R: c(person(given = "Austin", family = "McCoy", role = c("aut", "cre"),
+  email = "mccoyaus@msu.edu",
+  comment = c(ORCID = "0000-0003-2483-4184")),
+  person(given = "Zachary", family = "Noel", role =  "aut",
+  email = "noelzach@msu.edu",
+  comment = c(ORCID = "0000-0001-6375-8300")))
 Description: Provides tools for analysis of US statewide Phytophthora sojae
   survey data.  Functions provide distribution of susceptibilities, distribution
   of complexities with statistics, pathotype frequency distribution, as well as
