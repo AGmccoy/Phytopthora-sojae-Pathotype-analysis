@@ -7,12 +7,12 @@ Authors@R: c(person(given = "Austin", family = "McCoy", role = c("aut", "cre"),
   person(given = "Zachary", family = "Noel", role =  "aut",
   email = "noelzach@msu.edu",
   comment = c(ORCID = "0000-0001-6375-8300")))
-Description: Provides tools for analysis of US statewide Phytophthora sojae
-  survey data.  Functions provide distribution of susceptibilities, distribution
-  of complexities with statistics, pathotype frequency distribution, as well as
-  diversity indices for pathotypes.  This package is meant to be a substitute
-  for the Hagis spreadsheet previously used for P sojae pathotype analysis and
-  provide the same necessary data as the Hagis spreadsheet.
+Description: Provides tools for analysis of Phytophthora sojae survey data.  
+  Functions provide distribution of susceptibilities, distribution of
+  complexities with statistics, pathotype frequency distribution, as well as
+  diversity indices for pathotypes.  This package is meant to be a direct
+  replacement for the 'HaGiS' spreadsheet previously used for P. sojae pathotype
+  analysis and provide the same necessary data as the 'HaGiS' spreadsheet.
 Imports: plyr,
   ggplot2,
   readr,
