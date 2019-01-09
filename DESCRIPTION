@@ -12,7 +12,8 @@ Description: Provides tools for analysis of Phytophthora sojae survey data.
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
   replacement for the 'HaGiS' spreadsheet previously used for P. sojae pathotype
-  analysis and provide the same necessary data as the 'HaGiS' spreadsheet.
+  analysis and provide the same necessary data as the 'HaGiS' spreadsheet,
+  <https://doi.org/10.1046/j.1365-3059.1999.00325.x>.
 Imports: plyr,
   ggplot2,
   readr,
