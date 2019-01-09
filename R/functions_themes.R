@@ -1,12 +1,15 @@
+
+@importFrom(magrittr, "%>%")
+
 # functions and graphic themes used in the Hagis scripts
 
 # Graphic theme
-my.theme <- theme(axis.text.x = element_text(size = 12, face = "bold", angle=45, hjust=1, family = "serif"),
+my.theme <- theme(axis.text.x = element_text(size = 12, face = "bold", angle = 45, hjust = 1, family = "serif"),
                   axis.text.y = element_text(size = 15, face = "bold", family = "serif"),
                   axis.title.x = element_text(size = 25, face = "bold", family = "serif"),
                   axis.title.y = element_text(size = 20, face = "bold", family = "serif"),
-                  axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
-                  axis.line.y = element_line(colour = 'black', size=0.5, linetype='solid'),
+                  axis.line.x = element_line(colour = 'black', size=0.5, linetype = 'solid'),
+                  axis.line.y = element_line(colour = 'black', size=0.5, linetype = 'solid'),
                   legend.text = element_text(size = 10, face = "bold", family = "serif"),
                   legend.key = element_blank(),
                   legend.title = element_text(size = 10, face="bold", family = "serif"),
@@ -18,8 +21,8 @@ my.theme2 <- theme(axis.text.x = element_text(size = 12, face = "bold", family =
                   axis.text.y = element_text(size = 15, face = "bold", family = "serif"),
                   axis.title.x = element_text(size = 25, face = "bold", family = "serif"),
                   axis.title.y = element_text(size = 20, face = "bold", family = "serif"),
-                  axis.line.x = element_line(colour = 'black', size=0.5, linetype='solid'),
-                  axis.line.y = element_line(colour = 'black', size=0.5, linetype='solid'),
+                  axis.line.x = element_line(colour = 'black', size=0.5, linetype = 'solid'),
+                  axis.line.y = element_line(colour = 'black', size=0.5, linetype = 'solid'),
                   legend.text = element_text(size = 10, face = "bold", family = "serif"),
                   legend.key = element_blank(),
                   legend.title = element_text(size = 10, face="bold", family = "serif"),
