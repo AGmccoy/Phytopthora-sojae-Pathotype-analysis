@@ -30,23 +30,25 @@ my.theme2 <- theme(axis.text.x = element_text(size = 12, face = "bold", family =
 # Functions
 
 # This function with calculate the distribution of susceptibilities by Rps gene. You can change your susceptible cutoff value at the bottom of this chunk labelled "Distribution_of_Susceptibilities(60)" to whatevevr percentage you prefer for susceptible or resistant reactions
-Distribution_of_Susceptibilities = function(susceptibility_cutoff) {
+
+Distribution_of_Susceptibilities = function(Data.frame, sample, percent.susc, gene, susceptibility_cutoff) {
   
   # if else for resistant or susceptible reaction. This will mark susceptible reactions with a "1" in a new column labelled "Susceptible.1" to then be used in later analysis.
   
-  Pathotype.Data$Susceptible.1 <- ifelse(Pathotype.Data$'perc.susc' >= susceptibility_cutoff, 1, 0)
+  Data.frame$Susceptible.1 <- ifelse(Data.frame[, percent.susc] >= susceptibility_cutoff, 1, 0)
   
-  ## summary by rps gene to tally. This code takes the "Susceptible.1" column and summarises it by Rps gene for your total Isolates pathogenic on each gene. Likewise "Isolate_N" is calculated given the unique Isolate names to find the total number of isolates within your data set. "Percent_isolates_pathogenic" is then found for each gene, showing the percentage of isolates that are pathogenic on tested genes. "Rps.Gene.Summary" will return these values.
+  ## summary by rps gene to tally. This code takes the "Susceptible.1" column and summarises it by gene for your total Isolates pathogenic on each gene. Likewise "Isolate_N" is calculated given the unique Isolate names to find the total number of isolates within your data set. "Percent_isolates_pathogenic" is then found for each gene, showing the percentage of isolates that are pathogenic on tested genes. "Rps.Gene.Summary" will return these values.
   
-  Rps.Gene.Summary <- ddply(Pathotype.Data, c("Rps"), summarise, N=sum(Susceptible.1))
-  Pathotype.Data$Isolate <- factor(Pathotype.Data$Isolate)
-  Isolate_n <- length(levels(Pathotype.Data$Isolate))
+  Rps.Gene.Summary <- ddply(Data.frame, gene, summarise, N = sum(Susceptible.1))
+  Data.frame[[sample]] <- as.factor(Data.frame[[sample]])
+  Isolate_n <- length(levels(Data.frame[[sample]]))
+  Data.frame[[gene]] <- as.factor(Data.frame[[gene]])
   Rps.Gene.Summary$percent_isolates_pathogenic <- ((Rps.Gene.Summary$N)/Isolate_n)*100
   Rps.Gene.Summary
   
   # visualization of data, using "Rps.Gene.Summary" to showing the percentage of isolate pathogenic on each gene tested. Scripts below can be edited for visual appeal.
   
-  Visualization_of_Susceptibilities <- ggplot(data=Rps.Gene.Summary,aes(x = Rps , y = percent_isolates_pathogenic)) +
+  Visualization_of_Susceptibilities <- ggplot(data=Rps.Gene.Summary,aes(x = Rps.Gene.Summary[[gene]] , y = Rps.Gene.Summary$percent_isolates_pathogenic)) +
     stat_summary(fun.y=mean,position=position_dodge(width=0.95),geom="bar") +
     theme_classic() +
     my.theme + 
@@ -58,27 +60,27 @@ Distribution_of_Susceptibilities = function(susceptibility_cutoff) {
   return(final)
 }
 
-Distribution_of_Complexities = function(susceptibility_cutoff) {
+Distribution_of_Complexities = function(Data.frame, sample, percent.susc, gene, susceptibility_cutoff) {
   
+
   # The susceptible control is removed from all isolates in the data set so that it will not impact complexity calculations and a new data set is made that does not contain susceptible controls. Thus, complexities can be from 0 to 13 (13 genes tested) for this data set. This can be changed later on if more, or less, genes are being tested.
   # for this to work your susceptible control must be labelled "susceptible" under the Rps column of your data set. you can change "susceptible" to "rps/rps" or whatever you have it labelled as and it should work.
-  remove_controls <- subset(Pathotype.Data, Rps != "susceptible")
+  remove_controls <- subset(Data.frame, Data.frame[[gene]]  != "susceptible")
+  #Data.frame$Susceptible.1 <- ifelse(Data.frame[[percent.susc]] >= susceptibility_cutoff, 1, 0)
+  remove_controls$Susceptible.1 <- ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
+  ## summary by rps gene to tally. This code takes the "Susceptible.1" column and summarises it by gene for your total Isolates pathogenic on each gene. Likewise "Isolate_N" is calculated given the unique Isolate names to find the total number of isolates within your data set. "Percent_isolates_pathogenic" is then found for each gene, showing the percentage of isolates that are pathogenic on tested genes. "Rps.Gene.Summary" will return these values.
   
-  Pathotype.Data$Susceptible.1 <- ifelse(Pathotype.Data$'perc.susc' >= susceptibility_cutoff, 1, 0)
+  Rps.Gene.Summary <- ddply(remove_controls, gene, summarise, N = sum(Susceptible.1))
+  remove_controls[[sample]] <- as.factor(remove_controls[[sample]])
+  Isolate_n <- length(levels(remove_controls[[sample]]))
+  remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
   
-  # The new data set "remove_controls" has the susceptible calculations performed again for, just like in the previous chunk, only without the susceptible control.
-  remove_controls$Susceptible.1 <- ifelse(remove_controls$'perc.susc' >= susceptibility_cutoff, 1, 0)
-  
-  
-  Rps.Gene.Summary <- ddply(Pathotype.Data, c("Rps"), summarise, N=sum(Susceptible.1))
-  Pathotype.Data$Isolate <- factor(Pathotype.Data$Isolate)
-  Isolate_n <- length(levels(Pathotype.Data$Isolate))
   #Rps.Gene.Summary$percent_isolates_pathogenic <- ((Rps.Gene.Summary$N)/Isolate_n)*100
   #Rps.Gene.Summary
   
   #Individual Isolate Complexities as calculated by grouping by Isolate and then summarising the number of"1"'s for each Isolate in the "Susceptible.1" Column.
   Ind_complexities <- remove_controls %>%
-    group_by(Isolate) %>%
+    group_by(remove_controls[[sample]]) %>%
     summarise(N=sum(Susceptible.1))
   
   # Frequency for each complexity (%). 
@@ -173,35 +175,131 @@ Distribution_of_Complexities = function(susceptibility_cutoff) {
   return(final_complexities)
 }
 
-Pathotype.frequency.dist <- function(susceptibility_cutoff){
+
+Pathotype.frequency.dist <- function(Data.frame, sample, percent.susc, gene, susceptibility_cutoff){
   # same as previous scripts
-  remove_controls <- subset(Pathotype.Data, Rps != "susceptible")
-  remove_controls$Susceptible.1 <- ifelse(remove_controls$'perc.susc' >= susceptibility_cutoff, 1, 0)
+  Data.frame[[gene]] <- transform(str_replace(Data.frame[[gene]], "Rps ", ""))
+  remove_controls <- subset(Data.frame, Data.frame[[gene]]  != "susceptible")
+  #Data.frame$Susceptible.1 <- ifelse(Data.frame[[percent.susc]] >= susceptibility_cutoff, 1, 0)
+  remove_controls$Susceptible.1 <- ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
   
   # Removal of resistant reactions from the data set, leaving only susceptible reactions (pathotype)
-  Remove_resistance <- subset(remove_controls, Susceptible.1 != 0) %>%
-    transform(Rps = str_replace(Rps, "Rps ", "")) # this line takes the "Rps" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
+  #remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
+  Remove_resistance <- subset(remove_controls, Susceptible.1 != 0) #%>%
+    #transform(remove_controls, gene = gsub("Rps ", "", remove_controls[[gene]])) # this line takes the "Rps" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
   
   #Individual Isolate Complexities
   # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
+  Remove_resistance[[sample]] <- as.character(Remove_resistance[[sample]])
+  
   Ind_pathotypes <- Remove_resistance %>%
-    group_by(Isolate) %>%
+    group_by_(sample) %>%
     nest() %>%
-    mutate(Pathotype = map(data, ~ toString(.$Rps)))  %>%
+    mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
     unnest(Pathotype) %>%
-    select(Isolate, Pathotype)
+    select(sample, Pathotype)
   
   # Identifying the frequency at which each Pathotype is found in the data set
   #  Isolate needs to be a character vector for this to work, this line of code takes care of that
-  Ind_pathotypes$Isolate <- as.character(Ind_pathotypes$Isolate)
+  
+  Ind_pathotypes[[sample]] <- as.character(Ind_pathotypes[[sample]])
+  
   # The frequency at which each pathotype is found within the dataset is performed here. It can be confusing to look at, but we will clean it up in the next step. For now, each isolates pathotype will have a column next to it, showing how often that pathotype is in the dataset.
-  Pathotype_Freq <- within(Ind_pathotypes, { count <- ave(Isolate, Pathotype, FUN=function(Pathotype) length(unique(Pathotype)))})
+  
+#Pathotype_Freq <- within(Ind_pathotypes, { count <- ave(.[[sample]], Pathotype, FUN=function(Pathotype) length(unique(Pathotype)))})
   
   #Final Chart for visualizing unique pathotype distributions
   # this script takes out only the unique pathotypes and the count at which they are found in the data set to be used in the next graphic
-  Pathotype_Freq_Distribution <- Pathotype_Freq %>%
-    select(count, Pathotype) %>%
-    distinct(Pathotype, .keep_all = TRUE)
+  
+  Pathotype_Freq_Distribution <- data.frame(table(Ind_pathotypes$Pathotype)) 
+  colnames(Pathotype_Freq_Distribution) = c("Pathotype", "Frequency")
+  #Pathotype_Freq %>%
+    #select(count, Pathotype) %>%
+    #distinct(Pathotype, .keep_all = TRUE)
+  
+  return_Pathotypes <- list(individual_pathotypes = Ind_pathotypes, pathotypes_distribution = Pathotype_Freq_Distribution)
   # table showing only unique pathotypes and their frequency within the dataset
-  return(Pathotype_Freq_Distribution)
+  return(return_Pathotypes)
 }
+
+
+Diversity_index <- function(Data.frame, sample, percent.susc, gene, susceptibility_cutoff){
+  # same as previous scripts
+  Data.frame[[gene]] <- transform(str_replace(Data.frame[[gene]], "Rps ", ""))
+  remove_controls <- subset(Data.frame, Data.frame[[gene]]  != "susceptible")
+  #Data.frame$Susceptible.1 <- ifelse(Data.frame[[percent.susc]] >= susceptibility_cutoff, 1, 0)
+  remove_controls$Susceptible.1 <- ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
+  
+  # Removal of resistant reactions from the data set, leaving only susceptible reactions (pathotype)
+  #remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
+  Remove_resistance <- subset(remove_controls, Susceptible.1 != 0) #%>%
+  #transform(remove_controls, gene = gsub("Rps ", "", remove_controls[[gene]])) # this line takes the "Rps" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
+  
+  #Individual Isolate Complexities
+  # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
+  Remove_resistance[[sample]] <- as.character(Remove_resistance[[sample]])
+  
+  Ind_pathotypes <- Remove_resistance %>%
+    group_by_(sample) %>%
+    nest() %>%
+    mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
+    unnest(Pathotype) %>%
+    select(sample, Pathotype)
+  
+  # Identifying the frequency at which each Pathotype is found in the data set
+  #  Isolate needs to be a character vector for this to work, this line of code takes care of that
+  
+  Ind_pathotypes[[sample]] <- as.character(Ind_pathotypes[[sample]])
+  
+  # The frequency at which each pathotype is found within the dataset is performed here. It can be confusing to look at, but we will clean it up in the next step. For now, each isolates pathotype will have a column next to it, showing how often that pathotype is in the dataset.
+  
+  #Pathotype_Freq <- within(Ind_pathotypes, { count <- ave(.[[sample]], Pathotype, FUN=function(Pathotype) length(unique(Pathotype)))})
+  
+  #Final Chart for visualizing unique pathotype distributions
+  # this script takes out only the unique pathotypes and the count at which they are found in the data set to be used in the next graphic
+  
+  Pathotype_Freq_Distribution <- data.frame(table(Ind_pathotypes$Pathotype)) 
+  colnames(Pathotype_Freq_Distribution) = c("Pathotype", "Frequency")
+  #Pathotype_Freq %>%
+  #select(count, Pathotype) %>%
+  #distinct(Pathotype, .keep_all = TRUE)
+#Changes sample to a factor
+
+
+
+#Determines the number of isolates within the data
+
+Number_of_isolates <- length(unique(Ind_pathotypes[[sample]]))
+
+
+
+#Determining the number of unique pathotypes for this analysis
+
+Number_of_pathotypes <- length(unique(Ind_pathotypes$Pathotype))
+
+
+#Simple diversity will show the proportion of unique pathotypes to total isolates. As the values gets closer to 1, there is greater diversity in pathoypes within the population.
+
+Simple <- Number_of_pathotypes / Number_of_isolates
+
+#An alternate version of Simple diversity index. This index is less sensitive to sample size than the simple index.
+
+Gleason <- (Number_of_pathotypes - 1)/log(Number_of_isolates)
+
+#Shannon diversity index is typically between 1.5 and 3.5. As richness and evenness of the population increase, so does the Shannon index value
+Shannon <- diversity(Pathotype_Freq_Distribution[-1], index="shannon")
+
+
+#Simpsom diversity index values range from 0 to 1. 1 represents high diversity and 0 represents no diversity.
+
+Simpson <- diversity(Pathotype_Freq_Distribution[-1], index="simpson")
+
+
+#Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a more evene distribution of each pathoypes frequency within the population.
+
+Evenness <- Shannon/ log(Number_of_pathotypes)
+
+ all.indices <- list(Number_of_isolates = Number_of_isolates, Number_of_pathotypes = Number_of_pathotypes, Simple = Simple, Gleason = Gleason, Shannon = Shannon, Simpson, Evenness = Evenness)
+return(all.indices)
+}
+
