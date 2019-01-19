@@ -7,11 +7,12 @@ Creates a template  'CSV' file for the user to enter observation data into to
 use for analysis This helps ensure that data are properly formatted for use
 with \pkg{hagis}.}
 \usage{
-write_template(file = NULL)
+write_template(filename = NULL)
 }
 \arguments{
-\item{file}{A file path and filename for the template, defaults to
-"Phytopthora_template.csv" in your current working directory.}
+\item{filename}{A file path and filename for the template, defaults to
+"Phytopthora_template.csv" in your current working directory. If user
+provides a filename with no extension, a ".csv" extension will be supplied.}
 }
 \description{
 Create a Phytophtora Template to Enter Data for Use with hagis
@@ -21,7 +22,7 @@ with \pkg{hagis}.
 }
 \examples{
 \donttest{
-# Create a template in user's home subdirectory called "P_sojae_analysis"
+# Create a template in user's home subdirectory called "P_sojae_analysis.csv"
 write_template("~/P_sojae_analysis")
 }
 
