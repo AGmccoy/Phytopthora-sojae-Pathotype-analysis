@@ -1,0 +1,175 @@
+---
+title: "*Phytophthora sojae* Pathotype Data Analysis"
+author: "Austin McCoy, Zachary Noel"
+date: "December 19, 2018"
+output:
+    html_document: default
+---
+##### This analysis will provide Distribution of Susceptibilities, Distribution of complexities with statistics, Pathotype frequency distribution, as well as diversity indices for pathotypes.These scripts are meant to be a substitute for the Hagis spreadsheet previously used for *Phytophthroa sojae* pathotype analysis and provide the same necessary data as the Hagis sheet.
+
+##### To start, your data should be in a similar format to that of the sample data file provided. Most importantly, Having columns labelled "Isolate"", "Rps"", and "perc.susc"" are critical for the code to work with minimal to no edits on the users part.
+
+## Packages needed for analysis
+
+TRUE indicates package was installed and loaded correctly.
+```{r installing packages, warning=FALSE, message=FALSE, echo=FALSE}
+# ipak will install and load the multiple r packages that are needed for this analysis
+# Source: https://gist.github.com/stevenworthington/3178163
+
+ipak <- function(pkg){
+new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
+if (length(new.pkg)) 
+    install.packages(new.pkg, dependencies = TRUE)
+sapply(pkg, require, character.only = TRUE)
+}
+
+packages <- c("plyr", "ggplot2", "tidyverse", "plotrix", "stringr", "pander", "vegan", "devtools")
+ipak(packages)
+
+devtools::install_github("krlmlr/here")
+library(here)
+```
+
+This reads the file called functions_themes.R and runs it. This will enable you to use the functions and defines graphic themes. 
+```{r Sourcing functions}
+source(here("functions_themes.R"))
+```
+
+Reading in your data. Do not change "Pathotype.Data", just the name of the file, we will use the Practice data provided as an example. The function here() will find the .csv file relative to the R project, so there is no need to set working directory or provide full file path. 
+
+The input should be in .csv format with any NA values encoded as blanks
+
+If NA values are encoded differently, replace the option na = "" to what your values are encoded as
+```{r read data, message=FALSE}
+Pathotype.Data <- read_csv(here("Practice data set.csv"), na = "")
+```
+
+## Section 1: Distribution of Susceptibilities
+
+The value in "Distribution_of_Susceptibilities(60)" (in this case, 60), sets the cutoff for susceptible reactions. For example, currently all genes with 60% or more of the plants rated susceptible will return a "1" in previous scripts (see line 30).
+
+The output will return a list with the first element equal to the graphic, and the second with the table. 
+You can parse the list by putting a $ and showing if you want the Data or a graphic
+```{r Running function}
+Suceptibilities <- Distribution_of_Susceptibilities(60)
+```
+
+```{r Data output}
+pander::pander(Suceptibilities$Data)
+```
+
+```{r Graphic output}
+Suceptibilities$Graphic
+```
+
+## Section 2: Distribution of Complexities
+
+Again, you can change your susceptible cutoff value here for your dataset
+```{r Run function}
+complexities <- Distribution_of_Complexities(60)
+```
+
+Output the frequency data
+```{r Frequency data output}
+pander::pander(complexities$FrequencyData)
+```
+
+Output the distribution data 
+```{r Distribution data output}
+pander::pander(complexities$DistributionData)
+```
+
+output the mean of the distribution 
+```{r Mean output}
+complexities$Mean
+```
+
+output the standard deviation of the output
+```{r Standard Deviation output}
+complexities$StandardDev
+```
+
+output the standard error of the output
+```{r Standard Error output}
+complexities$StandardErr
+```
+
+Output the frequency plot
+```{r Frequency Plot output}
+complexities$FrequencyPlot
+```
+
+Output the distribution plot
+```{r Distribution Plot output}
+complexities$DistributionPlot
+```
+
+## Section 3: Pathotype Frequency Distribution
+```{r Pathotype Freq}
+path.freq <- Pathotype.frequency.dist(60) 
+```
+
+```{r echo = FALSE}
+pander::pander(path.freq)
+```
+
+## Section 4. Diversity index for Pathotypes
+
+Diversity indices used to investigate pathotype divversity within and between states are shown below. In Version 1 of this document, only code for analyzing a single state at a time is shown. In the future, scripts could be produced so that multiple states could be analyzed at once, independently of each other. Therefore, if analyzing multiple states pathotype data, each state must be analyzed from its own .csv document.
+
+```{r recode, echo=FALSE}
+# changes "$count" to a numeric value
+path.freq$count <- as.numeric(path.freq$count)
+# switches the column order of "Pathotype" and "count" for the analysis
+path.freq <- path.freq[,c("Pathotype","count")]
+#Changes Isolate to a factor
+Pathotype.Data$Isolate <- factor(Pathotype.Data$Isolate)
+```
+
+Determines the number of isolates within the data
+```{r N isolates}
+Number_of_isolates <- length(levels(Pathotype.Data$Isolate))
+Number_of_isolates
+```
+
+Determining the number of unique pathotypes for this analysis
+```{r N Pathotypes}
+Number_of_pathotypes <- specnumber(path.freq$count)
+Number_of_pathotypes
+```
+
+Simple diversity will show the proportion of unique pathotypes to total isolates. As the values gets closer to 1, there is greater diversity in pathoypes within the population.
+```{r Simple}
+Simple <- Number_of_pathotypes/ Number_of_isolates
+Simple
+```
+
+An alternate version of Simple diversity index. This index is less sensitive to sample size than the simple index.
+```{r Gleason}
+Gleason <- (Number_of_pathotypes - 1)/log(Number_of_isolates)
+Gleason
+```
+
+Shannon diversity index is typically between 1.5 and 3.5. As richness and evenness of the population increase, so does the Shannon index value
+```{r Shannon}
+Shannon <- diversity(path.freq[-1], index="shannon")
+Shannon
+```
+
+Simpsom diversity index values range from 0 to 1. 1 represents high diversity and 0 represents no diversity.
+```{r Simpson}
+Simpson <- diversity(path.freq[-1], index="simpson")
+Simpson
+```
+
+Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a more evene distribution of each pathoypes frequency within the population.
+```{r Shannon Evennes}
+Evenness <- Shannon/ log(Number_of_pathotypes)
+Evenness
+```
+
+
+### Recommendations are always appreciated!!
+#### Chilvers Lab
+#### Michigan State University
+#### East Lansing, MI
