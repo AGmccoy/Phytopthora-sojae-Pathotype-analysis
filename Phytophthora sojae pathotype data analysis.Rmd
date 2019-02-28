@@ -1,7 +1,7 @@
 ---
 title: "*Phytophthora sojae* Pathotype Data Analysis"
 author: "Austin McCoy, Zachary Noel"
-date: "January 17th, 2019"
+date: "February 28th, 2019"
 output:
     html_document: default
 ---
@@ -31,7 +31,7 @@ The input should be in .csv format with any NA values encoded as blanks
 
 If NA values are encoded differently, replace the option na = "" to what your values are encoded as
 ```{r read data, message=FALSE}
-Pathotype.Data <- read_csv(here("Prctice data set.csv"), na = "")
+Pathotype.Data <- read.csv(here("Practice data set.csv"), na = "")
 ```
 
 This reads the file called functions_themes.R and runs it. This will enable you to use the functions and defines graphic themes. 
@@ -43,7 +43,7 @@ source(here("functions_themes.R"))
 
 ## Section 1: Distribution of Susceptibilities
 
-Do not change Pathotype.Data in any of the functions. You need only change the three spaces after Pathotype.Data to your associated column headings.
+Do not change Pathotype.Data in any of the functions. You need only change the three spaces after Pathotype.Data to your associated column headings and the fourth space, which is susceptibility cutoff percentage.
 
 ###Instructions
 
@@ -53,7 +53,7 @@ Do not change Pathotype.Data in any of the functions. You need only change the t
 
 These will need to be changed in all functions within this .Rmd file for the code to work.
 
-The value in "Distribution_of_Susceptibilities(Pathotype.Data, "Isolate:, "Percent.Susceptible", "Gene", 60)" (in this case, 60), sets the cutoff for susceptible reactions. For example, currently all genes with 60% or more of the plants rated susceptible will return a "1" in The following scripts. You can change this to whatever percentage you require for your study.
+The value in "Distribution_of_Susceptibilities(Pathotype.Data, "Isolate:, "Percent.Susceptible", "Gene", 60)" (in this case, 60), sets the cutoff for susceptible reactions. For example, currently all genes with 60% or more of the plants rated susceptible will return a "1" in The following scripts (meaning it is susceptible). You can change this to whatever percentage you require for your study.
 
 
 
@@ -61,7 +61,7 @@ The output will return a list with the first element equal to the graphic, and t
 You can parse the list by putting a $ and showing if you want the Data or a graphic
 
 ```{r Running function}
-Suceptibilities <- Distribution_of_Susceptibilities(Pathotype.Data, "Isolate", "percent.Susceptible", "Gene", 60)
+Suceptibilities <- Distribution_of_Susceptibilities(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60)
 ```
 
 ```{r Data output}
@@ -77,7 +77,7 @@ Suceptibilities$Graphic
 You will need the change "Isolate", "Percent.Susceptible", and "Gene" again in this function to your correct column headers in your dataset.
 Again, you can change your susceptible cutoff value here for your dataset
 ```{r Run function}
-complexities <- Distribution_of_Complexities(Pathotype.Data, "Isolate", "percent.Susceptible", "Gene", 60)
+complexities <- Distribution_of_Complexities(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60)
 ```
 
 Output the frequency data
@@ -121,7 +121,7 @@ complexities$DistributionPlot
 You will need the change "Isolate", "Percent.Susceptible", and "Gene" again in this function to your correct column headers in your dataset.
 Again, you can change your susceptible cutoff value here for your dataset.
 ```{r Pathotype Freq}
-path.freq <- Pathotype.frequency.dist(Pathotype.Data, "Isolate", "percent.Susceptible", "Gene", 60) 
+path.freq <- Pathotype.frequency.dist(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60) 
 ```
 
 You can parse the data in this chunk to show either the pathotype frequency for unique pathotypes, or to show each individual isolates pathotype that you tested.
@@ -138,7 +138,7 @@ path.freq$pathotypes_distribution
 Diversity indices used to investigate pathotype diversity within and between states are shown below. 
 
 ```{r}
-diversity <- Diversity_index(Pathotype.Data, "Isolate", "percent.Susceptible", "Gene", 60)
+diversity <- Diversity_index(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60)
 ```
 
 
@@ -147,6 +147,8 @@ Pathotype diversity indices can be parsed as shown:
 Simple diversity = $Simple
 
 Shannon diversity = $Shannon
+
+Simpson diversity = $Simpson
 
 Gleason diversity = $Gleason
 
