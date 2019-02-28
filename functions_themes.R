@@ -178,7 +178,7 @@ Distribution_of_Complexities = function(Data.frame, sample, percent.susc, gene, 
 
 Pathotype.frequency.dist <- function(Data.frame, sample, percent.susc, gene, susceptibility_cutoff){
   # same as previous scripts
-  Data.frame[[gene]] <- transform(str_replace(Data.frame[[gene]], "Rps ", ""))
+  Data.frame[, gene] <- transform(str_replace(Data.frame[[gene]], "Rps ", ""))
   remove_controls <- subset(Data.frame, Data.frame[[gene]]  != "susceptible")
   #Data.frame$Susceptible.1 <- ifelse(Data.frame[[percent.susc]] >= susceptibility_cutoff, 1, 0)
   remove_controls$Susceptible.1 <- ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
@@ -190,19 +190,21 @@ Pathotype.frequency.dist <- function(Data.frame, sample, percent.susc, gene, sus
   
   #Individual Isolate Complexities
   # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
-  Remove_resistance[[sample]] <- as.character(Remove_resistance[[sample]])
+  Remove_resistance[, sample] <- as.character(Remove_resistance[, sample])
   
   Ind_pathotypes <- Remove_resistance %>%
-    group_by_(sample) %>%
+    group_by(.[[sample]]) %>%
     nest() %>%
     mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
-    unnest(Pathotype) %>%
-    select(sample, Pathotype)
+    unnest(Pathotype) #%>%
+    #select(.[[sample]], Pathotype)
+  
   
   # Identifying the frequency at which each Pathotype is found in the data set
   #  Isolate needs to be a character vector for this to work, this line of code takes care of that
   
-  Ind_pathotypes[[sample]] <- as.character(Ind_pathotypes[[sample]])
+  Ind_pathotypes$Isolate <- as.character(Ind_pathotypes[['.[[sample]]']])
+  Ind_pathotypes <- Ind_pathotypes[,3:4]
   
   # The frequency at which each pathotype is found within the dataset is performed here. It can be confusing to look at, but we will clean it up in the next step. For now, each isolates pathotype will have a column next to it, showing how often that pathotype is in the dataset.
   
@@ -237,19 +239,21 @@ Diversity_index <- function(Data.frame, sample, percent.susc, gene, susceptibili
   
   #Individual Isolate Complexities
   # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
-  Remove_resistance[[sample]] <- as.character(Remove_resistance[[sample]])
+  Remove_resistance[, sample] <- as.character(Remove_resistance[, sample])
   
   Ind_pathotypes <- Remove_resistance %>%
-    group_by_(sample) %>%
+    group_by(.[[sample]]) %>%
     nest() %>%
     mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
-    unnest(Pathotype) %>%
-    select(sample, Pathotype)
+    unnest(Pathotype) #%>%
+  #select(.[[sample]], Pathotype)
+  
   
   # Identifying the frequency at which each Pathotype is found in the data set
   #  Isolate needs to be a character vector for this to work, this line of code takes care of that
   
-  Ind_pathotypes[[sample]] <- as.character(Ind_pathotypes[[sample]])
+  Ind_pathotypes$Isolate <- as.character(Ind_pathotypes[['.[[sample]]']])
+  Ind_pathotypes <- Ind_pathotypes[,3:4]
   
   # The frequency at which each pathotype is found within the dataset is performed here. It can be confusing to look at, but we will clean it up in the next step. For now, each isolates pathotype will have a column next to it, showing how often that pathotype is in the dataset.
   
@@ -299,7 +303,7 @@ Simpson <- diversity(Pathotype_Freq_Distribution[-1], index="simpson")
 
 Evenness <- Shannon/ log(Number_of_pathotypes)
 
- all.indices <- list(Number_of_isolates = Number_of_isolates, Number_of_pathotypes = Number_of_pathotypes, Simple = Simple, Gleason = Gleason, Shannon = Shannon, Simpson, Evenness = Evenness)
+ all.indices <- list(Number_of_isolates = Number_of_isolates, Number_of_pathotypes = Number_of_pathotypes, Simple = Simple, Gleason = Gleason, Shannon = Shannon, Simpson = Simpson, Evenness = Evenness)
 return(all.indices)
 }
 
