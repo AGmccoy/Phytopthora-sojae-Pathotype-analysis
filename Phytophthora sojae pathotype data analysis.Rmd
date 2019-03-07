@@ -1,7 +1,7 @@
 ---
 title: "*Phytophthora sojae* Pathotype Data Analysis"
 author: "Austin McCoy, Zachary Noel"
-date: "February 28th, 2019"
+date: "March 7th, 2019"
 output:
     html_document: default
 ---
@@ -31,7 +31,7 @@ The input should be in .csv format with any NA values encoded as blanks
 
 If NA values are encoded differently, replace the option na = "" to what your values are encoded as
 ```{r read data, message=FALSE}
-Pathotype.Data <- read.csv(here("Practice data set.csv"), na = "")
+Pathotype.Data <- read.csv(here("Practice data sheet.csv"), na = "")
 ```
 
 This reads the file called functions_themes.R and runs it. This will enable you to use the functions and defines graphic themes. 
@@ -48,12 +48,12 @@ Do not change Pathotype.Data in any of the functions. You need only change the t
 ###Instructions
 
 "Isolate" should be renamed to the column header for the column which identifies the isolates tested
-"Percent.Susceptible" should be renamed to the column header for the column which identifies the percent susceptible plants for each gene
+"perc.susc" should be renamed to the column header for the column which identifies the percent susceptible plants for each gene
 "Gene" should be renamed to the column header for the column which identifies the genes tested
 
 These will need to be changed in all functions within this .Rmd file for the code to work.
 
-The value in "Distribution_of_Susceptibilities(Pathotype.Data, "Isolate:, "Percent.Susceptible", "Gene", 60)" (in this case, 60), sets the cutoff for susceptible reactions. For example, currently all genes with 60% or more of the plants rated susceptible will return a "1" in The following scripts (meaning it is susceptible). You can change this to whatever percentage you require for your study.
+The value in "Distribution_of_Susceptibilities(Pathotype.Data, "Isolate:, "perc.susc", "Gene", 60)" (in this case, 60), sets the cutoff for susceptible reactions. For example, currently all genes with 60% or more of the plants rated susceptible will return a "1" in The following scripts (meaning it is susceptible). You can change this to whatever percentage you require for your study.
 
 
 
@@ -74,7 +74,7 @@ Suceptibilities$Graphic
 
 ## Section 2: Distribution of Complexities
 
-You will need the change "Isolate", "Percent.Susceptible", and "Gene" again in this function to your correct column headers in your dataset.
+You will need the change "Isolate", "perc.susc", and "Gene" again in this function to your correct column headers in your dataset.
 Again, you can change your susceptible cutoff value here for your dataset
 ```{r Run function}
 complexities <- Distribution_of_Complexities(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60)
@@ -118,7 +118,7 @@ complexities$DistributionPlot
 
 
 ## Section 3: Pathotype Frequency Distribution
-You will need the change "Isolate", "Percent.Susceptible", and "Gene" again in this function to your correct column headers in your dataset.
+You will need the change "Isolate", "perc.susc", and "Gene" again in this function to your correct column headers in your dataset.
 Again, you can change your susceptible cutoff value here for your dataset.
 ```{r Pathotype Freq}
 path.freq <- Pathotype.frequency.dist(Pathotype.Data, "Isolate", "perc.susc", "Gene", 60) 
@@ -129,8 +129,8 @@ You can parse the data in this chunk to show either the pathotype frequency for 
 frequency of unique pathotypes = $pathotypes_distribution
 
 Individual pathotypes = $individual_pathotypes
-```{r echo = FALSE}
-path.freq$pathotypes_distribution
+```{r echo = FALSE, results='hold'}
+pander::pander(path.freq$individual_pathotypes)
 ```
 
 ## Section 4. Diversity index for Pathotypes
