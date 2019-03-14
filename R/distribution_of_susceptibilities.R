@@ -2,7 +2,7 @@
 #' 
 #' @description This function will calculate the distribution of
 #' susceptibilities by Rps gene.
-#' @param x A data.frame containing the data 
+#' @param x A `data.frame` containing the data 
 #' @param sample
 #' @param precent_susc
 #' @param gene
