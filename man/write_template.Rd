@@ -2,7 +2,7 @@
 % Please edit documentation in R/create_template.R
 \name{write_template}
 \alias{write_template}
-\title{Create a Phytophtora Template to Enter Data for Use with hagis
+\title{Create a Phytophthora Template to Enter Data for Use with HaGiS
 Creates a template  'CSV' file for the user to enter observation data into to
 use for analysis This helps ensure that data are properly formatted for use
 with \pkg{hagis}.}
@@ -11,11 +11,11 @@ write_template(filename = NULL)
 }
 \arguments{
 \item{filename}{A file path and filename for the template, defaults to
-"Phytopthora_template.csv" in your current working directory. If user
+"Phytophthora_template.csv" in your current working directory. If user
 provides a filename with no extension, a ".csv" extension will be supplied.}
 }
 \description{
-Create a Phytophtora Template to Enter Data for Use with hagis
+Create a Phytophthora Template to Enter Data for Use with HaGiS
 Creates a template  'CSV' file for the user to enter observation data into to
 use for analysis This helps ensure that data are properly formatted for use
 with \pkg{hagis}.

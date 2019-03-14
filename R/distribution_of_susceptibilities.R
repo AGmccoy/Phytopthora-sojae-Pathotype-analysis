@@ -1,4 +1,4 @@
-#' Calculate distribution of susceptilibilities by Rps gene
+#' Calculate distribution of susceptibilities by Rps gene
 #' 
 #' @description This function will calculate the distribution of
 #' susceptibilities by Rps gene.

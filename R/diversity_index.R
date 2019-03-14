@@ -88,7 +88,7 @@ diversity_index <-
       diversity(Pathotype_Freq_Distribution[-1], index = "shannon")
     
     
-    #Simpsom diversity index values range from 0 to 1. 1 represents high diversity and 0 represents no diversity.
+    #Simpson diversity index values range from 0 to 1. 1 represents high diversity and 0 represents no diversity.
     
     Simpson <-
       diversity(Pathotype_Freq_Distribution[-1], index = "simpson")
