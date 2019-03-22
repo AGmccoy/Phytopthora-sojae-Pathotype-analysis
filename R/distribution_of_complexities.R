@@ -9,10 +9,10 @@
 #' @param susceptibility_cutoff
 #'
 complexities = function(x,
-                                        sample,
-                                        percent.susc,
-                                        gene,
-                                        susceptibility_cutoff) {
+                        sample,
+                        percent.susc,
+                        gene,
+                        susceptibility_cutoff) {
   # The susceptible control is removed from all isolates in the data set so that it will not impact complexity calculations and a new data set is made that does not contain susceptible controls. Thus, complexities can be from 0 to 13 (13 genes tested) for this data set. This can be changed later on if more, or less, genes are being tested.
   # for this to work your susceptible control must be labelled "susceptible" under the Rps column of your data set. you can change "susceptible" to "rps/rps" or whatever you have it labelled as and it should work.
   remove_controls <- subset(x, x[[gene]]  != "susceptible")

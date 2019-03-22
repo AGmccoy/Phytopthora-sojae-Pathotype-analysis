@@ -1,25 +1,25 @@
 #' Calculate distribution of susceptibilities by Rps gene
-#' 
+#'
 #' @description This function will calculate the distribution of
 #' susceptibilities by Rps gene.
-#' @param x A `data.frame` containing the data 
+#' @param x A `data.frame` containing the data
 #' @param sample
 #' @param precent_susc
 #' @param gene
 #' @param susc_cutoff
-#' 
+#'
 susceptibilities = function(x,
-                        sample,
-                        perc.susc,
-                        gene,
-                        susc_cutoff) {
+                            sample,
+                            perc.susc,
+                            gene,
+                            susc_cutoff) {
   # if else for resistant or susceptible reaction. This will mark susceptible
   # reactions with a "1" in a new column labelled "Susceptible.1" to then be
   # used in later analysis.
   
   x$Susceptible.1 <- ifelse(x[, "perc.susc"] >= susc_cutoff, 1, 0)
   
-  # summary by rps gene to tally. This code takes the "Susceptible.1" column 
+  # summary by rps gene to tally. This code takes the "Susceptible.1" column
   # and summarises it by gene for your total Isolates pathogenic on each gene.
   # Likewise "Isolate_N" is calculated given the unique isolate names to find
   # the total number of isolates within your data set.

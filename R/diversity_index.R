@@ -1,5 +1,5 @@
-#' 
-#' @description 
+#'
+#' @description
 #' @param x A `data.frame`` containing the data
 #' @param sample
 #' @param precent_susc
