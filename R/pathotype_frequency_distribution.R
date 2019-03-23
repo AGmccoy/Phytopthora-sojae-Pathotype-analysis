@@ -1,39 +1,36 @@
+
 #' Calculate pathotype frequency distribution
 #'
-#' @description
-#' @param x A `data.frame`` containing the data
-#' @param sample
-#' @param precent_susc
-#' @param gene
-#' @param susceptibility_cutoff
+#' @description Calculates _Phytophthora_ pathotype frequency distribution
+#' @param x A `data.frame` containing the data. Character.
+#' @param cutoff Value for percent susceptible cutoff. Integer.
+#' 
+#' @export freq_dist
 
 freq_dist <-
   function(x,
-           sample,
-           percent_susc,
-           gene,
-           susceptibility_cutoff) {
+           cutoff) {
     # same as previous scripts
     x[, gene] <-
-      transform(stringr::str_replace(x[[gene]], "Rps ", ""))
+      transform(stringr::str_replace(x[["Rps"]], "Rps ", ""))
     remove_controls <-
-      subset(x, x[[gene]]  != "susceptible")
+      subset(x, x[["Rps"]]  != "susceptible")
     #x$Susceptible.1 <- ifelse(x[[percent_susc]] >= susceptibility_cutoff, 1, 0)
     remove_controls$Susceptible.1 <-
       ifelse(remove_controls[[percent_susc]] >= susceptibility_cutoff, 1, 0)
     
     # Removal of resistant reactions from the data set, leaving only susceptible reactions (pathotype)
     #remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
-    Remove_resistance <-
+    remove_resistance <-
       subset(remove_controls, Susceptible.1 != 0) #%>%
     #transform(remove_controls, gene = gsub("Rps ", "", remove_controls[[gene]])) # this line takes the "Rps" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
     
     #Individual Isolate Complexities
     # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
-    Remove_resistance[, sample] <-
-      as.character(Remove_resistance[, sample])
+    remove_resistance[, sample] <-
+      as.character(remove_resistance[, sample])
     
-    Ind_pathotypes <- Remove_resistance %>%
+    Ind_pathotypes <- remove_resistance %>%
       group_by(.[[sample]]) %>%
       nest() %>%
       mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
