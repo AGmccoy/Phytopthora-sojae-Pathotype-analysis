@@ -1,5 +1,5 @@
 
-#' @importFrom magrittr %>%
+#' @importFrom magrittr "%>%"
 
 # functions and graphic themes used in the Hagis scripts
 
