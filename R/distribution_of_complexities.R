@@ -1,28 +1,33 @@
-#' Calculate distribution of complexities by Rps gene
+
+#' Calculate distribution of complexities by _Rps_ gene
 #'
 #' @description This function will calculate the distribution of
-#' susceptibilities by Rps gene.
-#' @param x A `data.frame` containing the data
-#' @param sample
-#' @param precent_susc
-#' @param gene
-#' @param susceptibility_cutoff
-#'
+#' susceptibilities by _Rps_ gene.
+#' @param x A `data.frame` containing the data. Character.
+#' @param cutoff Value for percent susceptible cutoff. Integer.
+#' @param control Value used to denote the susceptible control in the _Rps_
+#'  column. Defaults to "susceptible". Character.
+#' @export complexities
+
 complexities = function(x,
-                        sample,
-                        percent.susc,
-                        gene,
-                        susceptibility_cutoff) {
-  # The susceptible control is removed from all isolates in the data set so that it will not impact complexity calculations and a new data set is made that does not contain susceptible controls. Thus, complexities can be from 0 to 13 (13 genes tested) for this data set. This can be changed later on if more, or less, genes are being tested.
-  # for this to work your susceptible control must be labelled "susceptible" under the Rps column of your data set. you can change "susceptible" to "rps/rps" or whatever you have it labelled as and it should work.
+                        cutoff,
+                        control = "susceptible") {
+  # The susceptible control is removed from all isolates in the data set so that
+  #  it will not impact complexity calculations and a new data set is made that
+  #  it does not contain susceptible controls. Thus, complexities can be from 0
+  #  to 13 (13 genes tested) for this data set. This can be changed later on if
+  #  more, or less, genes are being tested.
+  #  for this to work your susceptible control must be labelled "susceptible"
+  #  under the Rps column of your data set. you can change "susceptible" to 
+  #  "rps/rps" or whatever you have it labelled as and it should work.
+
   remove_controls <- subset(x, x[[gene]]  != "susceptible")
   #x$Susceptible.1 <- ifelse(x[[percent.susc]] >= susceptibility_cutoff, 1, 0)
   remove_controls$Susceptible.1 <-
     ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
-  ## summary by rps gene to tally. This code takes the "Susceptible.1" column and summarises it by gene for your total Isolates pathogenic on each gene. Likewise "Isolate_N" is calculated given the unique Isolate names to find the total number of isolates within your data set. "Percent_isolates_pathogenic" is then found for each gene, showing the percentage of isolates that are pathogenic on tested genes. "Rps.Gene.Summary" will return these values.
+
+  Rps.Gene.Summary <- .summarise_Rps_genes(.x = x)
   
-  Rps.Gene.Summary <-
-    ddply(remove_controls, gene, summarise, N = sum(Susceptible.1))
   remove_controls[[sample]] <- as.factor(remove_controls[[sample]])
   Isolate_n <- length(levels(remove_controls[[sample]]))
   remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
