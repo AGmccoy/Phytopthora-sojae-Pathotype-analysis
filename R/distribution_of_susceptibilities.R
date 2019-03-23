@@ -39,7 +39,7 @@
 #' 
 #' # import 'practice_data_set.csv'
 #' Ps <- read.csv(Ps)
-#' Ps
+#' head(Ps)
 #' 
 #' # calculate totals and percents for resistant and susceptible reactions
 #' Ps <- percents(Ps)
@@ -48,6 +48,7 @@
 #' susc <- susceptibilities(Ps, cutoff = 60)
 #' susc
 #' 
+#' @seealso [write_template()], [percents()]
 #' @export susceptibilities
 
 susceptibilities = function(x,
