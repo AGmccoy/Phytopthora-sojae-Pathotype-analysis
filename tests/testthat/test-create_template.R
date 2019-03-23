@@ -23,7 +23,7 @@ test_that("create_template() creates a proper template", {
   t <- file.path(tempdir(), "test")
   write_template(filename = t)
   expect_length(list.files(tempdir(), pattern = ".csv"), 1)
-  u <- readr::read_csv(
+  u <- read.csv(
     file.path(tempdir(), "test.csv"),
     col_types = readr::cols(
       Isolate = readr::col_character(),
