@@ -4,11 +4,13 @@
 \alias{freq_dist}
 \title{Calculate pathotype frequency distribution}
 \usage{
-freq_dist(x, sample, percent_susc, gene, susceptibility_cutoff)
+freq_dist(x, cutoff)
 }
 \arguments{
-\item{x}{A `data.frame`` containing the data}
+\item{x}{A \code{data.frame} containing the data. Character.}
+
+\item{cutoff}{Value for percent susceptible cutoff. Integer.}
 }
 \description{
-Calculate pathotype frequency distribution
+Calculates \emph{Phytophthora} pathotype frequency distribution
 }

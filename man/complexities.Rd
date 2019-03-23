@@ -2,16 +2,19 @@
 % Please edit documentation in R/distribution_of_complexities.R
 \name{complexities}
 \alias{complexities}
-\title{Calculate distribution of complexities by Rps gene}
+\title{Calculate distribution of complexities by \emph{Rps} gene}
 \usage{
-complexities(x, sample, percent.susc, gene, susceptibility_cutoff)
+complexities(x, cutoff, control = "susceptible")
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data}
+\item{x}{A \code{data.frame} containing the data. Character.}
 
-\item{susceptibility_cutoff}{}
+\item{cutoff}{Value for percent susceptible cutoff. Integer.}
+
+\item{control}{Value used to denote the susceptible control in the \emph{Rps}
+column. Defaults to "susceptible". Character.}
 }
 \description{
 This function will calculate the distribution of
-susceptibilities by Rps gene.
+susceptibilities by \emph{Rps} gene.
 }

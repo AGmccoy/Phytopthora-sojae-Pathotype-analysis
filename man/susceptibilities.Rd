@@ -2,16 +2,60 @@
 % Please edit documentation in R/distribution_of_susceptibilities.R
 \name{susceptibilities}
 \alias{susceptibilities}
-\title{Calculate distribution of susceptibilities by Rps gene}
+\title{Calculate Distribution of Susceptibilities by \emph{Rps} Gene}
 \usage{
-susceptibilities(x, sample, perc.susc, gene, susc_cutoff)
+susceptibilities(x, cutoff, control = "susceptible")
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data}
+\item{x}{A \code{data.frame} containing the data. See Details below for more.
+Character.}
 
-\item{susc_cutoff}{}
+\item{cutoff}{Value for percent susceptible cutoff. Integer.}
+
+\item{control}{Value used to denote the susceptible control in the \emph{Rps}
+column. Defaults to "susceptible". Character.}
 }
 \description{
 This function will calculate the distribution of
-susceptibilities by Rps gene.
+susceptibilities by \emph{Rps} gene.
+}
+\details{
+The \code{data.frame} object supplied must contain fields with the following
+names and contents where each line is a unique observation.
+\itemize{
+\item isolate - Unique identifier for the isolate
+\item Rps - \emph{Rps} gene(s) included in study
+\item total - Total number of plants
+\item hr - Number of plants with hypersensitive response to inoculation
+\item lesion - Number of plants with lesion in response to inoculation
+\item lesion_to_cotyledon - Number of plants with lesion to cotyledon
+in response to inoculation
+\item dead - Number of plants dead in response to inoculation
+\item total.resis - Total number of plants exhibiting resistant reaction to
+inoculation
+\item total.susc - Total number of plants exhibiting susceptible reaction to
+inoculation
+\item perc.resis - Percent of plants exhibiting resistant reaction to
+inoculation
+\item perc.susc - Percent of plants exhibiting susceptible reaction to
+inoculation
+}
+
+The use of \code{\link[=write_template]{write_template()}} and \code{\link[=percents]{percents()}} is encouraged to ensure
+that the input \code{data.frame}, \var{x}, used is properly formatted.
+}
+\examples{
+Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+
+# import 'practice_data_set.csv'
+Ps <- read.csv(Ps)
+Ps
+
+# calculate totals and percents for resistant and susceptible reactions
+Ps <- percents(Ps)
+
+# calculate susceptibilities with a 60 \% cutoff value
+susc <- susceptibilities(Ps, cutoff = 60)
+susc
+
 }
