@@ -25,14 +25,14 @@
 #' @examples 
 #' 
 #' # locate system file for import
-#' x <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 #' 
 #' # import 'practice_data_set.csv'
-#' y <- read.csv(x)
+#' Ps <- read.csv(Ps)
 #' 
 #' # calculate totals and percents for resistant and susceptible reactions
-#' z <- percents(y)
-#' z
+#' total_perc <- percents(Ps)
+#' total_perc
 #' 
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @return A `data.frame` as a `data.table` object with total and percent 
