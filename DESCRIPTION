@@ -27,6 +27,7 @@ Imports:
   ggplot2,
   magrittr,
   stringr,
+  utils,
   vegan
 License: MIT + file LICENSE
 Encoding: UTF-8
