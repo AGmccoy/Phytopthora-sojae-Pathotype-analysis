@@ -4,8 +4,8 @@
 #' @description Calculates _Phytophthora_ diversity index
 #' @param x A `data.frame` containing the data
 #' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the _Rps_
-#'  column. Defaults to "susceptible". Character.
+#' @param control Value used to denote the susceptible control in the \var{Rps}
+#'  field. Defaults to "susceptible". Character.
 #' @export diversity
 
 diversity <-

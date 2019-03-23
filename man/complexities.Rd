@@ -11,8 +11,8 @@ complexities(x, cutoff, control = "susceptible")
 
 \item{cutoff}{Value for percent susceptible cutoff. Integer.}
 
-\item{control}{Value used to denote the susceptible control in the \emph{Rps}
-column. Defaults to "susceptible". Character.}
+\item{control}{Value used to denote the susceptible control in the \var{Rps}
+field. Defaults to "susceptible". Character.}
 }
 \description{
 This function will calculate the distribution of

@@ -5,8 +5,8 @@
 #' susceptibilities by _Rps_ gene.
 #' @param x A `data.frame` containing the data. Character.
 #' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the _Rps_
-#'  column. Defaults to "susceptible". Character.
+#' @param control Value used to denote the susceptible control in the \var{Rps}
+#'  field. Defaults to "susceptible". Character.
 #' @export complexities
 
 complexities = function(x,
