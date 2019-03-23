@@ -49,7 +49,7 @@ Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 
 # import 'practice_data_set.csv'
 Ps <- read.csv(Ps)
-Ps
+head(Ps)
 
 # calculate totals and percents for resistant and susceptible reactions
 Ps <- percents(Ps)
@@ -58,4 +58,7 @@ Ps <- percents(Ps)
 susc <- susceptibilities(Ps, cutoff = 60)
 susc
 
+}
+\seealso{
+\code{\link[=write_template]{write_template()}}, \code{\link[=percents]{percents()}}
 }
