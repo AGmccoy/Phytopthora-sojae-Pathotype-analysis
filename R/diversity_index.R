@@ -1,22 +1,22 @@
+
+#' Calculate Diversity Index
 #'
-#' @description
-#' @param x A `data.frame`` containing the data
-#' @param sample
-#' @param precent_susc
-#' @param gene
-#' @param susceptibility_cutoff
+#' @description Calculates _Phytophthora_ diversity index
+#' @param x A `data.frame` containing the data
+#' @param cutoff Value for percent susceptible cutoff. Integer.
+#' @param control Value used to denote the susceptible control in the _Rps_
+#'  column. Defaults to "susceptible". Character.
+#' @export diversity_index
 
 diversity_index <-
   function(x,
-           sample,
-           percent.susc,
-           gene,
-           susceptibility_cutoff) {
+           cutoff,
+           control = "susceptible") {
     # same as previous scripts
-    x[[gene]] <-
-      transform(str_replace(x[[gene]], "Rps ", ""))
+    x[["Rps"]] <-
+      transform(str_replace(x[["Rps"]], "Rps ", ""))
     remove_controls <-
-      subset(x, x[[gene]]  != "susceptible")
+      subset(x, x[["Rps"]] != "susceptible")
     #x$Susceptible.1 <- ifelse(x[[percent.susc]] >= susceptibility_cutoff, 1, 0)
     remove_controls$Susceptible.1 <-
       ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
