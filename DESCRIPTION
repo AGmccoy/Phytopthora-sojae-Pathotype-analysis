@@ -23,20 +23,18 @@ Description: Provides tools for analysis of Phytophthora sojae survey data.
   pathotype analysis and provide the same necessary data as the 'HaGiS'
   spreadsheet, doi:10.1046/j.1365-3059.1999.00325.x.
 Depends: R (>= 3.2.0)
-Imports: plyr,
+Imports: 
   ggplot2,
-  readr,
   magrittr,
-  plotrix,
   stringr,
-  pander,
-  vegan,
-  devtools
+  vegan
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
+    devtools,
     knitr,
+    readr,
     rmarkdown,
     testthat
 VignetteBuilder: knitr
