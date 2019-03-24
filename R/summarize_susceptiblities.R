@@ -15,8 +15,7 @@
 #'
 #' @details
 #' The `data.frame` object supplied must contain fields with the following
-#'  names and contents where each line is a unique observation.
-#'
+#'  names and contents where each line is a unique observation:
 #'  * isolate - Unique identifier for the isolate
 #'  * gene - Pathogenictity genes included in study
 #'  * total - Total number of plants

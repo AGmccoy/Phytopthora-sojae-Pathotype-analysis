@@ -28,7 +28,7 @@ susceptibilities by Pathogenicity gene.
 }
 \details{
 The \code{data.frame} object supplied must contain fields with the following
-names and contents where each line is a unique observation.
+names and contents where each line is a unique observation:
 \itemize{
 \item isolate - Unique identifier for the isolate
 \item gene - Pathogenictity genes included in study
