@@ -2,21 +2,18 @@
 #' Calculate Diversity Index
 #'
 #' @description Calculates _Phytophthora_ diversity index
-#' @param x A `data.frame` containing the data
-#' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the \var{Rps}
-#'  field. Defaults to "susceptible". Character.
-#' @export diversity
+#' @inheritParams summarize_susc
+#' @export calc_diversity
 
-diversity <-
+calc_diversity <-
   function(x,
            cutoff,
            control = "susceptible") {
     # same as previous scripts
-    x[["Rps"]] <-
-      transform(str_replace(x[["Rps"]], "Rps ", ""))
+    x[["gene"]] <-
+      transform(str_replace(x[["gene"]], "gene ", ""))
     remove_controls <-
-      subset(x, x[["Rps"]] != "susceptible")
+      subset(x, x[["gene"]] != "susceptible")
     #x$Susceptible.1 <- ifelse(x[[percent.susc]] >= susceptibility_cutoff, 1, 0)
     remove_controls$Susceptible.1 <-
       ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
@@ -25,7 +22,7 @@ diversity <-
     #remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
     Remove_resistance <-
       subset(remove_controls, Susceptible.1 != 0) #%>%
-    #transform(remove_controls, gene = gsub("Rps ", "", remove_controls[[gene]])) # this line takes the "Rps" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
+    #transform(remove_controls, gene = gsub("gene ", "", remove_controls[[gene]])) # this line takes the "gene" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
     
     #Individual Isolate Complexities
     # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
@@ -43,7 +40,7 @@ diversity <-
     # Identifying the frequency at which each Pathotype is found in the data set
     #  Isolate needs to be a character vector for this to work, this line of code takes care of that
     
-    Ind_pathotypes$Isolate <-
+    Ind_pathotypes$sample <-
       as.character(Ind_pathotypes[['.[[sample]]']])
     Ind_pathotypes <- Ind_pathotypes[, 3:4]
     

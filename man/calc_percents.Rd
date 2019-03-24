@@ -16,14 +16,14 @@ susceptible and resistant values
 }
 \description{
 This function will calculate total percent resistant and
-susceptible reactions for each \emph{Rps} gene
+susceptible reactions for each pathogenicity gene
 }
 \details{
 The \code{data.frame} object supplied must contain fields with the following
 names and contents where each line is a unique observation.
 \itemize{
 \item isolate - Unique identifier for the isolate
-\item Rps - \emph{Rps} gene(s) included in study
+\item gene - Pathogenicity genes included in study
 \item total - Total number of plants
 \item hr - Number of plants with hypersensitive response to inoculation
 \item lesion - Number of plants with lesion in response to inoculation

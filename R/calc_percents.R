@@ -2,7 +2,7 @@
 #' Calculate Total and Percent Resistant and Susceptible Reactions
 #'
 #' @description This function will calculate total percent resistant and
-#'   susceptible reactions for each _Rps_ gene
+#'   susceptible reactions for each pathogenicity gene
 #' @param x A `data.frame` containing the data. See Details below for more.
 #'   Character. 
 #'  
@@ -11,7 +11,7 @@
 #'  names and contents where each line is a unique observation.
 #'  
 #'  * isolate - Unique identifier for the isolate
-#'  * Rps - _Rps_ gene(s) included in study
+#'  * gene - Pathogenicity genes included in study
 #'  * total - Total number of plants
 #'  * hr - Number of plants with hypersensitive response to inoculation
 #'  * lesion - Number of plants with lesion in response to inoculation

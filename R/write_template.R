@@ -62,9 +62,9 @@ write_template <- function(filename = NULL) {
     }
   }
   
-  Pt <- data.frame("isolate" = as.character(),
+  Pt <- data.frame("sample" = as.character(),
                    "phenotype" = as.character(),
-                   "Rps" = as.character(),
+                   "gene" = as.character(),
                    "total" = as.integer(),
                    "hr" = as.integer(),
                    "lesion" = as.integer(),

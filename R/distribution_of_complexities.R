@@ -1,12 +1,9 @@
 
-#' Calculate distribution of complexities by _Rps_ gene
+#' Calculate distribution of complexities by pathogenicity gene
 #'
 #' @description This function will calculate the distribution of
-#' susceptibilities by _Rps_ gene.
-#' @param x A `data.frame` containing the data. Character.
-#' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the \var{Rps}
-#'  field. Defaults to "susceptible". Character.
+#' susceptibilities by pathogenicity gene.
+#' @inheritParams summarize_susc
 #' @importFrom data.table ":="
 #' @examples
 #' 
@@ -27,19 +24,21 @@
 #' 
 #' @export calc_complexities
 
-complexities = function(x,
+calc_complexities = function(x,
                         cutoff,
-                        control = "susceptible") {
+                        control = "susceptible",
+                        sample = "sample",
+                        gene = "gene") {
   # CRAN NOTE avoidance
-  Rps <- NULL
+  gene <- NULL
   
   data.table::setDT(x)
   # The susceptible control is removed from all isolates in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
 
-  x <- subset(x, Rps != "susceptible")
-  x[, Rps := droplevels(Rps)]
+  x <- subset(x, gene != "susceptible")
+  x[, gene := droplevels(gene)]
   
   # summarise the reactions
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)

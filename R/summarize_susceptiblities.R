@@ -1,20 +1,24 @@
 
-#' Calculate Distribution of Susceptibilities by _Rps_ Gene
+#' Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene
 #'
 #' @description This function will calculate the distribution of
-#' susceptibilities by _Rps_ gene.
+#' susceptibilities by Pathogenicity gene.
 #' @param x A `data.frame` containing the data. See Details below for more.
 #'  Character.
 #' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the \var{Rps}
+#' @param control Value used to denote the susceptible control in the \var{gene}
 #'  field. Defaults to "susceptible". Character.
+#' @param sample Field used to provide the unique isolate identification for
+#'  each isolate being tested. Defaults to `sample`. Character.
+#' @param gene Field used to provide the pathogenicty gene(s) being tested.
+#'  Defaults to `gene`. Character.
 #'
 #' @details
 #' The `data.frame` object supplied must contain fields with the following
 #'  names and contents where each line is a unique observation.
 #'
 #'  * isolate - Unique identifier for the isolate
-#'  * Rps - _Rps_ gene(s) included in study
+#'  * gene - Pathogenictity genes included in study
 #'  * total - Total number of plants
 #'  * hr - Number of plants with hypersensitive response to inoculation
 #'  * lesion - Number of plants with lesion in response to inoculation
@@ -52,11 +56,13 @@
 #'
 #' @seealso [write_template()], [percents()], [visualize_Rps()]
 #' @importFrom data.table ":="
-#' @export summarize_Rps
+#' @export summarize_susc
 
-summarize_Rps <- function(x,
+summarize_susc <- function(x,
                           cutoff,
-                          control = "susceptible") {
+                          control = "susceptible",
+                          sample = "sample",
+                          gene = "gene") {
   # CRAN NOTE avoidance
   cutoff <- percent.pathogenic <- NULL
   data.table::setDT(x)
@@ -110,11 +116,11 @@ summarize_Rps <- function(x,
 
 visualize_Rps <- function(x) {
   # CRAN NOTE avoidance
-  Rps <- percent.pathogenic <- NULL
+  gene <- percent.pathogenic <- NULL
   
   susceptibilities_graph <-
     ggplot2::ggplot(data = x,
-                    ggplot2::aes(x = Rps,
+                    ggplot2::aes(x = gene,
                                  y = percent.pathogenic)) +
     ggplot2::geom_col() +
     ggplot2::labs(y = "Percent of Isolates",
