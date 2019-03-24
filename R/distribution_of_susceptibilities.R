@@ -58,14 +58,8 @@ summarize_Rps <- function(x,
                           cutoff,
                           control = "susceptible") {
   # CRAN NOTE avoidance
-  isolate <- susceptible.1 <- cutoff <- percent.pathogenic <- NULL
+  cutoff <- percent.pathogenic <- NULL
   data.table::setDT(x)
-
-  # if else for resistant or susceptible reaction. This will mark susceptible
-  # reactions with a "1" in a new column labelled "Susceptible.1" to then be
-  # used in later analysis.
-  susceptible <- x$perc.susc >= 60
-  x[, susceptible.1 := 0][susceptible, susceptible.1 := 1]
   
   # summary by rps gene to tally. This code takes the "Susceptible.1" column
   # and summarises it by gene for your total Isolates pathogenic on each gene.
@@ -75,7 +69,8 @@ summarize_Rps <- function(x,
   # percentage of isolates that are pathogenic on tested genes.
   # "Rps.Gene.Summary" will return these values.
   
-  x <- .summarise_rps_genes(.x = x)
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
+  x <- .create_summary(.y = x)
   x[, percent.pathogenic := round((N) / max(N) * 100, 2)]
   return(x)
 }
