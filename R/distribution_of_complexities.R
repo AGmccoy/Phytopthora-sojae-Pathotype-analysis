@@ -7,26 +7,42 @@
 #' @param cutoff Value for percent susceptible cutoff. Integer.
 #' @param control Value used to denote the susceptible control in the \var{Rps}
 #'  field. Defaults to "susceptible". Character.
-#' @export complexities
+#' @importFrom data.table ":="
+#' @examples
+#' 
+#' 
+#' # locate system file for import
+#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+#'
+#' # import 'practice_data_set.csv'
+#' Ps <- read.csv(Ps)
+#' head(Ps)
+#'
+#' # calculate totals and percents for resistant and susceptible reactions
+#' Ps <- calc_percents(Ps)
+#'
+#' # calculate susceptibilities with a 60 % cutoff value
+#' complexities <- calc_complexities(Ps, cutoff = 60)
+#' complexities
+#' 
+#' @export calc_complexities
 
 complexities = function(x,
                         cutoff,
                         control = "susceptible") {
+  # CRAN NOTE avoidance
+  Rps <- NULL
+  
+  data.table::setDT(x)
   # The susceptible control is removed from all isolates in the data set so that
-  #  it will not impact complexity calculations and a new data set is made that
-  #  it does not contain susceptible controls. Thus, complexities can be from 0
-  #  to 13 (13 genes tested) for this data set. This can be changed later on if
-  #  more, or less, genes are being tested.
-  #  for this to work your susceptible control must be labelled "susceptible"
-  #  under the Rps column of your data set. you can change "susceptible" to 
-  #  "rps/rps" or whatever you have it labelled as and it should work.
+  #  it will not affect complexity calculations and a new data set is made that
+  #  it does not contain susceptible controls.
 
-  remove_controls <- subset(x, x[[gene]]  != "susceptible")
-  #x$Susceptible.1 <- ifelse(x[[percent.susc]] >= susceptibility_cutoff, 1, 0)
-  remove_controls$Susceptible.1 <-
-    ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
-
-  Rps.Gene.Summary <- .summarise_Rps_genes(.x = x)
+  x <- subset(x, Rps != "susceptible")
+  x[, Rps := droplevels(Rps)]
+  
+  # summarise the reactions
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
   remove_controls[[sample]] <- as.factor(remove_controls[[sample]])
   Isolate_n <- length(levels(remove_controls[[sample]]))
@@ -35,7 +51,9 @@ complexities = function(x,
   #Rps.Gene.Summary$percent_isolates_pathogenic <- ((Rps.Gene.Summary$N)/Isolate_n)*100
   #Rps.Gene.Summary
   
-  #Individual Isolate Complexities as calculated by grouping by Isolate and then summarising the number of"1"'s for each Isolate in the "Susceptible.1" Column.
+  #Individual Isolate Complexities as calculated by grouping by Isolate and then
+  # summarising the number of"1"'s for each Isolate in the "Susceptible.1"
+  #  Column.
   Ind_complexities <- remove_controls %>%
     group_by(remove_controls[[sample]]) %>%
     summarise(N = sum(Susceptible.1))

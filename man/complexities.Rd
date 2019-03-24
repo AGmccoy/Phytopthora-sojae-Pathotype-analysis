@@ -18,3 +18,21 @@ field. Defaults to "susceptible". Character.}
 This function will calculate the distribution of
 susceptibilities by \emph{Rps} gene.
 }
+\examples{
+
+
+# locate system file for import
+Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+
+# import 'practice_data_set.csv'
+Ps <- read.csv(Ps)
+head(Ps)
+
+# calculate totals and percents for resistant and susceptible reactions
+Ps <- calc_percents(Ps)
+
+# calculate susceptibilities with a 60 \% cutoff value
+complexities <- calc_complexities(Ps, cutoff = 60)
+complexities
+
+}
