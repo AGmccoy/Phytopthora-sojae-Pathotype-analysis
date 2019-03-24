@@ -9,12 +9,14 @@
 #'  percentage of isolates that are pathogenic on tested genes.
 #'  "Rps.Gene.Summary" will return these values.
 #'  
-#' @param .x A `data.frame` containing the values to be summarised
-#' @return A `data.frame` object that tallies the results by _Rps_ gene
+#' @param .x A `data.table` containing the values to be summarised
+#' @return A `data.table` that tallies the results by _Rps_ gene
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
+#' @importFrom data.table ":="
 #' @noRd
 .summarise_rps_genes <- function(.x) {
   # CRAN NOTE avoidance
-  Rps_summary <- Susceptible.1 <- Rps <- NULL
-  .x[, Rps_summary := sum(Susceptible.1), by = Rps]
+  N <- susceptible.1 <- Rps <- NULL
+  y <- .x[, list(N = sum(susceptible.1)), by = list(Rps = Rps)]
+  return(y)
 }
