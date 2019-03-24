@@ -3,8 +3,8 @@
 
 # hagis
 
-The goal of hagis is to provide *Phytophthora sojae* pathotype analysis
-that the original [HaGiS
+The goal of *hagis* is to provide *Phytophthora sojae* pathotype
+analysis that the original [HaGiS
 worksheet](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x)
 (Herrmann, Löwer and Schachtel) provided.
 
