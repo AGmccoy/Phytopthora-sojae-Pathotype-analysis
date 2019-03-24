@@ -44,7 +44,7 @@ Users may refer to the example file, `system.file("extdata", "practice_data_set.
 Please cite _hagis_ by using:
 
 ```r
-citation(hagis)
+citation("hagis")
 ```
 
 # References

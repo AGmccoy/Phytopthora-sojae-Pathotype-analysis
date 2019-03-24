@@ -59,7 +59,7 @@ further examples.
 Please cite *hagis* by using:
 
 ``` r
-citation(hagis)
+citation("hagis")
 ```
 
 # References
