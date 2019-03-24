@@ -30,11 +30,13 @@
 #'  * perc.susc - Percent of plants exhibiting susceptible reaction to
 #'   inoculation
 #'
-#' The use of [write_template()] and [percents()] is encouraged to ensure
+#' The use of [write_template()] and [calc_percents()] is encouraged to ensure
 #'  that the input `data.frame`, \var{x}, used is properly formatted.
 #'
 #' @examples
-#  # locate system file for import
+#' 
+#' 
+#' # locate system file for import
 #' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 #'
 #' # import 'practice_data_set.csv'
@@ -108,7 +110,7 @@ summarize_Rps <- function(x,
 #' # Visualize the summary of _Rps_ genes
 #' visualize_Rps(susc)
 #'
-#' @seealso [write_template()], [percents()], [summarize_Rps()]
+#' @seealso [write_template()], [calc_percents()], [summarize_Rps()]
 #' @export visualize_Rps
 
 visualize_Rps <- function(x) {

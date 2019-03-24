@@ -11,7 +11,7 @@
 #'
 #' @examples
 #' \donttest{
-#' # Create a template in user's home subdirectory called "P_sojae_analysis.csv"
+#' # Create a template in the R session tempdir() called "P_sojae_analysis.csv"
 #' write_template(file.path(tempdir(), "P_sojae_analysis"))
 #' }
 #'
@@ -67,7 +67,7 @@ write_template <- function(filename = NULL) {
                    "Rps" = as.character(),
                    "total" = as.integer(),
                    "hr" = as.integer(),
-                   "lesion" = as.integet(),
+                   "lesion" = as.integer(),
                    "lesion_to_cotyledon" = as.integer(),
                    "dead" = as.integer()
   )

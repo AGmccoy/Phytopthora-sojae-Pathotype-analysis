@@ -22,7 +22,7 @@ for \pkg{hagis}.
 }
 \examples{
 \donttest{
-# Create a template in user's home subdirectory called "P_sojae_analysis.csv"
+# Create a template in the R session tempdir() called "P_sojae_analysis.csv"
 write_template(file.path(tempdir(), "P_sojae_analysis"))
 }
 

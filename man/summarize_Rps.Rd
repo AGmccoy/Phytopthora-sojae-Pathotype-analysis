@@ -41,10 +41,13 @@ inoculation
 inoculation
 }
 
-The use of \code{\link[=write_template]{write_template()}} and \code{\link[=percents]{percents()}} is encouraged to ensure
+The use of \code{\link[=write_template]{write_template()}} and \code{\link[=calc_percents]{calc_percents()}} is encouraged to ensure
 that the input \code{data.frame}, \var{x}, used is properly formatted.
 }
 \examples{
+
+
+# locate system file for import
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 
 # import 'practice_data_set.csv'

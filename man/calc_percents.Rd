@@ -37,11 +37,13 @@ used is properly formatted.
 }
 \examples{
 
+
 # locate system file for import
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 
 # import 'practice_data_set.csv'
 Ps <- read.csv(Ps)
+head(Ps)
 
 # calculate totals and percents for resistant and susceptible reactions
 total_perc <- calc_percents(Ps)

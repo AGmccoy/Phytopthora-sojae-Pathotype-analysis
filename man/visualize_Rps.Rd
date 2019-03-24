@@ -39,5 +39,5 @@ visualize_Rps(susc)
 
 }
 \seealso{
-\code{\link[=write_template]{write_template()}}, \code{\link[=percents]{percents()}}, \code{\link[=summarize_Rps]{summarize_Rps()}}
+\code{\link[=write_template]{write_template()}}, \code{\link[=calc_percents]{calc_percents()}}, \code{\link[=summarize_Rps]{summarize_Rps()}}
 }
