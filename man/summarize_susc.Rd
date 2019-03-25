@@ -65,7 +65,7 @@ head(Ps)
 Ps <- calc_percents(Ps)
 
 # calculate susceptibilities with a 60 \% cutoff value
-susc <- summarize_Rps(Ps, cutoff = 60)
+susc <- summarize_susc(Ps, cutoff = 60)
 susc
 
 }

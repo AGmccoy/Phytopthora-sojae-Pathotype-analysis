@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • hagis</title>
+<title>Calculate Diversity Index — calc_diversity • hagis</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Calculate Diversity Index — calc_diversity" />
+
+<meta property="og:description" content="Calculates Phytophthora diversity index" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -92,87 +95,48 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Calculate Diversity Index</h1>
+    
+    <div class="hidden name"><code>calc_diversity.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Calculates <em>Phytophthora</em> diversity index</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="calc_complexities.html">calc_complexities()</a></code> </p>
-        </td>
-        <td><p>Calculate Distribution of Complexities by Pathogenicity Gene</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calc_diversity.html">calc_diversity()</a></code> </p>
-        </td>
-        <td><p>Calculate Diversity Index</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calc_percents.html">calc_percents()</a></code> </p>
-        </td>
-        <td><p>Calculate Total and Percent Resistant and Susceptible Reactions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="freq_dist.html">freq_dist()</a></code> </p>
-        </td>
-        <td><p>Calculate pathotype frequency distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hagis.html">hagis</a></code> </p>
-        </td>
-        <td><p>Tools for Analysis of <em>Phytophthora</em> Pathotype Complexities, Distributions and Diversity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarize_susc.html">summarize_susc()</a></code> </p>
-        </td>
-        <td><p>Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="visualize_Rps.html">visualize_Rps()</a></code> </p>
-        </td>
-        <td><p>Visualize <em>Rps</em> Gene Summaries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="write_template.html">write_template()</a></code> </p>
-        </td>
-        <td><p>Write a Template for Data Entry for Use With <span class="pkg">hagis</span> to Local Disk
-Writes a template 'CSV' format file for the user to enter observation data
-into for use in analysis This helps ensure that data are properly formatted
-for <span class="pkg">hagis</span>.</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='fu'>calc_diversity</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>A <code>data.frame</code> containing the data. See Details below for more.
+Character.</p></td>
+    </tr>
+    <tr>
+      <th>cutoff</th>
+      <td><p>Value for percent susceptible cutoff. Integer.</p></td>
+    </tr>
+    <tr>
+      <th>control</th>
+      <td><p>Value used to denote the susceptible control in the <var>gene</var>
+field. Defaults to "susceptible". Character.</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
+
   </div>
 </div>
 
