@@ -24,7 +24,7 @@ Defaults to \code{gene}. Character.}
 }
 \description{
 This function will calculate the distribution of
-susceptibilities by Pathogenicity gene.
+susceptibilities by pathogenicity gene.
 }
 \details{
 The \code{data.frame} object supplied must contain fields with the following

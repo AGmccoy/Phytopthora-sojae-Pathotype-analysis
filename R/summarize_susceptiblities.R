@@ -2,7 +2,7 @@
 #' Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene
 #'
 #' @description This function will calculate the distribution of
-#' susceptibilities by Pathogenicity gene.
+#' susceptibilities by pathogenicity gene.
 #' @param x A `data.frame` containing the data. See Details below for more.
 #'  Character.
 #' @param cutoff Value for percent susceptible cutoff. Integer.
