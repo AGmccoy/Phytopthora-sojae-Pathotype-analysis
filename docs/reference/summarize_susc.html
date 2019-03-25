@@ -110,16 +110,14 @@ susceptibilities by pathogenicity gene.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>summarize_susc</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>, <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"sample"</span>,
-  <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"gene"</span>, <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)</pre>
+    <pre class="usage"><span class='fu'>summarize_susc</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>gene</span>, <span class='no'>perc_susc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>A <code>data.frame</code> containing the data. See Details below for more.
-Character.</p></td>
+      <td><p>A <code>data.frame</code> containing the data. Character.</p></td>
     </tr>
     <tr>
       <th>cutoff</th>
@@ -128,24 +126,21 @@ Character.</p></td>
     <tr>
       <th>control</th>
       <td><p>Value used to denote the susceptible control in the <code>gene</code>
-field. Defaults to "susceptible". Character.</p></td>
+field. Character.</p></td>
     </tr>
     <tr>
       <th>sample</th>
       <td><p>Field providing the unique isolate identification for each
-isolate being tested. Defaults to <code>sample</code>. Character.</p></td>
+isolate being tested. Character.</p></td>
     </tr>
     <tr>
       <th>gene</th>
-      <td><p>Field providing the pathogenicty gene(s) being tested. Defaults
-to <code>gene</code>. Character.</p></td>
+      <td><p>Field providing the pathogenicty gene(s) being tested. Character.</p></td>
     </tr>
     <tr>
       <th>perc_susc</th>
-      <td><p>Field providing the percent susceptible reactions. Defaults
-to <code>perc.susc</code>. Character.</p>
-<p>The use of <code>write_template()</code> and <code>calc_percents()</code> is encouraged to ensure
-that the input <code>data.frame</code>, <var>x</var>, used is properly formatted.</p></td>
+      <td><p>Field providing the percent susceptible reactions.
+Character.</p></td>
     </tr>
     </table>
     
@@ -176,7 +171,12 @@ that the input <code>data.frame</code>, <var>x</var>, used is properly formatted
 #&gt; 5                       1        6          7           2        78         22
 #&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_susc</span>(<span class='no'>Ps</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>, <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>, <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>)
+<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_susc</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
+                       <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
+                       <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
+                       <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
+                       <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
+                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
 <span class='no'>susc</span></div><div class='output co'>#&gt;            gene  N percent.pathogenic
 #&gt;  1: susceptible 21             100.00
 #&gt;  2:      Rps 1a 21             100.00

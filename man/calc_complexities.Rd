@@ -8,19 +8,17 @@ calc_complexities(x, cutoff, control = "susceptible",
   sample = "sample", gene = "gene")
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data. See Details below for more.
-Character.}
+\item{x}{A \code{data.frame} containing the data. Character.}
 
 \item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
 \item{control}{Value used to denote the susceptible control in the \code{gene}
-field. Defaults to "susceptible". Character.}
+field. Character.}
 
 \item{sample}{Field providing the unique isolate identification for each
-isolate being tested. Defaults to \code{sample}. Character.}
+isolate being tested. Character.}
 
-\item{gene}{Field providing the pathogenicty gene(s) being tested. Defaults
-to \code{gene}. Character.}
+\item{gene}{Field providing the pathogenicty gene(s) being tested. Character.}
 }
 \description{
 This function will calculate the distribution of

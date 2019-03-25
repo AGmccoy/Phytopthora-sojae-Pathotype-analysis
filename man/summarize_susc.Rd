@@ -4,29 +4,23 @@
 \alias{summarize_susc}
 \title{Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene}
 \usage{
-summarize_susc(x, cutoff, control = "susceptible", sample = "sample",
-  gene = "gene", perc_susc = "perc.susc")
+summarize_susc(x, cutoff, control, sample, gene, perc_susc)
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data. See Details below for more.
-Character.}
+\item{x}{A \code{data.frame} containing the data. Character.}
 
 \item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
 \item{control}{Value used to denote the susceptible control in the \code{gene}
-field. Defaults to "susceptible". Character.}
+field. Character.}
 
 \item{sample}{Field providing the unique isolate identification for each
-isolate being tested. Defaults to \code{sample}. Character.}
+isolate being tested. Character.}
 
-\item{gene}{Field providing the pathogenicty gene(s) being tested. Defaults
-to \code{gene}. Character.}
+\item{gene}{Field providing the pathogenicty gene(s) being tested. Character.}
 
-\item{perc_susc}{Field providing the percent susceptible reactions. Defaults
-to \code{perc.susc}. Character.
-
-The use of \code{\link[=write_template]{write_template()}} and \code{\link[=calc_percents]{calc_percents()}} is encouraged to ensure
-that the input \code{data.frame}, \var{x}, used is properly formatted.}
+\item{perc_susc}{Field providing the percent susceptible reactions.
+Character.}
 }
 \description{
 This function will calculate the distribution of
@@ -42,7 +36,12 @@ Ps <- read.csv(Ps)
 head(Ps)
 
 # calculate susceptibilities with a 60 \% cutoff value
-susc <- summarize_susc(Ps, cutoff = 60, sample = "Isolate", gene = "Rps")
+susc <- summarize_susc(x = Ps,
+                       cutoff = 60,
+                       control = "susceptible",
+                       sample = "Isolate",
+                       gene = "Rps",
+                       perc_susc = "perc.susc")
 susc
 
 }

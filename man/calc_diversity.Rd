@@ -7,13 +7,12 @@
 calc_diversity(x, cutoff, control = "susceptible")
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data. See Details below for more.
-Character.}
+\item{x}{A \code{data.frame} containing the data. Character.}
 
 \item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
 \item{control}{Value used to denote the susceptible control in the \code{gene}
-field. Defaults to "susceptible". Character.}
+field. Character.}
 }
 \description{
 Calculates \emph{Phytophthora} diversity index
