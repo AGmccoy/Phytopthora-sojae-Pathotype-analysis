@@ -3,7 +3,7 @@
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by pathogenicity gene.
-#' @inheritParams summarize_susc
+#' @inheritParams summarise_rps
 #' @importFrom data.table ":="
 #' @examples
 #' 
@@ -51,13 +51,15 @@ calc_complexities = function(x,
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
 
-  x <- subset(x, gene != "susceptible")
+  x <- subset(x, gene != control)
   x[, gene := droplevels(gene)]
   
   # summarise the reactions
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
-  remove_controls[[sample]] <- as.factor(remove_controls[[sample]])
+  expr = paste0("x[, as.factor(", sample, ")]")
+  y <- eval(parse(text = expr))
+  
   Isolate_n <- length(levels(remove_controls[[sample]]))
   remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
   
