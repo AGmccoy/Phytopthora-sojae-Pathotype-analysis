@@ -1,4 +1,4 @@
-isolate,phenotype,Rps,total,hr,lesion,lesion_to_cotyledon,dead
+isolate,phenotype,gene,total,hr,lesion,lesion_to_cotyledon,dead
 1,Williams,susceptible,10,0,0,0,10
 1,Harlon,Rps 1a,10,4,0,0,6
 1,Harosoy 13xx,Rps 1b,8,0,0,0,8
