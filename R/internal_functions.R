@@ -18,7 +18,7 @@
 }
 
 
-#' Create Summary Table of Reactions
+#' Create Summary Table of Binary Reactions
 #' 
 #' Tally a summary by Rps gene. This code takes the "Susceptible.1" column and
 #'  summarises it by gene for your total Isolates pathogenic on each gene. 
