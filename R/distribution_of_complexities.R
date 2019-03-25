@@ -15,10 +15,6 @@
 #' Ps <- read.csv(Ps)
 #' head(Ps)
 #'
-#' # calculate totals and percents for resistant and susceptible reactions
-#' Ps <- calc_percents(Ps)
-#' Ps
-#'
 #' # calculate susceptibilities with a 60 % cutoff value
 #' complexities <- calc_complexities(Ps, cutoff = 60)
 #' complexities

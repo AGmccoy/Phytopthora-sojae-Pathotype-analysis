@@ -2,9 +2,7 @@
 
 export(calc_complexities)
 export(calc_diversity)
-export(calc_percents)
 export(freq_dist)
 export(summarize_susc)
 export(visualize_susc)
-export(write_template)
 importFrom(data.table,":=")

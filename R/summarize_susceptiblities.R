@@ -5,39 +5,20 @@
 #' susceptibilities by pathogenicity gene.
 #' @param x A `data.frame` containing the data. See Details below for more.
 #'  Character.
-#' @param cutoff Value for percent susceptible cutoff. Integer.
-#' @param control Value used to denote the susceptible control in the \var{gene}
+#' @param cutoff Value for percent susceptible cutoff. Numeric.
+#' @param control Value used to denote the susceptible control in the `gene`
 #'  field. Defaults to "susceptible". Character.
-#' @param sample Field used to provide the unique isolate identification for
-#'  each isolate being tested. Defaults to `sample`. Character.
-#' @param gene Field used to provide the pathogenicty gene(s) being tested.
-#'  Defaults to `gene`. Character.
-#'
-#' @details
-#' The `data.frame` object supplied must contain fields with the following
-#'  names and contents where each line is a unique observation:
-#'  * isolate - Unique identifier for the isolate
-#'  * gene - Pathogenictity genes included in study
-#'  * total - Total number of plants
-#'  * hr - Number of plants with hypersensitive response to inoculation
-#'  * lesion - Number of plants with lesion in response to inoculation
-#'  * lesion_to_cotyledon - Number of plants with lesion to cotyledon
-#'  in response to inoculation
-#'  * dead - Number of plants dead in response to inoculation
-#'  * total.resis - Total number of plants exhibiting resistant reaction to
-#'   inoculation
-#'  * total.susc - Total number of plants exhibiting susceptible reaction to
-#'   inoculation
-#'  * perc.resis - Percent of plants exhibiting resistant reaction to
-#'   inoculation
-#'  * perc.susc - Percent of plants exhibiting susceptible reaction to
-#'   inoculation
+#' @param sample Field providing the unique isolate identification for each
+#'  isolate being tested. Defaults to `sample`. Character.
+#' @param gene Field providing the pathogenicty gene(s) being tested. Defaults
+#'  to `gene`. Character.
+#' @param perc_susc Field providing the percent susceptible reactions. Defaults
+#'  to `perc.susc`. Character.
 #'
 #' The use of [write_template()] and [calc_percents()] is encouraged to ensure
 #'  that the input `data.frame`, \var{x}, used is properly formatted.
 #'
 #' @examples
-#' 
 #' 
 #' # locate system file for import
 #' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
@@ -46,12 +27,8 @@
 #' Ps <- read.csv(Ps)
 #' head(Ps)
 #'
-#' # calculate totals and percents for resistant and susceptible reactions
-#' Ps <- calc_percents(Ps)
-#' Ps
-#'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' susc <- summarize_susc(Ps, cutoff = 60)
+#' susc <- summarize_susc(Ps, cutoff = 60, sample = "Isolate", gene = "Rps")
 #' susc
 #'
 #' @seealso [write_template()], [percents()], [visualize_susc()]
@@ -62,7 +39,8 @@ summarize_susc <- function(x,
                           cutoff,
                           control = "susceptible",
                           sample = "sample",
-                          gene = "gene") {
+                          gene = "gene",
+                          perc_susc = "perc.susc") {
   # CRAN NOTE avoidance
   cutoff <- percent.pathogenic <- NULL
   data.table::setDT(x)
@@ -76,7 +54,7 @@ summarize_susc <- function(x,
   # "Rps.Gene.Summary" will return these values.
   
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  x <- .create_summary(.y = x)
+  x <- .create_summary(.y = x, .gene = gene)
   x[, percent.pathogenic := round((N) / max(N) * 100, 2)]
   return(x)
 }
@@ -102,11 +80,8 @@ summarize_susc <- function(x,
 #' # import 'practice_data_set.csv'
 #' Ps <- read.csv(Ps)
 #'
-#' # calculate totals and percents for resistant and susceptible reactions
-#' Ps <- calc_percents(Ps)
-#'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' susc <- summarize_susc(Ps, cutoff = 60)
+#' susc <- summarize_susc(Ps, cutoff = 60, sample = "Isolate", gene = "Rps")
 #'
 #' # Visualize the summary of pathogenicity genes
 #' visualize_susc(susc)

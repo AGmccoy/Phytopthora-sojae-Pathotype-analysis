@@ -1,8 +1,10 @@
 
+
+
 #' Create Binary Reaction Value
-#' 
+#'
 #' Adds a column of 1 or 0 for the susceptible reaction cutoff
-#'  
+#'
 #' @param .x A `data.table` containing the values to be summarised
 #' @param .cutoff Cutoff value for susceptibility
 #' @return A `data.table` that tallies the results by pathogenicity gene
@@ -19,22 +21,23 @@
 
 
 #' Create Summary Table of Binary Reactions
-#' 
-#' Tally a summary by Rps gene. This code takes the "Susceptible.1" column and
-#'  summarises it by gene for your total Isolates pathogenic on each gene. 
-#'  Likewise "Isolate_N" is calculated given the unique Isolate names to find
-#'  the total number of isolates within your data set.
+#'
+#' Tally a summary by pathogenicity gene. This code takes the "Susceptible.1"
+#'  column and summarises it by gene for your total Isolates pathogenic on each
+#'  gene. Likewise "Isolate_N" is calculated given the unique Isolate names to
+#'  find the total number of isolates within your data set.
 #'  "Percent_isolates_pathogenic" is then found for each gene, showing the
 #'  percentage of isolates that are pathogenic on tested genes.
 #'  "Rps.Gene.Summary" will return these values.
-#'  
+#'
 #' @param .x A `data.table` containing the values to be summarised
 #' @return A `data.table` that tallies the results by pathogenicity gene
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @noRd
-.create_summary <- function(.y) {
-  # CRAN NOTE avoidance
-  N <- susceptible.1 <- gene <- NULL
-  y <- .y[, list(N = sum(susceptible.1)), by = list(gene = gene)]
+.create_summary <- function(.y, .gene) {
+  expr = paste0(".y[, list(N = sum(susceptible.1)), by = list(gene = ",
+                .gene,
+                ")]")
+  y <- eval(parse(text = expr))
   return(y)
 }
