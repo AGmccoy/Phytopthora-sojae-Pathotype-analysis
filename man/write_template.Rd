@@ -2,28 +2,24 @@
 % Please edit documentation in R/write_template.R
 \name{write_template}
 \alias{write_template}
-\title{Write a Template for Data Entry for Use With \pkg{hagis} to Local Disk
-Writes a template 'CSV' format file for the user to enter observation data
-into for use in analysis This helps ensure that data are properly formatted
-for \pkg{hagis}.}
+\title{Write a Template for Data Entry for Use With \pkg{hagis} to Local Disk}
 \usage{
 write_template(filename = NULL)
 }
 \arguments{
 \item{filename}{A file path and filename for the template, defaults to
-"Phytophthora_template.csv" in your current working directory. If user
+"Phytophthora_template.csv" in user's current working directory. If user
 provides a filename with no extension, a ".csv" extension will be supplied.}
 }
 \description{
-Write a Template for Data Entry for Use With \pkg{hagis} to Local Disk
-Writes a template 'CSV' format file for the user to enter observation data
-into for use in analysis This helps ensure that data are properly formatted
-for \pkg{hagis}.
+Writes a template 'CSV' format file for the user to enter
+observation data into for use in analysis This helps ensure that data are
+properly formatted for \pkg{hagis}.
 }
 \examples{
 \donttest{
-# Create a template in the R session tempdir() called "P_sojae_analysis.csv"
-write_template(file.path(tempdir(), "P_sojae_analysis"))
+# Create a template in user's home directory called "P_sojae_analysis.csv"
+write_template("P_sojae_analysis")
 }
 
 }
