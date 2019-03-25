@@ -2,7 +2,7 @@
 % Please edit documentation in R/distribution_of_complexities.R
 \name{calc_complexities}
 \alias{calc_complexities}
-\title{Calculate distribution of complexities by pathogenicity gene}
+\title{Calculate Distribution of Complexities by Pathogenicity Gene}
 \usage{
 calc_complexities(x, cutoff, control = "susceptible",
   sample = "sample", gene = "gene")
@@ -38,6 +38,7 @@ head(Ps)
 
 # calculate totals and percents for resistant and susceptible reactions
 Ps <- calc_percents(Ps)
+Ps
 
 # calculate susceptibilities with a 60 \% cutoff value
 complexities <- calc_complexities(Ps, cutoff = 60)

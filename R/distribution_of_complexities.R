@@ -1,5 +1,5 @@
 
-#' Calculate distribution of complexities by pathogenicity gene
+#' Calculate Distribution of Complexities by Pathogenicity Gene
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by pathogenicity gene.
@@ -17,6 +17,7 @@
 #'
 #' # calculate totals and percents for resistant and susceptible reactions
 #' Ps <- calc_percents(Ps)
+#' Ps
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
 #' complexities <- calc_complexities(Ps, cutoff = 60)
