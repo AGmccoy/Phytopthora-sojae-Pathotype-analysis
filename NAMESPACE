@@ -3,6 +3,6 @@
 export(calc_complexities)
 export(calc_diversity)
 export(freq_dist)
-export(summarize_susc)
-export(visualize_susc)
+export(summarize_rps)
+export(visualize_rps)
 importFrom(data.table,":=")
