@@ -123,22 +123,22 @@ Character.</p></td>
     </tr>
     <tr>
       <th>cutoff</th>
-      <td><p>Value for percent susceptible cutoff. Integer.</p></td>
+      <td><p>Value for percent susceptible cutoff. Numeric.</p></td>
     </tr>
     <tr>
       <th>control</th>
-      <td><p>Value used to denote the susceptible control in the <var>gene</var>
+      <td><p>Value used to denote the susceptible control in the <code>gene</code>
 field. Defaults to "susceptible". Character.</p></td>
     </tr>
     <tr>
       <th>sample</th>
-      <td><p>Field used to provide the unique isolate identification for
-each isolate being tested. Defaults to <code>sample</code>. Character.</p></td>
+      <td><p>Field providing the unique isolate identification for each
+isolate being tested. Defaults to <code>sample</code>. Character.</p></td>
     </tr>
     <tr>
       <th>gene</th>
-      <td><p>Field used to provide the pathogenicty gene(s) being tested.
-Defaults to <code>gene</code>. Character.</p></td>
+      <td><p>Field providing the pathogenicty gene(s) being tested. Defaults
+to <code>gene</code>. Character.</p></td>
     </tr>
     </table>
     
@@ -151,41 +151,22 @@ Defaults to <code>gene</code>. Character.</p></td>
 
 <span class='co'># import 'practice_data_set.csv'</span>
 <span class='no'>Ps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.csv</a></span>(<span class='no'>Ps</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>Ps</span>)</div><div class='output co'>#&gt;   isolate    phenotype        gene total hr lesion lesion_to_cotyledon dead
-#&gt; 1       1     Williams susceptible    10  0      0                   0   10
-#&gt; 2       1       Harlon      Rps 1a    10  4      0                   0    6
-#&gt; 3       1 Harosoy 13xx      Rps 1b     8  0      0                   0    8
-#&gt; 4       1     L75-3735      Rps 1c    10 10      0                   0    0
-#&gt; 5       1    PI 103091      Rps 1d     9  2      0                   1    6
-#&gt; 6       1  Williams 82      Rps 1k    10  0      0                   0   10</div><div class='input'>
-<span class='co'># calculate totals and percents for resistant and susceptible reactions</span>
-<span class='no'>Ps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='calc_percents.html'>calc_percents</a></span>(<span class='no'>Ps</span>)
-<span class='no'>Ps</span></div><div class='output co'>#&gt;      isolate    phenotype        gene total hr lesion lesion_to_cotyledon dead
-#&gt;   1:       1     Williams susceptible    10  0      0                   0   10
-#&gt;   2:       1       Harlon      Rps 1a    10  4      0                   0    6
-#&gt;   3:       1 Harosoy 13xx      Rps 1b     8  0      0                   0    8
-#&gt;   4:       1     L75-3735      Rps 1c    10 10      0                   0    0
-#&gt;   5:       1    PI 103091      Rps 1d     9  2      0                   1    6
-#&gt;  ---                                                                          
-#&gt; 290:      21   PRX 145-48      Rps 3c     8  3      1                   0    4
-#&gt; 291:      21     L85-2352       Rps 4    10  3      1                   4    2
-#&gt; 292:      21     L85-3059       Rps 5    10  0      4                   0    6
-#&gt; 293:      21 Harosoy 62XX       Rps 6     8  2      1                   0    5
-#&gt; 294:      21      Harosoy       Rps 7    10  0      0                   0   10
-#&gt;      total.resis total.susc perc.resis perc.susc
-#&gt;   1:           0         10        0.0     100.0
-#&gt;   2:           4          6       40.0      60.0
-#&gt;   3:           0          8        0.0     100.0
-#&gt;   4:          10          0      100.0       0.0
-#&gt;   5:           2          7       22.2      77.8
-#&gt;  ---                                            
-#&gt; 290:           3          5       37.5      62.5
-#&gt; 291:           3          7       30.0      70.0
-#&gt; 292:           0         10        0.0     100.0
-#&gt; 293:           2          6       25.0      75.0
-#&gt; 294:           0         10        0.0     100.0</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>Ps</span>)</div><div class='output co'>#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.
+#&gt; 1       1     Williams susceptible    10      0          0
+#&gt; 2       1       Harlon      Rps 1a    10      4          0
+#&gt; 3       1 Harosoy 13xx      Rps 1b     8      0          0
+#&gt; 4       1     L75-3735      Rps 1c    10     10          0
+#&gt; 5       1    PI 103091      Rps 1d     9      2          0
+#&gt; 6       1  Williams 82      Rps 1k    10      0          0
+#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc perc.resis
+#&gt; 1                       0       10         10           0       100          0
+#&gt; 2                       0        6          6           4        60         40
+#&gt; 3                       0        8          8           0       100          0
+#&gt; 4                       0        0          0          10         0        100
+#&gt; 5                       1        6          7           2        78         22
+#&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>complexities</span> <span class='kw'>&lt;-</span> <span class='fu'>calc_complexities</span>(<span class='no'>Ps</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>)</div><div class='output co'>#&gt; <span class='error'>Error in is.factor(x): object 'remove_controls' not found</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
+<span class='no'>complexities</span> <span class='kw'>&lt;-</span> <span class='fu'>calc_complexities</span>(<span class='no'>Ps</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("droplevels"): no applicable method for 'droplevels' applied to an object of class "NULL"</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

@@ -28,11 +28,8 @@ Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 # import 'practice_data_set.csv'
 Ps <- read.csv(Ps)
 
-# calculate totals and percents for resistant and susceptible reactions
-Ps <- calc_percents(Ps)
-
 # calculate susceptibilities with a 60 \% cutoff value
-susc <- summarize_susc(Ps, cutoff = 60)
+susc <- summarize_susc(Ps, cutoff = 60, sample = "Isolate", gene = "Rps")
 
 # Visualize the summary of pathogenicity genes
 visualize_susc(susc)

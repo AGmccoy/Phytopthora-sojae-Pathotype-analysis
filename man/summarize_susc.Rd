@@ -5,54 +5,34 @@
 \title{Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene}
 \usage{
 summarize_susc(x, cutoff, control = "susceptible", sample = "sample",
-  gene = "gene")
+  gene = "gene", perc_susc = "perc.susc")
 }
 \arguments{
 \item{x}{A \code{data.frame} containing the data. See Details below for more.
 Character.}
 
-\item{cutoff}{Value for percent susceptible cutoff. Integer.}
+\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
-\item{control}{Value used to denote the susceptible control in the \var{gene}
+\item{control}{Value used to denote the susceptible control in the \code{gene}
 field. Defaults to "susceptible". Character.}
 
-\item{sample}{Field used to provide the unique isolate identification for
-each isolate being tested. Defaults to \code{sample}. Character.}
+\item{sample}{Field providing the unique isolate identification for each
+isolate being tested. Defaults to \code{sample}. Character.}
 
-\item{gene}{Field used to provide the pathogenicty gene(s) being tested.
-Defaults to \code{gene}. Character.}
+\item{gene}{Field providing the pathogenicty gene(s) being tested. Defaults
+to \code{gene}. Character.}
+
+\item{perc_susc}{Field providing the percent susceptible reactions. Defaults
+to \code{perc.susc}. Character.
+
+The use of \code{\link[=write_template]{write_template()}} and \code{\link[=calc_percents]{calc_percents()}} is encouraged to ensure
+that the input \code{data.frame}, \var{x}, used is properly formatted.}
 }
 \description{
 This function will calculate the distribution of
 susceptibilities by pathogenicity gene.
 }
-\details{
-The \code{data.frame} object supplied must contain fields with the following
-names and contents where each line is a unique observation:
-\itemize{
-\item isolate - Unique identifier for the isolate
-\item gene - Pathogenictity genes included in study
-\item total - Total number of plants
-\item hr - Number of plants with hypersensitive response to inoculation
-\item lesion - Number of plants with lesion in response to inoculation
-\item lesion_to_cotyledon - Number of plants with lesion to cotyledon
-in response to inoculation
-\item dead - Number of plants dead in response to inoculation
-\item total.resis - Total number of plants exhibiting resistant reaction to
-inoculation
-\item total.susc - Total number of plants exhibiting susceptible reaction to
-inoculation
-\item perc.resis - Percent of plants exhibiting resistant reaction to
-inoculation
-\item perc.susc - Percent of plants exhibiting susceptible reaction to
-inoculation
-}
-
-The use of \code{\link[=write_template]{write_template()}} and \code{\link[=calc_percents]{calc_percents()}} is encouraged to ensure
-that the input \code{data.frame}, \var{x}, used is properly formatted.
-}
 \examples{
-
 
 # locate system file for import
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
@@ -61,12 +41,8 @@ Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
 head(Ps)
 
-# calculate totals and percents for resistant and susceptible reactions
-Ps <- calc_percents(Ps)
-Ps
-
 # calculate susceptibilities with a 60 \% cutoff value
-susc <- summarize_susc(Ps, cutoff = 60)
+susc <- summarize_susc(Ps, cutoff = 60, sample = "Isolate", gene = "Rps")
 susc
 
 }

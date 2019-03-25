@@ -11,16 +11,16 @@ calc_complexities(x, cutoff, control = "susceptible",
 \item{x}{A \code{data.frame} containing the data. See Details below for more.
 Character.}
 
-\item{cutoff}{Value for percent susceptible cutoff. Integer.}
+\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
-\item{control}{Value used to denote the susceptible control in the \var{gene}
+\item{control}{Value used to denote the susceptible control in the \code{gene}
 field. Defaults to "susceptible". Character.}
 
-\item{sample}{Field used to provide the unique isolate identification for
-each isolate being tested. Defaults to \code{sample}. Character.}
+\item{sample}{Field providing the unique isolate identification for each
+isolate being tested. Defaults to \code{sample}. Character.}
 
-\item{gene}{Field used to provide the pathogenicty gene(s) being tested.
-Defaults to \code{gene}. Character.}
+\item{gene}{Field providing the pathogenicty gene(s) being tested. Defaults
+to \code{gene}. Character.}
 }
 \description{
 This function will calculate the distribution of
@@ -35,10 +35,6 @@ Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 # import 'practice_data_set.csv'
 Ps <- read.csv(Ps)
 head(Ps)
-
-# calculate totals and percents for resistant and susceptible reactions
-Ps <- calc_percents(Ps)
-Ps
 
 # calculate susceptibilities with a 60 \% cutoff value
 complexities <- calc_complexities(Ps, cutoff = 60)

@@ -10,9 +10,9 @@ calc_diversity(x, cutoff, control = "susceptible")
 \item{x}{A \code{data.frame} containing the data. See Details below for more.
 Character.}
 
-\item{cutoff}{Value for percent susceptible cutoff. Integer.}
+\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
 
-\item{control}{Value used to denote the susceptible control in the \var{gene}
+\item{control}{Value used to denote the susceptible control in the \code{gene}
 field. Defaults to "susceptible". Character.}
 }
 \description{
