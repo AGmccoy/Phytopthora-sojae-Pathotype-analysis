@@ -3,7 +3,7 @@
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by pathogenicity gene.
-#' @inheritParams summarise_rps
+#' @inheritParams summarize_rps
 #' @importFrom data.table ":="
 #' @examples
 #' 

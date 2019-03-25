@@ -6,14 +6,6 @@
 \usage{
 calc_diversity(x, cutoff, control = "susceptible")
 }
-\arguments{
-\item{x}{A \code{data.frame} containing the data. Character.}
-
-\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
-
-\item{control}{Value used to denote the susceptible control in the \code{Rps}
-field. Character.}
-}
 \description{
 Calculates \emph{Phytophthora} diversity index
 }

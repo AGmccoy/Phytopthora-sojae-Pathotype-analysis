@@ -6,6 +6,20 @@
 \usage{
 calc_complexities(x, cutoff, control, sample, gene, perc_susc)
 }
+\arguments{
+\item{x}{A \code{data.frame} containing the data. Character.}
+
+\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
+
+\item{control}{Value used to denote the susceptible control in the \code{Rps}
+field. Character.}
+
+\item{sample}{Field providing the unique isolate identification for each
+isolate being tested. Character.}
+
+\item{perc_susc}{Field providing the percent susceptible reactions.
+Character.}
+}
 \description{
 This function will calculate the distribution of
 susceptibilities by pathogenicity gene.

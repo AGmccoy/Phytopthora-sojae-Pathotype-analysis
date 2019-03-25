@@ -2,7 +2,6 @@
 #' Calculate Diversity Index
 #'
 #' @description Calculates _Phytophthora_ diversity index
-#' @inheritParams summarize_rps
 #' @export calc_diversity
 
 calc_diversity <-
