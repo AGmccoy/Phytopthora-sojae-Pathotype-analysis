@@ -63,6 +63,7 @@ head(Ps)
 
 # calculate totals and percents for resistant and susceptible reactions
 Ps <- calc_percents(Ps)
+Ps
 
 # calculate susceptibilities with a 60 \% cutoff value
 susc <- summarize_susc(Ps, cutoff = 60)
@@ -70,5 +71,5 @@ susc
 
 }
 \seealso{
-\code{\link[=write_template]{write_template()}}, \code{\link[=percents]{percents()}}, \code{\link[=visualize_Rps]{visualize_Rps()}}
+\code{\link[=write_template]{write_template()}}, \code{\link[=percents]{percents()}}, \code{\link[=visualize_susc]{visualize_susc()}}
 }
