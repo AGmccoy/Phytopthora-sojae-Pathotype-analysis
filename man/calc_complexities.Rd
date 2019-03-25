@@ -4,8 +4,7 @@
 \alias{calc_complexities}
 \title{Calculate Distribution of Complexities by Pathogenicity Gene}
 \usage{
-calc_complexities(x, cutoff, control = "susceptible",
-  sample = "sample", gene = "gene")
+calc_complexities(x, cutoff, control, sample, gene, perc_susc)
 }
 \arguments{
 \item{x}{A \code{data.frame} containing the data. Character.}
@@ -19,6 +18,9 @@ field. Character.}
 isolate being tested. Character.}
 
 \item{gene}{Field providing the pathogenicty gene(s) being tested. Character.}
+
+\item{perc_susc}{Field providing the percent susceptible reactions.
+Character.}
 }
 \description{
 This function will calculate the distribution of
@@ -35,7 +37,12 @@ Ps <- read.csv(Ps)
 head(Ps)
 
 # calculate susceptibilities with a 60 \% cutoff value
-complexities <- calc_complexities(Ps, cutoff = 60)
+complexities <- calc_complexities(x = Ps,
+                       cutoff = 60,
+                       control = "susceptible",
+                       sample = "Isolate",
+                       gene = "Rps",
+                       perc_susc = "perc.susc")
 complexities
 
 }

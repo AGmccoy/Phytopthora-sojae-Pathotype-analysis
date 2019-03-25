@@ -16,18 +16,35 @@
 #' head(Ps)
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' complexities <- calc_complexities(Ps, cutoff = 60)
+#' complexities <- calc_complexities(x = Ps,
+#'                        cutoff = 60,
+#'                        control = "susceptible",
+#'                        sample = "Isolate",
+#'                        gene = "Rps",
+#'                        perc_susc = "perc.susc")
 #' complexities
 #' 
 #' @export calc_complexities
 
 calc_complexities = function(x,
                         cutoff,
-                        control = "susceptible",
-                        sample = "sample",
-                        gene = "gene") {
+                        control,
+                        sample,
+                        gene,
+                        perc_susc) {
   # CRAN NOTE avoidance
   gene <- NULL
+  
+  if (missing(x) |
+      missing(cutoff) |
+      missing(control) |
+      missing(sample) |
+      missing(gene) |
+      missing(perc_susc)) {
+    stop(call. = FALSE,
+         "You have failed to provide all necessary inputs.\
+         Please check and try again.")
+  }
   
   data.table::setDT(x)
   # The susceptible control is removed from all isolates in the data set so that

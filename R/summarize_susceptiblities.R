@@ -1,6 +1,4 @@
 
-
-
 #' Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene
 #'
 #' @description This function will calculate the distribution of

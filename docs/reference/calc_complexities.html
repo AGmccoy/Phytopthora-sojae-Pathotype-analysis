@@ -110,8 +110,7 @@ susceptibilities by pathogenicity gene.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>calc_complexities</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
-  <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"sample"</span>, <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"gene"</span>)</pre>
+    <pre class="usage"><span class='fu'>calc_complexities</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>gene</span>, <span class='no'>perc_susc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,6 +136,11 @@ isolate being tested. Character.</p></td>
     <tr>
       <th>gene</th>
       <td><p>Field providing the pathogenicty gene(s) being tested. Character.</p></td>
+    </tr>
+    <tr>
+      <th>perc_susc</th>
+      <td><p>Field providing the percent susceptible reactions.
+Character.</p></td>
     </tr>
     </table>
     
@@ -164,7 +168,12 @@ isolate being tested. Character.</p></td>
 #&gt; 5                       1        6          7           2        78         22
 #&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>complexities</span> <span class='kw'>&lt;-</span> <span class='fu'>calc_complexities</span>(<span class='no'>Ps</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("droplevels"): no applicable method for 'droplevels' applied to an object of class "NULL"</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
+<span class='no'>complexities</span> <span class='kw'>&lt;-</span> <span class='fu'>calc_complexities</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
+                       <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
+                       <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
+                       <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
+                       <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
+                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("droplevels"): no applicable method for 'droplevels' applied to an object of class "NULL"</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
