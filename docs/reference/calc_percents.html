@@ -152,7 +152,7 @@ used is properly formatted.</p>
 
 <span class='co'># import 'practice_data_set.csv'</span>
 <span class='no'>Ps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.csv</a></span>(<span class='no'>Ps</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>Ps</span>)</div><div class='output co'>#&gt;   isolate    phenotype         Rps total hr lesion lesion_to_cotyledon dead
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>Ps</span>)</div><div class='output co'>#&gt;   isolate    phenotype        gene total hr lesion lesion_to_cotyledon dead
 #&gt; 1       1     Williams susceptible    10  0      0                   0   10
 #&gt; 2       1       Harlon      Rps 1a    10  4      0                   0    6
 #&gt; 3       1 Harosoy 13xx      Rps 1b     8  0      0                   0    8
@@ -161,7 +161,7 @@ used is properly formatted.</p>
 #&gt; 6       1  Williams 82      Rps 1k    10  0      0                   0   10</div><div class='input'>
 <span class='co'># calculate totals and percents for resistant and susceptible reactions</span>
 <span class='no'>total_perc</span> <span class='kw'>&lt;-</span> <span class='fu'>calc_percents</span>(<span class='no'>Ps</span>)
-<span class='no'>total_perc</span></div><div class='output co'>#&gt;      isolate    phenotype         Rps total hr lesion lesion_to_cotyledon dead
+<span class='no'>total_perc</span></div><div class='output co'>#&gt;      isolate    phenotype        gene total hr lesion lesion_to_cotyledon dead
 #&gt;   1:       1     Williams susceptible    10  0      0                   0   10
 #&gt;   2:       1       Harlon      Rps 1a    10  4      0                   0    6
 #&gt;   3:       1 Harosoy 13xx      Rps 1b     8  0      0                   0    8
