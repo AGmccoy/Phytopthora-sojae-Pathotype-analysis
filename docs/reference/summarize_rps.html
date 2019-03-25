@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene — summarize_susc • hagis</title>
+<title>Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene — summarize_rps • hagis</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene — summarize_susc" />
+<meta property="og:title" content="Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene — summarize_rps" />
 
 <meta property="og:description" content="This function will calculate the distribution of
-susceptibilities by pathogenicity gene." />
+susceptibilities by Rps gene." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -98,19 +98,19 @@ susceptibilities by pathogenicity gene." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate and Summarize Distribution of Susceptibilities by Pathogenicity Gene</h1>
+    <h1>Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene</h1>
     
-    <div class="hidden name"><code>summarize_susc.Rd</code></div>
+    <div class="hidden name"><code>summarize_rps.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
     <p>This function will calculate the distribution of
-susceptibilities by pathogenicity gene.</p>
+susceptibilities by <em>Rps</em> gene.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>summarize_susc</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>gene</span>, <span class='no'>perc_susc</span>)</pre>
+    <pre class="usage"><span class='fu'>summarize_rps</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>Rps</span>, <span class='no'>perc_susc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -125,7 +125,7 @@ susceptibilities by pathogenicity gene.</p>
     </tr>
     <tr>
       <th>control</th>
-      <td><p>Value used to denote the susceptible control in the <code>gene</code>
+      <td><p>Value used to denote the susceptible control in the <code>Rps</code>
 field. Character.</p></td>
     </tr>
     <tr>
@@ -134,8 +134,8 @@ field. Character.</p></td>
 isolate being tested. Character.</p></td>
     </tr>
     <tr>
-      <th>gene</th>
-      <td><p>Field providing the pathogenicty gene(s) being tested. Character.</p></td>
+      <th>Rps</th>
+      <td><p>Field providing the <em>Rps</em> gene(s) being tested. Character.</p></td>
     </tr>
     <tr>
       <th>perc_susc</th>
@@ -146,7 +146,7 @@ Character.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>write_template()</code>, <code>percents()</code>, <code><a href='visualize_susc.html'>visualize_susc()</a></code></p></div>
+    <div class='dont-index'><p><code>write_template()</code>, <code>percents()</code>, <code><a href='visualize_rps.html'>visualize_rps()</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -171,13 +171,13 @@ Character.</p></td>
 #&gt; 5                       1        6          7           2        78         22
 #&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_susc</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
+<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_rps</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
                        <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
                        <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
                        <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
-                       <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
+                       <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
                        <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
-<span class='no'>susc</span></div><div class='output co'>#&gt;            gene  N percent.pathogenic
+<span class='no'>susc</span></div><div class='output co'>#&gt;             Rps  N percent.pathogenic
 #&gt;  1: susceptible 21             100.00
 #&gt;  2:      Rps 1a 21             100.00
 #&gt;  3:      Rps 1b 15              71.43
