@@ -14,6 +14,14 @@ Provides tools for analysis of Phytophthora sojae survey data.
   pathotype analysis and provide the same necessary data as the 'HaGiS'
   spreadsheet, doi:10.1046/j.1365-3059.1999.00325.x.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/openplantpathology/hagis}
+  \item Report bugs at \url{https://github.com/openplantpathology/hagis/issues}
+}
+
+}
 \author{
 Austin McCoy, mccoyaus@msu.edu and Zachary Noel, noelzach@m@su.edu and
 Adam H. Sparks, adamhsparks@gmail.com and Martin Chilvers, chilvers@msu.edu
