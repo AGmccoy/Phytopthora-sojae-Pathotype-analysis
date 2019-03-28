@@ -1,0 +1,217 @@
+{
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
+  "@type": "SoftwareSourceCode",
+  "identifier": "hagis",
+  "description": "Provides tools for analysis of Phytophthora sojae survey data.  \n  Functions provide distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for the 'HaGiS' spreadsheet previously used for 'P. sojae'\n  pathotype analysis and provide the same necessary data as the 'HaGiS'\n  spreadsheet, doi:10.1046/j.1365-3059.1999.00325.x.",
+  "name": "hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity",
+  "license": "https://spdx.org/licenses/MIT",
+  "version": "0.0.0.9000",
+  "programmingLanguage": {
+    "@type": "ComputerLanguage",
+    "name": "R",
+    "version": "3.5.3",
+    "url": "https://r-project.org"
+  },
+  "runtimePlatform": "R version 3.5.3 (2019-03-11)",
+  "author": [
+    {
+      "@type": "Person",
+      "givenName": "Austin",
+      "familyName": "McCoy",
+      "email": "mccoyaus@msu.edu",
+      "@id": "https://orcid.org/0000-0003-2483-4184"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Zachary",
+      "familyName": "Noel",
+      "email": "noelzach@msu.edu",
+      "@id": "https://orcid.org/0000-0001-6375-8300"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Adam H.",
+      "familyName": "Sparks",
+      "email": "adamhsparks@gmail.com",
+      "@id": "https://orcid.org/0000-0002-0061-8359"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Martin",
+      "familyName": "Chilvers",
+      "email": "chilvers@msu.edu ",
+      "@id": "https://orcid.org/0000-0001-8832-1666"
+    }
+  ],
+  "contributor": {},
+  "copyrightHolder": {},
+  "funder": {},
+  "maintainer": [
+    {
+      "@type": "Person",
+      "givenName": "Adam H.",
+      "familyName": "Sparks",
+      "email": "adamhsparks@gmail.com",
+      "@id": "https://orcid.org/0000-0002-0061-8359"
+    }
+  ],
+  "softwareSuggestions": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "devtools",
+      "name": "devtools",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=devtools"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "knitr",
+      "name": "knitr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=knitr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "readr",
+      "name": "readr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=readr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "rmarkdown",
+      "name": "rmarkdown",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=rmarkdown"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "testthat",
+      "name": "testthat",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=testthat"
+    }
+  ],
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "R",
+      "name": "R",
+      "version": ">= 3.2.0"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "ggplot2",
+      "name": "ggplot2",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=ggplot2"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "magrittr",
+      "name": "magrittr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=magrittr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "stringr",
+      "name": "stringr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=stringr"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "utils",
+      "name": "utils"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "vegan",
+      "name": "vegan",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=vegan"
+    }
+  ],
+  "codeRepository": "https://github.com/openplantpathology/hagis",
+  "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
+  "fileSize": "155.594KB",
+  "citation": [
+    {
+      "@type": "SoftwareSourceCode",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": "Austin",
+          "familyName": "McCoy"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Zachary",
+          "familyName": "Noel"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Adam H.",
+          "familyName": "Sparks"
+        },
+        {
+          "@type": "Person",
+          "givenName": "Martin",
+          "familyName": "Chilvers"
+        }
+      ],
+      "name": "{hagis}: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity",
+      "url": "https://openplantpathology.github.io/hagis/"
+    }
+  ],
+  "issueTracker": "https://github.com/openplantpathology/hagis/issues"
+}
