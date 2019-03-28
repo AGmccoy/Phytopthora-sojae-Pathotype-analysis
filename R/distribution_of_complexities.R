@@ -33,7 +33,7 @@ calc_complexities = function(x,
                         Rps,
                         perc_susc) {
   # CRAN NOTE avoidance
-  gene <- NULL
+  Rps <- NULL
   
   if (missing(x) |
       missing(cutoff) |
@@ -54,11 +54,11 @@ calc_complexities = function(x,
   x <- subset(x, Rps != control)
   x[, Rps := droplevels(Rps)]
   
-  # summarise the reactions
+  # summarise the reactions, create susceptible.1 field
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
-  expr = paste0("x[, as.factor(", sample, ")]")
-  y <- eval(parse(text = expr))
+  expr = paste0("x[, ", sample, ":= as.factor(", sample, ")]")
+  eval(parse(text = expr))
   
   Isolate_n <- length(levels(remove_controls[[sample]]))
   remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
