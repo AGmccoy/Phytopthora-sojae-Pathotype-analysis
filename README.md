@@ -3,6 +3,10 @@
 
 # hagis
 
+[![Project Status: WIP – Initial development is in progress, but there
+has not yet been a stable, usable release suitable for the
+public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+
 The goal of *hagis* is to provide *Phytophthora sojae* pathotype
 analysis that the original [HaGiS
 worksheet](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x)
