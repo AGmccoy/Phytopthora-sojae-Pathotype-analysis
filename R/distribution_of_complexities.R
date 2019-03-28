@@ -54,33 +54,45 @@ calc_complexities = function(x,
   x <- subset(x, Rps != control)
   x[, Rps := droplevels(Rps)]
   
-  # summarise the reactions, create susceptible.1 field
+  # summarise the reactions, create susceptible.1 field, see
+  # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
+  # set the sample field to factor
   expr = paste0("x[, ", sample, ":= as.factor(", sample, ")]")
   eval(parse(text = expr))
+ 
+  # Individual isolate complexities as calculated by grouping by "sample" and
+  # then summarising the number of "1"s for each "sample" in the "susceptible.1"
+  # field, see internal_functions.R
+  y <- .create_summary(.y = x, .Rps = Rps)
   
-  Isolate_n <- length(levels(remove_controls[[sample]]))
-  remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
-  
-  #Rps.Gene.Summary$percent_isolates_pathogenic <- ((Rps.Gene.Summary$N)/Isolate_n)*100
-  #Rps.Gene.Summary
-  
-  #Individual Isolate Complexities as calculated by grouping by Isolate and then
-  # summarising the number of"1"'s for each Isolate in the "Susceptible.1"
-  #  Column.
-  Ind_complexities <- remove_controls %>%
-    group_by(remove_controls[[sample]]) %>%
-    summarise(N = sum(Susceptible.1))
+  # left join the summary with original data
+  x[y, on = "Rps", N := i.N]
   
   # Frequency for each complexity (%).
-  #Percent frequency is calculated by taking the individual complexity of each Isolate and grouping all Isolates by their complexity (Ind_complexities$Complexity[Ind_complexities$N==X]). The function legnth() is then used to identify how many of each complexity there are in the data set (from 0 to 13). This number is then taken and divided by the total number of isolates in the dataset (which was calculated in previous scripts and is identified as "Isolate_n" here) then multiplied by 100 for final percentages.
-  # If you are using less than 13 genes, you can edit the script by placing "#" before all "Freq_comp_X" that are above your number of genes tested. If testing more than 13 genes, you will need to simply copy a line of this code and add as many more linesas necessary, making sure to change the "N==X" to the correct complexity (i.e. 14, 15, 16, etc)
-  # Changing the script here will require edits on scripts down the line, but I will try and annotate where those changes would need to be made, if necessary
+  # Percent frequency is calculated by taking the individual complexity of each
+  # Isolate and grouping all Isolates by their complexity
+  #  (Ind_complexities$Complexity[Ind_complexities$N==X]). The function
+  #   legnth() is then used to identify how many of each complexity there are in
+  #    the data set (from 0 to 13). This number is then taken and divided by the
+  #     total number of isolates in the dataset (which was calculated in
+  #      previous scripts and is identified as "Isolate_n" here) then multiplied
+  #       by 100 for final percentages.
+  # If you are using less than 13 genes, you can edit the script by placing "#"
+  #  before all "Freq_comp_X" that are above your number of genes tested. If
+  #   testing more than 13 genes, you will need to simply copy a line of this
+  #    code and add as many more lines as necessary, making sure to change the
+  #     "N==X" to the correct complexity (i.e. 14, 15, 16, etc)
+  # Changing the script here will require edits on scripts down the line,
+  #  but I will try and annotate where those changes would need to be made, if
+  #   necessary
   
   Ind_complexities$Complexity <-
     as.character(Ind_complexities$N) #adds a column telling the complexity of each individual isolates in the dataset
   # Determining the frequency of each complexity (0:13) within the data set
+  # 
+  
   freq_comp_0 <-
     (length(Ind_complexities$Complexity[Ind_complexities$N == 0]) / Isolate_n) *
     100
