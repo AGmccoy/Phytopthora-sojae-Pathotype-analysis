@@ -4,7 +4,7 @@
 \alias{calc_complexities}
 \title{Calculate Distribution of Complexities by Pathogenicity Gene}
 \usage{
-calc_complexities(x, cutoff, control, sample, gene, perc_susc)
+calc_complexities(x, cutoff, control, sample, Rps, perc_susc)
 }
 \arguments{
 \item{x}{A \code{data.frame} containing the data. Character.}
@@ -16,6 +16,8 @@ field. Character.}
 
 \item{sample}{Field providing the unique isolate identification for each
 isolate being tested. Character.}
+
+\item{Rps}{Field providing the \emph{Rps} gene(s) being tested. Character.}
 
 \item{perc_susc}{Field providing the percent susceptible reactions.
 Character.}
@@ -39,7 +41,7 @@ complexities <- calc_complexities(x = Ps,
                        cutoff = 60,
                        control = "susceptible",
                        sample = "Isolate",
-                       gene = "Rps",
+                       Rps,
                        perc_susc = "perc.susc")
 complexities
 

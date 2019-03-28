@@ -110,7 +110,7 @@ susceptibilities by pathogenicity gene.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>calc_complexities</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>gene</span>, <span class='no'>perc_susc</span>)</pre>
+    <pre class="usage"><span class='fu'>calc_complexities</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>Rps</span>, <span class='no'>perc_susc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -132,6 +132,10 @@ field. Character.</p></td>
       <th>sample</th>
       <td><p>Field providing the unique isolate identification for each
 isolate being tested. Character.</p></td>
+    </tr>
+    <tr>
+      <th>Rps</th>
+      <td><p>Field providing the <em>Rps</em> gene(s) being tested. Character.</p></td>
     </tr>
     <tr>
       <th>perc_susc</th>
@@ -168,8 +172,8 @@ Character.</p></td>
                        <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
                        <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
                        <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
-                       <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
-                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in UseMethod("droplevels"): no applicable method for 'droplevels' applied to an object of class "NULL"</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
+                       <span class='no'>Rps</span>,
+                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in levels(remove_controls[[sample]]): object 'remove_controls' not found</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

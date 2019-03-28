@@ -20,7 +20,7 @@
 #'                        cutoff = 60,
 #'                        control = "susceptible",
 #'                        sample = "Isolate",
-#'                        gene = "Rps",
+#'                        Rps,
 #'                        perc_susc = "perc.susc")
 #' complexities
 #' 
@@ -30,7 +30,7 @@ calc_complexities = function(x,
                         cutoff,
                         control,
                         sample,
-                        gene,
+                        Rps,
                         perc_susc) {
   # CRAN NOTE avoidance
   gene <- NULL
@@ -39,7 +39,7 @@ calc_complexities = function(x,
       missing(cutoff) |
       missing(control) |
       missing(sample) |
-      missing(gene) |
+      missing(Rps) |
       missing(perc_susc)) {
     stop(call. = FALSE,
          "You have failed to provide all necessary inputs.\
@@ -51,8 +51,8 @@ calc_complexities = function(x,
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
 
-  x <- subset(x, gene != control)
-  x[, gene := droplevels(gene)]
+  x <- subset(x, Rps != control)
+  x[, Rps := droplevels(Rps)]
   
   # summarise the reactions
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
