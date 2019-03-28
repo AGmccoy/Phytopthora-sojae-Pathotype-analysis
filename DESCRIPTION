@@ -42,3 +42,5 @@ VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Language: en-US
+URL: https://github.com/openplantpathology/hagis
+BugReports: https://github.com/openplantpathology/hagis/issues
