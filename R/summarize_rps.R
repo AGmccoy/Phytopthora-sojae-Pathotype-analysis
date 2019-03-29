@@ -89,7 +89,7 @@ summarize_rps <- function(x,
 #' # Visualize the summary of Rps genes
 #' visualize_rps(susc)
 #'
-#' @seealso [write_template()], [calc_percents()], [summarize_rps()]
+#' @seealso [summarize_rps()]
 #' @export visualize_rps
 
 visualize_rps <- function(x) {

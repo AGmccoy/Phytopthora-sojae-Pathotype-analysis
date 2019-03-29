@@ -32,5 +32,5 @@ visualize_rps(susc)
 
 }
 \seealso{
-\code{\link[=write_template]{write_template()}}, \code{\link[=calc_percents]{calc_percents()}}, \code{\link[=summarize_rps]{summarize_rps()}}
+\code{\link[=summarize_rps]{summarize_rps()}}
 }
