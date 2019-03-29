@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene — summarize_rps • hagis</title>
+<title>Calculate Distribution of Complexities by Isolate — calculate_complexities • hagis</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,10 @@
 
 
 
-<meta property="og:title" content="Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene — summarize_rps" />
+<meta property="og:title" content="Calculate Distribution of Complexities by Isolate — calculate_complexities" />
 
 <meta property="og:description" content="This function will calculate the distribution of
-susceptibilities by Rps gene." />
+susceptibilities by isolate." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -103,19 +103,19 @@ susceptibilities by Rps gene." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene</h1>
-    <small class="dont-index">Source: <a href='https://github.com/openplantpathology/hagis/blob/master/R/summarize_rps.R'><code>R/summarize_rps.R</code></a></small>
-    <div class="hidden name"><code>summarize_rps.Rd</code></div>
+    <h1>Calculate Distribution of Complexities by Isolate</h1>
+    <small class="dont-index">Source: <a href='https://github.com/openplantpathology/hagis/blob/master/R/distribution_of_complexities.R'><code>R/distribution_of_complexities.R</code></a></small>
+    <div class="hidden name"><code>calculate_complexities.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
     <p>This function will calculate the distribution of
-susceptibilities by <em>Rps</em> gene.</p>
+susceptibilities by isolate.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>summarize_rps</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>Rps</span>, <span class='no'>perc_susc</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_complexities</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>Rps</span>, <span class='no'>perc_susc</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +151,7 @@ Character.</p></td>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>write_template()</code>, <code>percents()</code>, <code><a href='visualize_rps.html'>visualize_rps()</a></code></p></div>
+    <div class='dont-index'><p><code><a href='visualize_distribution.html'>visualize_distribution()</a></code>, <code>visualize_complexity()</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -176,27 +176,26 @@ Character.</p></td>
 #&gt; 5                       1        6          7           2        78         22
 #&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_rps</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
+<span class='no'>complexities</span> <span class='kw'>&lt;-</span> <span class='fu'>calculate_complexities</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
                        <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
                        <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
                        <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
-                       <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
+                       <span class='no'>Rps</span>,
                        <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
-<span class='no'>susc</span></div><div class='output co'>#&gt;             Rps N_susc percent.pathogenic
-#&gt;  1: susceptible     21             100.00
-#&gt;  2:      Rps 1a     21             100.00
-#&gt;  3:      Rps 1b     15              71.43
-#&gt;  4:      Rps 1c     20              95.24
-#&gt;  5:      Rps 1d     16              76.19
-#&gt;  6:      Rps 1k     18              85.71
-#&gt;  7:       Rps 2     14              66.67
-#&gt;  8:      Rps 3a      5              23.81
-#&gt;  9:      Rps 3b     20              95.24
-#&gt; 10:      Rps 3c      4              19.05
-#&gt; 11:       Rps 4      5              23.81
-#&gt; 12:       Rps 5     13              61.90
-#&gt; 13:       Rps 6     11              52.38
-#&gt; 14:       Rps 7     21             100.00</div><div class='input'>
+<span class='no'>complexities</span></div><div class='output co'>#&gt;     complexity frequency distribution
+#&gt;  1:          1      0.00            0
+#&gt;  2:          2      0.00            0
+#&gt;  3:          3      0.00            0
+#&gt;  4:          4      0.00            0
+#&gt;  5:          5      4.76            1
+#&gt;  6:          6      9.52            2
+#&gt;  7:          7      9.52            2
+#&gt;  8:          8     33.33            7
+#&gt;  9:          9      0.00            0
+#&gt; 10:         10     23.81            5
+#&gt; 11:         11     14.29            3
+#&gt; 12:         12      0.00            0
+#&gt; 13:         13      4.76            1</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
