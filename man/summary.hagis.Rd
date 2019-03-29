@@ -2,7 +2,7 @@
 % Please edit documentation in R/distribution_of_complexities.R
 \name{summary.hagis}
 \alias{summary.hagis}
-\title{Summarises hagis object.}
+\title{Summarises hagis complexity object.}
 \usage{
 \method{summary}{hagis}(object, ...)
 }
@@ -12,5 +12,5 @@
 \item{x}{A hagis class object (a list of two \code{data.table}s)}
 }
 \description{
-Summarises hagis object.
+Summarises hagis complexity object.
 }

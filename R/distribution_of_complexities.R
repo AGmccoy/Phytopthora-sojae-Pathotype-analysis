@@ -207,7 +207,25 @@ visualize_distribution <- function(x) {
   return(distribution_graph)
 }
 
-#' Summarises hagis object.
+#' Create Summary Table of Binary Reactions by Sample
+#'
+#' Tally a summary by sample or isolate. This code takes the "Susceptible.1"
+#'  column and summarises it by gene for your total Isolates pathogenic on each
+#'  sample.
+#'
+#' @param .x A `data.table` containing the values to be summarised
+#' @return A `data.table` that tallies the results by sample
+#' @author Adam H. Sparks, adamhsparks@@gmail.com
+#' @noRd
+.create_summary_isolate <- function(.y, .sample) {
+  expr = paste0(".y[, list(N_samp = sum(susceptible.1)), by = list(sample = ",
+                .sample,
+                ")]")
+  y <- eval(parse(text = expr))
+  return(y)
+}
+
+#' Summarises hagis complexity object.
 #'
 #' @param x A hagis class object (a list of two `data.table`s)
 #' @param ... ignored
@@ -226,7 +244,7 @@ summary.hagis <- function(object, ...) {
   x
 }
 
-#' Prints summary.hagis object.
+#' Prints summary.hagis object for complexities.
 #'
 #' @param x a summary.hagis object
 #' @param ... ignored
@@ -241,22 +259,4 @@ print.summary.hagis <- function(x,
   cat("\nStandard Error of Complexities\n")
   cat(x$se)
   invisible(x)
-}
-
-#' Create Summary Table of Binary Reactions by Sample
-#'
-#' Tally a summary by sample or isolate. This code takes the "Susceptible.1"
-#'  column and summarises it by gene for your total Isolates pathogenic on each
-#'  sample.
-#'
-#' @param .x A `data.table` containing the values to be summarised
-#' @return A `data.table` that tallies the results by sample
-#' @author Adam H. Sparks, adamhsparks@@gmail.com
-#' @noRd
-.create_summary_isolate <- function(.y, .sample) {
-  expr = paste0(".y[, list(N_samp = sum(susceptible.1)), by = list(sample = ",
-                .sample,
-                ")]")
-  y <- eval(parse(text = expr))
-  return(y)
 }

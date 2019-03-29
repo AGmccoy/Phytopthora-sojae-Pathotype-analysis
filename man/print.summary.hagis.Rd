@@ -2,7 +2,7 @@
 % Please edit documentation in R/distribution_of_complexities.R
 \name{print.summary.hagis}
 \alias{print.summary.hagis}
-\title{Prints summary.hagis object.}
+\title{Prints summary.hagis object for complexities.}
 \usage{
 \method{print}{summary.hagis}(x, digits = max(3L, getOption("digits") -
   3L), ...)
@@ -13,5 +13,5 @@
 \item{...}{ignored}
 }
 \description{
-Prints summary.hagis object.
+Prints summary.hagis object for complexities.
 }
