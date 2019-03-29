@@ -1,4 +1,7 @@
 
+# data.table special symbols for package-wide use
+.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- NULL
+
 #' Create Binary Reaction Value
 #'
 #' Adds a column of 1 or 0 for the susceptible reaction cutoff
@@ -15,27 +18,4 @@
   # used in later analysis.
   susceptible <- .x$perc.susc >= 60
   .x[, susceptible.1 := 0][susceptible, susceptible.1 := 1]
-}
-
-
-#' Create Summary Table of Binary Reactions
-#'
-#' Tally a summary by pathogenicity gene. This code takes the "Susceptible.1"
-#'  column and summarises it by gene for your total Isolates pathogenic on each
-#'  Rps gene. Likewise "Isolate_N" is calculated given the unique Isolate names
-#'  to find the total number of isolates within your data set.
-#'  "Percent_isolates_pathogenic" is then found for each gene, showing the
-#'  percentage of isolates that are pathogenic on tested Rps genes.
-#'  "Rps.Gene.Summary" will return these values.
-#'
-#' @param .x A `data.table` containing the values to be summarised
-#' @return A `data.table` that tallies the results by pathogenicity gene
-#' @author Adam H. Sparks, adamhsparks@@gmail.com
-#' @noRd
-.create_summary <- function(.y, .Rps) {
-  expr = paste0(".y[, list(N = sum(susceptible.1)), by = list(Rps = ",
-                .Rps,
-                ")]")
-  y <- eval(parse(text = expr))
-  return(y)
 }
