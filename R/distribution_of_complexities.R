@@ -1,5 +1,4 @@
 
-
 #' Calculate Distribution of Complexities by Isolate
 #'
 #' @description This function will calculate the distribution of
@@ -23,8 +22,16 @@
 #'                        sample = "Isolate",
 #'                        Rps,
 #'                        perc_susc = "perc.susc")
-#' complexities
-#'
+#' summary(complexities)
+#' 
+#' @return `calculate_complexities` returns an object of [class()] "hagis"
+#' An object of class "hagis" is a list containing the following components
+#'   \itemize{
+#'     \item{grouped_complexities}{a [data.table][data.table()] object of
+#'       grouped complexities}
+#'     \item{individual_complexities}{a [data.table][data.table()] object of 
+#'       individual complexities}
+#'   }
 #' @export calculate_complexities
 
 calculate_complexities = function(x,
@@ -66,7 +73,7 @@ calculate_complexities = function(x,
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
   # field, see internal_functions.R
-  y <- .create_summary_isolate(.y = x, .sample = sample)
+  individual_complexities <- .create_summary_isolate(.y = x, .sample = sample)
   
   # Frequency for each complexity (%).
   # Percent frequency is calculated by taking the individual complexity of each
@@ -86,24 +93,30 @@ calculate_complexities = function(x,
   names(complexities) <- seq_along(1:n_gene)
   
   for (i in seq_along(1:n_gene)) {
-    complexities[[i]] <- round(length(which(y[, N_samp == i])) / n_sample * 100, 2)
+    complexities[[i]] <- round(length(
+      which(individual_complexities[, N_samp == i])) / n_sample * 100, 2)
   }
   
-  complexities <- data.table::setDT(stack(complexities))
-  names(complexities) <- c("frequency", "N_samp")
+  grouped_complexities <- data.table::setDT(stack(complexities))
+  names(grouped_complexities) <- c("frequency", "N_samp")
   
   # distribution of complexity (counts)
-  dist <- y[, .N, by = N_samp]
+  dist <- individual_complexities[, .N, by = N_samp]
   dist[, N_samp := as.factor(N_samp)]
-  complexities[dist, on = "N_samp", distribution := i.N]
+  grouped_complexities[dist, on = "N_samp", distribution := i.N]
   
   # set NA to 0 for distribution
-  complexities[is.na(distribution), distribution := 0]
-  data.table::setcolorder(complexities,
+  grouped_complexities[is.na(distribution), distribution := 0]
+  data.table::setcolorder(grouped_complexities,
                           neworder = c("N_samp", "frequency", "distribution"))
-  data.table::setnames(complexities,
+  data.table::setnames(grouped_complexities,
                        c("complexity", "frequency", "distribution"))
+  complexities <- list(grouped_complexities, individual_complexities)
+  names(complexities) <- c("grouped_complexities", "indvidual_complexities")
   
+  ## Set the name for the class
+  class(complexities) <- append(class(complexities), "hagis")
+
   return(complexities)
 }
 
@@ -139,7 +152,7 @@ visualize_complexities <- function(x) {
   complexity <- frequency <- NULL
   
   complexities_graph <-
-    ggplot2::ggplot(data = x,
+    ggplot2::ggplot(data = x$grouped_complexities,
                     ggplot2::aes(x = complexity,
                                  y = frequency)) +
     ggplot2::geom_col() +
@@ -183,7 +196,7 @@ visualize_distribution <- function(x) {
   complexity <- distribution <- NULL
   
   distribution_graph <-
-    ggplot2::ggplot(data = x,
+    ggplot2::ggplot(data = x$grouped_complexities,
                     ggplot2::aes(x = complexity,
                                  y = distribution)) +
     ggplot2::geom_col() +
@@ -194,13 +207,41 @@ visualize_distribution <- function(x) {
   return(distribution_graph)
 }
 
-#
-# #S3 object using "summary" here
-# summarize_complexities <- function(x) {
-#   comp_mean <- mean(Ind_complexities$N)
-#   comp_sd <- sd(Ind_complexities$N)
-#   comp_stderr <- std.error(Ind_complexities$N)
-# }
+#' Summarises hagis object.
+#'
+#' @param x A hagis class object (a list of two `data.table`s)
+#' @param ... ignored
+#' @export
+summary.hagis <- function(object, ...) {
+  mn <- mean(object$indvidual_complexities$N_samp)
+  sd <- sd(object$indvidual_complexities$N_samp)
+  se <- sqrt(
+    var(object$indvidual_complexities$N_samp) /
+      length(object$indvidual_complexities$N_samp)
+  )
+  
+  x <- list(mn, sd, se)
+  names(x) <- c("Mean", "sd", "se")
+  class(x) <- "summary.hagis"
+  x
+}
+
+#' Prints summary.hagis object.
+#'
+#' @param x a summary.hagis object
+#' @param ... ignored
+#' @export
+print.summary.hagis <- function(x,
+                                digits = max(3L, getOption("digits") - 3L),
+                                ...) {
+  cat("\nMean of Complexities\n")
+  cat(x$Mean, "\n")
+  cat("\nStandard Deviation of Complexities\n")
+  cat(x$sd, "\n")
+  cat("\nStandard Error of Complexities\n")
+  cat(x$se)
+  invisible(x)
+}
 
 #' Create Summary Table of Binary Reactions by Sample
 #'

@@ -22,6 +22,16 @@ isolate being tested. Character.}
 \item{perc_susc}{Field providing the percent susceptible reactions.
 Character.}
 }
+\value{
+\code{calculate_complexities} returns an object of \code{\link[=class]{class()}} "hagis"
+An object of class "hagis" is a list containing the following components
+\itemize{
+\item{grouped_complexities}{a \link[=data.table]{data.table} object of
+grouped complexities}
+\item{individual_complexities}{a \link[=data.table]{data.table} object of
+individual complexities}
+}
+}
 \description{
 This function will calculate the distribution of
 susceptibilities by isolate.
@@ -42,7 +52,7 @@ complexities <- calculate_complexities(x = Ps,
                        sample = "Isolate",
                        Rps,
                        perc_susc = "perc.susc")
-complexities
+summary(complexities)
 
 }
 \seealso{
