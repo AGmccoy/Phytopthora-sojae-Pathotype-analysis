@@ -42,7 +42,7 @@ summarize_rps <- function(x,
                            Rps,
                            perc_susc) {
   # CRAN NOTE avoidance
-  cutoff <- percent.pathogenic <- N <- NULL
+  cutoff <- percent.pathogenic <- N_susc <- NULL
   
   if (missing(x) |
       missing(cutoff) |
@@ -59,15 +59,9 @@ summarize_rps <- function(x,
   
   # summary by rps gene to tally. This code takes the "Susceptible.1" column
   # and summarizes it by gene for your total Isolates pathogenic on each gene.
-  # Likewise "Isolate_N" is calculated given the unique isolate names to find
-  # the total number of isolates within your data set.
-  # "Percent_isolates_pathogenic" is then found for each gene, showing the
-  # percentage of isolates that are pathogenic on tested genes.
-  # "Rps.Gene.Summary" will return these values.
-  
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  x <- .create_summary(.y = x, .Rps = Rps)
-  x[, percent.pathogenic := round((N) / max(N) * 100, 2)]
+  x <- .create_summary_rps(.y = x, .Rps = Rps)
+  x[, percent.pathogenic := round((N_susc) / max(N_susc) * 100, 2)]
   return(x)
 }
 
@@ -113,4 +107,22 @@ visualize_rps <- function(x) {
                                   italic(Rps) ~ "genes")) +
     ggplot2::coord_flip()
   return(susceptibilities_graph)
+}
+
+#' Create Summary Table of Binary Reactions by Rps Gene
+#'
+#' Tally a summary by pathogenicity gene. This code takes the "Susceptible.1"
+#'  column and summarises it by gene for your total Isolates pathogenic on each
+#'  Rps gene.
+#'
+#' @param .x A `data.table` containing the values to be summarised
+#' @return A `data.table` that tallies the results by pathogenicity gene
+#' @author Adam H. Sparks, adamhsparks@@gmail.com
+#' @noRd
+.create_summary_rps <- function(.y, .Rps) {
+  expr = paste0(".y[, list(N_susc = sum(susceptible.1)), by = list(Rps = ",
+                .Rps,
+                ")]")
+  y <- eval(parse(text = expr))
+  return(y)
 }
