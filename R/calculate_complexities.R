@@ -223,7 +223,9 @@ visualize_distribution <- function(x) {
   return(y)
 }
 
-#' Summarises hagis complexity object.
+#' Summarises \pkg{hagis} Complexity Object
+#' 
+#' Custom [summary()] method for \pkg{hagis} `complexity` objects.
 #'
 #' @param x A hagis class object (a list of two `data.table`s)
 #' @param ... ignored
@@ -242,7 +244,9 @@ summary.hagis <- function(object, ...) {
   x
 }
 
-#' Prints summary.hagis object for complexities.
+#' Prints summary.hagis Object for Complexities
+#'
+#' Custom [print()] method for \pkg{hagis} `complexity` objects.
 #'
 #' @param x a summary.hagis object
 #' @param ... ignored
