@@ -40,9 +40,7 @@ calculate_complexities = function(x,
                              sample,
                              Rps,
                              perc_susc) {
-  # CRAN NOTE avoidance
-  Rps <- .N <- i.N <- N_samp <- NULL
-  
+
   if (missing(x) |
       missing(cutoff) |
       missing(control) |
