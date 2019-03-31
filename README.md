@@ -36,7 +36,7 @@ commercial soybean cultivars and by the application of fungicide seed
 treatments. However, repeated use of resistance genes can cause
 populations to adapt over time rendering these resistance genes
 ineffective. To determine current effectiveness of resistance genes for
-managing Phytophthora sojae, state-wide surveys must be conducted to
+managing *Phytophthora sojae*, state-wide surveys must be conducted to
 determine the pathotype (previously referred to as “race”) structure
 within sampled population of *P. sojae*.
 
