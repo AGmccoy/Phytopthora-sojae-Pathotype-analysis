@@ -193,11 +193,61 @@ individual complexities</p></dd>
                                       <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
                                       <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
                                       <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
-                                      <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)</div><div class='output co'>#&gt; <span class='error'>Error: You have failed to provide all necessary inputs.</span>
-#&gt; <span class='error'>         Please check and try again.</span></div><div class='input'><span class='no'>complexities</span></div><div class='output co'>#&gt; <span class='error'>Error in eval(expr, envir, enclos): object 'complexities' not found</span></div><div class='input'>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>complexities</span>)</div><div class='output co'>#&gt; <span class='error'>Error in summary(complexities): object 'complexities' not found</span></div><div class='input'>
+                                      <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
+<span class='no'>complexities</span></div><div class='output co'>#&gt; 
+#&gt; Grouped Complexities
+#&gt;     complexity frequency distribution
+#&gt;  1:          1      0.00            0
+#&gt;  2:          2      0.00            0
+#&gt;  3:          3      0.00            0
+#&gt;  4:          4      0.00            0
+#&gt;  5:          5      4.76            1
+#&gt;  6:          6      9.52            2
+#&gt;  7:          7      9.52            2
+#&gt;  8:          8     33.33            7
+#&gt;  9:          9      0.00            0
+#&gt; 10:         10     23.81            5
+#&gt; 11:         11     14.29            3
+#&gt; 12:         12      0.00            0
+#&gt; 13:         13      4.76            1
+#&gt; 
+#&gt; 
+#&gt; Individual Complexities
+#&gt;     sample N_samp
+#&gt;  1:      1     10
+#&gt;  2:      2     10
+#&gt;  3:      3     10
+#&gt;  4:      4      8
+#&gt;  5:      5      8
+#&gt;  6:      6      8
+#&gt;  7:      7      8
+#&gt;  8:      8      8
+#&gt;  9:      9      6
+#&gt; 10:     10      5
+#&gt; 11:     11      6
+#&gt; 12:     12      8
+#&gt; 13:     13      7
+#&gt; 14:     14      8
+#&gt; 15:     15     11
+#&gt; 16:     16      7
+#&gt; 17:     17     10
+#&gt; 18:     18     10
+#&gt; 19:     19     11
+#&gt; 20:     20     11
+#&gt; 21:     21     13
+#&gt;     sample N_samp
+#&gt; </div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>complexities</span>)</div><div class='output co'>#&gt; 
+#&gt; Mean of Complexities
+#&gt;  
+#&gt; 
+#&gt; Standard Deviation of Complexities
+#&gt; 2.003568 
+#&gt; 
+#&gt; Standard Error of Complexities
+#&gt; 0.4372144</div><div class='input'>
 <span class='co'># plot complexities frequency</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span>(<span class='no'>complexities</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"frequency"</span>)</div><div class='output co'>#&gt; <span class='error'>Error in autoplot(complexities, type = "frequency"): object 'complexities' not found</span></div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span>(<span class='no'>complexities</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"frequency"</span>)</div><div class='img'><img src='calculate_complexities-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

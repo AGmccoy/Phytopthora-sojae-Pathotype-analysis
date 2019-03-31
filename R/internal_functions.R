@@ -18,15 +18,16 @@
 #' @importFrom data.table ":="
 #' @noRd
 .check_inputs <- function(.x, .cutoff, .control, .sample, .Rps, .perc_susc) {
-  if (!is.character(.x) |
+  if (!is.data.frame(.x) |
       !is.numeric(.cutoff) |
       !is.character(.control) |
       !is.character(.sample) |
       !is.character(.Rps) |
-      !is.numeric(.perc_susc)) {
+      !is.character(.perc_susc)) {
     stop(call. = FALSE,
-         "You have failed to provide all necessary inputs.\
-         Please check and try again.")
+         "You have failed to provide all necessary inputs or\n",
+         "you have provided an improperly formatted item.\n",
+         "Please check and try again.")
   }
 }
 
