@@ -1,108 +1,114 @@
 
+
 #' Calculate Diversity Index
 #'
 #' @description Calculates _Phytophthora_ diversity index
 #' @export calc_diversity
 
-calc_diversity <-
-  function(x,
-           cutoff,
-           control = "susceptible") {
-    # same as previous scripts
-    x[["gene"]] <-
-      transform(str_replace(x[["gene"]], "gene ", ""))
-    remove_controls <-
-      subset(x, x[["gene"]] != "susceptible")
-    #x$Susceptible.1 <- ifelse(x[[percent.susc]] >= susceptibility_cutoff, 1, 0)
-    remove_controls$Susceptible.1 <-
-      ifelse(remove_controls[[percent.susc]] >= susceptibility_cutoff, 1, 0)
-    
-    # Removal of resistant reactions from the data set, leaving only susceptible reactions (pathotype)
-    #remove_controls[[gene]] <- as.factor(remove_controls[[gene]])
-    Remove_resistance <-
-      subset(remove_controls, Susceptible.1 != 0) #%>%
-    #transform(remove_controls, gene = gsub("gene ", "", remove_controls[[gene]])) # this line takes the "gene" out of my data set leaving only the gene number, as you would see in a publication. You may not need this line for yours...
-    
-    #Individual Isolate Complexities
-    # using our data set that now only has susceptible reactions, the actual pathotype for each individual Isolate is now displayed. Print "Ind_pathotypes" to take a look!
-    Remove_resistance[, sample] <-
-      as.character(Remove_resistance[, sample])
-    
-    Ind_pathotypes <- Remove_resistance %>%
-      group_by(.[[sample]]) %>%
-      nest() %>%
-      mutate(Pathotype = map(data, ~ toString(.[[gene]])))  %>%
-      unnest(Pathotype) #%>%
-    #select(.[[sample]], Pathotype)
-    
-    
-    # Identifying the frequency at which each Pathotype is found in the data set
-    #  Isolate needs to be a character vector for this to work, this line of code takes care of that
-    
-    Ind_pathotypes$sample <-
-      as.character(Ind_pathotypes[['.[[sample]]']])
-    Ind_pathotypes <- Ind_pathotypes[, 3:4]
-    
-    # The frequency at which each pathotype is found within the dataset is performed here. It can be confusing to look at, but we will clean it up in the next step. For now, each isolates pathotype will have a column next to it, showing how often that pathotype is in the dataset.
-    
-    #Pathotype_Freq <- within(Ind_pathotypes, { count <- ave(.[[sample]], Pathotype, FUN=function(Pathotype) length(unique(Pathotype)))})
-    
-    #Final Chart for visualizing unique pathotype distributions
-    # this script takes out only the unique pathotypes and the count at which they are found in the data set to be used in the next graphic
-    
-    Pathotype_Freq_Distribution <-
-      x(table(Ind_pathotypes$Pathotype))
-    colnames(Pathotype_Freq_Distribution) = c("Pathotype", "Frequency")
-    #Pathotype_Freq %>%
-    #select(count, Pathotype) %>%
-    #distinct(Pathotype, .keep_all = TRUE)
-    #Changes sample to a factor
-    
-    
-    
-    #Determines the number of isolates within the data
-    
-    Number_of_isolates <- length(unique(Ind_pathotypes[[sample]]))
-    
-    
-    
-    #Determining the number of unique pathotypes for this analysis
-    
-    Number_of_pathotypes <- length(unique(Ind_pathotypes$Pathotype))
-    
-    
-    #Simple diversity will show the proportion of unique pathotypes to total isolates. As the values gets closer to 1, there is greater diversity in pathoypes within the population.
-    
-    Simple <- Number_of_pathotypes / Number_of_isolates
-    
-    #An alternate version of Simple diversity index. This index is less sensitive to sample size than the simple index.
-    
-    Gleason <- (Number_of_pathotypes - 1) / log(Number_of_isolates)
-    
-    #Shannon diversity index is typically between 1.5 and 3.5. As richness and evenness of the population increase, so does the Shannon index value
-    Shannon <-
-      diversity(Pathotype_Freq_Distribution[-1], index = "shannon")
-    
-    
-    #Simpson diversity index values range from 0 to 1. 1 represents high diversity and 0 represents no diversity.
-    
-    Simpson <-
-      diversity(Pathotype_Freq_Distribution[-1], index = "simpson")
-    
-    
-    #Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a more evene distribution of each pathoypes frequency within the population.
-    
-    Evenness <- Shannon / log(Number_of_pathotypes)
-    
-    all.indices <-
-      list(
-        Number_of_isolates = Number_of_isolates,
-        Number_of_pathotypes = Number_of_pathotypes,
-        Simple = Simple,
-        Gleason = Gleason,
-        Shannon = Shannon,
-        Simpson = Simpson,
-        Evenness = Evenness
-      )
-    return(all.indices)
+calculate_diversity <- function(x,
+                                cutoff,
+                                control,
+                                sample,
+                                Rps,
+                                perc_susc) {
+  # CRAN NOTE avoidance
+  
+  if (missing(x) |
+      missing(cutoff) |
+      missing(control) |
+      missing(sample) |
+      missing(Rps) |
+      missing(perc_susc)) {
+    stop(call. = FALSE,
+         "You have failed to provide all necessary inputs.\
+         Please check and try again.")
   }
+  
+  data.table::setDT(x)
+  # The susceptible control is removed from all isolates in the data set so that
+  #  it will not affect complexity calculations and a new data set is made that
+  #  it does not contain susceptible controls.
+  
+  x <- subset(x, Rps != control)
+  x[, Rps := droplevels(Rps)]
+  
+  # summarise the reactions, create susceptible.1 field, see
+  # internal_functions.R
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
+  
+  # set the sample field to factor
+  expr <- paste0("x[, ", sample, ":= as.factor(", sample, ")]")
+  eval(parse(text = expr))
+  
+  # summarise the reactions, create susceptible.1 field, see
+  # internal_functions.R
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
+  
+  
+  # remove resistant reactions from the data set, leaving only susceptible
+  # reactions (pathotype)
+  
+  x <- subset(x, susceptible.1 != 0)
+  
+  # individual isolate complexities
+  expr <- paste0("x[, ", Rps, ":= as.character(", Rps, ")]")
+  eval(parse(text = expr))
+  
+  y <- vapply(split(x[, Rps, with = FALSE],
+                    x[, sample, with = FALSE]),
+              toString, character(1))
+  
+  y <- data.table::setDT(data.frame(
+    Isolate = as.numeric(names(res)),
+    Pathotype = unname(res),
+    stringsAsFactors = FALSE
+  ))
+  
+  y[, Pathotype := substr(y$Pathotype, 3, nchar(y$Pathotype) - 1)]
+  
+  z <- data.table::as.data.table(table(y$Pathotype))
+  data.table::setnames(z, c("Pathotype", "Frequency"))
+  
+  # determines the number of isolates within the data
+  N_isolates <- length(unique(x[[sample]]))
+  
+  # Determines the number of unique pathotypes for this analysis
+  N_pathotypes <- length(unique(y[["Pathotype"]]))
+  
+  # indices --------------------------------------------------------------------
+  # simple diversity will show the proportion of unique pathotypes to total
+  # isolates. As the values gets closer to 1, there is greater diversity in
+  # pathoypes within the population.
+  Simple <- N_pathotypes / N_isolates
+  
+  # An alternate version of Simple diversity index. This index is less
+  # sensitive to sample size than the simple index.
+  Gleason <- (N_pathotypes - 1) / log(N_isolates)
+  
+  # Shannon diversity index is typically between 1.5 and 3.5. As richness and
+  # evenness of the population increase, so does the Shannon index value
+  Shannon <-
+    vegan::diversity(z[-1], index = "shannon")
+  
+  # Simpson diversity index values range from 0 to 1. 1 represents high
+  # diversity and 0 represents no diversity.
+  Simpson <-
+    vegan::diversity(z[-1], index = "simpson")
+  
+  # Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
+  # more even distribution of each pathoypes frequency within the population.
+  Evenness <- Shannon / log(N_pathotypes)
+  
+  out <-
+    list(
+      table_of_pathotypes = z,
+      number_of_isolates = N_isolates,
+      number_of_pathotypes = N_pathotypes,
+      Simple = Simple,
+      Gleason = Gleason,
+      Shannon = Shannon,
+      Simpson = Simpson,
+      Evenness = Evenness
+    )
+  return(out)
+}
