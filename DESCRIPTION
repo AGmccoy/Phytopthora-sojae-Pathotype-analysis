@@ -24,6 +24,7 @@ Description: Provides tools for analysis of Phytophthora sojae survey data.
   spreadsheet, doi:10.1046/j.1365-3059.1999.00325.x.
 Depends: R (>= 3.2.0)
 Imports: 
+  data.table,
   ggplot2,
   magrittr,
   stringr,
