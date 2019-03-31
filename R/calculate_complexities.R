@@ -238,7 +238,7 @@ summary.hagis.complexities <- function(object, ...) {
   )
   
   x <- list(mn, sd, se)
-  names(x) <- c("Mean", "sd", "se")
+  names(x) <- c("mean", "sd", "se")
   class(x) <- "summary.complexity"
   x
 }
