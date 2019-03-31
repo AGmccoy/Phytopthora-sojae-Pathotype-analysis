@@ -23,14 +23,15 @@ isolate being tested. Character.}
 Character.}
 }
 \value{
-returns an object of \code{\link[=class]{class()}} "hagis.rps.summary"
-An object of class "hagis.summaries" is a \link[=data.table]{data.table}
+returns an object of \code{\link[=class]{class()}} \code{hagis.rps.summary}
+An object of class \code{hagis.summaries} is a \link[=data.table]{data.table}
 containing the following components fields
-\itemize{
-\item{grouped_complexities}{a \link[=data.table]{data.table} object of
-grouped complexities}
-\item{individual_complexities}{a \link[=data.table]{data.table} object of
-individual complexities}
+\describe{
+\item{Rps}{the Rps gene}
+\item{N_susc}{the total number susceptible for a given \emph{Rps} gene in the
+\code{Rps} field}
+\item{percent_pathogenic}{the frequency with which an \emph{Rps} gene is
+pathogenic}
 }
 }
 \description{
@@ -55,7 +56,9 @@ susc <- summarize_rps(x = Ps,
                        perc_susc = "perc.susc")
 susc
 
+plot(susc)
+
 }
 \seealso{
-\code{\link[=write_template]{write_template()}}, \code{\link[=percents]{percents()}}, \code{\link[=visualize_rps]{visualize_rps()}}
+\code{\link[=write_template]{write_template()}}
 }

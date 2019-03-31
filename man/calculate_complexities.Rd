@@ -28,10 +28,10 @@ Character.}
 
 An object of class \code{hagis.complexities} is a \code{list} containing the following
 components
-\itemize{
-\item{grouped_complexities} {a \link[=data.table]{data.table} object of
+\describe{
+\item{grouped_complexities}{a \link[=data.table]{data.table} object of
 grouped complexities}
-\item{individual_complexities} {a \link[=data.table]{data.table} object of
+\item{individual_complexities}{a \link[=data.table]{data.table} object of
 individual complexities}
 }
 }

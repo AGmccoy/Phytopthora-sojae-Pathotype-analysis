@@ -151,19 +151,20 @@ Character.</p></td>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>returns an object of <code><a href='https://www.rdocumentation.org/packages/base/topics/class'>class()</a></code> "hagis.rps.summary"
-An object of class "hagis.summaries" is a data.table
-containing the following components fields</p><ul>
-<li><p>grouped_complexitiesa data.table object of
-grouped complexities</p></li>
-<li><p>individual_complexitiesa data.table object of
-individual complexities</p></li>
-</ul>
+    <p>returns an object of <code><a href='https://www.rdocumentation.org/packages/base/topics/class'>class()</a></code> <code>hagis.rps.summary</code>
+An object of class <code>hagis.summaries</code> is a data.table
+containing the following components fields</p><dl class='dl-horizontal'>
+<dt>Rps</dt><dd><p>the Rps gene</p></dd>
+<dt>N_susc</dt><dd><p>the total number susceptible for a given <em>Rps</em> gene in the
+<code>Rps</code> field</p></dd>
+<dt>percent_pathogenic</dt><dd><p>the frequency with which an <em>Rps</em> gene is
+pathogenic</p></dd>
+</dl>
 
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code>write_template()</code>, <code>percents()</code>, <code>visualize_rps()</code></p></div>
+    <div class='dont-index'><p><code>write_template()</code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -194,7 +195,7 @@ individual complexities</p></li>
                        <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
                        <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
                        <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
-<span class='no'>susc</span></div><div class='output co'>#&gt;             Rps N_susc percent.pathogenic
+<span class='no'>susc</span></div><div class='output co'>#&gt;             Rps N_susc percent_pathogenic
 #&gt;  1: susceptible     21             100.00
 #&gt;  2:      Rps 1a     21             100.00
 #&gt;  3:      Rps 1b     15              71.43
@@ -209,6 +210,7 @@ individual complexities</p></li>
 #&gt; 12:       Rps 5     13              61.90
 #&gt; 13:       Rps 6     11              52.38
 #&gt; 14:       Rps 7     21             100.00</div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/graphics/topics/plot'>plot</a></span>(<span class='no'>susc</span>)</div><div class='img'><img src='summarize_rps-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
