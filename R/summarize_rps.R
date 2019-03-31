@@ -3,7 +3,7 @@
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by _Rps_ gene.
-#' @param x a `data.frame` containing the data. Character.
+#' @param x a `data.frame` containing the data.
 #' @param cutoff value for percent susceptible cutoff. Numeric.
 #' @param control value used to denote the susceptible control in the `Rps`
 #'  field. Character.

@@ -7,7 +7,7 @@
 summarize_rps(x, cutoff, control, sample, Rps, perc_susc)
 }
 \arguments{
-\item{x}{a \code{data.frame} containing the data. Character.}
+\item{x}{a \code{data.frame} containing the data.}
 
 \item{cutoff}{value for percent susceptible cutoff. Numeric.}
 

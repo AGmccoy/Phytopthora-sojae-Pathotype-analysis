@@ -35,33 +35,33 @@ test_that("summarize_rps() stops if lacking all params", {
     sample = "Isolate",
     Rps = "Rps",
     perc_susc = "perc.susc"
-  ))
+))
   testthat::expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     sample = "Isolate",
     Rps = "Rps",
     perc_susc = "perc.susc"
-  ))
+))
   testthat::expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
     Rps = "Rps",
     perc_susc = "perc.susc"
-  ))
+))
   testthat::expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
     sample = "isolate",
     perc_susc = "perc.susc"
-  ))
+))
   testthat::expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
     sample = "isolate",
     Rps = "Rps",
-  ))
+))
 })
