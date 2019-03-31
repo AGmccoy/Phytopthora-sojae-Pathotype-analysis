@@ -118,6 +118,18 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=testthat"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "identifier": "covr",
+      "name": "covr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=covr"
     }
   ],
   "softwareRequirements": [
@@ -195,7 +207,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "18.516KB",
+  "fileSize": "18.778KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -226,5 +238,7 @@
     }
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
-  "developmentStatus": "https://www.repostatus.org/#wip"
+  "developmentStatus": "https://www.repostatus.org/#wip",
+  "releaseNotes": "https://github.com/adamhsparks/hagis/blob/master/NEWS.md",
+  "contIntegration": ["https://travis-ci.org/adamhsparks/hagis", "https://ci.appveyor.com/project/adamhsparks/hagis", "https://codecov.io/github/adamhsparks/hagis?branch=master"]
 }

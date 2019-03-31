@@ -6,6 +6,12 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![Travis build
+status](https://travis-ci.org/adamhsparks/hagis.svg?branch=master)](https://travis-ci.org/adamhsparks/hagis)
+[![AppVeyor build
+status](https://ci.appveyor.com/api/projects/status/github/adamhsparks/hagis?branch=master&svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis)
+[![Coverage
+status](https://codecov.io/gh/adamhsparks/hagis/branch/master/graph/badge.svg)](https://codecov.io/github/adamhsparks/hagis?branch=master)
 
 The goal of *hagis* is to provide *Phytophthora sojae* pathotype
 analysis that the original [HaGiS
