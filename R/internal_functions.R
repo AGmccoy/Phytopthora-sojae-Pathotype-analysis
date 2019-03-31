@@ -1,6 +1,6 @@
 
 # data.table special symbols for package-wide use
-.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- NULL
+.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- i.N <-  NULL
 
 #' Create Binary Reaction Value
 #'
@@ -13,6 +13,7 @@
 #' @importFrom data.table ":="
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
+  susceptible.1 <- NULL
   # if else for resistant or susceptible reaction. This will mark susceptible
   # reactions with a "1" in a new column labelled "Susceptible.1" to then be
   # used in later analysis.

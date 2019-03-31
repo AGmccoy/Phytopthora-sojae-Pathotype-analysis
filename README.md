@@ -47,13 +47,6 @@ including: distribution of susceptibilities (effective and non-effective
 pathotype frequency distribution, as well as diversity indices for
 pathotypes.
 
-This package should allow for all users to use their own data. To
-assist, functions are provided to generate a template for data entry,
-`write_template()` and calculate total and percent values for each
-observation, `percents()`. It is recommended to use these functions as
-the user .csv files will need to have the expected column headings,
-“perc.susc”, “rps”and “isolate”, to function properly.
-
 Users may refer to the example file, `system.file("extdata",
 "practice_data_set.csv", package = "hagis")` and the documentation for
 further examples.
@@ -68,6 +61,7 @@ citation("hagis")
 
 # References
 
-Herrmann, Löwer, and Schachtel, (1999), A new tool for entry and
-analysis of virulence data for plant pathogens. Plant Pathology, 48:
-154-158. <doi:10.1046/j.1365-3059.1999.00325.x>
+> Herrmann, , Löwer, and Schachtel, (1999), A new tool for entry and
+> analysis of virulence data for plant pathogens. Plant Pathology, 48:
+> 154-158. DOI:
+> [10.1046/j.1365-3059.1999.00325.x](https://doi.org/10.1046/j.1365-3059.1999.00325.x)

@@ -56,9 +56,10 @@ complexities <- calculate_complexities(x = Ps,
                                       Rps = "Rps",
                                       perc_susc = "perc.susc")
 complexities
+
 summary(complexities)
 
-}
-\seealso{
-\code{\link[=plot.hagis.complexities]{plot.hagis.complexities()}}
+# plot complexities frequency
+autoplot(complexities, type = "frequency")
+
 }

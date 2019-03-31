@@ -1,17 +1,36 @@
 
-
 #' Calculate Diversity Index
 #'
 #' @description Calculates _Phytophthora_ diversity index
-#' @export calc_diversity
+#' @inheritParams summarize_rps
+#' @examples
+#' # locate system file for import
+#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+#'
+#' # import 'practice_data_set.csv'
+#' Ps <- read.csv(Ps)
+#' head(Ps)
+#'
+#' # calculate susceptibilities with a 60 % cutoff value
+#' diversities <- calculate_diversities(x = Ps,
+#'                                      cutoff = 60,
+#'                                      control = "susceptible",
+#'                                      sample = "Isolate",
+#'                                      Rps = "Rps",
+#'                                      perc_susc = "perc.susc")
+#' 
+#' diversities
+#' 
+#' @export calculate_diversities
 
-calculate_diversity <- function(x,
+calculate_diversities <- function(x,
                                 cutoff,
                                 control,
                                 sample,
                                 Rps,
                                 perc_susc) {
   # CRAN NOTE avoidance
+  Pathotype <- susceptible.1 <- NULL
   
   if (missing(x) |
       missing(cutoff) |
@@ -59,8 +78,8 @@ calculate_diversity <- function(x,
               toString, character(1))
   
   y <- data.table::setDT(data.frame(
-    Isolate = as.numeric(names(res)),
-    Pathotype = unname(res),
+    Isolate = as.numeric(names(y)),
+    Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))
   
@@ -68,6 +87,7 @@ calculate_diversity <- function(x,
   
   z <- data.table::as.data.table(table(y$Pathotype))
   data.table::setnames(z, c("Pathotype", "Frequency"))
+  data.table::setcolorder(z, c("Frequency", "Pathotype"))
   
   # determines the number of isolates within the data
   N_isolates <- length(unique(x[[sample]]))
@@ -88,18 +108,18 @@ calculate_diversity <- function(x,
   # Shannon diversity index is typically between 1.5 and 3.5. As richness and
   # evenness of the population increase, so does the Shannon index value
   Shannon <-
-    vegan::diversity(z[-1], index = "shannon")
+    vegan::diversity(z[["Frequency"]], index = "shannon")
   
   # Simpson diversity index values range from 0 to 1. 1 represents high
   # diversity and 0 represents no diversity.
   Simpson <-
-    vegan::diversity(z[-1], index = "simpson")
+    vegan::diversity(z[["Frequency"]], index = "simpson")
   
   # Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
   # more even distribution of each pathoypes frequency within the population.
   Evenness <- Shannon / log(N_pathotypes)
   
-  out <-
+  z <-
     list(
       table_of_pathotypes = z,
       number_of_isolates = N_isolates,
@@ -110,5 +130,33 @@ calculate_diversity <- function(x,
       Simpson = Simpson,
       Evenness = Evenness
     )
-  return(out)
+  
+  # Set new class
+  class(z) <- union("hagis.diversities", class(x))
+  return(z)
+}
+
+#' Prints hagis.diversities Object
+#'
+#' Custom [print()] method for `hagis.diversities` objects.
+#'
+#' @param x a hagis.diversities object
+#' @param ... ignored
+#' @export
+#' @noRd
+print.hagis.diversities <- function(x,
+                                    digits = max(3L, getOption("digits") - 3L),
+                                    ...) {
+  cat("\nhagis Diversities\n")
+  cat("\nNumber of Isolates", x[[2]])
+  cat("\nNumber of Pathotypes", x[[3]], "\n")
+  cat("\n")
+  cat("Indices\n")
+  cat("Simple  ",  x[[4]], "\n")
+  cat("Gleason ",  x[[5]], "\n")
+  cat("Shannon ",  x[[6]], "\n")
+  cat("Simpson ",  x[[7]], "\n")
+  cat("Evenness ",  x[[8]], "\n")
+  cat("\n")
+  invisible(x)
 }

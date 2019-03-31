@@ -162,10 +162,6 @@ individual complexities</p></dd>
 </dl>
 
     
-    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
-
-    <div class='dont-index'><p><code><a href='plot.hagis.complexities.html'>plot.hagis.complexities()</a></code></p></div>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -237,7 +233,8 @@ individual complexities</p></dd>
 #&gt; 20:     20     11
 #&gt; 21:     21     13
 #&gt;     sample N_samp
-#&gt; </div><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>complexities</span>)</div><div class='output co'>#&gt; 
+#&gt; </div><div class='input'>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/summary'>summary</a></span>(<span class='no'>complexities</span>)</div><div class='output co'>#&gt; 
 #&gt; Mean of Complexities
 #&gt; 8.714286 
 #&gt; 
@@ -246,6 +243,8 @@ individual complexities</p></dd>
 #&gt; 
 #&gt; Standard Error of Complexities
 #&gt; 0.4372144</div><div class='input'>
+<span class='co'># plot complexities frequency</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/ggplot2/topics/autoplot'>autoplot</a></span>(<span class='no'>complexities</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"frequency"</span>)</div><div class='img'><img src='calculate_complexities-1.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -254,8 +253,6 @@ individual complexities</p></dd>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#see-also">See also</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>

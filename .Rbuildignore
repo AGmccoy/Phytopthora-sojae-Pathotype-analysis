@@ -1,3 +1,5 @@
+^docs$
+^_pkgdown\.yml$
 ^codemeta\.json$
 ^README\.Rmd$
 ^LICENSE\.md$

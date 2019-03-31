@@ -56,9 +56,7 @@ susc <- summarize_rps(x = Ps,
                        perc_susc = "perc.susc")
 susc
 
-plot(susc)
+# plot susceptibilities
+autoplot(susc)
 
-}
-\seealso{
-\code{\link[=write_template]{write_template()}}
 }
