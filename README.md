@@ -6,10 +6,10 @@
 [![Project Status: WIP – Initial development is in progress, but there
 has not yet been a stable, usable release suitable for the
 public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![Travis build
-status](https://travis-ci.org/adamhsparks/hagis.svg?branch=master)](https://travis-ci.org/adamhsparks/hagis)
-[![AppVeyor build
-status](https://ci.appveyor.com/api/projects/status/github/adamhsparks/hagis?branch=master&svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis)
+[![Travis Build
+Status](https://travis-ci.org/openplantpathology/hagis.svg?branch=master)](https://travis-ci.org/openplantpathology/hagis)
+[![Appveyor Build
+Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis/branch/master)
 [![Coverage
 status](https://codecov.io/gh/adamhsparks/hagis/branch/master/graph/badge.svg)](https://codecov.io/github/adamhsparks/hagis?branch=master)
 
