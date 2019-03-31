@@ -129,6 +129,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "data.table",
+      "name": "data.table",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=data.table"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "ggplot2",
       "name": "ggplot2",
       "provider": {
@@ -183,7 +195,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "155.594KB",
+  "fileSize": "241.076KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -213,5 +225,6 @@
       "url": "https://openplantpathology.github.io/hagis/"
     }
   ],
-  "issueTracker": "https://github.com/openplantpathology/hagis/issues"
+  "issueTracker": "https://github.com/openplantpathology/hagis/issues",
+  "developmentStatus": "https://www.repostatus.org/#wip"
 }
