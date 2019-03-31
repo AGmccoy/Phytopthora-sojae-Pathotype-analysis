@@ -29,3 +29,51 @@ test_that("calculate_complexities() works properly", {
                          tolerance = 1e-3)
   testthat::expect_named(summary(complexities), c("mean", "sd", "se"))
 })
+
+test_that("calculate_complexities() stops if lacking all params", {
+  Ps <-
+    system.file("extdata", "practice_data_set.csv", package = "hagis")
+  Ps <- read.csv(Ps)
+  testthat::expect_error(calculate_complexities(
+    cutoff = 60,
+    control = "susceptible",
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_complexities(
+    x = Ps,
+    control = "susceptible",
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_complexities(
+    x = Ps,
+    cutoff = 60,
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_complexities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_complexities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    sample = "isolate",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_complexities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    sample = "isolate",
+    Rps = "Rps",
+  ))
+})

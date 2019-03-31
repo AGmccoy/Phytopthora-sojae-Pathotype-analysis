@@ -21,3 +21,51 @@ test_that("calculate_diversity() works properly", {
                                         "Simpson",
                                         "Evenness"))
 })
+
+test_that("calculate_diversities() stops if lacking all params", {
+  Ps <-
+    system.file("extdata", "practice_data_set.csv", package = "hagis")
+  Ps <- read.csv(Ps)
+  testthat::expect_error(calculate_diversities(
+    cutoff = 60,
+    control = "susceptible",
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_diversities(
+    x = Ps,
+    control = "susceptible",
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_diversities(
+    x = Ps,
+    cutoff = 60,
+    sample = "Isolate",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_diversities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    Rps = "Rps",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_diversities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    sample = "isolate",
+    perc_susc = "perc.susc"
+  ))
+  testthat::expect_error(calculate_diversities(
+    x = Ps,
+    cutoff = 60,
+    control = "susceptible",
+    sample = "isolate",
+    Rps = "Rps",
+  ))
+})
