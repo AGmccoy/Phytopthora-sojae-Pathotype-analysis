@@ -7,28 +7,31 @@
 calculate_complexities(x, cutoff, control, sample, Rps, perc_susc)
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data. Character.}
+\item{x}{a \code{data.frame} containing the data. Character.}
 
-\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
+\item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
-\item{control}{Value used to denote the susceptible control in the \code{Rps}
+\item{control}{value used to denote the susceptible control in the \code{Rps}
 field. Character.}
 
-\item{sample}{Field providing the unique isolate identification for each
+\item{sample}{field providing the unique isolate identification for each
 isolate being tested. Character.}
 
-\item{Rps}{Field providing the \emph{Rps} gene(s) being tested. Character.}
+\item{Rps}{field providing the \emph{Rps} gene(s) being tested. Character.}
 
-\item{perc_susc}{Field providing the percent susceptible reactions.
+\item{perc_susc}{field providing the percent susceptible reactions.
 Character.}
 }
 \value{
-\code{calculate_complexities} returns an object of \code{\link[=class]{class()}} "hagis"
-An object of class "hagis" is a list containing the following components
+\code{calculate_complexities} returns an object of class
+\code{hagis.complexities}.
+
+An object of class \code{hagis.complexities} is a \code{list} containing the following
+components
 \itemize{
-\item{grouped_complexities}{a \link[=data.table]{data.table} object of
+\item{grouped_complexities} {a \link[=data.table]{data.table} object of
 grouped complexities}
-\item{individual_complexities}{a \link[=data.table]{data.table} object of
+\item{individual_complexities} {a \link[=data.table]{data.table} object of
 individual complexities}
 }
 }
@@ -47,14 +50,15 @@ head(Ps)
 
 # calculate susceptibilities with a 60 \% cutoff value
 complexities <- calculate_complexities(x = Ps,
-                       cutoff = 60,
-                       control = "susceptible",
-                       sample = "Isolate",
-                       Rps,
-                       perc_susc = "perc.susc")
+                                      cutoff = 60,
+                                      control = "susceptible",
+                                      sample = "Isolate",
+                                      Rps = "Rps",
+                                      perc_susc = "perc.susc")
+complexities
 summary(complexities)
 
 }
 \seealso{
-\code{\link[=visualize_distribution]{visualize_distribution()}}, \code{\link[=visualize_complexity]{visualize_complexity()}}
+\code{\link[=plot.hagis.complexities]{plot.hagis.complexities()}}
 }

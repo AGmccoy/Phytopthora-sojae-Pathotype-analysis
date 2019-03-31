@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Function reference • hagis</title>
+<title>Prints hagis.complexities Object — print.hagis.complexities • hagis</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,10 @@
 
 
 
-<meta property="og:title" content="Function reference" />
+<meta property="og:title" content="Prints hagis.complexities Object — print.hagis.complexities" />
+
+<meta property="og:description" content="Custom print() method for hagis complexity objects." />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-reference-index">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -97,72 +100,44 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Reference</h1>
+    <h1>Prints hagis.complexities Object</h1>
+    <small class="dont-index">Source: <a href='https://github.com/openplantpathology/hagis/blob/master/R/calculate_complexities.R'><code>R/calculate_complexities.R</code></a></small>
+    <div class="hidden name"><code>print.hagis.complexities.Rd</code></div>
     </div>
 
-    <table class="ref-index">
+    <div class="ref-description">
+    
+    <p>Custom <code><a href='https://www.rdocumentation.org/packages/base/topics/print'>print()</a></code> method for <span class="pkg">hagis</span> <code>complexity</code> objects.</p>
+    
+    </div>
 
-    <colgroup>
-      
-      <col class="alias" />
-      <col class="title" />
-    </colgroup>
-
-    <tbody>
-      <tr>
-        <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
-        </th>
-      </tr>
-      <tr>
-        
-        <td>
-          <p><code><a href="calculate_complexities.html">calculate_complexities()</a></code> </p>
-        </td>
-        <td><p>Calculate Distribution of Complexities by Isolate</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="freq_dist.html">freq_dist()</a></code> </p>
-        </td>
-        <td><p>Calculate pathotype frequency distribution</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="hagis.html">hagis</a></code> </p>
-        </td>
-        <td><p>Tools for Analysis of <em>Phytophthora</em> Pathotype Complexities, Distributions and Diversity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.hagis.complexities.html">plot(<i>&lt;hagis.complexities&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot <span class="pkg">hagis</span> Complexities</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot.hagis.rps.summary.html">plot(<i>&lt;hagis.rps.summary&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plot <em>Rps</em> Gene Summaries</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="summarize_rps.html">summarize_rps()</a></code> </p>
-        </td>
-        <td><p>Calculate and Summarize Distribution of Susceptibilities by <em>Rps</em> Gene</p></td>
-      </tr>
-    </tbody>
+    <pre class="usage"><span class='co'># S3 method for hagis.complexities</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='no'>x</span>, <span class='kw'>digits</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/Extremes'>max</a></span>(<span class='fl'>3L</span>,
+  <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/options'>getOption</a></span>(<span class='st'>"digits"</span>) - <span class='fl'>3L</span>), <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>x</th>
+      <td><p>a hagis.complexities object</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>ignored</p></td>
+    </tr>
     </table>
-  </div>
+    
 
+  </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
-    </ul>
+      <li><a href="#arguments">Arguments</a></li>
+                </ul>
+
   </div>
 </div>
 

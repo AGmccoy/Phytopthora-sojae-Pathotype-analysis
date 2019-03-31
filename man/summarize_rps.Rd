@@ -7,20 +7,31 @@
 summarize_rps(x, cutoff, control, sample, Rps, perc_susc)
 }
 \arguments{
-\item{x}{A \code{data.frame} containing the data. Character.}
+\item{x}{a \code{data.frame} containing the data. Character.}
 
-\item{cutoff}{Value for percent susceptible cutoff. Numeric.}
+\item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
-\item{control}{Value used to denote the susceptible control in the \code{Rps}
+\item{control}{value used to denote the susceptible control in the \code{Rps}
 field. Character.}
 
-\item{sample}{Field providing the unique isolate identification for each
+\item{sample}{field providing the unique isolate identification for each
 isolate being tested. Character.}
 
-\item{Rps}{Field providing the \emph{Rps} gene(s) being tested. Character.}
+\item{Rps}{field providing the \emph{Rps} gene(s) being tested. Character.}
 
-\item{perc_susc}{Field providing the percent susceptible reactions.
+\item{perc_susc}{field providing the percent susceptible reactions.
 Character.}
+}
+\value{
+returns an object of \code{\link[=class]{class()}} "hagis.rps.summary"
+An object of class "hagis.summaries" is a \link[=data.table]{data.table}
+containing the following components fields
+\itemize{
+\item{grouped_complexities}{a \link[=data.table]{data.table} object of
+grouped complexities}
+\item{individual_complexities}{a \link[=data.table]{data.table} object of
+individual complexities}
+}
 }
 \description{
 This function will calculate the distribution of
