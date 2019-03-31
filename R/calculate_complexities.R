@@ -46,19 +46,18 @@ calculate_complexities = function(x,
                                   sample,
                                   Rps,
                                   perc_susc) {
+  
+  .check_inputs(
+    .x = x,
+    .cutoff = cutoff,
+    .control = control,
+    .sample = sample,
+    .Rps = Rps,
+    .perc_susc = perc_susc
+  )
+  
   # CRAN NOTE avoidance
   distribution <- N_samp <- NULL
-  
-  if (missing(x) |
-      missing(cutoff) |
-      missing(control) |
-      missing(sample) |
-      missing(Rps) |
-      missing(perc_susc)) {
-    stop(call. = FALSE,
-         "You have failed to provide all necessary inputs.\
-         Please check and try again.")
-  }
   
   data.table::setDT(x)
   # The susceptible control is removed from all isolates in the data set so that
