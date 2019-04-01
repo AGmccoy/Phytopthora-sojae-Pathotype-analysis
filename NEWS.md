@@ -1,3 +1,5 @@
+# hagis 2.0.0.9000
+
 # hagis 2.0.0
 
 * Completely new R-package format rather than just Rmd and script files.
