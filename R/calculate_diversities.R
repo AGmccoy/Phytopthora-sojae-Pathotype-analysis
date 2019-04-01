@@ -24,11 +24,11 @@
 #' @export calculate_diversities
 
 calculate_diversities <- function(x,
-                                cutoff,
-                                control,
-                                sample,
-                                Rps,
-                                perc_susc) {
+                                  cutoff,
+                                  control,
+                                  sample,
+                                  Rps,
+                                  perc_susc) {
   
   .check_inputs(
     .x = x,
@@ -158,4 +158,41 @@ print.hagis.diversities <- function(x,
   cat("Evenness ",  x[[8]], "\n")
   cat("\n")
   invisible(x)
+}
+
+
+#' @noRd
+#' @export
+diversity_table <- function(x, ...) {
+  UseMethod("diversity_table", x)
+}
+
+#' Prints  hagis.diversities Object Table of Diversities
+#' 
+#' Custom S3 method for printing the frequency table of diversities from a
+#' `hagis.diversities` object
+#' 
+#' @param x a hagis.diversities object
+#' @param ... ignored
+#' @examples 
+#' # locate system file for import
+#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+#'
+#' # import 'practice_data_set.csv'
+#' Ps <- read.csv(Ps)
+#' head(Ps)
+#'
+#' # calculate susceptibilities with a 60 % cutoff value
+#' diversities <- calculate_diversities(x = Ps,
+#'                                      cutoff = 60,
+#'                                      control = "susceptible",
+#'                                      sample = "Isolate",
+#'                                      Rps = "Rps",
+#'                                      perc_susc = "perc.susc")
+#' 
+#' #' # print the diversities table
+#' diversity_table(diversities)
+#' @export
+diversity_table.hagis.diversities <- function(x, ...) {
+  x[[1]]
 }
