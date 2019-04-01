@@ -1,5 +1,11 @@
 # hagis 2.0.0.9000
 
+## Bug Fixes
+* Fix bug with complexities summary where mean wasn't printed
+
+## Minor Changes
+* Add new function to print diversities table, `diversities_table()`
+
 # hagis 2.0.0
 
 * Completely new R-package format rather than just Rmd and script files.
