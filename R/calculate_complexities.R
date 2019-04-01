@@ -21,9 +21,9 @@
 #'                                       Rps = "Rps",
 #'                                       perc_susc = "perc.susc")
 #' complexities
-#' 
+#'
 #' summary(complexities)
-#' 
+#'
 #' # plot complexities frequency
 #' autoplot(complexities, type = "frequency")
 #'
@@ -46,7 +46,7 @@ calculate_complexities = function(x,
                                   sample,
                                   Rps,
                                   perc_susc) {
-  
+
   .check_inputs(
     .x = x,
     .cutoff = cutoff,
@@ -55,63 +55,63 @@ calculate_complexities = function(x,
     .Rps = Rps,
     .perc_susc = perc_susc
   )
-  
+
   # CRAN NOTE avoidance
   distribution <- N_samp <- NULL
-  
+
   data.table::setDT(x)
   # The susceptible control is removed from all isolates in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
-  
+
   x <- subset(x, Rps != control)
   x[, Rps := droplevels(Rps)]
-  
+
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
+
   # set the sample field to factor
   expr <- paste0("x[, ", sample, ":= as.factor(", sample, ")]")
   eval(parse(text = expr))
-  
+
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
   # field, see internal_functions.R
   individual_complexities <-
     .create_summary_isolate(.y = x, .sample = sample)
-  
+
   # Frequency for each complexity (%).
   # Percent frequency is calculated by taking the individual complexity of each
   # Isolate and grouping all Isolates by their complexity
-  
-  
+
+
   # create an object of the number of genes in the data
   expr <- paste0("x[, ", Rps, "]")
   n_gene <- length(unique(eval(parse(text = expr))))
-  
+
   # create an object of the number of samples in the data
   expr <- paste0("x[, ", sample, "]")
   n_sample <- length(unique(eval(parse(text = expr))))
-  
+
   # create an empty list to populate with frequency values
   complexities <- vector(mode = "list", length = n_gene)
   names(complexities) <- seq_along(1:n_gene)
-  
+
   for (i in seq_along(1:n_gene)) {
     complexities[[i]] <- round(
       length(
         which(individual_complexities[, N_samp == i])) / n_sample * 100, 2)
   }
-  
+
   grouped_complexities <- data.table::setDT(utils::stack(complexities))
   names(grouped_complexities) <- c("frequency", "N_samp")
-  
+
   # distribution of complexity (counts)
   dist <- individual_complexities[, .N, by = N_samp]
   dist[, N_samp := as.factor(N_samp)]
   grouped_complexities[dist, on = "N_samp", distribution := i.N]
-  
+
   # set NA to 0 for distribution
   grouped_complexities[is.na(distribution), distribution := 0]
   data.table::setcolorder(grouped_complexities,
@@ -122,10 +122,10 @@ calculate_complexities = function(x,
     list(grouped_complexities, individual_complexities)
   names(complexities) <-
     c("grouped_complexities", "indvidual_complexities")
-  
+
   # Set new class
   class(complexities) <- union("hagis.complexities", class(x))
-  
+
   return(complexities)
 }
 
@@ -168,7 +168,7 @@ calculate_complexities = function(x,
 autoplot.hagis.complexities <- function(object, type, ...) {
   # create a single data.frame to use in the ggplot call
   z <- object[[1]]
-  
+
   plot_frequency <- function(.data) {
     #CRAN Note avoidance
     complexity <- frequency <- NULL
@@ -180,7 +180,7 @@ autoplot.hagis.complexities <- function(object, type, ...) {
       ggplot2::ggtitle("Percentage of Pathotype Complexities") +
       ggplot2::coord_flip()
   }
-  
+
   plot_distribution <- function(.data) {
     #CRAN Note avoidance
     complexity <- distribution <- NULL
@@ -192,7 +192,7 @@ autoplot.hagis.complexities <- function(object, type, ...) {
       ggplot2::ggtitle("Number of Isolates in Each Pathotype Complexity") +
       ggplot2::coord_flip()
   }
-  
+
   if (type == "frequency") {
     plot_frequency(.data = z)
   } else {
@@ -235,7 +235,7 @@ summary.hagis.complexities <- function(object, ...) {
     stats::var(object$indvidual_complexities$N_samp) /
       length(object$indvidual_complexities$N_samp)
   )
-  
+
   x <- list(mn, sd, se)
   names(x) <- c("mean", "sd", "se")
   class(x) <- "summary.complexity"
@@ -254,7 +254,7 @@ print.summary.complexity <- function(x,
                                      digits = max(3L, getOption("digits") - 3L),
                                      ...) {
   cat("\nMean of Complexities\n")
-  cat(x$Mean, "\n")
+  cat(x$mean, "\n")
   cat("\nStandard Deviation of Complexities\n")
   cat(x$sd, "\n")
   cat("\nStandard Error of Complexities\n")
