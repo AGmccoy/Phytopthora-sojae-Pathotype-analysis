@@ -1,6 +1,6 @@
 Package: hagis
 Title: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity
-Version: 0.0.0.9000
+Version: 0.0.1
 Authors@R: c(
   person(given = "Austin", family = "McCoy", role = "aut",
   email = "mccoyaus@msu.edu",
