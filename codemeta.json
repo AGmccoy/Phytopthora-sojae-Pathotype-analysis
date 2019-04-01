@@ -188,7 +188,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "19.668KB",
+  "fileSize": "19.783KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
@@ -215,7 +215,10 @@
         }
       ],
       "name": "{hagis}: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity",
-      "url": "https://openplantpathology.github.io/hagis/"
+      "identifier": "10.5281/zenodo.2619820",
+      "url": "https://openplantpathology.github.io/hagis/",
+      "@id": "https://doi.org/10.5281/zenodo.2619820",
+      "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",

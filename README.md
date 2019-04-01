@@ -11,6 +11,7 @@ Status](https://travis-ci.org/openplantpathology/hagis.svg?branch=master)](https
 [![Appveyor Build
 Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis/branch/master)
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
+[![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 
 The goal of *hagis* is to provide *Phytophthora sojae* pathotype
 analysis that the original [HaGiS

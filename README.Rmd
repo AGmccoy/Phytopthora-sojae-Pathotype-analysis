@@ -20,6 +20,7 @@ library(hagis)
 [![Travis Build Status](https://travis-ci.org/openplantpathology/hagis.svg?branch=master)](https://travis-ci.org/openplantpathology/hagis)
 [![Appveyor Build Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis/branch/master)
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
+[![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 
 The goal of _hagis_ is to provide _Phytophthora sojae_ pathotype analysis that the original [HaGiS worksheet](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x) (Herrmann, Löwer and Schachtel) provided.
 

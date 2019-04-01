@@ -9,11 +9,12 @@ bibentry(bibtype = "Manual",
                     person("Martin", "Chilvers")),
          year = year,
          note = note,
-         url = "https://openplantpathology.github.io/hagis/")
+         url = "https://openplantpathology.github.io/hagis/",
+         DOI = "10.5281/zenodo.2619820")
 
 textVersion =
   paste0("Austin McCoy, Zachary Noel, Adam H. Sparks, and Martin Chilvers (",
          year,
          "). hagis: Tools for Analysis of Phytophthora Pathotype Complexities,
          Distributions and Diversity",
-         note, ".")
+         note, ". DOI: 10.5281/zenodo.2619820")
