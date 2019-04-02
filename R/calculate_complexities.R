@@ -40,7 +40,7 @@
 #'   }
 #' @export calculate_complexities
 
-calculate_complexities = function(x,
+calculate_complexities <- function(x,
                                   cutoff,
                                   control,
                                   sample,
@@ -213,7 +213,7 @@ autoplot.hagis.complexities <- function(object, type, ...) {
 #' @noRd
 #' @export
 .create_summary_isolate <- function(.y, .sample) {
-  expr = paste0(".y[, list(N_samp = sum(susceptible.1)), by = list(sample = ",
+  expr <- paste0(".y[, list(N_samp = sum(susceptible.1)), by = list(sample = ",
                 .sample,
                 ")]")
   y <- eval(parse(text = expr))
