@@ -29,6 +29,7 @@ Imports:
   gridExtra,
   pander,
   stats,
+  stringr,
   utils,
   vegan
 License: MIT + file LICENSE
