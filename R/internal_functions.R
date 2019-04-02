@@ -46,6 +46,6 @@
   # if else for resistant or susceptible reaction. This will mark susceptible
   # reactions with a "1" in a new column labelled "Susceptible.1" to then be
   # used in later analysis.
-  susceptible <- .x$perc.susc >= 60
+  susceptible <- .x$perc_susc >= 60
   .x[, susceptible.1 := 0][susceptible, susceptible.1 := 1]
 }
