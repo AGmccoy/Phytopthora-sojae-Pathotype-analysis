@@ -135,7 +135,7 @@ autoplot.hagis.rps.summary <- function(object, ...) {
 #' @keywords Internal
 #' @noRd
 .create_summary_rps <- function(.y, .Rps) {
-  expr = paste0(".y[, list(N_susc = sum(susceptible.1)), by = list(Rps = ",
+  expr <- paste0(".y[, list(N_susc = sum(susceptible.1)), by = list(Rps = ",
                 .Rps,
                 ")]")
   y <- eval(parse(text = expr))

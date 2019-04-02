@@ -201,7 +201,7 @@ diversities_table <- function(x, type = "text", ...) {
     if (type == "text") {
       pander::pander(y, ...)
     } else if (type == "graphic") {
-      y$Pathotype = stringr::str_wrap(y$Pathotype, 60)
+      y$Pathotype <- stringr::str_wrap(y$Pathotype, 60)
       
       p <- gridExtra::tableGrob(y, theme = gridExtra::ttheme_default(...))
       gridExtra::grid.arrange(p)
