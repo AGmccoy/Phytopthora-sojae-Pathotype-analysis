@@ -26,6 +26,8 @@ Depends: R (>= 3.2.0)
 Imports: 
   data.table,
   ggplot2,
+  gridExtra,
+  pander,
   stats,
   utils,
   vegan
