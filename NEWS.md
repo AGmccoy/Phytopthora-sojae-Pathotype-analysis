@@ -2,6 +2,8 @@
 
 ## Bug Fixes
 * Fix bug with complexities summary where mean wasn't printed
+* Fixes some documentation goofs with links to other packages and their
+functions
 
 ## Minor Changes
 * Add new function to print diversities table, `diversities_table()`
