@@ -52,16 +52,11 @@ calculate_diversities <- function(x,
   
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
-  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff, .perc_susc = perc_susc)
   
   # set the sample field to factor
   expr <- paste0("x[, ", sample, ":= as.factor(", sample, ")]")
   eval(parse(text = expr))
-  
-  # summarise the reactions, create susceptible.1 field, see
-  # internal_functions.R
-  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
   
   # remove resistant reactions from the data set, leaving only susceptible
   # reactions (pathotype)
