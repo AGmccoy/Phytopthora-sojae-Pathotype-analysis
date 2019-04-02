@@ -1,40 +1,42 @@
 
 # test calculate complexities --------------------------------------------------
 context("Test that calculate_complexities() works as expected")
+
+Ps <-
+  system.file("extdata", "practice_data_set.csv", package = "hagis")
+Ps <- read.csv(Ps)
+complexities <- calculate_complexities(
+  x = Ps,
+  cutoff = 60,
+  control = "susceptible",
+  sample = "Isolate",
+  Rps = "Rps",
+  perc_susc = "perc.susc"
+)
+
 test_that("calculate_complexities() works properly", {
-  Ps <-
-    system.file("extdata", "practice_data_set.csv", package = "hagis")
-  Ps <- read.csv(Ps)
-  complexities <- calculate_complexities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = "Isolate",
-    Rps = "Rps",
-    perc_susc = "perc.susc"
-  )
-  testthat::expect_s3_class(complexities, "hagis.complexities")
-  testthat::expect_length(complexities, 2)
-  testthat::expect_named(complexities,
-                         c("grouped_complexities",
-                           "indvidual_complexities"))
+  expect_s3_class(complexities, "hagis.complexities")
+  expect_length(complexities, 2)
+  expect_named(complexities,
+               c("grouped_complexities",
+                 "indvidual_complexities"))
   
   # test summary.hagis.complexities
-  testthat::expect_length(summary(complexities), 3)
-  testthat::expect_equal(summary(complexities)[[1]], 8.714286,
-                         tolerance = 1e-3)
-  testthat::expect_equal(summary(complexities)[[2]], 2.003568,
-                         tolerance = 1e-3)
-  testthat::expect_equal(summary(complexities)[[3]], 0.4372144,
-                         tolerance = 1e-3)
-  testthat::expect_named(summary(complexities), c("mean", "sd", "se"))
+  expect_length(summary(complexities), 3)
+  expect_equal(summary(complexities)[[1]], 8.714286,
+               tolerance = 1e-3)
+  expect_equal(summary(complexities)[[2]], 2.003568,
+               tolerance = 1e-3)
+  expect_equal(summary(complexities)[[3]], 0.4372144,
+               tolerance = 1e-3)
+  expect_named(summary(complexities), c("mean", "sd", "se"))
 })
 
 test_that("calculate_complexities() stops if lacking all params", {
   Ps <-
     system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = "y",
     cutoff = 60,
     control = "susceptible",
@@ -42,7 +44,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = Ps,
     cutoff = "sixty",
     control = "susceptible",
@@ -50,7 +52,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = Ps,
     cutoff = 60,
     control = NULL,
@@ -58,7 +60,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
@@ -66,7 +68,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
@@ -74,7 +76,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = NULL,
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(calculate_complexities(
+  expect_error(calculate_complexities(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
@@ -82,4 +84,30 @@ test_that("calculate_complexities() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = 60
   ), regexp = "You have failed to provide all necessary inputs")
+})
+
+
+test_that("print.summary.complexities() returns a proper summary", {
+  x <- capture.output(summary(complexities))
+  expect_type(x, "character")
+  expect_equal(x[[2]], "Mean of Complexities")
+  expect_equal(x[[3]], "8.714286 ")
+  expect_equal(x[[5]], "Standard Deviation of Complexities")
+  expect_equal(x[[6]], "2.003568 ")
+  expect_equal(x[[8]], "Standard Error of Complexities")
+  expect_equal(x[[9]], "0.4372144")
+})
+
+test_that("print.hagis.complexities() returns a proper summary", {
+  x <- capture.output(print(complexities))
+  expect_type(x, "character")
+  expect_equal(x[[2]], "Grouped Complexities")
+  expect_equal(x[[3]], "    complexity frequency distribution")
+  expect_equal(x[[4]], " 1:          1      0.00            0")
+  expect_equal(tail(x), c("18:     18     10",
+                          "19:     19     11",
+                          "20:     20     11",
+                          "21:     21     13",
+                          "    sample N_samp",
+                          ""))
 })

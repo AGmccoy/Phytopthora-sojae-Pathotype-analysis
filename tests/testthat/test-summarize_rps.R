@@ -1,7 +1,7 @@
 
 # test summarize Rps -----------------------------------------------------------
-context("Test that calculate_diversity() works as expected")
-test_that("calculate_diversity() works properly", {
+context("Test that summarize_rps() works as expected")
+test_that("summarize_rps() works properly", {
   Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
   rps <- summarize_rps(x = Ps,
@@ -10,11 +10,11 @@ test_that("calculate_diversity() works properly", {
                        sample = "Isolate",
                        Rps = "Rps",
                        perc_susc = "perc.susc")
-  testthat::expect_s3_class(rps, "hagis.rps.summary")
-  testthat::expect_length(rps, 3)
-  testthat::expect_named(rps, c("Rps",
-                                "N_susc",
-                                "percent_pathogenic"
+  expect_s3_class(rps, "hagis.rps.summary")
+  expect_length(rps, 3)
+  expect_named(rps, c("Rps",
+                      "N_susc",
+                      "percent_pathogenic"
   ))
 })
 
@@ -22,7 +22,7 @@ test_that("summarize_rps() stops if lacking all params", {
   Ps <-
     system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = "y",
     cutoff = 60,
     control = "susceptible",
@@ -30,7 +30,7 @@ test_that("summarize_rps() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = Ps,
     cutoff = "sixty",
     control = "susceptible",
@@ -38,7 +38,7 @@ test_that("summarize_rps() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = NULL,
@@ -46,7 +46,7 @@ test_that("summarize_rps() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
@@ -54,7 +54,7 @@ test_that("summarize_rps() stops if lacking all params", {
     Rps = "Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",
@@ -62,7 +62,7 @@ test_that("summarize_rps() stops if lacking all params", {
     Rps = NULL,
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
-  testthat::expect_error(summarize_rps(
+  expect_error(summarize_rps(
     x = Ps,
     cutoff = 60,
     control = "susceptible",

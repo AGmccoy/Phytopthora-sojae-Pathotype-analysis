@@ -10,5 +10,5 @@ test_that("autoplot.hagis.rps.summary() returns a ggplot2 object", {
                        sample = "Isolate",
                        Rps = "Rps",
                        perc_susc = "perc.susc")
-  testthat::expect_s3_class(autoplot(rps), c("gg", "ggplot"))
+  expect_s3_class(autoplot(rps), c("gg", "ggplot"))
 })
