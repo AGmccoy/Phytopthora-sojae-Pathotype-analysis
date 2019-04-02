@@ -28,7 +28,7 @@ The goal of _hagis_ is to provide _Phytophthora sojae_ pathotype analysis that t
 
 Currently you can only install _hagis_ from GitHub with:
 
-``` r
+``` {r, eval=FALSE}
 if (!require("remotes")) {
   install.packages("remotes", repos = "http://cran.rstudio.com/")
   library("remotes")
@@ -48,7 +48,7 @@ Users may refer to the example file, `system.file("extdata", "practice_data_set.
 ## Citation
 Please cite _hagis_ by using:
 
-```r
+```{r}
 citation("hagis")
 ```
 

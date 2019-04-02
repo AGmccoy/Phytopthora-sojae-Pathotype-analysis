@@ -63,6 +63,22 @@ Please cite *hagis* by using:
 
 ``` r
 citation("hagis")
+#> 
+#> McCoy A, Noel Z, Sparks A, Chilvers M (????). _hagis: Tools for
+#> Analysis of Phytophthora Pathotype Complexities, Distributions and
+#> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
+#> http://doi.org/10.5281/zenodo.2619820), R package version
+#> 2.0.0.9000, <URL: https://openplantpathology.github.io/hagis/>.
+#> 
+#> A BibTeX entry for LaTeX users is
+#> 
+#>   @Manual{,
+#>     title = {{hagis}: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity},
+#>     author = {Austin McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
+#>     note = {R package version 2.0.0.9000},
+#>     url = {https://openplantpathology.github.io/hagis/},
+#>     doi = {10.5281/zenodo.2619820},
+#>   }
 ```
 
 # References
