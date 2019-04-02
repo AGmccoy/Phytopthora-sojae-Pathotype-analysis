@@ -35,7 +35,7 @@
 #' autoplot(susc)
 #'
 #' @return  returns an object of [class()] `hagis.rps.summary`
-#' An object of class `hagis.summaries` is a [data.table][data.table()]
+#' An object of class `hagis.summaries` is a [data.table::data.table()]
 #'  containing the following components fields
 #'   \describe{
 #'     \item{Rps}{the Rps gene}

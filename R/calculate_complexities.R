@@ -33,9 +33,9 @@
 #' An object of class `hagis.complexities` is a `list` containing the following
 #'  components
 #'   \describe{
-#'     \item{grouped_complexities}{a [data.table][data.table()] object of
+#'     \item{grouped_complexities}{a [data.table::data.table()] object of
 #'       grouped complexities}
-#'     \item{individual_complexities}{a [data.table][data.table()] object of
+#'     \item{individual_complexities}{a [data.table::data.table()] object of
 #'       individual complexities}
 #'   }
 #' @export calculate_complexities
