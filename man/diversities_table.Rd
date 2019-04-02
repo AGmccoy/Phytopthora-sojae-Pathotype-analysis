@@ -12,12 +12,13 @@ diversities_table(x, type = "text", ...)
 \item{type}{return a text or graphic type table. Valid values are \code{text} or
 \code{graphic} Defaults to \code{text}.}
 
-\item{...}{other arguments passed to \code{\link[gridExtra:ttheme_default]{gridExtra::ttheme_default()}}}
+\item{...}{other arguments passed to \code{\link[pander:panderOptions]{pander::panderOptions()}} or
+\code{\link[gridExtra:ttheme_default]{gridExtra::ttheme_default()}}}
 }
 \description{
 Print the frequency table of diversities from a \code{hagis.diversities} object.
-Users may select from a text table (a \code{\link[pander:pander]{pander::pander()}} object) or as a
-graphic, a \code{\link[gridExtra:tableGrob]{gridExtra::tableGrob()}} object
+Users may select from a \link{pander} table (a text object for Markdown) or a
+graphic object (a \code{\link[gridExtra:tableGrob]{gridExtra::tableGrob()}}).
 }
 \examples{
 # locate system file for import
