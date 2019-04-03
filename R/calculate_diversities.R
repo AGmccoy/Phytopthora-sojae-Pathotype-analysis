@@ -74,8 +74,6 @@ calculate_diversities <- function(x,
     stringsAsFactors = FALSE
   ))
   
-  y[, Pathotype := substr(y$Pathotype, 3, nchar(y$Pathotype) - 1)]
-  
   z <- data.table::as.data.table(table(y$Pathotype))
   data.table::setnames(z, c("Pathotype", "Frequency"))
   data.table::setcolorder(z, c("Frequency", "Pathotype"))
