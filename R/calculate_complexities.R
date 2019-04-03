@@ -1,8 +1,8 @@
 
-#' Calculate Distribution of Complexities by Isolate
+#' Calculate Distribution of Complexities by Sample
 #'
 #' @description This function will calculate the distribution of
-#' susceptibilities by isolate.
+#' susceptibilities by sample
 #' @inheritParams summarize_rps
 #' @examples
 #'
@@ -47,7 +47,8 @@ calculate_complexities <- function(x,
                                   Rps,
                                   perc_susc) {
 
-  .check_inputs(
+  # check inptuts and rename fields to work with this package
+  x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
     .control = control,
@@ -59,11 +60,9 @@ calculate_complexities <- function(x,
   # CRAN NOTE avoidance
   distribution <- N_samp <- NULL
 
-  data.table::setDT(x)
-  # The susceptible control is removed from all isolates in the data set so that
+  # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
-
   x <- subset(x, Rps != control)
   x[, Rps := droplevels(Rps)]
 
@@ -72,27 +71,22 @@ calculate_complexities <- function(x,
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
 
   # set the sample field to factor
-  expr <- paste0("x[, ", sample, ":= as.factor(", sample, ")]")
-  eval(parse(text = expr))
+  x[, sample := as.factor(sample)]
 
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
   # field, see internal_functions.R
-  individual_complexities <-
-    .create_summary_isolate(.y = x, .sample = sample)
+  individual_complexities <- .create_summary_isolate(.y = x)
 
-  # Frequency for each complexity (%).
+  # Frequency for each complexity (%) ------------------------------------------
   # Percent frequency is calculated by taking the individual complexity of each
   # Isolate and grouping all Isolates by their complexity
 
-
   # create an object of the number of genes in the data
-  expr <- paste0("x[, ", Rps, "]")
-  n_gene <- length(unique(eval(parse(text = expr))))
+  n_gene <- length(unique(x[, Rps]))
 
   # create an object of the number of samples in the data
-  expr <- paste0("x[, ", sample, "]")
-  n_sample <- length(unique(eval(parse(text = expr))))
+  n_sample <- length(unique(x[, sample]))
 
   # create an empty list to populate with frequency values
   complexities <- vector(mode = "list", length = n_gene)
@@ -212,12 +206,10 @@ autoplot.hagis.complexities <- function(object, type, ...) {
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @noRd
 #' @export
-.create_summary_isolate <- function(.y, .sample) {
-  expr <- paste0(".y[, list(N_samp = sum(susceptible.1)), by = list(sample = ",
-                .sample,
-                ")]")
-  y <- eval(parse(text = expr))
-  return(y)
+.create_summary_isolate <- function(.y) {
+  susceptible.1 <- NULL
+  .y <- .y[, list(N_samp = sum(susceptible.1)), by = list(sample)]
+  return(.y)
 }
 
 #' Summarises \pkg{hagis} Complexity Object

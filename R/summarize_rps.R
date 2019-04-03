@@ -7,8 +7,8 @@
 #' @param cutoff value for percent susceptible cutoff. Numeric.
 #' @param control value used to denote the susceptible control in the `Rps`
 #'  field. Character.
-#' @param sample field providing the unique isolate identification for each
-#'  isolate being tested. Character.
+#' @param sample field providing the unique identification for each sample being
+#'  tested. Character.
 #' @param Rps field providing the _Rps_ gene(s) being tested. Character.
 #' @param perc_susc field providing the percent susceptible reactions.
 #'  Character.
@@ -23,12 +23,12 @@
 #' head(Ps)
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' susc <- summarize_rps(x = Ps,
-#'                        cutoff = 60,
-#'                        control = "susceptible",
-#'                        sample = "Isolate",
-#'                        Rps = "Rps",
-#'                        perc_susc = "perc.susc")
+#'susc <- summarize_rps(x = Ps,
+#'                      cutoff = 60,
+#'                      control = "susceptible",
+#'                      sample = "Isolate",
+#'                      Rps = "Rps",
+#'                      perc_susc = "perc.susc")
 #' susc
 #'
 #' # plot susceptibilities
@@ -54,7 +54,8 @@ summarize_rps <- function(x,
                           Rps,
                           perc_susc) {
 
-  .check_inputs(
+  # check inptuts and rename fields to work with this package
+  x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
     .control = control,
@@ -64,19 +65,19 @@ summarize_rps <- function(x,
   )
   
   # CRAN NOTE avoidance
-  cutoff <- percent_pathogenic <- N_susc <- NULL
+  susceptible.1 <- percent_pathogenic <- N_susc <- NULL
   
-  data.table::setDT(x)
-  
-  # summary by rps gene to tally. This code takes the "Susceptible.1" column
-  # and summarizes it by gene for your total Isolates pathogenic on each gene.
+  # summarise the reactions, create susceptible.1 field, see
+  # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  x <- .create_summary_rps(.y = x, .Rps = Rps)
-  x[, percent_pathogenic := round((N_susc) / max(N_susc) * 100, 2)]
+  
+  # create new data.table with percentages
+  y <- x[, list(N_susc = sum(susceptible.1)), by = list(Rps)]
+  y[, percent_pathogenic := round((N_susc) / max(N_susc) * 100, 2)]
   
   # Set new class
-  class(x) <- union("hagis.rps.summary", class(x))
-  return(x)
+  class(y) <- union("hagis.rps.summary", class(y))
+  return(y)
 }
 
 #' Plot _Rps_ Gene Summaries
@@ -116,28 +117,9 @@ autoplot.hagis.rps.summary <- function(object, ...) {
                   ggplot2::aes(x = Rps,
                                y = percent_pathogenic)) +
     ggplot2::geom_col() +
-    ggplot2::labs(y = "Percent of Isolates",
+    ggplot2::labs(y = "Percent of Samples",
                   x = "") +
-    ggplot2::ggtitle(expression("Percentage of Isolates Pathogenic on" ~
+    ggplot2::ggtitle(expression("Percentage of Samples Pathogenic on" ~
                                   italic(Rps) ~ "genes")) +
     ggplot2::coord_flip()
-}
-
-#' Create Summary Table of Binary Reactions by Rps Gene
-#'
-#' Tally a summary by pathogenicity gene. This code takes the "Susceptible.1"
-#'  column and summarises it by gene for your total Isolates pathogenic on each
-#'  Rps gene.
-#'
-#' @param .x a `data.table` containing the values to be summarised
-#' @return A `data.table` that tallies the results by pathogenicity gene
-#' @author Adam H. Sparks, adamhsparks@@gmail.com
-#' @keywords Internal
-#' @noRd
-.create_summary_rps <- function(.y, .Rps) {
-  expr <- paste0(".y[, list(N_susc = sum(susceptible.1)), by = list(Rps = ",
-                .Rps,
-                ")]")
-  y <- eval(parse(text = expr))
-  return(y)
 }

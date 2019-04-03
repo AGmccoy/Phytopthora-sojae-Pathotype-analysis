@@ -30,7 +30,8 @@ calculate_diversities <- function(x,
                                   Rps,
                                   perc_susc) {
   
-  .check_inputs(
+  # check inptuts and rename fields to work with this package
+  x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
     .control = control,
@@ -40,10 +41,9 @@ calculate_diversities <- function(x,
   )
   
   # CRAN NOTE avoidance
-  Pathotype <- susceptible.1 <- NULL
+  Pathotype <- Frequency <- susceptible.1 <- NULL
   
-  data.table::setDT(x)
-  # The susceptible control is removed from all isolates in the data set so that
+  # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
   
@@ -52,27 +52,24 @@ calculate_diversities <- function(x,
   
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
-  x <- .binary_cutoff(.x = x, .cutoff = cutoff, .perc_susc = perc_susc)
+  x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
   # set the sample field to factor
-  expr <- paste0("x[, ", sample, ":= as.factor(", sample, ")]")
-  eval(parse(text = expr))
+  x[, sample := as.factor(sample)]
   
   # remove resistant reactions from the data set, leaving only susceptible
   # reactions (pathotype)
-  
   x <- subset(x, susceptible.1 != 0)
   
-  # individual isolate complexities
-  expr <- paste0("x[, ", Rps, ":= as.character(", Rps, ")]")
-  eval(parse(text = expr))
+  # individual sample complexities
+  x[, Rps := as.character(Rps)]
   
-  y <- vapply(split(x[, Rps, with = FALSE],
-                    x[, sample, with = FALSE]),
+  y <- vapply(split(x[, Rps],
+                    x[, sample]),
               toString, character(1))
   
   y <- data.table::setDT(data.frame(
-    Isolate = as.numeric(names(y)),
+    Sample = as.numeric(names(y)),
     Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))
@@ -83,31 +80,31 @@ calculate_diversities <- function(x,
   data.table::setnames(z, c("Pathotype", "Frequency"))
   data.table::setcolorder(z, c("Frequency", "Pathotype"))
   
-  # determines the number of isolates within the data
-  N_isolates <- length(unique(x[[sample]]))
+  # determines the number of samples within the data
+  N_samples <- length(unique(x[, sample]))
   
   # Determines the number of unique pathotypes for this analysis
-  N_pathotypes <- length(unique(y[["Pathotype"]]))
+  N_pathotypes <- length(unique(y[, Pathotype]))
   
   # indices --------------------------------------------------------------------
   # simple diversity will show the proportion of unique pathotypes to total
-  # isolates. As the values gets closer to 1, there is greater diversity in
+  # samples. As the values gets closer to 1, there is greater diversity in
   # pathoypes within the population.
-  Simple <- N_pathotypes / N_isolates
+  Simple <- N_pathotypes / N_samples
   
   # An alternate version of Simple diversity index. This index is less
   # sensitive to sample size than the simple index.
-  Gleason <- (N_pathotypes - 1) / log(N_isolates)
+  Gleason <- (N_pathotypes - 1) / log(N_samples)
   
   # Shannon diversity index is typically between 1.5 and 3.5. As richness and
   # evenness of the population increase, so does the Shannon index value
   Shannon <-
-    vegan::diversity(z[["Frequency"]], index = "shannon")
+    vegan::diversity(z[, Frequency], index = "shannon")
   
   # Simpson diversity index values range from 0 to 1. 1 represents high
   # diversity and 0 represents no diversity.
   Simpson <-
-    vegan::diversity(z[["Frequency"]], index = "simpson")
+    vegan::diversity(z[, Frequency], index = "simpson")
   
   # Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
   # more even distribution of each pathoypes frequency within the population.
@@ -116,7 +113,7 @@ calculate_diversities <- function(x,
   z <-
     list(
       table_of_pathotypes = z,
-      number_of_isolates = N_isolates,
+      number_of_samples = N_samples,
       number_of_pathotypes = N_pathotypes,
       Simple = Simple,
       Gleason = Gleason,
@@ -142,7 +139,7 @@ print.hagis.diversities <- function(x,
                                     digits = max(3L, getOption("digits") - 3L),
                                     ...) {
   cat("\nhagis Diversities\n")
-  cat("\nNumber of Isolates", x[[2]])
+  cat("\nNumber of Samples", x[[2]])
   cat("\nNumber of Pathotypes", x[[3]], "\n")
   cat("\n")
   cat("Indices\n")

@@ -1,6 +1,6 @@
 
 # data.table special symbols for package-wide use
-.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- i.N <-  NULL
+.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- i.N <- NULL
 
 #' Check User Inputs
 #'
@@ -10,8 +10,8 @@
 #' @param .cutoff value for percent susceptible cutoff. Numeric.
 #' @param .control value used to denote the susceptible control in the `Rps`
 #'  field. Character.
-#' @param .sample field providing the unique isolate identification for each
-#'  isolate being tested. Character.
+#' @param .sample field providing the unique identification for each sample
+#'  being tested. Character.
 #' @param .Rps field providing the _Rps_ gene(s) being tested. Character.
 #' @param .perc_susc field providing the percent susceptible reactions.
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
@@ -29,6 +29,10 @@
          "you have provided an improperly formatted item.\n",
          "Please check and try again.")
   }
+  data.table::setDT(.x)
+  data.table::setnames(.x, c(.perc_susc, .Rps, .sample),
+                       c("perc.susc", "Rps", "sample"))
+  return(.x)
 }
 
 #' Create Binary Reaction Value
@@ -42,10 +46,11 @@
 #' @importFrom data.table ":="
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
-  susceptible.1 <- NULL
+  susceptible.1 <- perc.susc <- NULL
   # if else for resistant or susceptible reaction. This will mark susceptible
   # reactions with a "1" in a new column labelled "Susceptible.1" to then be
   # used in later analysis.
-  susceptible <- .x$perc_susc >= 60
-  .x[, susceptible.1 := 0][control, susceptible.1 := 1]
+  .x[, susceptible.1 := 0]
+  .x[perc.susc >= .cutoff, susceptible.1 := 1]
+  return(.x)
 }
