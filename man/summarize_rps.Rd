@@ -14,8 +14,8 @@ summarize_rps(x, cutoff, control, sample, Rps, perc_susc)
 \item{control}{value used to denote the susceptible control in the \code{Rps}
 field. Character.}
 
-\item{sample}{field providing the unique isolate identification for each
-isolate being tested. Character.}
+\item{sample}{field providing the unique identification for each sample being
+tested. Character.}
 
 \item{Rps}{field providing the \emph{Rps} gene(s) being tested. Character.}
 
@@ -49,11 +49,11 @@ head(Ps)
 
 # calculate susceptibilities with a 60 \% cutoff value
 susc <- summarize_rps(x = Ps,
-                       cutoff = 60,
-                       control = "susceptible",
-                       sample = "Isolate",
-                       Rps = "Rps",
-                       perc_susc = "perc.susc")
+                     cutoff = 60,
+                     control = "susceptible",
+                     sample = "Isolate",
+                     Rps = "Rps",
+                     perc_susc = "perc.susc")
 susc
 
 # plot susceptibilities

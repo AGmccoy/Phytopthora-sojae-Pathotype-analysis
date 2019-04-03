@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_complexities.R
 \name{calculate_complexities}
 \alias{calculate_complexities}
-\title{Calculate Distribution of Complexities by Isolate}
+\title{Calculate Distribution of Complexities by Sample}
 \usage{
 calculate_complexities(x, cutoff, control, sample, Rps, perc_susc)
 }
@@ -14,8 +14,8 @@ calculate_complexities(x, cutoff, control, sample, Rps, perc_susc)
 \item{control}{value used to denote the susceptible control in the \code{Rps}
 field. Character.}
 
-\item{sample}{field providing the unique isolate identification for each
-isolate being tested. Character.}
+\item{sample}{field providing the unique identification for each sample being
+tested. Character.}
 
 \item{Rps}{field providing the \emph{Rps} gene(s) being tested. Character.}
 
@@ -37,7 +37,7 @@ individual complexities}
 }
 \description{
 This function will calculate the distribution of
-susceptibilities by isolate.
+susceptibilities by sample
 }
 \examples{
 
