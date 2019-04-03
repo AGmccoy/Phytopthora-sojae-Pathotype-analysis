@@ -14,7 +14,7 @@ test_that("calculate_diversities() works properly", {
   expect_s3_class(diversities, "hagis.diversities")
   expect_length(diversities, 8)
   expect_named(diversities, c("table_of_pathotypes",
-                              "number_of_isolates",
+                              "number_of_samples",
                               "number_of_pathotypes",
                               "Simple",
                               "Gleason",
@@ -82,7 +82,7 @@ test_that("print.hagis.diversities() returns a proper summary", {
   x <- capture.output(print(diversities))
   expect_type(x, "character")
   expect_equal(x[[2]], "hagis Diversities")
-  expect_equal(x[[4]], "Number of Isolates 21")
+  expect_equal(x[[4]], "Number of Samples 21")
   expect_equal(x[[5]], "Number of Pathotypes 19 ")
   expect_equal(x[[8]], "Simple   0.9047619 ")
   expect_equal(x[[9]], "Gleason  5.912257 ")
