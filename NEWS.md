@@ -7,6 +7,8 @@ functions
 
 ## Minor Changes
 * Add new function to print diversities table, `diversities_table()`
+* Add new function to print individual pathotypes table,
+ `individual_pathotypes()`
 
 # hagis 2.0.0
 

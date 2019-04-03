@@ -1,5 +1,5 @@
 
-#' Calculate Diversity Index
+#' Calculate Diversities Indices
 #'
 #' @description Calculates _Phytophthora_ diversity index
 #' @inheritParams summarize_rps
@@ -68,21 +68,22 @@ calculate_diversities <- function(x,
                     x[, sample]),
               toString, character(1))
   
-  y <- data.table::setDT(data.frame(
+  individual_pathotypes <- data.table::setDT(data.frame(
     Sample = as.numeric(names(y)),
     Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))
   
-  z <- data.table::as.data.table(table(y$Pathotype))
-  data.table::setnames(z, c("Pathotype", "Frequency"))
-  data.table::setcolorder(z, c("Frequency", "Pathotype"))
+  table_of_pathotypes <- data.table::as.data.table(
+    table(individual_pathotypes$Pathotype))
+  data.table::setnames(table_of_pathotypes, c("Pathotype", "Frequency"))
+  data.table::setcolorder(table_of_pathotypes, c("Frequency", "Pathotype"))
   
   # determines the number of samples within the data
   N_samples <- length(unique(x[, sample]))
   
   # Determines the number of unique pathotypes for this analysis
-  N_pathotypes <- length(unique(y[, Pathotype]))
+  N_pathotypes <- length(unique(individual_pathotypes[, Pathotype]))
   
   # indices --------------------------------------------------------------------
   # simple diversity will show the proportion of unique pathotypes to total
@@ -97,12 +98,12 @@ calculate_diversities <- function(x,
   # Shannon diversity index is typically between 1.5 and 3.5. As richness and
   # evenness of the population increase, so does the Shannon index value
   Shannon <-
-    vegan::diversity(z[, Frequency], index = "shannon")
+    vegan::diversity(table_of_pathotypes[, Frequency], index = "shannon")
   
   # Simpson diversity index values range from 0 to 1. 1 represents high
   # diversity and 0 represents no diversity.
   Simpson <-
-    vegan::diversity(z[, Frequency], index = "simpson")
+    vegan::diversity(table_of_pathotypes[, Frequency], index = "simpson")
   
   # Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
   # more even distribution of each pathoypes frequency within the population.
@@ -110,7 +111,8 @@ calculate_diversities <- function(x,
   
   z <-
     list(
-      table_of_pathotypes = z,
+      individual_pathotypes = individual_pathotypes,
+      table_of_pathotypes = table_of_pathotypes,
       number_of_samples = N_samples,
       number_of_pathotypes = N_pathotypes,
       Simple = Simple,
@@ -121,7 +123,7 @@ calculate_diversities <- function(x,
     )
   
   # Set new class
-  class(z) <- union("hagis.diversities", class(x))
+  class(z) <- union("hagis.diversities", class(z))
   return(z)
 }
 
@@ -137,20 +139,20 @@ print.hagis.diversities <- function(x,
                                     digits = max(3L, getOption("digits") - 3L),
                                     ...) {
   cat("\nhagis Diversities\n")
-  cat("\nNumber of Samples", x[[2]])
-  cat("\nNumber of Pathotypes", x[[3]], "\n")
+  cat("\nNumber of Samples", x[[3]])
+  cat("\nNumber of Pathotypes", x[[4]], "\n")
   cat("\n")
   cat("Indices\n")
-  cat("Simple  ",  x[[4]], "\n")
-  cat("Gleason ",  x[[5]], "\n")
-  cat("Shannon ",  x[[6]], "\n")
-  cat("Simpson ",  x[[7]], "\n")
-  cat("Evenness ",  x[[8]], "\n")
+  cat("Simple  ",  x[[5]], "\n")
+  cat("Gleason ",  x[[6]], "\n")
+  cat("Shannon ",  x[[7]], "\n")
+  cat("Simpson ",  x[[8]], "\n")
+  cat("Evenness ",  x[[9]], "\n")
   cat("\n")
   invisible(x)
 }
 
-#' Prints hagis.diversities Object Table of Diversities
+#' Prints Table of Diversities
 #' 
 #' Print the frequency table of diversities from a `hagis.diversities` object.
 #' Users may select from a [pander] table (a text object for Markdown) or a
@@ -180,10 +182,56 @@ print.hagis.diversities <- function(x,
 #' # print the diversities table
 #' diversities_table(diversities)
 #' 
-#' @seealso [calculate_diversities()]
+#' @seealso [calculate_diversities()], [individual_pathotypes()]
 #' @export
 diversities_table <- function(x, type = "text", ...) {
-  if (class(x)[[1]] != "hagis.diversities") {
+  if (class(x)[1] != "hagis.diversities") {
+    stop(call. = FALSE,
+         "This is not a hagis.diversities object.") 
+  } else {
+    y <- x[[2]]
+    if (type == "text") {
+      pander::pander(y, ...)
+    } else if (type == "graphic") {
+      y$Pathotype <- stringr::str_wrap(y$Pathotype, 60)
+      
+      p <- gridExtra::tableGrob(y, theme = gridExtra::ttheme_default(...))
+      gridExtra::grid.arrange(p)
+    }
+  }
+}
+
+#' Prints Individual Pathotypes for Each Sample
+#' 
+#' Print an object from a `hagis.diversities` object with individual pathotypes,
+#' _i.e._ each sample's pathotype.
+#' Users may select from a [pander] table (a text object for Markdown) or a
+#' graphic object (a [gridExtra::tableGrob()]).
+#' 
+#' @inheritParams diversities_table
+#' @examples 
+#' # locate system file for import
+#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+#'
+#' # import 'practice_data_set.csv'
+#' Ps <- read.csv(Ps)
+#' head(Ps)
+#'
+#' # calculate susceptibilities with a 60 % cutoff value
+#' diversities <- calculate_diversities(x = Ps,
+#'                                      cutoff = 60,
+#'                                      control = "susceptible",
+#'                                      sample = "Isolate",
+#'                                      Rps = "Rps",
+#'                                      perc_susc = "perc.susc")
+#' 
+#' # print the diversities table
+#' individual_pathotypes(diversities)
+#' 
+#' @seealso [calculate_diversities()], [diversities_table()]
+#' @export
+individual_pathotypes <- function(x, type = "text", ...) {
+  if (class(x)[1] != "hagis.diversities") {
     stop(call. = FALSE,
          "This is not a hagis.diversities object.") 
   } else {
