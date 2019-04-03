@@ -12,8 +12,9 @@ diversities <- calculate_diversities(x = Ps,
 
 test_that("calculate_diversities() works properly", {
   expect_s3_class(diversities, "hagis.diversities")
-  expect_length(diversities, 8)
-  expect_named(diversities, c("table_of_pathotypes",
+  expect_length(diversities, 9)
+  expect_named(diversities, c("individual_pathotypes",
+                              "table_of_pathotypes",
                               "number_of_samples",
                               "number_of_pathotypes",
                               "Simple",
