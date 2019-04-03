@@ -138,8 +138,8 @@ field. Character.</p></td>
     </tr>
     <tr>
       <th>sample</th>
-      <td><p>field providing the unique isolate identification for each
-isolate being tested. Character.</p></td>
+      <td><p>field providing the unique identification for each sample being
+tested. Character.</p></td>
     </tr>
     <tr>
       <th>Rps</th>
@@ -189,11 +189,11 @@ pathogenic</p></dd>
 #&gt; 6                       0       10         10           0       100          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
 <span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_rps</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
-                       <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
-                       <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
-                       <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
-                       <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
-                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
+                     <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
+                     <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
+                     <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
+                     <span class='kw'>Rps</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
+                     <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
 <span class='no'>susc</span></div><div class='output co'>#&gt;             Rps N_susc percent_pathogenic
 #&gt;  1: susceptible     21             100.00
 #&gt;  2:      Rps 1a     21             100.00
