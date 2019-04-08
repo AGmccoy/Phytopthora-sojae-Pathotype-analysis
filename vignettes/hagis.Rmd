@@ -148,7 +148,7 @@ pander::pander(complexities$indvidual_complexities)
 ```
 
 The mean, standard error (se) and standard deviation (sd) for pathotypes 
-```{r}
+```{r, message=FALSE}
 pander::pander(summary(complexities))
 ```
 
