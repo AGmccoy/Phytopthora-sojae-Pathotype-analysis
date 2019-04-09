@@ -4,7 +4,7 @@ author: "Austin McCoy and Zachary Noel"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -14,41 +14,19 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>"
 )
-```
-## Installation of hagis and other packages
-
-Currently you can only install hagis from github. The following code will install the package:
-```{r, message=FALSE}
-if (!require("remotes")) {
-  install.packages("remotes", repos = "http://cran.rstudio.com/")
-  library("remotes")
-}
-
-install_github("openplantpathology/hagis", build_vignettes = TRUE)
+library(hagis)
 ```
 
-the ipak function will install and load in all necessary packages to produce the following graphics. "TRUE" in the output indicates that the packages were loaded correctly. These packages are not necessary for 'hagis' to work, but make it easy to produce eye pleasing graphics.
-```{r, echo=TRUE, message=FALSE}
-# Source: https://gist.github.com/stevenworthington/3178163
-ipak <- function(pkg){
-new.pkg <- pkg[!(pkg %in% installed.packages()[,"Package"])]
-if (length(new.pkg)) 
-    install.packages(new.pkg, dependencies = TRUE)
-sapply(pkg, require, character.only = TRUE)
-}
-packages <- c("ggplot2", "ggsci", "purrr", "hagis")
-ipak(packages)
-```
+## Getting Started With hagis
 
-***
-## Getting Started
-First you'll want to load in your data set, for right now lets use a practice data set made for the hagis package and name it "Pathotype.Data":
-```{r}
+First you'll want to load in your data set, for right now let's use a practice data set made for the _hagis_ package and name it `Pathotype.Data`:
+
+```{r load_data}
 Pathotype.Data <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Pathotype.Data <- read.csv(Pathotype.Data)
 head(Pathotype.Data)
 ```
-This practice data set contains 21 isolates' virulence data on a set of 14 differential soybean cultivars. This package uses the percentage of susceptible, inoculated, plants  to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
+This practice data set contains 21 isolates' virulence data on a set of 14 differential soybean cultivars. This package uses the percentage of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
 
 ***
 
@@ -85,6 +63,8 @@ pander::pander(Rps.summary)
 
 You can put this data into 'ggplot2' so that you can change the graph design to your liking.
 ```{r, echo=TRUE}
+library(ggplot2)
+library(ggsci)
 ggplot(data = Rps.summary,aes(x = Rps ,y = N_susc)) +
   scale_fill_npg() +
     stat_summary(fun.y=mean,position=position_dodge(width=0.95), geom="bar") +
