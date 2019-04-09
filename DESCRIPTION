@@ -39,7 +39,6 @@ Suggests:
     devtools,
     ggsci,
     knitr,
-    purrr,
     readr,
     rmarkdown,
     testthat,
