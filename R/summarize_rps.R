@@ -80,6 +80,10 @@ summarize_rps <- function(x,
   return(y)
 }
 
+#' @importFrom ggplot2 autoplot
+#' @export
+ggplot2::autoplot
+
 #' Plot _Rps_ Gene Summaries
 #'
 #' @description Creates a \pkg{ggplot2} object of the _Rps_ gene
