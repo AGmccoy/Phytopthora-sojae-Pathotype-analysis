@@ -11,7 +11,7 @@ test_that("autoplot.hagis.complexities() returns a ggplot2 object", {
                                          Rps = "Rps",
                                          perc_susc = "perc.susc")
   expect_s3_class(autoplot(complexities,
-                           type = "frequency"), c("gg", "ggplot"))
+                           type = "percentage"), c("gg", "ggplot"))
   expect_s3_class(autoplot(complexities,
-                           type = "distribution"), c("gg", "ggplot"))
+                           type = "count"), c("gg", "ggplot"))
 })

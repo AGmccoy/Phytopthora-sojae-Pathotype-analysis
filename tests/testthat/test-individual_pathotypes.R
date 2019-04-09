@@ -17,12 +17,6 @@ test_that("individual_pathotypes() returns a pander object", {
     "character")
 })
 
-test_that("invidual_pathotypes() returns a gridExtra object", { 
-  expect_s3_class(
-   individual_pathotypes(x = diversities, type = "graphic"),
-    c("ggtable", "gTree", "grob", "gDesc"))
-})
-
 test_that("individual_pathotypes() stops if object is not hagis.diversities object",
           {expect_error(individual_pathotypes("y"),
                         regexp = "This is not a hagis.diversities object.")

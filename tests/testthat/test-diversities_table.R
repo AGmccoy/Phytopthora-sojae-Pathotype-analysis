@@ -17,12 +17,6 @@ test_that("diversity_table() returns a pander object", {
     "character")
 })
 
-test_that("diversity_table() returns a gridExtra object", { 
-  expect_s3_class(
-    diversities_table(x = diversities, type = "graphic"),
-    c("ggtable", "gTree", "grob", "gDesc"))
-})
-
 test_that("diversity_table() stops if object is not hagis.diversities object",
           {expect_error(diversities_table("y"),
                         regexp = "This is not a hagis.diversities object.")

@@ -71,3 +71,4 @@ test_that("summarize_rps() stops if lacking all params", {
     perc_susc = 60
   ), regexp = "You have failed to provide all necessary inputs")
 })
+
