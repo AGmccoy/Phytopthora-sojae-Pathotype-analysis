@@ -46,24 +46,17 @@ calculate_diversities <- function(x,
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
-  
   x <- subset(x, Rps != control)
-  x[, Rps := droplevels(Rps)]
-  
+
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
-  # set the sample field to factor
-  x[, sample := as.factor(sample)]
-  
+
   # remove resistant reactions from the data set, leaving only susceptible
   # reactions (pathotype)
   x <- subset(x, susceptible.1 != 0)
-  
-  # individual sample complexities
-  x[, Rps := as.character(Rps)]
-  
+
+  # split the data frame by sample and Rps
   y <- vapply(split(x[, Rps],
                     x[, sample]),
               toString, character(1))

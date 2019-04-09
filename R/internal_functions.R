@@ -18,6 +18,8 @@
 #' @importFrom data.table ":="
 #' @noRd
 .check_inputs <- function(.x, .cutoff, .control, .sample, .Rps, .perc_susc) {
+  # CRAN NOTE avoidance
+  Rps <- perc_susc <- sample <- NULL
   if (!is.data.frame(.x) |
       !is.numeric(.cutoff) |
       !is.character(.control) |
@@ -31,7 +33,12 @@
   }
   data.table::setDT(.x)
   data.table::setnames(.x, c(.perc_susc, .Rps, .sample),
-                       c("perc.susc", "Rps", "sample"))
+                       c("perc_susc", "Rps", "sample"))
+  
+  # set col types for the necessary cols
+  .x[, sample := as.character(sample)]
+  .x[, perc_susc := as.numeric(perc_susc)]
+  .x[, Rps := as.character(Rps)]
   return(.x)
 }
 
@@ -46,11 +53,11 @@
 #' @importFrom data.table ":="
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
-  susceptible.1 <- perc.susc <- NULL
+  susceptible.1 <- perc_susc <- NULL
   # if else for resistant or susceptible reaction. This will mark susceptible
   # reactions with a "1" in a new column labelled "Susceptible.1" to then be
   # used in later analysis.
   .x[, susceptible.1 := 0]
-  .x[perc.susc >= .cutoff, susceptible.1 := 1]
+  .x[perc_susc >= .cutoff, susceptible.1 := 1]
   return(.x)
 }

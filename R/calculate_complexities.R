@@ -41,12 +41,12 @@
 #' @export calculate_complexities
 
 calculate_complexities <- function(x,
-                                  cutoff,
-                                  control,
-                                  sample,
-                                  Rps,
-                                  perc_susc) {
-
+                                   cutoff,
+                                   control,
+                                   sample,
+                                   Rps,
+                                   perc_susc) {
+  
   # check inptuts and rename fields to work with this package
   x <- .check_inputs(
     .x = x,
@@ -56,56 +56,52 @@ calculate_complexities <- function(x,
     .Rps = Rps,
     .perc_susc = perc_susc
   )
-
+  
   # CRAN NOTE avoidance
   distribution <- N_samp <- NULL
-
+  
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
   x <- subset(x, Rps != control)
-  x[, Rps := droplevels(Rps)]
-
+  
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-
-  # set the sample field to factor
-  x[, sample := as.factor(sample)]
-
+  
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
   # field, see internal_functions.R
   individual_complexities <- .create_summary_isolate(.y = x)
-
+  
   # Frequency for each complexity (%) ------------------------------------------
   # Percent frequency is calculated by taking the individual complexity of each
   # Isolate and grouping all Isolates by their complexity
-
+  
   # create an object of the number of genes in the data
   n_gene <- length(unique(x[, Rps]))
-
+  
   # create an object of the number of samples in the data
   n_sample <- length(unique(x[, sample]))
-
+  
   # create an empty list to populate with frequency values
   complexities <- vector(mode = "list", length = n_gene)
   names(complexities) <- seq_along(1:n_gene)
-
+  
   for (i in seq_along(1:n_gene)) {
     complexities[[i]] <- round(
       length(
         which(individual_complexities[, N_samp == i])) / n_sample * 100, 2)
   }
-
+  
   grouped_complexities <- data.table::setDT(utils::stack(complexities))
   names(grouped_complexities) <- c("frequency", "N_samp")
-
+  
   # distribution of complexity (counts)
   dist <- individual_complexities[, .N, by = N_samp]
   dist[, N_samp := as.factor(N_samp)]
   grouped_complexities[dist, on = "N_samp", distribution := i.N]
-
+  
   # set NA to 0 for distribution
   grouped_complexities[is.na(distribution), distribution := 0]
   data.table::setcolorder(grouped_complexities,
@@ -116,10 +112,10 @@ calculate_complexities <- function(x,
     list(grouped_complexities, individual_complexities)
   names(complexities) <-
     c("grouped_complexities", "indvidual_complexities")
-
+  
   # Set new class
   class(complexities) <- union("hagis.complexities", class(x))
-
+  
   return(complexities)
 }
 
@@ -132,7 +128,8 @@ calculate_complexities <- function(x,
 #'  [calculate_complexities()]. Character.
 #' @param type a vector of values for which the bar plot is desired. Specify
 #'  whether to return a graph of the frequency of complexities as a percentage,
-#'  `frequency`, or as the count, `distribution`. Character.
+#'  `percentage`, or as the count, `count`. Character.
+#' @param color a named or hexadecimal color value to use for the bar color
 #' @param ... passed to the chosen `geom(s)`
 #'
 #' @examples
@@ -159,38 +156,57 @@ calculate_complexities <- function(x,
 #' @method autoplot hagis.complexities
 #' @export
 
-autoplot.hagis.complexities <- function(object, type, ...) {
+autoplot.hagis.complexities <- function(object, type, color = NULL, ...) {
   # create a single data.frame to use in the ggplot call
   z <- object[[1]]
-
-  plot_frequency <- function(.data) {
+  
+  plot_percentage <- function(.data, .color) {
     #CRAN Note avoidance
-    complexity <- frequency <- NULL
-    ggplot2::ggplot(data = .data,
-                    ggplot2::aes(x = complexity,
-                                 y = frequency)) +
-      ggplot2::geom_col() +
-      ggplot2::scale_y_continuous(name = "Percent of Isolates") +
-      ggplot2::ggtitle("Percentage of Pathotype Complexities") +
-      ggplot2::coord_flip()
+    complexity <- frequency <- Rps <- NULL
+    perc_plot <- ggplot2::ggplot(data = .data,
+                                 ggplot2::aes(x = as.factor(complexity),
+                                              y = frequency)) +
+      ggplot2::labs(y = "Percent of samples",
+                    x = "Complexity") +
+      ggplot2::ggtitle("Percentage of isolates per complexity")
+    
+    if (!is.null(.color)) {
+      perc_plot +
+        ggplot2::geom_col(fill = .color,
+                          colour = .color)
+    } else {
+      perc_plot +
+        ggplot2::geom_col()
+    }
   }
-
-  plot_distribution <- function(.data) {
+  
+  plot_count <- function(.data, .color) {
     #CRAN Note avoidance
-    complexity <- distribution <- NULL
-    ggplot2::ggplot(data = .data,
-                    ggplot2::aes(x = complexity,
-                                 y = distribution)) +
-      ggplot2::geom_col() +
-      ggplot2::scale_y_continuous(name = "Number of Isolates") +
-      ggplot2::ggtitle("Number of Isolates in Each Pathotype Complexity") +
-      ggplot2::coord_flip()
+    complexity <- distribution <- Rps <- NULL
+    num_plot <- ggplot2::ggplot(data = .data,
+                                ggplot2::aes(x = as.factor(complexity),
+                                             y = distribution)) +
+      ggplot2::labs(y = "Number of samples",
+                    x = "Complexity") +
+      ggplot2::ggtitle("Number of samples per pathotype complexity")
+    
+    if (!is.null(.color)) {
+      num_plot +
+        ggplot2::geom_col(fill = .color,
+                          colour = .color)
+    } else {
+      num_plot +
+        ggplot2::geom_col()
+    }
   }
-
-  if (type == "frequency") {
-    plot_frequency(.data = z)
+  
+  if (type == "percentage") {
+    plot_percentage(.data = z, .color = color)
+  } else if (type == "count") {
+    plot_count(.data = z, .color = color)
   } else {
-    plot_distribution(.data = z)
+    stop(.call = FALSE,
+         "You have entered an invalid `type`.")
   }
 }
 
@@ -227,7 +243,7 @@ summary.hagis.complexities <- function(object, ...) {
     stats::var(object$indvidual_complexities$N_samp) /
       length(object$indvidual_complexities$N_samp)
   )
-
+  
   x <- data.frame(mn, sd, se)
   names(x) <- c("mean", "sd", "se")
   class(x) <- "summary.complexities"
@@ -243,8 +259,8 @@ summary.hagis.complexities <- function(object, ...) {
 #' @export
 #' @noRd
 print.summary.complexities <- function(x,
-                                     digits = max(3L, getOption("digits") - 3L),
-                                     ...) {
+                                       digits = max(3L, getOption("digits") - 3L),
+                                       ...) {
   cat("\nMean of Complexities\n")
   cat(x$mean, "\n")
   cat("\nStandard Deviation of Complexities\n")
