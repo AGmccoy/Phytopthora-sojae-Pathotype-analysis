@@ -17,7 +17,7 @@ knitr::opts_chunk$set(
 library(hagis)
 ```
 
-## Getting Started With hagis
+## Getting Started With _hagis_
 
 First you'll want to load in your data set, for right now let's use a practice data set made for the _hagis_ package and name it `Pathotype.Data`:
 
@@ -26,30 +26,31 @@ Pathotype.Data <- system.file("extdata", "practice_data_set.csv", package = "hag
 Pathotype.Data <- read.csv(Pathotype.Data)
 head(Pathotype.Data)
 ```
+
 This practice data set contains 21 isolates' virulence data on a set of 14 differential soybean cultivars. This package uses the percentage of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
 
 ***
 
-## Important terms used in this packages' functions
+## Important Terms Used in _hagis's_ Functions
 
-"x = " followed by your data set name allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (i.e. your data collection excel sheet)
+* `x` followed by your data set name allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel sheet)
 
-"sample = " refers to the column header for the column which identifies the isolates tested
+* `sample` refers to the column header for the column which identifies the isolates tested
 
-"perc.susc = " refers to the column header for the column which identifies the percent susceptible plants for each gene
+* `perc_susc` refers to the column header for the column which identifies the percent susceptible plants for each gene
 
-"Rps = " refers to the column header for the column which identifies the genes tested
+* `Rps` refers to the column header for the column which identifies the genes tested
 
-
-The cutoff value sets the cutoff for susceptible reactions. For example, 'cutoff = 60' means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
+* The cutoff value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
 
 ***
 
-## Determination of effective resistance genes
+## Determination of Effective Resistance Genes
 
-Below is an example of tables and graphics that can be produced using the [summarize_rps()](https://openplantpathology.github.io/hagis/reference/summarize_rps.html "summarize_rps()") function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
+Below is an example of tables and graphics that can be produced using the `summarize_rps()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
 
-The summarize_rps function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (N_susc), as well as offering a percentage of the isolates tested which are pathogenic on each gene (percent_pathogenic).
+The `summarize_rps()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
+
 ```{r, echo=TRUE}
 Rps.summary <- summarize_rps(x = Pathotype.Data,
               cutoff = 60,
@@ -58,12 +59,15 @@ Rps.summary <- summarize_rps(x = Pathotype.Data,
               Rps = "Rps",
               perc_susc = "perc.susc")
 
-pander::pander(Rps.summary)
+# using the pander library we can make the table much more attractive in Markdown
+library(pander)
+
+pander(Rps.summary)
 ```
 
-You can put this data into 'ggplot2' so that you can change the graph design to your liking.
+You can put this data into `ggplot2` so that you can change the graph design to your liking.
+
 ```{r, echo=TRUE}
-library(ggplot2)
 library(ggsci)
 ggplot(data = Rps.summary,aes(x = Rps ,y = N_susc)) +
   scale_fill_npg() +
@@ -110,7 +114,7 @@ ggplot(data = Rps.summary,aes(x = Rps ,y = percent_pathogenic)) +
 
 ##Pathotype Complexities
 
-Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be caluculated using the calculate_complexities() function. Below are examples of producible graphics using [calculate_complexities()](https://openplantpathology.github.io/hagis/reference/calculate_complexities.html "calculate_complexities()"). 
+Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the calculate_complexities() function. Below are examples of producible graphics using [calculate_complexities()](https://openplantpathology.github.io/hagis/reference/calculate_complexities.html "calculate_complexities()"). 
 
 pander::pander (from the 'purrr' package) takes your data and makes an attractive table with it.
 ```{r, echo=TRUE, message=FALSE, warning=FALSE}
@@ -135,7 +139,7 @@ pander::pander(summary(complexities))
 ***
 
 ##Diversity Indices, frequency of Unique Pathotypes and Individual Isolate Pathotypes
-Diversity indicies are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the  [calculate_diversities()](https://openplantpathology.github.io/hagis/reference/calculate_diversities.html "calculate_diversities()") function. Likewise, Individual Isolates pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
+Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the  [calculate_diversities()](https://openplantpathology.github.io/hagis/reference/calculate_diversities.html "calculate_diversities()") function. Likewise, Individual Isolates pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
 
 ```{r, echo=TRUE}
 diversity <- calculate_diversities(x = Pathotype.Data,
