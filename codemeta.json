@@ -61,15 +61,15 @@
   "softwareSuggestions": [
     {
       "@type": "SoftwareApplication",
-      "identifier": "devtools",
-      "name": "devtools",
+      "identifier": "ggsci",
+      "name": "ggsci",
       "provider": {
         "@id": "https://cran.r-project.org",
         "@type": "Organization",
         "name": "Comprehensive R Archive Network (CRAN)",
         "url": "https://cran.r-project.org"
       },
-      "sameAs": "https://CRAN.R-project.org/package=devtools"
+      "sameAs": "https://CRAN.R-project.org/package=ggsci"
     },
     {
       "@type": "SoftwareApplication",
@@ -82,18 +82,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=knitr"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "readr",
-      "name": "readr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=readr"
     },
     {
       "@type": "SoftwareApplication",
@@ -165,18 +153,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "gridExtra",
-      "name": "gridExtra",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=gridExtra"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "pander",
       "name": "pander",
       "provider": {
@@ -224,7 +200,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "15.692KB",
+  "fileSize": "18.359KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

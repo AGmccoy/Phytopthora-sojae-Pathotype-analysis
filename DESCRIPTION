@@ -26,7 +26,6 @@ Depends: R (>= 3.2.0)
 Imports: 
   data.table,
   ggplot2,
-  gridExtra,
   pander,
   stats,
   stringr,
@@ -36,10 +35,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    devtools,
     ggsci,
     knitr,
-    readr,
     rmarkdown,
     testthat,
     covr
