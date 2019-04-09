@@ -108,13 +108,15 @@ pander(Rps.summary)
 
 ### Plotting Rps Summary Data
 
-*hagis* also provides functions to quickly graph your data using `ggplot2`.
+*hagis* also provides functions to quickly graph your data using `ggplot2`. 
+
+Generate a summary plot of percentage susceptible:
 
 ```{r autoplot-summary, echo=TRUE}
 autoplot(Rps.summary, type = "percentage")
-```
 
-You might note that the x-axis are on the left, not the bottom. This is because the Rps gene names are long enough that they need to be rotated if on the bottom. This way it is much easier to read the plot axis and interpret the plots. For more on plotting data from *hagis* see the "[Advanced Plotting](#AdvancedPlotting)" section.
+autoplot(Rps.summary, type = "count")
+```
 
 ***
 
@@ -189,7 +191,7 @@ individual_pathotypes(diversity)
 
 # Advanced Plotting {#AdvancedPlotting}
 
-## Using *hagis* Autoplot Objects
+## *hagis* Autoplot Objects
 
 Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options.
 
