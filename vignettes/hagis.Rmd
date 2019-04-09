@@ -31,15 +31,16 @@ Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
 head(Pathotype.Data)
 ```
 
-We see in the `Rps` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript.
+We see in the `Rps` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
 
 ```{r remove-Rps}
-Pathotype.Data$Rps <- gsub("Rps ", "", Pathotype.Data$Rps)
+Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$Rps)
 head(Pathotype.Data)
-
 ```
 
-This practice data set contains 21 isolates' virulence data on a set of 14 differential soybean cultivars. This package uses the percentage of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
+This practice data set contains 21 isolates', `Isolate`, virulence data on a set of 14 differential soybean cultivars, `Line`. This package uses the _percentage_ of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
+
+To help ensure that the proper data are used in calculations, the user is asked to provide some information that instruct _hagis_ about what data to use.
 
 ***
 
@@ -47,17 +48,41 @@ This practice data set contains 21 isolates' virulence data on a set of 14 diffe
 
 We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_rps()`, `calculate_complexities()` and `calculate_diversity()`. Each of these functions take the same arguments:
 
-* `x` followed by your data set name allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel sheet)
+* `x` this is your data set name, _e.g._ `Pathotype.Data` from the example above, allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel spreadsheet)
+
+* `cutoff` this value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
+
+* `control` specifies the value used in the `Rps` column to denote a susceptible control used in the study
 
 * `sample` specifies the column header for the column which identifies the isolates tested
 
-* `perc_susc` specifies the column header for the column which identifies the percent susceptible plants for each gene
-
 * `Rps` specifies the column header for the column which identifies the genes tested
 
-* `control` specifies the value used in the `Rps` column to denote a susceptible control
+* `perc_susc` specifies the column header for the column which identifies the percent susceptible plants for each gene
 
-* `cutoff` this value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
+Ordinarily you would use functions in _hagis_ or other R packages like this:
+
+```{r example-function, eval=FALSE}
+Rps.summary <- summarize_rps(x = Pathotype.Data,
+                             cutoff = 60,
+                             control = "susceptible",
+                             sample = "Isolate",
+                             Rps = "Rps",
+                             perc_susc = "perc.susc")
+```
+
+However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from *hagis*. First, we make a list of the arguments that `summarize_rps()`, `calculate_diversities()` and `calculate_complexities()` use that specify our inputs based on our example data:
+
+```{r shared-args}
+hagis_args <- list(x = Pathotype.Data,
+                   cutoff = 60,
+                   control = "susceptible",
+                   sample = "Isolate",
+                   Rps = "Rps",
+                   perc_susc = "perc.susc")
+```
+
+Now that we have a list of arguments, we can now save time entering the same data for each function and also avoid typos or entering different cutoff values, etc. between the functions.
 
 ***
 
@@ -68,12 +93,7 @@ Below is an example of tables and graphics that can be produced using the `summa
 The `summarize_rps()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
 
 ```{r, echo=TRUE}
-Rps.summary <- summarize_rps(x = Pathotype.Data,
-              cutoff = 60,
-              control = "susceptible",
-              sample = "Isolate",
-              Rps = "Rps",
-              perc_susc = "perc.susc")
+Rps.summary <- do.call(summarize_rps, hagis_args)
 
 Rps.summary
 ```
@@ -104,12 +124,7 @@ Pathotype frequency, distribution as well as statistics such as mean pathotype c
 a `list()` of two `data.table()` objects, `grouped_complexities` and `individual_complexities`.
 
 ```{r complexities, echo=TRUE, message=FALSE, warning=FALSE}
-complexities <- calculate_complexities(x = Pathotype.Data, 
-                                       cutoff = 60, 
-                                       control = "susceptible", 
-                                       sample = "Isolate", 
-                                       Rps = "Rps", 
-                                       perc_susc = "perc.susc")
+complexities <- do.call(calculate_complexities, hagis_args)
 
 complexities
 ```
@@ -145,12 +160,7 @@ autoplot(complexities, type = "count")
 Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
 
 ```{r calculate-diversities, echo=TRUE}
-diversity <- calculate_diversities(x = Pathotype.Data,
-                                   cutoff = 60,
-                                   control = "susceptible",
-                                   sample = "Isolate",
-                                   Rps = "Rps",
-                                   perc_susc = "perc.susc")
+diversity <- do.call(calculate_diversities, hagis_args)
 diversity
 ```
 
@@ -230,8 +240,13 @@ Rps.plot
 
 ### Use Colours in Autoplot Objects
 
-You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, #18453b.
+You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, #18453b with a serif font.
 
 ```{r use-colours}
-autoplot(Rps.summary, type = "percentage", color = "#18453b")
+autoplot(Rps.summary, type = "percentage", color = "#18453b") +
+    theme(
+    text = element_text(
+      face = "bold",
+      family = "serif"
+    ))
 ```
