@@ -112,7 +112,7 @@ ggplot2::autoplot
 #'                        perc_susc = "perc.susc")
 #'
 #' # Visualize the summary of Rps genes
-#' plot(susc)
+#' autoplot(susc, type = "percentage")
 #' @method autoplot hagis.rps.summary
 #' @return A \link[ggplot2]{ggplot2} plot
 #' @export

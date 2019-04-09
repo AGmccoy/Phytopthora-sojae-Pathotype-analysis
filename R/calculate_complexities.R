@@ -24,8 +24,8 @@
 #'
 #' summary(complexities)
 #'
-#' # plot complexities frequency
-#' autoplot(complexities, type = "frequency")
+#' # plot complexities frequency or by percentage
+#' autoplot(complexities, type = "percentage")
 #'
 #' @return `calculate_complexities` returns an object of class
 #' `hagis.complexities`.
@@ -147,11 +147,11 @@ calculate_complexities <- function(x,
 #'                                       Rps = "Rps",
 #'                                       perc_susc = "perc.susc")
 #'
-#' # Visualize the distribution (actual values)
-#' autoplot(object = complexities, type = "distribution")
+#' # Visualize the distribution (count or actual values)
+#' autoplot(object = complexities, type = "count")
 #'
 #' # Visualize the frequency (percentages)
-#' autoplot(object = complexities, type = "frequency")
+#' autoplot(object = complexities, type = "percentage")
 #' @return A \link[ggplot2]{ggplot2} plot
 #' @method autoplot hagis.complexities
 #' @export

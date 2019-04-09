@@ -40,5 +40,5 @@ susc <- summarize_rps(x = Ps,
                        perc_susc = "perc.susc")
 
 # Visualize the summary of Rps genes
-plot(susc)
+autoplot(susc, type = "percentage")
 }

@@ -59,7 +59,7 @@ complexities
 
 summary(complexities)
 
-# plot complexities frequency
-autoplot(complexities, type = "frequency")
+# plot complexities frequency or by percentage
+autoplot(complexities, type = "percentage")
 
 }
