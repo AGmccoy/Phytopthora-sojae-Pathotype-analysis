@@ -57,6 +57,6 @@ susc <- summarize_rps(x = Ps,
 susc
 
 # plot susceptibilities
-autoplot(susc)
+autoplot(susc, type = "percentage")
 
 }
