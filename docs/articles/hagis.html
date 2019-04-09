@@ -834,7 +834,7 @@
 <div id="make-a-horizontal-plot" class="section level3">
 <h3 class="hasAnchor">
 <a href="#make-a-horizontal-plot" class="anchor"></a>Make a Horizontal Plot</h3>
-<p>Set the font to be a bold-face serif family font a</p>
+<p>If your <em>Rps</em> gene names are too long, flipping the axis can make the graph more legible without rotating the x-axis labels.</p>
 <div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
 <a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/coord_flip">coord_flip</a></span>()</a>
 <a class="sourceLine" id="cb22-3" title="3"></a>
@@ -844,13 +844,14 @@
 <div id="use-colours-in-autoplot-objects" class="section level3">
 <h3 class="hasAnchor">
 <a href="#use-colours-in-autoplot-objects" class="anchor"></a>Use Colours in Autoplot Objects</h3>
-<p>You can use named, <em>e.g.</em> “red”, “yellow”, “blue” colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, #18453b with a serif font.</p>
+<p>You can use named, <em>e.g.</em> “red”, “yellow”, “blue” colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code> with a serif font.</p>
 <div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>, <span class="dt">color =</span> <span class="st">"#18453b"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="st">    </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
-<a class="sourceLine" id="cb23-3" title="3">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
-<a class="sourceLine" id="cb23-4" title="4">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
-<a class="sourceLine" id="cb23-5" title="5">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
-<a class="sourceLine" id="cb23-6" title="6">    ))</a></code></pre></div>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
+<a class="sourceLine" id="cb23-4" title="4">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
+<a class="sourceLine" id="cb23-5" title="5">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
+<a class="sourceLine" id="cb23-6" title="6">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
+<a class="sourceLine" id="cb23-7" title="7">    ))</a></code></pre></div>
 <p><img src="hagis_files/figure-html/use-colours-1.png" width="576"></p>
 </div>
 </div>

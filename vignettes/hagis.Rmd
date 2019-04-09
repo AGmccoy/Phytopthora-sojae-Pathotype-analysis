@@ -231,7 +231,8 @@ Rps.plot
 
 ### Make a Horizontal Plot
 
-Set the font to be a bold-face serif family font a
+If your _Rps_ gene names are too long, flipping the axis can make the graph more
+legible without rotating the x-axis labels.
 
 ```{r horizontal-plot}
 Rps.plot <- Rps.plot +
@@ -242,11 +243,12 @@ Rps.plot
 
 ### Use Colours in Autoplot Objects
 
-You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, #18453b with a serif font.
+You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using `theme_bw()` with a serif font.
 
 ```{r use-colours}
 autoplot(Rps.summary, type = "percentage", color = "#18453b") +
-    theme(
+  theme_bw() +
+  theme(
     text = element_text(
       face = "bold",
       family = "serif"
