@@ -2,6 +2,7 @@
 
 S3method(autoplot,hagis.complexities)
 S3method(autoplot,hagis.rps.summary)
+S3method(pander,summary.complexities)
 S3method(print,hagis.complexities)
 S3method(print,hagis.diversities)
 S3method(print,summary.complexities)
@@ -15,3 +16,4 @@ export(individual_pathotypes)
 export(summarize_rps)
 importFrom(data.table,":=")
 importFrom(ggplot2,autoplot)
+importFrom(pander,pander)

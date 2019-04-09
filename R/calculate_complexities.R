@@ -228,7 +228,7 @@ summary.hagis.complexities <- function(object, ...) {
       length(object$indvidual_complexities$N_samp)
   )
 
-  x <- list(mn, sd, se)
+  x <- data.frame(mn, sd, se)
   names(x) <- c("mean", "sd", "se")
   class(x) <- "summary.complexities"
   x
@@ -238,7 +238,7 @@ summary.hagis.complexities <- function(object, ...) {
 #'
 #' Custom [print()] method for \pkg{hagis} `summary.complexity` objects.
 #'
-#' @param x a summary.hagis object
+#' @param x a summary.complexities object
 #' @param ... ignored
 #' @export
 #' @noRd
@@ -253,6 +253,24 @@ print.summary.complexities <- function(x,
   cat(x$se)
   invisible(x)
 }
+
+#' Pander Method for hagis Summary Complexities 
+#'
+#' Prints a hagis complexities summary in Pandoc's markdown.
+#' @param x a complexities object
+#' @param caption caption (string) to be shown under the table
+#' @param ... optional parameters passed to raw \code{pandoc.table} function
+#' @importFrom pander pander
+#' @export
+#' @noRd
+pander.summary.complexities <-
+  function(x, caption = attr(x, "caption"), ...) {
+    pander::pandoc.table(data.frame(
+      "Mean" = x[[1]],
+      "SD" = x[[2]],
+      "SE" = x[[3]]
+    ))
+  }
 
 #' Prints hagis.complexities Object
 #'
