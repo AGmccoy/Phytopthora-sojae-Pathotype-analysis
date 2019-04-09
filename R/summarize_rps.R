@@ -140,9 +140,10 @@ autoplot.hagis.rps.summary <- function(object, type, color = NULL, ...) {
   }
   
   plot_count <- function(.data, .color) {
+    N_susc <- NULL
     num_plot <- ggplot2::ggplot(data = .data,
                                 ggplot2::aes(x = as.factor(Rps),
-                                             y = percent_pathogenic)) +
+                                             y = N_susc)) +
       ggplot2::labs(y = "Number of samples",
                     x = ~ italic(Rps) ~ "gene") +
       ggplot2::ggtitle(expression("Number of samples pathogenic"))
