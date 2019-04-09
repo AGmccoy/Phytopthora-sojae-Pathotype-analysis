@@ -37,7 +37,9 @@ Encoding: UTF-8
 LazyData: true
 Suggests: 
     devtools,
+    ggsci,
     knitr,
+    purrr,
     readr,
     rmarkdown,
     testthat,
