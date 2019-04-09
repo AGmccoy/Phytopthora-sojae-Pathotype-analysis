@@ -1,8 +1,10 @@
 ---
-title: "hagis"
+title: "hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity"
 author: "Austin McCoy and Zachary Noel"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+    rmarkdown::html_vignette:
+        toc: true
 vignette: >
   %\VignetteIndexEntry{hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,36 +14,50 @@ vignette: >
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
-  comment = "#>"
+  comment = "#>",
+  fig.width = 6,
+  fig.height = 4
 )
 library(hagis)
 ```
 
-## Getting Started With _hagis_
+## Getting Started With *hagis*
 
-First you'll want to load in your data set, for right now let's use a practice data set made for the _hagis_ package and name it `Pathotype.Data`:
+First you'll want to load in your data set, for right now let's use a practice data set made for the *hagis* package and name it `Pathotype.Data`:
 
 ```{r load_data}
 Pathotype.Data <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-Pathotype.Data <- read.csv(Pathotype.Data)
+Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
 head(Pathotype.Data)
+```
+
+We see in the `Rps` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript.
+
+```{r remove-Rps}
+Pathotype.Data$Rps <- gsub("Rps ", "", Pathotype.Data$Rps)
+head(Pathotype.Data)
+
 ```
 
 This practice data set contains 21 isolates' virulence data on a set of 14 differential soybean cultivars. This package uses the percentage of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
 
 ***
 
-## Important Terms Used in _hagis's_ Functions
+## Function Arguments Used in *hagis*
+
+We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_rps()`, `calculate_complexities()` and `calculate_diversity()`. Each of these functions take the same arguments:
 
 * `x` followed by your data set name allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel sheet)
 
-* `sample` refers to the column header for the column which identifies the isolates tested
+* `sample` specifies the column header for the column which identifies the isolates tested
 
-* `perc_susc` refers to the column header for the column which identifies the percent susceptible plants for each gene
+* `perc_susc` specifies the column header for the column which identifies the percent susceptible plants for each gene
 
-* `Rps` refers to the column header for the column which identifies the genes tested
+* `Rps` specifies the column header for the column which identifies the genes tested
 
-* The cutoff value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
+* `control` specifies the value used in the `Rps` column to denote a susceptible control
+
+* `cutoff` this value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
 
 ***
 
@@ -59,65 +75,35 @@ Rps.summary <- summarize_rps(x = Pathotype.Data,
               Rps = "Rps",
               perc_susc = "perc.susc")
 
-# using the pander library we can make the table much more attractive in Markdown
+Rps.summary
+```
+
+Using the _pander_ library we can make the table much more attractive in Markdown.
+
+```{r pander-print-Rps, echo=TRUE}
 library(pander)
 
 pander(Rps.summary)
 ```
 
-You can put this data into `ggplot2` so that you can change the graph design to your liking.
+### Plotting Rps Summary Data
 
-```{r, echo=TRUE}
-library(ggsci)
-ggplot(data = Rps.summary,aes(x = Rps ,y = N_susc)) +
-  scale_fill_npg() +
-    stat_summary(fun.y=mean,position=position_dodge(width=0.95), geom="bar") +
-  #stat_summary(fun.data = mean_se,position=position_dodge(width=0.95), geom = "errorbar") +
-  theme_gray() +
-    guides(fill = FALSE) +
-    theme(axis.text.x = element_text(size = 15, face = "bold", angle=45, hjust=1, family = "serif"),
-        axis.text.y = element_text(size = 20, face = "bold", family = "serif"),
-        axis.title.x = element_text(size = 20, face = "bold", family = "serif"),
-        axis.title.y = element_text(size = 15, face = "bold", family = "serif"),
-        axis.line.x = element_line(colour = 'gray', size=0.5, linetype='solid'),
-        axis.line.y = element_line(colour = 'gray', size=0.5, linetype='solid'),
-        legend.text = element_text(size = 10, face = "bold", family = "serif"),
-        legend.key = element_blank(),
-        legend.title = element_text(size = 10, face="bold", family = "serif"),
-        legend.position = "right",
-        strip.text.x = element_text(size = 25, face = "bold", family = "serif"),
-        title = element_text(size = 16, family = "serif")) +
-  xlab("Rps gene") + ylab("Number of isolates pathogenic")
+*hagis* also provides functions to quickly graph your data using `ggplot2`.
 
-ggplot(data = Rps.summary,aes(x = Rps ,y = percent_pathogenic)) +
-  scale_fill_npg() +
-    stat_summary(fun.y=mean,position=position_dodge(width=0.95), geom="bar") +
-  #stat_summary(fun.data = mean_se,position=position_dodge(width=0.95), geom = "errorbar") +
-  theme_gray() +
-    guides(fill = FALSE) +
-    theme(axis.text.x = element_text(size = 15, face = "bold", angle=45, hjust=1, family = "serif"),
-        axis.text.y = element_text(size = 20, face = "bold", family = "serif"),
-        axis.title.x = element_text(size = 20, face = "bold", family = "serif"),
-        axis.title.y = element_text(size = 15, face = "bold", family = "serif"),
-        axis.line.x = element_line(colour = 'gray', size=0.5, linetype='solid'),
-        axis.line.y = element_line(colour = 'gray', size=0.5, linetype='solid'),
-        legend.text = element_text(size = 10, face = "bold", family = "serif"),
-        legend.key = element_blank(),
-        legend.title = element_text(size = 10, face="bold", family = "serif"),
-        legend.position = "right",
-        strip.text.x = element_text(size = 25, face = "bold", family = "serif"),
-        title = element_text(size = 16, family = "serif")) +
-  xlab("Rps gene") + ylab("Percentage of isolates pathogenic")
+```{r autoplot-summary, echo=TRUE}
+autoplot(Rps.summary, type = "percentage")
 ```
+
+You might note that the x-axis are on the left, not the bottom. This is because the Rps gene names are long enough that they need to be rotated if on the bottom. This way it is much easier to read the plot axis and interpret the plots. For more on plotting data from *hagis* see the "[Advanced Plotting](#AdvancedPlotting)" section.
 
 ***
 
-##Pathotype Complexities
+## Pathotype Complexities
 
-Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the calculate_complexities() function. Below are examples of producible graphics using [calculate_complexities()](https://openplantpathology.github.io/hagis/reference/calculate_complexities.html "calculate_complexities()"). 
+Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the `calculate_complexities()` function. This function will return
+a `list()` of two `data.table()` objects, `grouped_complexities` and `individual_complexities`.
 
-pander::pander (from the 'purrr' package) takes your data and makes an attractive table with it.
-```{r, echo=TRUE, message=FALSE, warning=FALSE}
+```{r complexities, echo=TRUE, message=FALSE, warning=FALSE}
 complexities <- calculate_complexities(x = Pathotype.Data, 
                                        cutoff = 60, 
                                        control = "susceptible", 
@@ -125,30 +111,127 @@ complexities <- calculate_complexities(x = Pathotype.Data,
                                        Rps = "Rps", 
                                        perc_susc = "perc.susc")
 
-
-pander::pander(complexities$grouped_complexities)
-
-pander::pander(complexities$indvidual_complexities)
+complexities
 ```
 
-The mean, standard error (se) and standard deviation (sd) for pathotypes 
-```{r, message=FALSE}
-pander::pander(summary(complexities))
+Once again, using _pander_ we can make these tables much more attractive in Markdown. Since `complexities` is a `list()` object, we can refer to each object directly by name and print them as follows.
+
+```{r pander-print-complexities}
+pander(complexities$grouped_complexities)
+
+pander(complexities$indvidual_complexities)
+```
+
+Using `summary()` will return the mean, standard error (se) and standard deviation (sd) for pathotypes of a complexities object.
+
+```{r summary-complexities}
+pander(summary(complexities))
+```
+
+### Plotting Complexities Data
+
+Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `autoplot(complexties, type = "frequency")`, or if you desire the distribution `autoplot(complexities, type = "distribution")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+
+```{r complexities-plot}
+autoplot(complexities, type = "percentage")
+
+autoplot(complexities, type = "count")
 ```
 
 ***
 
-##Diversity Indices, frequency of Unique Pathotypes and Individual Isolate Pathotypes
-Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the  [calculate_diversities()](https://openplantpathology.github.io/hagis/reference/calculate_diversities.html "calculate_diversities()") function. Likewise, Individual Isolates pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
+## Diversity Indices, Frequency of Unique Pathotypes and Individual Isolate Pathotypes
 
-```{r, echo=TRUE}
+Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
+
+```{r calculate-diversities, echo=TRUE}
 diversity <- calculate_diversities(x = Pathotype.Data,
                                    cutoff = 60,
                                    control = "susceptible",
                                    sample = "Isolate",
                                    Rps = "Rps",
                                    perc_susc = "perc.susc")
-pander::pander(diversity)
+diversity
 ```
 
-***
+Or using `pander` for reporting, a nice table is generated.
+
+```{r diversity-pander}
+pander(diversity)
+```
+
+### Table of Diversities
+
+To generate a table of diversities, use `diversities_table()`. *hagis* will automatically create a `pander` object for you. This is because it is much easier to read the resulting table in the console than the raw `data.frame` and insert into reports.
+
+```{r diversities-table}
+diversities_table(diversity)
+```
+
+To generate a table of individual pathotypes, use `individual_pathotypes()`. Here again,
+*hagis* provides a `pander` object for ease of use.
+
+### Table of Individual Pathotypes
+
+```{r individual-pathotypes}
+individual_pathotypes(diversity)
+```
+
+# Advanced Plotting {#AdvancedPlotting}
+
+## Using *hagis* Autoplot Objects
+
+Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options.
+
+```{r set-up-adv.plot}
+library(ggplot2)
+
+Rps.plot <- autoplot(Rps.summary, type = "percentage")
+
+Rps.plot
+```
+
+### Changing the ggplot2 Theme
+
+Use *ggplot2*'s `theme_minimal()` theme.
+
+```{r change-autoplot-theme}
+Rps.plot <- Rps.plot +
+  theme_minimal()
+
+Rps.plot
+```
+
+### Changing the Font
+
+Set the font to be a bold-face serif family font.
+
+```{r change-autoplot-font}
+Rps.plot <- Rps.plot +
+  theme(
+    text = element_text(
+      face = "bold",
+      family = "serif"
+    ))
+
+Rps.plot
+```
+
+### Make a Horizontal Plot
+
+Set the font to be a bold-face serif family font a
+
+```{r horizontal-plot}
+Rps.plot <- Rps.plot +
+  coord_flip()
+
+Rps.plot
+```
+
+### Use Colours in Autoplot Objects
+
+You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, #18453b.
+
+```{r use-colours}
+autoplot(Rps.summary, type = "percentage", color = "#18453b")
+```
