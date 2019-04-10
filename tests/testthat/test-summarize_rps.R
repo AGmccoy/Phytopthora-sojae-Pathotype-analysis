@@ -1,6 +1,6 @@
 
 # test summarize Rps -----------------------------------------------------------
-context("Test that summarize_rps() works as expected")
+context("summarize_rps()")
 test_that("summarize_rps() works properly", {
   Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
@@ -18,7 +18,7 @@ test_that("summarize_rps() works properly", {
   ))
 })
 
-test_that("summarize_rps() stops if lacking all params", {
+test_that("summarize_rps() ", {
   Ps <-
     system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
@@ -71,4 +71,3 @@ test_that("summarize_rps() stops if lacking all params", {
     perc_susc = 60
   ), regexp = "You have failed to provide all necessary inputs")
 })
-
