@@ -9,6 +9,11 @@ functions
 * Add new function to print diversities table, `diversities_table()`
 * Add new function to print individual pathotypes table,
  `individual_pathotypes()`
+* Add ability to use colour in `autoplot` objects
+* Add special handling for `pander()` when applied to `summary.complexities` and
+`hagis.diversities` objects.
+* Add vignette that describes how to use the table and add themes, fonts and
+colors to autoplot objects
 
 # hagis 2.0.0
 
