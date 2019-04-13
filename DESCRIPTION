@@ -2,10 +2,10 @@ Package: hagis
 Title: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity
 Version: 2.0.0.9000
 Authors@R: c(
-  person(given = "Austin", family = "McCoy", role = "aut",
+  person(given = "Austin", family = "McCoy", role = c("aut", "ccp"),
   email = "mccoyaus@msu.edu",
   comment = c(ORCID = "0000-0003-2483-4184")),
-  person(given = "Zachary", family = "Noel", role =  "aut",
+  person(given = "Zachary", family = "Noel", role =  c("aut", "ccp"),
   email = "noelzach@msu.edu",
   comment = c(ORCID = "0000-0001-6375-8300")),
   person(given = "Adam H.", family = "Sparks", role = c("aut", "cre"),
@@ -36,6 +36,7 @@ Encoding: UTF-8
 LazyData: true
 Suggests: 
     knitr,
+    pkgdown,
     rmarkdown,
     testthat,
     covr
