@@ -1,7 +1,6 @@
 
 # test diversities table -------------------------------------------------------
-context("Test that individual_pathotypes() works as expected")
-
+context("individual_pathotypes()")
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
 diversities <- calculate_diversities(x = Ps,

@@ -81,6 +81,12 @@ citation("hagis")
 #>   }
 ```
 
+# Meta
+
+Please note that the *hagis* project is released with a [Contributor
+Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
+you agree to abide by its terms.
+
 # References
 
 > Herrmann, , Löwer, and Schachtel, (1999), A new tool for entry and

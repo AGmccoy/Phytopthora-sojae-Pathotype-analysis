@@ -1,7 +1,6 @@
 
 # test calculate complexities --------------------------------------------------
-context("Test that calculate_complexities() works as expected")
-
+context("calculate_complexities()")
 Ps <-
   system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
@@ -86,7 +85,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   ), regexp = "You have failed to provide all necessary inputs")
 })
 
-
+context("print.summary.complexities()")
 test_that("print.summary.complexities() returns a proper summary", {
   x <- capture.output(summary(complexities))
   expect_type(x, "character")
@@ -110,4 +109,16 @@ test_that("print.hagis.complexities() returns a proper summary", {
                           "21:     21     13",
                           "    sample N_samp",
                           ""))
+})
+
+context("pander.summary.complexities")
+test_that("pander.summary.complexities returns a properly formatted table", {
+  x <- capture.output(pander(summary(complexities)))
+  expect_type(x, "character")
+  expect_equal(x[[1]], "")
+  expect_equal(x[[2]], "------------------------")
+  expect_equal(x[[3]], " Mean     SD       SE   ")
+  expect_equal(x[[4]], "------- ------- --------")
+  expect_equal(x[[5]], " 8.714   2.004   0.4372 ")
+  expect_equal(x[[6]], "------------------------")
 })

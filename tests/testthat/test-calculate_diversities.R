@@ -1,6 +1,6 @@
 
 # test calculate diversities ---------------------------------------------------
-context("Test that calculate_diversities() works as expected")
+context("calculate_diversities()")
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
 diversities <- calculate_diversities(x = Ps,
@@ -78,9 +78,9 @@ test_that("calculate_diversities() stops if lacking all params", {
   ), regexp = "You have failed to provide all necessary inputs")
 })
 
-context("Test that print.hagis.diversities() works as expected")
+context("print.hagis.diversities()")
 test_that("print.hagis.diversities() returns a proper summary", {
-  x <- capture.output(print(diversities))
+  x <- utils::capture.output(print(diversities))
   expect_type(x, "character")
   expect_equal(x[[2]], "hagis Diversities")
   expect_equal(x[[4]], "Number of Samples 21")
@@ -92,3 +92,22 @@ test_that("print.hagis.diversities() returns a proper summary", {
   expect_equal(x[[12]], "Evenness  0.9891509 ")
   expect_equal(x[[13]], "")
 })
+
+context("pander.hagis.diversities")
+test_that("pander.hagis.diversities returns a proper table of indices and
+          caption",
+          {
+            x <- utils::capture.output(pander(diversities))
+            expect_equal(
+              head(x),
+              c(
+                "",
+                "-------------------------------------------------",
+                " Simple   Gleason   Shannon   Simpson   Evenness ",
+                "-------- --------- --------- --------- ----------",
+                " 0.9048    5.912     2.912    0.9433     0.9892  ",
+                "-------------------------------------------------"
+              )
+            )
+          })
+

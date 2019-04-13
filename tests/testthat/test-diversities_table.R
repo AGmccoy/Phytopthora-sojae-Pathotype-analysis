@@ -1,7 +1,6 @@
 
 # test diversities table -------------------------------------------------------
-context("Test that diversities_table() works as expected")
-
+context("diversities_table()")
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
 diversities <- calculate_diversities(x = Ps,
