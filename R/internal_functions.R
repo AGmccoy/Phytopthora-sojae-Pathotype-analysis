@@ -14,6 +14,7 @@
 #'  being tested. Character.
 #' @param .Rps field providing the _Rps_ gene(s) being tested. Character.
 #' @param .perc_susc field providing the percent susceptible reactions.
+#' Character.
 #' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @importFrom data.table ":="
 #' @noRd
