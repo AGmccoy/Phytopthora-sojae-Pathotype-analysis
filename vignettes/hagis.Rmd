@@ -110,7 +110,7 @@ pander(Rps.summary)
 
 *hagis* also provides functions to quickly graph your data using `ggplot2`. 
 
-Generate a summary plot of percentage susceptible:
+Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r autoplot-summary, echo=TRUE}
 autoplot(Rps.summary, type = "percentage")
