@@ -46,7 +46,7 @@ To help ensure that the proper data are used in calculations, the user is asked 
 
 ## Function Arguments Used in *hagis*
 
-We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_rps()`, `calculate_complexities()` and `calculate_diversity()`. Each of these functions take the same arguments:
+We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_rps()`, `calculate_complexities()` and `calculate_diversities()`. Each of these functions take the same arguments:
 
 * `x` this is your data set name, _e.g._ `Pathotype.Data` from the example above, allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel spreadsheet)
 
@@ -147,7 +147,7 @@ pander(summary(complexities))
 
 ### Plotting Complexities Data
 
-Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `autoplot(complexties, type = "frequency")`, or if you desire the distribution `autoplot(complexities, type = "distribution")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `autoplot(complexties, type = "percentage")`, or if you desire the distribution `autoplot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r complexities-plot}
 autoplot(complexities, type = "percentage")
