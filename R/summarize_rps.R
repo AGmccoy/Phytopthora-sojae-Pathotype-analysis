@@ -53,7 +53,6 @@ summarize_rps <- function(x,
                           sample,
                           Rps,
                           perc_susc) {
-  
   # check inptuts and rename fields to work with this package
   x <- .check_inputs(
     .x = x,
@@ -117,53 +116,53 @@ ggplot2::autoplot
 #' @return A \link[ggplot2]{ggplot2} plot
 #' @export
 
-autoplot.hagis.rps.summary <- function(object, type, color = NULL, ...) {
-  # CRAN NOTE avoidance
-  Rps <- percent_pathogenic <- NULL
-  
-  plot_percentage <- function(.data, .color) {
-    perc_plot <- ggplot2::ggplot(data = .data,
-                                 ggplot2::aes(x = as.factor(Rps),
-                                              y = percent_pathogenic)) +
-      ggplot2::labs(y = "Percent of samples",
-                    x = ~ italic(Rps) ~ "gene") +
-      ggplot2::ggtitle(expression("Percentage of samples pathogenic"))
+autoplot.hagis.rps.summary <-
+  function(object, type, color = NULL, ...) {
+    # CRAN NOTE avoidance
+    Rps <- percent_pathogenic <- NULL
     
-    if (!is.null(.color)) {
-      perc_plot +
-        ggplot2::geom_col(fill = .color,
-                          colour = .color)
-    } else {
-      perc_plot +
-        ggplot2::geom_col()
+    plot_percentage <- function(.data, .color) {
+      perc_plot <- ggplot2::ggplot(data = .data,
+                                   ggplot2::aes(x = as.factor(Rps),
+                                                y = percent_pathogenic)) +
+        ggplot2::labs(y = "Percent of samples",
+                      x = ~ italic(Rps) ~ "gene") +
+        ggplot2::ggtitle(expression("Percentage of samples pathogenic"))
+      
+      if (!is.null(.color)) {
+        perc_plot +
+          ggplot2::geom_col(fill = .color,
+                            colour = .color)
+      } else {
+        perc_plot +
+          ggplot2::geom_col()
+      }
     }
-  }
-  
-  plot_count <- function(.data, .color) {
-    N_susc <- NULL
-    num_plot <- ggplot2::ggplot(data = .data,
-                                ggplot2::aes(x = as.factor(Rps),
-                                             y = N_susc)) +
-      ggplot2::labs(y = "Number of samples",
-                    x = ~ italic(Rps) ~ "gene") +
-      ggplot2::ggtitle(expression("Number of samples pathogenic"))
     
-    if (!is.null(.color)) {
-      num_plot +
-        ggplot2::geom_col(fill = .color,
-                          colour = .color)
-    } else {
-      num_plot +
-        ggplot2::geom_col()
+    plot_count <- function(.data, .color) {
+      N_susc <- NULL
+      num_plot <- ggplot2::ggplot(data = .data,
+                                  ggplot2::aes(x = as.factor(Rps),
+                                               y = N_susc)) +
+        ggplot2::labs(y = "Number of samples",
+                      x = ~ italic(Rps) ~ "gene") +
+        ggplot2::ggtitle(expression("Number of samples pathogenic"))
+      
+      if (!is.null(.color)) {
+        num_plot +
+          ggplot2::geom_col(fill = .color,
+                            colour = .color)
+      } else {
+        num_plot +
+          ggplot2::geom_col()
+      }
     }
+    
+    if (type == "percentage") {
+      plot_percentage(.data = object, .color = color)
+    } else if (type == "count") {
+      plot_count(.data = object, .color = color)
+    } else
+      stop(.call = FALSE,
+           "You have entered an invalid `type`.")
   }
-  
-  if (type == "percentage") {
-    plot_percentage(.data = object, .color = color)
-  } else if (type == "count") {
-    plot_count(.data = object, .color = color)
-  } else 
-    stop(.call = FALSE,
-         "You have entered an invalid `type`.")
-  }
-  
