@@ -24,7 +24,7 @@ Character.}
 }
 \value{
 returns an object of \code{\link[=class]{class()}} \code{hagis.rps.summary}
-An object of class \code{hagis.summaries} is a \code{\link[data.table:data.table]{data.table::data.table()}}
+An object of class \code{hagis.summaries} is a\cr \code{\link[data.table:data.table]{data.table::data.table()}}
 containing the following components fields
 \describe{
 \item{Rps}{the Rps gene}
