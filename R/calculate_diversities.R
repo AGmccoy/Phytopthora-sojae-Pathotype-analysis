@@ -188,7 +188,7 @@ diversities_table <- function(x,...) {
 #' Prints Individual Pathotypes for Each Sample
 #' 
 #' Print an object from a `hagis.diversities` object with individual pathotypes,
-#' _i.e._ each sample's pathotype. #' The resulting object is a [pander] table
+#' _i.e._ each sample's pathotype. The resulting object is a [pander] table
 #' (a text object for Markdown) for ease of use in reporting and viewing in the
 #' console.
 #' 

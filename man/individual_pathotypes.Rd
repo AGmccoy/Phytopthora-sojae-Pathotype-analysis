@@ -16,7 +16,7 @@ A \link{pander} object of individual pathotypes
 }
 \description{
 Print an object from a \code{hagis.diversities} object with individual pathotypes,
-\emph{i.e.} each sample's pathotype. #' The resulting object is a \link{pander} table
+\emph{i.e.} each sample's pathotype. The resulting object is a \link{pander} table
 (a text object for Markdown) for ease of use in reporting and viewing in the
 console.
 }
