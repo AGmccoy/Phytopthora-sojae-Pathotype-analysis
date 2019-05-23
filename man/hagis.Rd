@@ -10,9 +10,8 @@ Provides tools for analysis of Phytophthora sojae survey data.
   Functions provide distribution of susceptibilities, distribution of
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for the 'HaGiS' spreadsheet previously used for 'P. sojae'
-  pathotype analysis and provide the same necessary data as the Habgood-Gilmour
-  Spreadsheet, 'HaGiS'.
+  replacement for the Habgood-Gilmour Spreadsheet, `HaGiS', previously used for
+  `P. sojae' pathotype analysis.
 }
 \seealso{
 Useful links:
