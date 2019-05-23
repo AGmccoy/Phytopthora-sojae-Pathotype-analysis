@@ -241,11 +241,11 @@ Rps.plot <- Rps.plot +
 Rps.plot
 ```
 
-### Use Colours in Autoplot Objects
+### Use Colors in Autoplot Objects
 
 You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using `theme_bw()` with a serif font.
 
-```{r use-colours}
+```{r use-Colors}
 autoplot(Rps.summary, type = "percentage", color = "#18453b") +
   theme_bw() +
   theme(
