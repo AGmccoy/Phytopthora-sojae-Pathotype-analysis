@@ -259,7 +259,8 @@ summary.hagis.complexities <- function(object, ...) {
 #' @export
 #' @noRd
 print.summary.complexities <- function(x,
-                                       digits = max(3L, getOption("digits") - 3L),
+                                       digits = max(3L,
+                                                    getOption("digits") - 3L),
                                        ...) {
   cat("\nMean of Complexities\n")
   cat(x$mean, "\n")
