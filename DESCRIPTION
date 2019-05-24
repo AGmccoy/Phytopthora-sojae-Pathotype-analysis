@@ -9,7 +9,7 @@ Authors@R: c(
   email = "noelzach@msu.edu",
   comment = c(ORCID = "0000-0001-6375-8300")),
   person(given = "Adam H.", family = "Sparks", role = c("aut", "cre"),
-  email = "adamhsparks@gmail.com",
+  email = "adam.sparks@usq.edu.au",
   comment = c(ORCID = "0000-0002-0061-8359")),
   person(given = "Martin", family = "Chilvers", role = "aut",
   email = "chilvers@msu.edu ",
