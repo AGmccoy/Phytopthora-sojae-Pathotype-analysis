@@ -35,7 +35,7 @@
       "@type": "Person",
       "givenName": "Adam H.",
       "familyName": "Sparks",
-      "email": "adamhsparks@gmail.com",
+      "email": "adam.sparks@usq.edu.au",
       "@id": "https://orcid.org/0000-0002-0061-8359"
     },
     {
@@ -54,7 +54,7 @@
       "@type": "Person",
       "givenName": "Adam H.",
       "familyName": "Sparks",
-      "email": "adamhsparks@gmail.com",
+      "email": "adam.sparks@usq.edu.au",
       "@id": "https://orcid.org/0000-0002-0061-8359"
     }
   ],
@@ -200,7 +200,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "23.854KB",
+  "fileSize": "23.757KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",
