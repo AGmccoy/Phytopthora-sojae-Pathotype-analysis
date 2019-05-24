@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "hagis",
-  "description": "Provides tools for analysis of Phytophthora sojae survey data.  \n  Functions provide distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for the Habgood-Gilmour Spreadsheet, `HaGiS', previously used for\n  `P. sojae' pathotype analysis.",
+  "description": "Provides tools for analysis of Phytophthora sojae survey data.  \n  Functions provide distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for the Habgood-Gilmour Spreadsheet, `HaGiS', previously used for\n  P. sojae pathotype analysis.",
   "name": "hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity",
   "license": "https://spdx.org/licenses/MIT",
   "version": "2.0.0",
@@ -200,7 +200,7 @@
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "23.626KB",
+  "fileSize": "23.846KB",
   "citation": [
     {
       "@type": "SoftwareSourceCode",

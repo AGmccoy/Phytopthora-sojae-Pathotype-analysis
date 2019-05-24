@@ -22,11 +22,31 @@ library(hagis)
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 
-The goal of _hagis_ is to provide _Phytophthora sojae_ pathotype analysis that the original [HaGiS worksheet](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x) (Herrmann, Löwer and Schachtel) provided.
+## Introduction
 
-## Installation
+The goal of _hagis_ is to provide _Phytophthora sojae_ pathotype analysis in the R programming language that the original [Habgood-Gilmour Spreadsheet, HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x), (Herrmann, Löwer and Schachtel) provided.
 
-Currently you can only install _hagis_ from GitHub with:
+## Overview
+
+_Phytophthora sojae_ has been managed primarily via deployment of resistance genes (_Rps_ genes, resistance to _P. sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
+
+The goal of this package is to provide all the necessary analyses needed when conducting a _P. sojae_ pathotype survey, including: distribution of susceptibilities (effective and non-effective _Rps_ genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in a reproducible manner.
+
+New users are encouraged to visit the documentation, <https://openplantpathology.github.io/hagis/articles/hagis.html>, for detailed information on how to use _hagis_ along with working examples using a built-in data set.
+
+## Quick Start Install 
+
+### Stable Version
+
+A stable version of _hagis_ is available from CRAN.
+
+```r
+install.packages("hagis")
+```
+### Development Version
+
+A development version is available from from GitHub. If you wish to install the development version that may have new features or bug fixes before the CRAN version does (but also may not work properly), please install the remotes package, available from CRAN. We strive to keep the master branch on GitHub functional and working properly.
+
 
 ``` {r, eval=FALSE}
 if (!require("remotes")) {
@@ -37,26 +57,20 @@ if (!require("remotes")) {
 install_github("openplantpathology/hagis", build_vignettes = TRUE)
 ```
 
-The original R scripts were produced by Austin McCoy and Zachary Noel at Michigan State University to replicate the HaGiS worksheet and provide all necessary results for pathotype data analysis in R in addition to other tools to assist in the analysis of these data.
+## Meta
 
-_Phytophthora sojae_ has been managed primarily via deployment of resistance genes (_Rps_ genes, resistance to _Phytophthora sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing _Phytophthora sojae_, state-wide surveys must be conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
+### Citation
 
-The goal of these scripts was to provide all the necessary analyses needed when conducting a _Phytophthora sojae_ pathotype survey, including: distribution of susceptibilities (effective and non-effective _Rps_ genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes.
-
-Users may refer to the example file, `system.file("extdata", "practice_data_set.csv", package = "hagis")` and the documentation for further examples.
-
-## Citation
-Please cite _hagis_ by using:
+When you use _hagis_, please cite by using:
 
 ```{r}
 citation("hagis")
 ```
 
-# Meta
-
 Please note that the _hagis_ project is released with a
 [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
-# References
+## References
+
 > Herrmann, , Löwer, and Schachtel, (1999), A new tool for entry and analysis of virulence data for plant pathogens. Plant Pathology, 48: 154-158. DOI: [10.1046/j.1365-3059.1999.00325.x](https://doi.org/10.1046/j.1365-3059.1999.00325.x)
