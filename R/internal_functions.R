@@ -15,7 +15,6 @@
 #' @param .Rps field providing the _Rps_ gene(s) being tested. Character.
 #' @param .perc_susc field providing the percent susceptible reactions.
 #' Character.
-#' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @importFrom data.table ":="
 #' @noRd
 .check_inputs <- function(.x, .cutoff, .control, .sample, .Rps, .perc_susc) {
@@ -50,7 +49,6 @@
 #' @param .x A `data.table` containing the values to be summarised
 #' @param .cutoff Cutoff value for susceptibility
 #' @return A `data.table` that tallies the results by Rps gene
-#' @author Adam H. Sparks, adamhsparks@@gmail.com
 #' @importFrom data.table ":="
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
