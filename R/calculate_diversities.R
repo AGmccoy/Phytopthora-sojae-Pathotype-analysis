@@ -2,7 +2,7 @@
 #' Calculate Diversities Indices
 #'
 #' @description Calculates _Phytophthora_ diversity index
-#' @inheritParams summarize_rps
+#' @inheritParams summarize_gene
 #' @examples
 #' # locate system file for import
 #' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
@@ -16,7 +16,7 @@
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
-#'                                      Rps = "Rps",
+#'                                      gene = "Rps",
 #'                                      perc_susc = "perc.susc")
 #' 
 #' diversities
@@ -27,7 +27,7 @@ calculate_diversities <- function(x,
                                   cutoff,
                                   control,
                                   sample,
-                                  Rps,
+                                  gene,
                                   perc_susc) {
   
   # check inptuts and rename fields to work with this package
@@ -36,7 +36,7 @@ calculate_diversities <- function(x,
     .cutoff = cutoff,
     .control = control,
     .sample = sample,
-    .Rps = Rps,
+    .gene = gene,
     .perc_susc = perc_susc
   )
   
@@ -46,7 +46,7 @@ calculate_diversities <- function(x,
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
-  x <- subset(x, Rps != control)
+  x <- subset(x, gene != control)
 
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
@@ -56,8 +56,8 @@ calculate_diversities <- function(x,
   # reactions (pathotype)
   x <- subset(x, susceptible.1 != 0)
 
-  # split the data frame by sample and Rps
-  y <- vapply(split(x[, Rps],
+  # split the data frame by sample and gene
+  y <- vapply(split(x[, gene],
                     x[, sample]),
               toString, character(1))
   
@@ -167,7 +167,7 @@ print.hagis.diversities <- function(x,
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
-#'                                      Rps = "Rps",
+#'                                      gene = "Rps",
 #'                                      perc_susc = "perc.susc")
 #' 
 #' # print the diversities table
@@ -206,7 +206,7 @@ diversities_table <- function(x,...) {
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
-#'                                      Rps = "Rps",
+#'                                      gene = "Rps",
 #'                                      perc_susc = "perc.susc")
 #' 
 #' # print the diversities table

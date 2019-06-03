@@ -31,10 +31,10 @@ Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
 head(Pathotype.Data)
 ```
 
-We see in the `Rps` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
+We see in the `gene` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
 
-```{r remove-Rps}
-Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$Rps)
+```{r remove-gene}
+Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$gene)
 head(Pathotype.Data)
 ```
 
@@ -46,39 +46,39 @@ To help ensure that the proper data are used in calculations, the user is asked 
 
 ## Function Arguments Used in *hagis*
 
-We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_rps()`, `calculate_complexities()` and `calculate_diversities()`. Each of these functions take the same arguments:
+We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_gene()`, `calculate_complexities()` and `calculate_diversities()`. Each of these functions take the same arguments:
 
 * `x` this is your data set name, _e.g._ `Pathotype.Data` from the example above, allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel spreadsheet)
 
 * `cutoff` this value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
 
-* `control` specifies the value used in the `Rps` column to denote a susceptible control used in the study
+* `control` specifies the value used in the `gene` column to denote a susceptible control used in the study
 
 * `sample` specifies the column header for the column which identifies the isolates tested
 
-* `Rps` specifies the column header for the column which identifies the genes tested
+* `gene` specifies the column header for the column which identifies the genes tested
 
 * `perc_susc` specifies the column header for the column which identifies the percent susceptible plants for each gene
 
 Ordinarily you would use functions in _hagis_ or other R packages like this:
 
 ```{r example-function, eval=FALSE}
-Rps.summary <- summarize_rps(x = Pathotype.Data,
+Rps.summary <- summarize_gene(x = Pathotype.Data,
                              cutoff = 60,
                              control = "susceptible",
                              sample = "Isolate",
-                             Rps = "Rps",
+                             gene = "Rps",
                              perc_susc = "perc.susc")
 ```
 
-However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from *hagis*. First, we make a list of the arguments that `summarize_rps()`, `calculate_diversities()` and `calculate_complexities()` use that specify our inputs based on our example data:
+However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from *hagis*. First, we make a list of the arguments that `summarize_gene()`, `calculate_diversities()` and `calculate_complexities()` use that specify our inputs based on our example data:
 
 ```{r shared-args}
 hagis_args <- list(x = Pathotype.Data,
                    cutoff = 60,
                    control = "susceptible",
                    sample = "Isolate",
-                   Rps = "Rps",
+                   gene = "Rps",
                    perc_susc = "perc.susc")
 ```
 
@@ -88,14 +88,14 @@ Now that we have a list of arguments, we can now save time entering the same dat
 
 ## Determination of Effective Resistance Genes
 
-Below is an example of tables and graphics that can be produced using the `summarize_rps()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
+Below is an example of tables and graphics that can be produced using the `summarize_gene()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
 
-The `summarize_rps()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
+The `summarize_gene()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
 
 ```{r, echo=TRUE}
-Rps.summary <- do.call(summarize_rps, hagis_args)
+gene.summary <- do.call(summarize_gene, hagis_args)
 
-Rps.summary
+gene.summary
 ```
 
 Using the _pander_ library we can make the table much more attractive in Markdown.
@@ -103,19 +103,19 @@ Using the _pander_ library we can make the table much more attractive in Markdow
 ```{r pander-print-Rps, echo=TRUE}
 library(pander)
 
-pander(Rps.summary)
+pander(gene.summary)
 ```
 
 ### Plotting Rps Summary Data
 
 *hagis* also provides functions to quickly graph your data using `ggplot2`. 
 
-Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(gene.summary, type = "percentage")`, or if you desire the distribution `autoplot(gene.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r autoplot-summary, echo=TRUE}
-autoplot(Rps.summary, type = "percentage")
+autoplot(gene.summary, type = "percentage")
 
-autoplot(Rps.summary, type = "count")
+autoplot(gene.summary, type = "count")
 ```
 
 ***
@@ -198,7 +198,7 @@ Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the out
 ```{r set-up-adv.plot}
 library(ggplot2)
 
-Rps.plot <- autoplot(Rps.summary, type = "percentage")
+Rps.plot <- autoplot(gene.summary, type = "percentage")
 
 Rps.plot
 ```

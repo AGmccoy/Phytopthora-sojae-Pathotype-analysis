@@ -1,14 +1,14 @@
 
-# test autoplot.hagis.rps.summary ----------------------------------------------
-context("autoplot.hagis.rps.summary")
-test_that("autoplot.hagis.rps.summary() returns a ggplot2 object", {
+# test autoplot.hagis.gene.summary ----------------------------------------------
+context("autoplot.hagis.gene.summary")
+test_that("autoplot.hagis.gene.summary() returns a ggplot2 object", {
   Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
-  rps <- summarize_rps(x = Ps,
+  rps <- summarize_gene(x = Ps,
                        cutoff = 60,
                        control = "susceptible",
                        sample = "Isolate",
-                       Rps = "Rps",
+                       gene = "Rps",
                        perc_susc = "perc.susc")
 
   rps_count <- autoplot(rps, type = "count")

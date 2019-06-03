@@ -9,7 +9,7 @@ complexities <- calculate_complexities(
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
-  Rps = "Rps",
+  gene ="Rps",
   perc_susc = "perc.susc"
 )
 
@@ -40,7 +40,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = 60,
     control = "susceptible",
     sample = "Isolate",
-    Rps = "Rps",
+    gene ="Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
   expect_error(calculate_complexities(
@@ -48,7 +48,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = "sixty",
     control = "susceptible",
     sample = "Isolate",
-    Rps = "Rps",
+    gene ="Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
   expect_error(calculate_complexities(
@@ -56,7 +56,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = 60,
     control = NULL,
     sample = "Isolate",
-    Rps = "Rps",
+    gene ="Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
   expect_error(calculate_complexities(
@@ -64,7 +64,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = 60,
     control = "susceptible",
     sample = NULL,
-    Rps = "Rps",
+    gene ="Rps",
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
   expect_error(calculate_complexities(
@@ -72,7 +72,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = 60,
     control = "susceptible",
     sample = "isolate",
-    Rps = NULL,
+    gene =NULL,
     perc_susc = "perc.susc"
   ), regexp = "You have failed to provide all necessary inputs")
   expect_error(calculate_complexities(
@@ -80,7 +80,7 @@ test_that("calculate_complexities() stops if lacking all params", {
     cutoff = 60,
     control = "susceptible",
     sample = "isolate",
-    Rps = "Rps",
+    gene ="Rps",
     perc_susc = 60
   ), regexp = "You have failed to provide all necessary inputs")
 })

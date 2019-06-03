@@ -3,7 +3,7 @@
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by sample
-#' @inheritParams summarize_rps
+#' @inheritParams summarize_gene
 #' @examples
 #'
 #' # locate system file for import
@@ -18,7 +18,7 @@
 #'                                       cutoff = 60,
 #'                                       control = "susceptible",
 #'                                       sample = "Isolate",
-#'                                       Rps = "Rps",
+#'                                       gene = "Rps",
 #'                                       perc_susc = "perc.susc")
 #' complexities
 #'
@@ -44,7 +44,7 @@ calculate_complexities <- function(x,
                                    cutoff,
                                    control,
                                    sample,
-                                   Rps,
+                                   gene,
                                    perc_susc) {
   
   # check inptuts and rename fields to work with this package
@@ -53,7 +53,7 @@ calculate_complexities <- function(x,
     .cutoff = cutoff,
     .control = control,
     .sample = sample,
-    .Rps = Rps,
+    .gene = gene,
     .perc_susc = perc_susc
   )
   
@@ -63,7 +63,7 @@ calculate_complexities <- function(x,
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
-  x <- subset(x, Rps != control)
+  x <- subset(x, gene != control)
   
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
@@ -79,7 +79,7 @@ calculate_complexities <- function(x,
   # Isolate and grouping all Isolates by their complexity
   
   # create an object of the number of genes in the data
-  n_gene <- length(unique(x[, Rps]))
+  n_gene <- length(unique(x[, gene]))
   
   # create an object of the number of samples in the data
   n_sample <- length(unique(x[, sample]))
@@ -144,7 +144,7 @@ calculate_complexities <- function(x,
 #'                                       cutoff = 60,
 #'                                       control = "susceptible",
 #'                                       sample = "Isolate",
-#'                                       Rps = "Rps",
+#'                                       gene = "Rps",
 #'                                       perc_susc = "perc.susc")
 #'
 #' # Visualize the distribution (count or actual values)
@@ -162,7 +162,7 @@ autoplot.hagis.complexities <- function(object, type, color = NULL, ...) {
   
   plot_percentage <- function(.data, .color) {
     #CRAN Note avoidance
-    complexity <- frequency <- Rps <- NULL
+    complexity <- frequency <- gene <- NULL
     perc_plot <- ggplot2::ggplot(data = .data,
                                  ggplot2::aes(x = as.factor(complexity),
                                               y = frequency)) +
@@ -182,7 +182,7 @@ autoplot.hagis.complexities <- function(object, type, color = NULL, ...) {
   
   plot_count <- function(.data, .color) {
     #CRAN Note avoidance
-    complexity <- distribution <- Rps <- NULL
+    complexity <- distribution <- gene <- NULL
     num_plot <- ggplot2::ggplot(data = .data,
                                 ggplot2::aes(x = as.factor(complexity),
                                              y = distribution)) +

@@ -7,7 +7,7 @@ diversities <- calculate_diversities(x = Ps,
                                      cutoff = 60,
                                      control = "susceptible",
                                      sample = "Isolate",
-                                     Rps = "Rps",
+                                     gene = "Rps",
                                      perc_susc = "perc.susc")
 
 test_that("diversity_table() returns a pander object", { 

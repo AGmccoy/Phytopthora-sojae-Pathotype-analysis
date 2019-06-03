@@ -4,20 +4,20 @@
 \alias{calculate_complexities}
 \title{Calculate Distribution of Complexities by Sample}
 \usage{
-calculate_complexities(x, cutoff, control, sample, Rps, perc_susc)
+calculate_complexities(x, cutoff, control, sample, gene, perc_susc)
 }
 \arguments{
 \item{x}{a \code{data.frame} containing the data.}
 
 \item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
-\item{control}{value used to denote the susceptible control in the \code{Rps}
+\item{control}{value used to denote the susceptible control in the \code{gene}
 field. Character.}
 
 \item{sample}{field providing the unique identification for each sample being
 tested. Character.}
 
-\item{Rps}{field providing the \emph{Rps} gene(s) being tested. Character.}
+\item{gene}{field providing the gene(s) being tested. Character.}
 
 \item{perc_susc}{field providing the percent susceptible reactions.
 Character.}
@@ -53,7 +53,7 @@ complexities <- calculate_complexities(x = Ps,
                                       cutoff = 60,
                                       control = "susceptible",
                                       sample = "Isolate",
-                                      Rps = "Rps",
+                                      gene = "Rps",
                                       perc_susc = "perc.susc")
 complexities
 

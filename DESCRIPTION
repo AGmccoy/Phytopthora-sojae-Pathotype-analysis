@@ -1,5 +1,5 @@
 Package: hagis
-Title: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity
+Title: Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity
 Version: 2.0.0
 Authors@R: c(
   person(given = "Austin", family = "McCoy", role = c("aut", "ccp"),
@@ -15,12 +15,11 @@ Authors@R: c(
   email = "chilvers@msu.edu ",
   comment = c(ORCID = "0000-0001-8832-1666"))
   )
-Description: Provides tools for analysis of Phytophthora sojae survey data.  
-  Functions provide distribution of susceptibilities, distribution of
-  complexities with statistics, pathotype frequency distribution, as well as
-  diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for the Habgood-Gilmour Spreadsheet, `HaGiS', previously used for
-  P. sojae pathotype analysis.
+Description: Analysis of Phytophthora sojae survey data.  Functions provided
+  calculate distribution of susceptibilities, distribution of complexities with
+  statistics, pathotype frequency distribution, as well as diversity indices for
+  pathotypes.  This package is meant to be a direct replacement for the Habgood-
+  Gilmour Spreadsheet, 'HaGiS', previously used for P. sojae pathotype analysis.
 Depends: R (>= 3.2.0)
 Imports: 
   data.table,
@@ -33,12 +32,12 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Suggests: 
-    covr,
-    knitr,
-    pkgdown,
-    rmarkdown,
-    testthat,
-    vdiffr
+  covr,
+  knitr,
+  pkgdown,
+  rmarkdown,
+  testthat,
+  vdiffr
 VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)

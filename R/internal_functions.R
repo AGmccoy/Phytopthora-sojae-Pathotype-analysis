@@ -8,23 +8,23 @@
 #'
 #' @param .x a `data.table` containing the values to be summarised
 #' @param .cutoff value for percent susceptible cutoff. Numeric.
-#' @param .control value used to denote the susceptible control in the `Rps`
+#' @param .control value used to denote the susceptible control in the `gene`
 #'  field. Character.
 #' @param .sample field providing the unique identification for each sample
 #'  being tested. Character.
-#' @param .Rps field providing the _Rps_ gene(s) being tested. Character.
+#' @param .gene field providing the gene(s) being tested. Character.
 #' @param .perc_susc field providing the percent susceptible reactions.
 #' Character.
 #' @importFrom data.table ":="
 #' @noRd
-.check_inputs <- function(.x, .cutoff, .control, .sample, .Rps, .perc_susc) {
+.check_inputs <- function(.x, .cutoff, .control, .sample, .gene, .perc_susc) {
   # CRAN NOTE avoidance
-  Rps <- perc_susc <- sample <- NULL
+  gene <- perc_susc <- sample <- NULL
   if (!is.data.frame(.x) |
       !is.numeric(.cutoff) |
       !is.character(.control) |
       !is.character(.sample) |
-      !is.character(.Rps) |
+      !is.character(.gene) |
       !is.character(.perc_susc)) {
     stop(call. = FALSE,
          "You have failed to provide all necessary inputs or\n",
@@ -32,13 +32,13 @@
          "Please check and try again.")
   }
   data.table::setDT(.x)
-  data.table::setnames(.x, c(.perc_susc, .Rps, .sample),
-                       c("perc_susc", "Rps", "sample"))
+  data.table::setnames(.x, c(.perc_susc, .gene, .sample),
+                       c("perc_susc", "gene", "sample"))
   
   # set col types for the necessary cols
   .x[, sample := as.character(sample)]
   .x[, perc_susc := as.numeric(perc_susc)]
-  .x[, Rps := as.character(Rps)]
+  .x[, gene := as.character(gene)]
   return(.x)
 }
 
@@ -48,7 +48,7 @@
 #'
 #' @param .x A `data.table` containing the values to be summarised
 #' @param .cutoff Cutoff value for susceptibility
-#' @return A `data.table` that tallies the results by Rps gene
+#' @return A `data.table` that tallies the results by gene
 #' @importFrom data.table ":="
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {

@@ -37,7 +37,7 @@ complexities <- calculate_complexities(x = Ps,
                                       cutoff = 60,
                                       control = "susceptible",
                                       sample = "Isolate",
-                                      Rps = "Rps",
+                                      gene = "Rps",
                                       perc_susc = "perc.susc")
 
 # Visualize the distribution (count or actual values)

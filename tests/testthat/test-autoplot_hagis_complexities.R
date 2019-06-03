@@ -1,5 +1,5 @@
 
-# test autoplot.hagis.rps.summary ----------------------------------------------
+# test autoplot.hagis.gene.summary ----------------------------------------------
 context("autoplot.hagis.complexities()")
 test_that("autoplot.hagis.complexities() returns a ggplot2 object", {
   Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
@@ -8,7 +8,7 @@ test_that("autoplot.hagis.complexities() returns a ggplot2 object", {
                                          cutoff = 60,
                                          control = "susceptible",
                                          sample = "Isolate",
-                                         Rps = "Rps",
+                                         gene = "Rps",
                                          perc_susc = "perc.susc")
   complexities_count <- autoplot(complexities, type = "count")
   expect_doppelganger("Count_complexities",
