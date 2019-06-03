@@ -15,30 +15,34 @@ Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/mast
 
 ## Introduction
 
-The goal of *hagis* is to provide *Phytophthora sojae* pathotype
-analysis in the R programming language that the original
-[Habgood-Gilmour Spreadsheet,
+The goal of *hagis* is to provide plant pathogen gene-for-gene analysis
+in the R programming language that the original [Habgood-Gilmour
+Spreadsheet,
 HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x),
 (Herrmann, Löwer and Schachtel) provided.
 
 ## Overview
 
-*Phytophthora sojae* has been managed primarily via deployment of
-resistance genes (*Rps* genes, resistance to *P. sojae*) in commercial
-soybean cultivars and by the application of fungicide seed treatments.
-However, repeated use of resistance genes can cause populations to adapt
-over time rendering these resistance genes ineffective. To determine
-current effectiveness of resistance genes for managing *P. sojae*,
-state-wide surveys (in the US) are conducted to determine the pathotype
-(previously referred to as “race”) structure within sampled population
-of *P. sojae*.
+`hagis` was initially created for *Phytophthora sojae* surveys by Austin
+McCoy and Zachary Noel at Michigan State University in the US where the
+disease has been managed primarily via deployment of resistance genes
+(*Rps* genes, resistance to *P. sojae*) in commercial soybean cultivars
+and by the application of fungicide seed treatments. However, repeated
+use of resistance genes can cause populations to adapt over time
+rendering these resistance genes ineffective. To determine current
+effectiveness of resistance genes for managing *P. sojae*, state-wide
+surveys (in the US) are conducted to determine the pathotype (previously
+referred to as “race”) structure within sampled population of *P.
+sojae*.
 
-The goal of this package is to provide all the necessary analyses needed
-when conducting a *P. sojae* pathotype survey, including: distribution
-of susceptibilities (effective and non-effective *Rps* genes),
-distribution of pathotype complexities with statistics, pathotype
-frequency distribution, as well as diversity indices for pathotypes in a
-reproducible manner.
+However, the package is not only useful for *P. sojae* work. It was
+built to be useful for other plant pathogen gene-for-gene interaction
+systems, *e.g.* rusts. The goal of this package is to provide all the
+necessary analyses needed when conducting a pathotype surveys,
+including: distribution of susceptibilities (effective and non-effective
+resistance genes), distribution of pathotype complexities with
+statistics, pathotype frequency distribution, as well as diversity
+indices for pathotypes in an efficient and reproducible manner.
 
 New users are encouraged to visit the documentation,
 <https://openplantpathology.github.io/hagis/articles/hagis.html>, for
@@ -81,8 +85,8 @@ When you use *hagis*, please cite by using:
 ``` r
 citation("hagis")
 #> 
-#> McCoy A, Noel Z, Sparks A, Chilvers M (????). _hagis: Tools for
-#> Analysis of Phytophthora Pathotype Complexities, Distributions and
+#> McCoy A, Noel Z, Sparks A, Chilvers M (2019). _hagis: Analysis of
+#> Plant Pathogen Pathotype Complexities, Distributions and
 #> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
 #> https://doi.org/10.5281/zenodo.2619820), R package version 2.0.0,
 #> <URL: https://openplantpathology.github.io/hagis/>.
@@ -90,7 +94,7 @@ citation("hagis")
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
-#>     title = {{hagis}: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity},
+#>     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},
 #>     author = {Austin McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
 #>     note = {R package version 2.0.0},
 #>     url = {https://openplantpathology.github.io/hagis/},

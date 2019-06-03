@@ -24,13 +24,13 @@ library(hagis)
 
 ## Introduction
 
-The goal of _hagis_ is to provide _Phytophthora sojae_ pathotype analysis in the R programming language that the original [Habgood-Gilmour Spreadsheet, HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x), (Herrmann, Löwer and Schachtel) provided.
+The goal of _hagis_ is to provide plant pathogen gene-for-gene analysis in the R programming language that the original [Habgood-Gilmour Spreadsheet, HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x), (Herrmann, Löwer and Schachtel) provided.
 
 ## Overview
 
-_Phytophthora sojae_ has been managed primarily via deployment of resistance genes (_Rps_ genes, resistance to _P. sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
+`hagis` was initially created for _Phytophthora sojae_ surveys by Austin McCoy and Zachary Noel at Michigan State University in the US where the disease has been managed primarily via deployment of resistance genes (_Rps_ genes, resistance to _P. sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
 
-The goal of this package is to provide all the necessary analyses needed when conducting a _P. sojae_ pathotype survey, including: distribution of susceptibilities (effective and non-effective _Rps_ genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in a reproducible manner.
+However, the package is not only useful for _P. sojae_ work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, _e.g._ rusts. The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.
 
 New users are encouraged to visit the documentation, <https://openplantpathology.github.io/hagis/articles/hagis.html>, for detailed information on how to use _hagis_ along with working examples using a built-in data set.
 

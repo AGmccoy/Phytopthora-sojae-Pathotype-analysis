@@ -4,13 +4,14 @@
 \name{hagis}
 \alias{hagis}
 \alias{hagis-package}
-\title{Tools for Analysis of \emph{Phytophthora} Pathotype Complexities, Distributions and Diversity}
+\title{Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity}
 \description{
-Analysis of Phytophthora sojae survey data.  Functions provided
-  calculate distribution of susceptibilities, distribution of complexities with
-  statistics, pathotype frequency distribution, as well as diversity indices for
-  pathotypes.  This package is meant to be a direct replacement for the Habgood-
-  Gilmour Spreadsheet, 'HaGiS', previously used for P. sojae pathotype analysis.
+Analysis of plant pathogen pathotype survey data.  Functions
+  provided calculate distribution of susceptibilities, distribution of
+  complexities with statistics, pathotype frequency distribution, as well as
+  diversity indices for pathotypes.  This package is meant to be a direct
+  replacement for the Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for
+  pathotype analysis.
 }
 \seealso{
 Useful links:

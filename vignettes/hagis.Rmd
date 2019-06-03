@@ -1,12 +1,12 @@
 ---
-title: "hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity"
+title: "hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity"
 author: "Austin McCoy and Zachary Noel"
 date: "`r Sys.Date()`"
 output: 
     rmarkdown::html_vignette:
         toc: true
 vignette: >
-  %\VignetteIndexEntry{hagis: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity}
+  %\VignetteIndexEntry{hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -22,6 +22,8 @@ library(hagis)
 ```
 
 ## Getting Started With *hagis*
+
+The following examples are based on a dataset from Michigan State University _Phytophthora sojae_ surveys for soybean phytophthora root rot pathotyping efforts.
 
 First you'll want to load in your data set, for right now let's use a practice data set made for the *hagis* package and name it `Pathotype.Data`:
 

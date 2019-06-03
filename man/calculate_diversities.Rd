@@ -23,7 +23,7 @@ tested. Character.}
 Character.}
 }
 \description{
-Calculates \emph{Phytophthora} diversity index
+Calculates pathogen diversity index
 }
 \examples{
 # locate system file for import

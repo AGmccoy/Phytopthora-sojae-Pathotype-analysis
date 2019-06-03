@@ -1,7 +1,7 @@
 
 #' Calculate Diversities Indices
 #'
-#' @description Calculates _Phytophthora_ diversity index
+#' @description Calculates pathogen diversity index
 #' @inheritParams summarize_gene
 #' @examples
 #' # locate system file for import

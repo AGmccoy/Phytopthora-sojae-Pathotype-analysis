@@ -1,5 +1,5 @@
 
-#' Tools for Analysis of _Phytophthora_ Pathotype Complexities, Distributions and Diversity 
+#' Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity 
 #'
 #' @name hagis
 #' @author Austin McCoy, mccoyaus@@msu.edu and Zachary Noel, noelzach@@msu.edu and

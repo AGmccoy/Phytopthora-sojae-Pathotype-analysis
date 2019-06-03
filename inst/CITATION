@@ -2,7 +2,7 @@ year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
-         title = "{hagis}: Tools for Analysis of Phytophthora Pathotype Complexities, Distributions and Diversity",
+         title = "{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity",
          author = c(person("Austin", "McCoy"),
                     person("Zachary", "Noel"),
                     person("Adam H.", "Sparks"),
@@ -15,6 +15,6 @@ bibentry(bibtype = "Manual",
 textVersion =
   paste0("Austin McCoy, Zachary Noel, Adam H. Sparks, and Martin Chilvers (",
          year,
-         "). hagis: Tools for Analysis of Phytophthora Pathotype Complexities,
+         "). hagis: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity,
          Distributions and Diversity",
          note, ". DOI: 10.5281/zenodo.2619820")
