@@ -34,7 +34,7 @@ head(Pathotype.Data)
 We see in the `gene` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
 
 ```{r remove-gene}
-Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$gene)
+Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$Rps)
 head(Pathotype.Data)
 ```
 
@@ -93,9 +93,9 @@ Below is an example of tables and graphics that can be produced using the `summa
 The `summarize_gene()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
 
 ```{r, echo=TRUE}
-gene.summary <- do.call(summarize_gene, hagis_args)
+Rps.summary <- do.call(summarize_gene, hagis_args)
 
-gene.summary
+Rps.summary
 ```
 
 Using the _pander_ library we can make the table much more attractive in Markdown.
@@ -103,19 +103,19 @@ Using the _pander_ library we can make the table much more attractive in Markdow
 ```{r pander-print-Rps, echo=TRUE}
 library(pander)
 
-pander(gene.summary)
+pander(Rps.summary)
 ```
 
 ### Plotting Rps Summary Data
 
 *hagis* also provides functions to quickly graph your data using `ggplot2`. 
 
-Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(gene.summary, type = "percentage")`, or if you desire the distribution `autoplot(gene.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r autoplot-summary, echo=TRUE}
-autoplot(gene.summary, type = "percentage")
+autoplot(Rps.summary, type = "percentage")
 
-autoplot(gene.summary, type = "count")
+autoplot(Rps.summary, type = "count")
 ```
 
 ***
@@ -198,7 +198,7 @@ Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the out
 ```{r set-up-adv.plot}
 library(ggplot2)
 
-Rps.plot <- autoplot(gene.summary, type = "percentage")
+Rps.plot <- autoplot(Rps.summary, type = "percentage")
 
 Rps.plot
 ```
