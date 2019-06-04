@@ -15,9 +15,9 @@ Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/mast
 
 ## Introduction
 
-The goal of *hagis* is to provide plant pathogen gene-for-gene analysis
-in the R programming language that the original [Habgood-Gilmour
-Spreadsheet,
+The goal of *hagis* is to provide analysis tools for plant pathogens
+with gene-for-gene interactions in the R programming language that the
+original [Habgood-Gilmour Spreadsheet,
 HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x),
 (Herrmann, Löwer and Schachtel) provided.
 
