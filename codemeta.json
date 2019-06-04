@@ -240,5 +240,8 @@
     "https://ci.appveyor.com/project/adamhsparks/hagis",
     "https://codecov.io/github/adamhsparks/hagis?branch=master"
   ],
-  "fileSize": "23.355KB"
+  "fileSize": "23.429KB",
+  "applicationCategory": "Tools",
+  "isPartOf": "https://openplantpathology.org",
+  "keywords": ["plant-pathology", "pathotype", "pathogen-survey"]
 }

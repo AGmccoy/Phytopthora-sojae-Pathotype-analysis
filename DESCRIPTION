@@ -45,3 +45,6 @@ Roxygen: list(markdown = TRUE)
 Language: en-US
 URL: https://github.com/openplantpathology/hagis
 BugReports: https://github.com/openplantpathology/hagis/issues
+X-schema.org-applicationCategory: Tools
+X-schema.org-keywords: plant-pathology, pathotype, pathogen-survey
+X-schema.org-isPartOf: https://openplantpathology.org
