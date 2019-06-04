@@ -82,10 +82,9 @@ summarize_gene <- function(x,
 #' @export
 ggplot2::autoplot
 
-#' Autoplot Method for Gene Percent Pathogenic Summaries
-#' @method autoplot hagis.gene.summary
+#' Plot \pkg{hagis} Gene Summaries
 #' @return A \link[ggplot2]{ggplot2} plot
-#' @seealso plot.hagis.gene.summary
+#' @method autoplot hagis.gene.summary
 #' @noRd
 
 autoplot.hagis.gene.summary <-
