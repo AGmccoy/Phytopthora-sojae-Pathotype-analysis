@@ -32,7 +32,7 @@
 #' susc
 #'
 #' # plot susceptibilities
-#' autoplot(susc, type = "percentage")
+#' plot(susc, type = "percentage")
 #'
 #' @return  returns an object of [class()] `hagis.gene.summary`
 #' An object of class `hagis.summaries` is a\cr [data.table::data.table()]

@@ -1,7 +1,7 @@
 
-# test autoplot.hagis.gene.summary ----------------------------------------------
-context("autoplot.hagis.gene.summary")
-test_that("autoplot.hagis.gene.summary() returns a ggplot2 object", {
+# test plot.hagis.gene.summary ----------------------------------------------
+context("plot.hagis.gene.summary")
+test_that("plot.hagis.gene.summary() returns a ggplot2 object", {
   Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
   rps <- summarize_gene(x = Ps,
@@ -11,16 +11,16 @@ test_that("autoplot.hagis.gene.summary() returns a ggplot2 object", {
                        gene = "Rps",
                        perc_susc = "perc.susc")
 
-  rps_count <- autoplot(rps, type = "count")
+  rps_count <- plot(rps, type = "count")
   expect_doppelganger("Count_summary", rps_count)
   
-  rps_perc <- autoplot(rps, type = "percentage")
+  rps_perc <- plot(rps, type = "percentage")
   expect_doppelganger("Perc_summary", rps_perc)
   
-  rps_perc_blue <- autoplot(rps, type = "percentage", color = "blue")
+  rps_perc_blue <- plot(rps, type = "percentage", color = "blue")
   expect_doppelganger("Perc_summary_blue", rps_perc_blue)
 })
 
-test_that("autoplot.rps.summary errors if an invalid type is given", {
-  expect_error(autoplot(rps, type = "orange"))
+test_that("plot.rps.summary errors if an invalid type is given", {
+  expect_error(plot(rps, type = "orange"))
 })

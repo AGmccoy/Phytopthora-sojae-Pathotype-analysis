@@ -56,6 +56,6 @@ susc <- summarize_gene(x = Ps,
 susc
 
 # plot susceptibilities
-autoplot(susc, type = "percentage")
+plot(susc, type = "percentage")
 
 }

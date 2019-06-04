@@ -25,7 +25,7 @@
 #' summary(complexities)
 #'
 #' # plot complexities frequency or by percentage
-#' autoplot(complexities, type = "percentage")
+#' plot(complexities, type = "percentage")
 #'
 #' @return `calculate_complexities` returns an object of class
 #' `hagis.complexities`.
