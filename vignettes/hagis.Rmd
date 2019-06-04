@@ -112,12 +112,12 @@ pander(Rps.summary)
 
 *hagis* also provides functions to quickly graph your data using `ggplot2`. 
 
-Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `plot(Rps.summary, type = "percentage")`, or if you desire the distribution `plot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
-```{r autoplot-summary, echo=TRUE}
-autoplot(Rps.summary, type = "percentage")
+```{r plot-summary, echo=TRUE}
+plot(Rps.summary, type = "percentage")
 
-autoplot(Rps.summary, type = "count")
+plot(Rps.summary, type = "count")
 ```
 
 ***
@@ -149,12 +149,12 @@ pander(summary(complexities))
 
 ### Plotting Complexities Data
 
-Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `autoplot(complexties, type = "percentage")`, or if you desire the distribution `autoplot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `plot(complexties, type = "percentage")`, or if you desire the distribution `plot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r complexities-plot}
-autoplot(complexities, type = "percentage")
+plot(complexities, type = "percentage")
 
-autoplot(complexities, type = "count")
+plot(complexities, type = "count")
 ```
 
 ***
@@ -193,14 +193,14 @@ individual_pathotypes(diversity)
 
 # Advanced Plotting {#AdvancedPlotting}
 
-## *hagis* Autoplot Objects
+## *hagis* plot Objects
 
 Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options.
 
 ```{r set-up-adv.plot}
 library(ggplot2)
 
-Rps.plot <- autoplot(Rps.summary, type = "percentage")
+Rps.plot <- plot(Rps.summary, type = "percentage")
 
 Rps.plot
 ```
@@ -209,7 +209,7 @@ Rps.plot
 
 Use *ggplot2*'s `theme_minimal()` theme.
 
-```{r change-autoplot-theme}
+```{r change-plot-theme}
 Rps.plot <- Rps.plot +
   theme_minimal()
 
@@ -220,7 +220,7 @@ Rps.plot
 
 Set the font to be a bold-face serif family font.
 
-```{r change-autoplot-font}
+```{r change-plot-font}
 Rps.plot <- Rps.plot +
   theme(
     text = element_text(
@@ -243,12 +243,12 @@ Rps.plot <- Rps.plot +
 Rps.plot
 ```
 
-### Use Colors in Autoplot Objects
+### Use Colors in plot Objects
 
 You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using `theme_bw()` with a serif font.
 
 ```{r use-Colors}
-autoplot(Rps.summary, type = "percentage", color = "#18453b") +
+plot(Rps.summary, type = "percentage", color = "#18453b") +
   theme_bw() +
   theme(
     text = element_text(

@@ -74,7 +74,7 @@
       <h1>hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity</h1>
                         <h4 class="author">Austin McCoy and Zachary Noel</h4>
             
-            <h4 class="date">2019-06-04</h4>
+            <h4 class="date">2019-06-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/openplantpathology/hagis/blob/master/vignettes/hagis.Rmd"><code>vignettes/hagis.Rmd</code></a></small>
       <div class="hidden name"><code>hagis.Rmd</code></div>
@@ -286,12 +286,12 @@
 <h3 class="hasAnchor">
 <a href="#plotting-rps-summary-data" class="anchor"></a>Plotting Rps Summary Data</h3>
 <p><em>hagis</em> also provides functions to quickly graph your data using <code>ggplot2</code>.</p>
-<p>Two functions are provided to plot the summary depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot(Rps.summary, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot(Rps.summary, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
-<p><img src="hagis_files/figure-html/autoplot-summary-1.png" width="576"></p>
+<p>Two functions are provided to plot the summary depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(Rps.summary, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(Rps.summary, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
+<p><img src="hagis_files/figure-html/plot-summary-1.png" width="576"></p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
-<p><img src="hagis_files/figure-html/autoplot-summary-2.png" width="576"></p>
+<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
+<p><img src="hagis_files/figure-html/plot-summary-2.png" width="576"></p>
 <hr>
 </div>
 </div>
@@ -545,11 +545,11 @@
 <div id="plotting-complexities-data" class="section level3">
 <h3 class="hasAnchor">
 <a href="#plotting-complexities-data" class="anchor"></a>Plotting Complexities Data</h3>
-<p>Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot(complexties, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot(complexities, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
+<p>Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(complexties, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(complexities, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
 <p><img src="hagis_files/figure-html/complexities-plot-1.png" width="576"></p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb14-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
 <p><img src="hagis_files/figure-html/complexities-plot-2.png" width="576"></p>
 <hr>
 </div>
@@ -798,62 +798,63 @@
 <div id="AdvancedPlotting" class="section level1">
 <h1 class="hasAnchor">
 <a href="#AdvancedPlotting" class="anchor"></a>Advanced Plotting</h1>
-<div id="hagis-autoplot-objects" class="section level2">
+<div id="hagis-plot-objects" class="section level2">
 <h2 class="hasAnchor">
-<a href="#hagis-autoplot-objects" class="anchor"></a><em>hagis</em> Autoplot Objects</h2>
+<a href="#hagis-plot-objects" class="anchor"></a><em>hagis</em> plot Objects</h2>
 <p>Since <em>hagis</em> uses <code>ggplot2</code> to generate its plots, you can easily theme the outputs using common <code>ggplot2</code> themes and other options.</p>
 <div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
 <a class="sourceLine" id="cb19-2" title="2"></a>
-<a class="sourceLine" id="cb19-3" title="3">Rps.plot &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a>
-<a class="sourceLine" id="cb19-4" title="4"></a>
-<a class="sourceLine" id="cb19-5" title="5">Rps.plot</a></code></pre></div>
+<a class="sourceLine" id="cb19-3" title="3">Rps.plot &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
 <p><img src="hagis_files/figure-html/set-up-adv.plot-1.png" width="576"></p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"></a>
+<a class="sourceLine" id="cb20-2" title="2">Rps.plot</a></code></pre></div>
+<p><img src="hagis_files/figure-html/set-up-adv.plot-2.png" width="576"></p>
 <div id="changing-the-ggplot2-theme" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changing-the-ggplot2-theme" class="anchor"></a>Changing the ggplot2 Theme</h3>
 <p>Use <em>ggplot2</em>’s <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal()</a></code> theme.</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb20-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>()</a>
-<a class="sourceLine" id="cb20-3" title="3"></a>
-<a class="sourceLine" id="cb20-4" title="4">Rps.plot</a></code></pre></div>
-<p><img src="hagis_files/figure-html/change-autoplot-theme-1.png" width="576"></p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>()</a>
+<a class="sourceLine" id="cb21-3" title="3"></a>
+<a class="sourceLine" id="cb21-4" title="4">Rps.plot</a></code></pre></div>
+<p><img src="hagis_files/figure-html/change-plot-theme-1.png" width="576"></p>
 </div>
 <div id="changing-the-font" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changing-the-font" class="anchor"></a>Changing the Font</h3>
 <p>Set the font to be a bold-face serif family font.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
-<a class="sourceLine" id="cb21-3" title="3">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
-<a class="sourceLine" id="cb21-4" title="4">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
-<a class="sourceLine" id="cb21-5" title="5">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
-<a class="sourceLine" id="cb21-6" title="6">    ))</a>
-<a class="sourceLine" id="cb21-7" title="7"></a>
-<a class="sourceLine" id="cb21-8" title="8">Rps.plot</a></code></pre></div>
-<p><img src="hagis_files/figure-html/change-autoplot-font-1.png" width="576"></p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
+<a class="sourceLine" id="cb22-3" title="3">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
+<a class="sourceLine" id="cb22-4" title="4">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
+<a class="sourceLine" id="cb22-5" title="5">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
+<a class="sourceLine" id="cb22-6" title="6">    ))</a>
+<a class="sourceLine" id="cb22-7" title="7"></a>
+<a class="sourceLine" id="cb22-8" title="8">Rps.plot</a></code></pre></div>
+<p><img src="hagis_files/figure-html/change-plot-font-1.png" width="576"></p>
 </div>
 <div id="make-a-horizontal-plot" class="section level3">
 <h3 class="hasAnchor">
 <a href="#make-a-horizontal-plot" class="anchor"></a>Make a Horizontal Plot</h3>
 <p>If your <em>Rps</em> gene names are too long, flipping the axis can make the graph more legible without rotating the x-axis labels.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/coord_flip">coord_flip</a></span>()</a>
-<a class="sourceLine" id="cb22-3" title="3"></a>
-<a class="sourceLine" id="cb22-4" title="4">Rps.plot</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
+<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/coord_flip">coord_flip</a></span>()</a>
+<a class="sourceLine" id="cb23-3" title="3"></a>
+<a class="sourceLine" id="cb23-4" title="4">Rps.plot</a></code></pre></div>
 <p><img src="hagis_files/figure-html/horizontal-plot-1.png" width="576"></p>
 </div>
-<div id="use-colors-in-autoplot-objects" class="section level3">
+<div id="use-colors-in-plot-objects" class="section level3">
 <h3 class="hasAnchor">
-<a href="#use-colors-in-autoplot-objects" class="anchor"></a>Use Colors in Autoplot Objects</h3>
+<a href="#use-colors-in-plot-objects" class="anchor"></a>Use Colors in plot Objects</h3>
 <p>You can use named, <em>e.g.</em> “red”, “yellow”, “blue” colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code> with a serif font.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/autoplot">autoplot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>, <span class="dt">color =</span> <span class="st">"#18453b"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-3" title="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
-<a class="sourceLine" id="cb23-4" title="4">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
-<a class="sourceLine" id="cb23-5" title="5">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
-<a class="sourceLine" id="cb23-6" title="6">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
-<a class="sourceLine" id="cb23-7" title="7">    ))</a></code></pre></div>
-<p><img src="hagis_files/figure-html/use-Colors-1.png" width="576"></p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>, <span class="dt">color =</span> <span class="st">"#18453b"</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
+<a class="sourceLine" id="cb24-4" title="4">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
+<a class="sourceLine" id="cb24-5" title="5">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
+<a class="sourceLine" id="cb24-6" title="6">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
+<a class="sourceLine" id="cb24-7" title="7">    ))</a></code></pre></div>
+<p><img src="hagis_files/figure-html/use-Colors-1.png" width="576"><img src="hagis_files/figure-html/use-Colors-2.png" width="576"></p>
 </div>
 </div>
 </div>
@@ -871,7 +872,7 @@
       <li><a href="#diversity-indices-frequency-of-unique-pathotypes-and-individual-isolate-pathotypes">Diversity Indices, Frequency of Unique Pathotypes and Individual Isolate Pathotypes</a></li>
       <li>
 <a href="#AdvancedPlotting">Advanced Plotting</a><ul class="nav nav-pills nav-stacked">
-<li><a href="#hagis-autoplot-objects"><em>hagis</em> Autoplot Objects</a></li>
+<li><a href="#hagis-plot-objects"><em>hagis</em> plot Objects</a></li>
       </ul>
 </li>
       </ul>
