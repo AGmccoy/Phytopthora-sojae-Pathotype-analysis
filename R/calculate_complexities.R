@@ -71,7 +71,7 @@ calculate_complexities <- function(x,
   
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
-  # field, see internal_functions.R
+  # field
   individual_complexities <- .create_summary_isolate(.y = x)
   
   # Frequency for each complexity (%) ------------------------------------------
