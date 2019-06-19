@@ -37,27 +37,52 @@ output:
 csl: "molecular-plant-microbe-interactions.csl"
 bibliography: references.bib
 abstract: |
-  _Phytophthora sojae_ is a significant pathogen of soybean worldwide. _P. sojae_ pathotype surveys are regularly conducted to monitor resistance gene efficacy and determine if new resistance genes need to be deployed. Valuable measurements for pathotype analysis include the distribution of susceptible reactions, pathotype complexity, pathotype frequency, and diversity indices for pathotype distributions. Previously the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft Excel, was used to obtain pathotype data. However, the growing popularity of R in plant pathology and desire for reproducible research made HaGiS a prime candidate for conversion into a more replicable form. Here we report on the creation and use of an R package, `hagis', that can be used to produce all outputs from the HaGiS Microsoft Excel sheet for _P. sojae_ pathotype studies.
+  _Phytophthora sojae_ is a significant pathogen of soybean worldwide. _P. sojae_ pathotype surveys are regularly conducted to monitor resistance gene efficacy and determine if new resistance genes need to be deployed. Valuable measurements for pathotype analysis include the distribution of susceptible reactions, pathotype complexity, pathotype frequency, and diversity indices for pathotype distributions. Previously the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft&reg; Excel, was used to obtain pathotype data. However, the growing popularity of R in plant pathology and desire for reproducible research made HaGiS a prime candidate for conversion into a more replicable form. Here we report on the creation and use of an R package, `hagis', that can be used to produce all outputs from the HaGiS Excel sheet for _P. sojae_ pathotype studies.
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
+library(hagis)
+library(knitr)
 ```
 
 # R Package Announcement
 
-Uniform and healthy stand establishment is essential to maximizing soybean yield. Oomycetes such as _Phytophthora sojae_ constitute a significant threat to soybean (_Glycine max_) stand establishment and yield. _P. sojae_ has been managed primarily via deployment of single resistance genes in commercial soybean cultivars, which interact with _P. sojae_ _Avr_ gene products to confer resistance [@Anderson2015]. Genetic resistance to _P. sojae_ is the most economical form of control for _P. sojae_ as it confers season-long protection to non-compatible pathotypes [@Dorrance2016]. However, _P. sojae_ pathotype surveys need to be regularly conducted to determine shifts in pathotypes over time and provide recommendations for effective resistance genes. Although statewide pathotype surveys have been conducted for the past 60 years, there has been no significant advance in pathotype analysis since the development of the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft Excel, in 1999 [@Herrmann1999; @Kaufmann1958].
+Uniform and healthy stand establishment is essential to maximizing soybean yield. Oomycetes such as _Phytophthora sojae_ constitute a significant threat to soybean (_Glycine max_) stand establishment and yield. _P. sojae_ has been managed primarily via deployment of single resistance genes in commercial soybean cultivars, which interact with _P. sojae_ _Avr_ gene products to confer resistance [@Anderson2015]. Genetic resistance to _P. sojae_ is the most economical form of control for _P. sojae_ as it confers season-long protection to non-compatible pathotypes [@Dorrance2016]. However, _P. sojae_ pathotype surveys need to be regularly conducted to determine shifts in pathotypes over time and provide recommendations for effective resistance genes. Although state-wide pathotype surveys have been conducted for the past 60 years, there has been no significant advance in pathotype analysis since the development of the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft&reg; Excel, in 1999 [@Herrmann1999; @Kaufmann1958].
 
 _Phytophthora sojae_ pathotype studies study the efficacy of soybean resistance genes in relation to a, or multiple, states _P. sojae_ population. In doing so, very large sets of virulence data are generated for potentially hundreds of isolates [@Dorrance2016]. Using such large datasets within the HaGiS Excel based program can be cumbersome and time intensive to transfer the data into and analyze. R offers the ability to work with large data sets, such as pathotype survey virulence data, in an easy and efficient manner without the additional steps of data entry that the HaGiS Excel program requires.
 
 The R language provides an alternative to Microsoft Excel based data analysis and has become widely used in plant pathology studies due to its open-source framework and amenability to conduct reproducible research [@RCT2019; @Sparks2008; @Bergna2018; @Wallace2018]. Using an R package for analyzing pathotype survey data can replicate all analyses provided by Excel-based programs. It allows users to create reproducible research and more detailed visualizations as well as allowing the plant pathology community to actively contribute to and build upon this code for future studies. For instance, McCoy and Noel produced R scripts to conduct these analyses originally performed with HaGiS, which were used to create the ‘hagis’ R package [@McCoy2018; @McCoy2019].
 
-‘hagis’ can be installed from the Comprehensive R Archive Network (CRAN) using the R command, `install.packages(“hagis”)`. For ease of use, the package uses a single argument format, which works in all ‘hagis’ functions. Users provide their own data in the form of a spreadsheet, CSV or text file, specifying the proper fields for analysis when using ‘hagis’. The results are returned as tables or figures as appropriate. Functions are provided to calculate pathotype complexity and summarize the distribution of reactions for each gene tested. Diversity indices that are calculated include Simple, Shannon, Simpson, Gleason and Evenness indices for the pathotype data set. Outputs from these analyses are given in publication ready graphics or tables and can be further modified by the user.
+‘hagis’ can be installed from the Comprehensive R Archive Network (CRAN) using the R command, `install.packages(“hagis”)`. For ease of use, the package uses a single argument format, which works in all ‘hagis’ functions. Users provide their own data in the form of a spreadsheet, CSV or text file, specifying the proper fields for analysis when using ‘hagis’. The results are returned as tables or figures as appropriate. Functions are provided to calculate pathotype complexity and summarize the distribution of reactions for each gene tested. Diversity indices that are calculated include Simple, Shannon, Simpson, Gleason and Evenness indices for the pathotype data set. Outputs from these analyses are given in publication ready graphics or tables and can be further modified by the user, *e.g.*, (Table \@ref(tab:table)).
 
 The R language offers many advantages to Excel based data analysis such as reproducibility, user customization and the ability to work efficiently with large data sets such as those produced through _P. sojae_ pathotype surveys. Significantly, this R package provides the first development of _P. sojae_ pathotype analysis in 20 years. Likewise, openly available R code for these analyses will provide the plant pathology community with an alternative to Excel based data analysis for improved reproducibility. ‘hagis’ was produced for _P. sojae_ pathotype surveys, but can be used in other gene-for-gene systems to determine effective resistance genes in management. More information and instructions on how to use `hagis' can be found at: <https://openplantpathology.github.io/hagis/>.
+
+```{r table}
+Pathotype.Data <-
+  system.file("extdata", "practice_data_set.csv", package = "hagis")
+Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
+Pathotype.Data$Rps <-
+  gsub(pattern = "Rps ",
+       replacement = "",
+       x = Pathotype.Data$Rps)
+Rps.summary <- summarize_gene(
+  x = Pathotype.Data,
+  cutoff = 60,
+  control = "susceptible",
+  sample = "Isolate",
+  gene = "Rps",
+  perc_susc = "perc.susc"
+)
+names(Rps.summary) <-
+  c("Gene", "No. Susceptible", "Perc. Pathogenic")
+
+kable(Rps.summary,
+      caption = "Example of tabular output from 'hagis', summarize_gene() at 60&nbsp;% susceptibility cut-off. This function produces a detailed table displaying the number of isolates each gene is susceptible to, as well as offering a percentage of the isolates tested which are pathogenic on each gene.")
+```
 
 # Acknowledgements
 
 Funding for this work was provided by: Michigan Soy, Project GREEEN, _Dorrance Grant information Here_ and GRDC Project DAQ00186 - Improving Grower Surveillance, Management Epidemiology Knowledge And Tools To Manage Crop Disease
 
-# References
+# Literature Cited
