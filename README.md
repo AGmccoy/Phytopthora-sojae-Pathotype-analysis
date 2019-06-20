@@ -85,8 +85,8 @@ When you use *hagis*, please cite by using:
 ``` r
 citation("hagis")
 #> 
-#> McCoy A, Noel Z, Sparks A, Chilvers M (2019). _hagis: Analysis of
-#> Plant Pathogen Pathotype Complexities, Distributions and
+#> McCoy AG, Noel Z, Sparks AH, Chilvers M (????). _hagis: Analysis
+#> of Plant Pathogen Pathotype Complexities, Distributions and
 #> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
 #> https://doi.org/10.5281/zenodo.2619820), R package version 2.0.0,
 #> <URL: https://openplantpathology.github.io/hagis/>.
@@ -95,7 +95,7 @@ citation("hagis")
 #> 
 #>   @Manual{,
 #>     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},
-#>     author = {Austin McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
+#>     author = {Austin G. McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
 #>     note = {R package version 2.0.0},
 #>     url = {https://openplantpathology.github.io/hagis/},
 #>     doi = {10.5281/zenodo.2619820},
