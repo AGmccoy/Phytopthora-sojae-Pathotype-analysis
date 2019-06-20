@@ -74,7 +74,7 @@
       <h1>hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity</h1>
                         <h4 class="author">Austin McCoy and Zachary Noel</h4>
             
-            <h4 class="date">2019-06-05</h4>
+            <h4 class="date">2019-06-20</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/openplantpathology/hagis/blob/master/vignettes/hagis.Rmd"><code>vignettes/hagis.Rmd</code></a></small>
       <div class="hidden name"><code>hagis.Rmd</code></div>
@@ -89,54 +89,54 @@
 </h2>
 <p>The following examples are based on a dataset from Michigan State University <em>Phytophthora sojae</em> surveys for soybean phytophthora root rot pathotyping efforts.</p>
 <p>First you’ll want to load in your data set, for right now let’s use a practice data set made for the <em>hagis</em> package and name it <code>Pathotype.Data</code>:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">Pathotype.Data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"practice_data_set.csv"</span>, <span class="dt">package =</span> <span class="st">"hagis"</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2">Pathotype.Data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.csv</a></span>(Pathotype.Data, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(Pathotype.Data)</a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.</span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt; 1       1     Williams susceptible    10      0          0</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt; 2       1       Harlon      Rps 1a    10      4          0</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; 3       1 Harosoy 13xx      Rps 1b     8      0          0</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; 4       1     L75-3735      Rps 1c    10     10          0</span></a>
-<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; 5       1    PI 103091      Rps 1d     9      2          0</span></a>
-<a class="sourceLine" id="cb1-10" title="10"><span class="co">#&gt; 6       1  Williams 82      Rps 1k    10      0          0</span></a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc</span></a>
-<a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; 1                       0       10         10           0       100</span></a>
-<a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; 2                       0        6          6           4        60</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; 3                       0        8          8           0       100</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; 4                       0        0          0          10         0</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; 5                       1        6          7           2        78</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; 6                       0       10         10           0       100</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt;   perc.resis</span></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt; 1          0</span></a>
-<a class="sourceLine" id="cb1-20" title="20"><span class="co">#&gt; 2         40</span></a>
-<a class="sourceLine" id="cb1-21" title="21"><span class="co">#&gt; 3          0</span></a>
-<a class="sourceLine" id="cb1-22" title="22"><span class="co">#&gt; 4        100</span></a>
-<a class="sourceLine" id="cb1-23" title="23"><span class="co">#&gt; 5         22</span></a>
-<a class="sourceLine" id="cb1-24" title="24"><span class="co">#&gt; 6          0</span></a></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>Pathotype.Data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/system.file">system.file</a></span>(<span class="st">"extdata"</span>, <span class="st">"practice_data_set.csv"</span>, <span class="dt">package =</span> <span class="st">"hagis"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>Pathotype.Data &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/read.table">read.csv</a></span>(Pathotype.Data, <span class="dt">stringsAsFactors =</span> <span class="ot">FALSE</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(Pathotype.Data)</span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="co">#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="co">#&gt; 1       1     Williams susceptible    10      0          0</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="co">#&gt; 2       1       Harlon      Rps 1a    10      4          0</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="co">#&gt; 3       1 Harosoy 13xx      Rps 1b     8      0          0</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="co">#&gt; 4       1     L75-3735      Rps 1c    10     10          0</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="co">#&gt; 5       1    PI 103091      Rps 1d     9      2          0</span></span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="co">#&gt; 6       1  Williams 82      Rps 1k    10      0          0</span></span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="co">#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc</span></span>
+<span id="cb1-12"><a href="#cb1-12"></a><span class="co">#&gt; 1                       0       10         10           0       100</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a><span class="co">#&gt; 2                       0        6          6           4        60</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="co">#&gt; 3                       0        8          8           0       100</span></span>
+<span id="cb1-15"><a href="#cb1-15"></a><span class="co">#&gt; 4                       0        0          0          10         0</span></span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="co">#&gt; 5                       1        6          7           2        78</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a><span class="co">#&gt; 6                       0       10         10           0       100</span></span>
+<span id="cb1-18"><a href="#cb1-18"></a><span class="co">#&gt;   perc.resis</span></span>
+<span id="cb1-19"><a href="#cb1-19"></a><span class="co">#&gt; 1          0</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a><span class="co">#&gt; 2         40</span></span>
+<span id="cb1-21"><a href="#cb1-21"></a><span class="co">#&gt; 3          0</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a><span class="co">#&gt; 4        100</span></span>
+<span id="cb1-23"><a href="#cb1-23"></a><span class="co">#&gt; 5         22</span></span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="co">#&gt; 6          0</span></span></code></pre></div>
 <p>We see in the <code>gene</code> column that each gene is prepended with “Rps”. We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, <code>pattern</code>. The second string, <code>replacement</code>, is the replacement value, the third, <code>x</code>, is where to look and make the changes.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">Pathotype.Data<span class="op">$</span>Rps &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">gsub</a></span>(<span class="dt">pattern =</span> <span class="st">"Rps "</span>, <span class="dt">replacement =</span> <span class="st">""</span>, <span class="dt">x =</span> Pathotype.Data<span class="op">$</span>Rps)</a>
-<a class="sourceLine" id="cb2-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(Pathotype.Data)</a>
-<a class="sourceLine" id="cb2-3" title="3"><span class="co">#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.</span></a>
-<a class="sourceLine" id="cb2-4" title="4"><span class="co">#&gt; 1       1     Williams susceptible    10      0          0</span></a>
-<a class="sourceLine" id="cb2-5" title="5"><span class="co">#&gt; 2       1       Harlon          1a    10      4          0</span></a>
-<a class="sourceLine" id="cb2-6" title="6"><span class="co">#&gt; 3       1 Harosoy 13xx          1b     8      0          0</span></a>
-<a class="sourceLine" id="cb2-7" title="7"><span class="co">#&gt; 4       1     L75-3735          1c    10     10          0</span></a>
-<a class="sourceLine" id="cb2-8" title="8"><span class="co">#&gt; 5       1    PI 103091          1d     9      2          0</span></a>
-<a class="sourceLine" id="cb2-9" title="9"><span class="co">#&gt; 6       1  Williams 82          1k    10      0          0</span></a>
-<a class="sourceLine" id="cb2-10" title="10"><span class="co">#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc</span></a>
-<a class="sourceLine" id="cb2-11" title="11"><span class="co">#&gt; 1                       0       10         10           0       100</span></a>
-<a class="sourceLine" id="cb2-12" title="12"><span class="co">#&gt; 2                       0        6          6           4        60</span></a>
-<a class="sourceLine" id="cb2-13" title="13"><span class="co">#&gt; 3                       0        8          8           0       100</span></a>
-<a class="sourceLine" id="cb2-14" title="14"><span class="co">#&gt; 4                       0        0          0          10         0</span></a>
-<a class="sourceLine" id="cb2-15" title="15"><span class="co">#&gt; 5                       1        6          7           2        78</span></a>
-<a class="sourceLine" id="cb2-16" title="16"><span class="co">#&gt; 6                       0       10         10           0       100</span></a>
-<a class="sourceLine" id="cb2-17" title="17"><span class="co">#&gt;   perc.resis</span></a>
-<a class="sourceLine" id="cb2-18" title="18"><span class="co">#&gt; 1          0</span></a>
-<a class="sourceLine" id="cb2-19" title="19"><span class="co">#&gt; 2         40</span></a>
-<a class="sourceLine" id="cb2-20" title="20"><span class="co">#&gt; 3          0</span></a>
-<a class="sourceLine" id="cb2-21" title="21"><span class="co">#&gt; 4        100</span></a>
-<a class="sourceLine" id="cb2-22" title="22"><span class="co">#&gt; 5         22</span></a>
-<a class="sourceLine" id="cb2-23" title="23"><span class="co">#&gt; 6          0</span></a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>Pathotype.Data<span class="op">$</span>Rps &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/grep">gsub</a></span>(<span class="dt">pattern =</span> <span class="st">"Rps "</span>, <span class="dt">replacement =</span> <span class="st">""</span>, <span class="dt">x =</span> Pathotype.Data<span class="op">$</span>Rps)</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(Pathotype.Data)</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co">#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="co">#&gt; 1       1     Williams susceptible    10      0          0</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co">#&gt; 2       1       Harlon          1a    10      4          0</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="co">#&gt; 3       1 Harosoy 13xx          1b     8      0          0</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co">#&gt; 4       1     L75-3735          1c    10     10          0</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="co">#&gt; 5       1    PI 103091          1d     9      2          0</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="co">#&gt; 6       1  Williams 82          1k    10      0          0</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co">#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="co">#&gt; 1                       0       10         10           0       100</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="co">#&gt; 2                       0        6          6           4        60</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="co">#&gt; 3                       0        8          8           0       100</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="co">#&gt; 4                       0        0          0          10         0</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="co">#&gt; 5                       1        6          7           2        78</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="co">#&gt; 6                       0       10         10           0       100</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a><span class="co">#&gt;   perc.resis</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="co">#&gt; 1          0</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="co">#&gt; 2         40</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a><span class="co">#&gt; 3          0</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="co">#&gt; 4        100</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a><span class="co">#&gt; 5         22</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a><span class="co">#&gt; 6          0</span></span></code></pre></div>
 <p>This practice data set contains 21 isolates’, <code>Isolate</code>, virulence data on a set of 14 differential soybean cultivars, <code>Line</code>. This package uses the <em>percentage</em> of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.</p>
 <p>To help ensure that the proper data are used in calculations, the user is asked to provide some information that instruct <em>hagis</em> about what data to use.</p>
 <hr>
@@ -155,19 +155,19 @@
 <li><p><code>perc_susc</code> specifies the column header for the column which identifies the percent susceptible plants for each gene</p></li>
 </ul>
 <p>Ordinarily you would use functions in <em>hagis</em> or other R packages like this:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">Rps.summary &lt;-<span class="st"> </span><span class="kw"><a href="../reference/summarize_gene.html">summarize_gene</a></span>(<span class="dt">x =</span> Pathotype.Data,</a>
-<a class="sourceLine" id="cb3-2" title="2">                             <span class="dt">cutoff =</span> <span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb3-3" title="3">                             <span class="dt">control =</span> <span class="st">"susceptible"</span>,</a>
-<a class="sourceLine" id="cb3-4" title="4">                             <span class="dt">sample =</span> <span class="st">"Isolate"</span>,</a>
-<a class="sourceLine" id="cb3-5" title="5">                             <span class="dt">gene =</span> <span class="st">"Rps"</span>,</a>
-<a class="sourceLine" id="cb3-6" title="6">                             <span class="dt">perc_susc =</span> <span class="st">"perc.susc"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a>Rps.summary &lt;-<span class="st"> </span><span class="kw"><a href="../reference/summarize_gene.html">summarize_gene</a></span>(<span class="dt">x =</span> Pathotype.Data,</span>
+<span id="cb3-2"><a href="#cb3-2"></a>                             <span class="dt">cutoff =</span> <span class="dv">60</span>,</span>
+<span id="cb3-3"><a href="#cb3-3"></a>                             <span class="dt">control =</span> <span class="st">"susceptible"</span>,</span>
+<span id="cb3-4"><a href="#cb3-4"></a>                             <span class="dt">sample =</span> <span class="st">"Isolate"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>                             <span class="dt">gene =</span> <span class="st">"Rps"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>                             <span class="dt">perc_susc =</span> <span class="st">"perc.susc"</span>)</span></code></pre></div>
 <p>However, because the functions share arguments we can create a <code><a href="https://www.rdocumentation.org/packages/base/topics/list">list()</a></code> of arguments and share them with some of the functions from <em>hagis</em>. First, we make a list of the arguments that <code><a href="../reference/summarize_gene.html">summarize_gene()</a></code>, <code><a href="../reference/calculate_diversities.html">calculate_diversities()</a></code> and <code><a href="../reference/calculate_complexities.html">calculate_complexities()</a></code> use that specify our inputs based on our example data:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">hagis_args &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x =</span> Pathotype.Data,</a>
-<a class="sourceLine" id="cb4-2" title="2">                   <span class="dt">cutoff =</span> <span class="dv">60</span>,</a>
-<a class="sourceLine" id="cb4-3" title="3">                   <span class="dt">control =</span> <span class="st">"susceptible"</span>,</a>
-<a class="sourceLine" id="cb4-4" title="4">                   <span class="dt">sample =</span> <span class="st">"Isolate"</span>,</a>
-<a class="sourceLine" id="cb4-5" title="5">                   <span class="dt">gene =</span> <span class="st">"Rps"</span>,</a>
-<a class="sourceLine" id="cb4-6" title="6">                   <span class="dt">perc_susc =</span> <span class="st">"perc.susc"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a>hagis_args &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x =</span> Pathotype.Data,</span>
+<span id="cb4-2"><a href="#cb4-2"></a>                   <span class="dt">cutoff =</span> <span class="dv">60</span>,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>                   <span class="dt">control =</span> <span class="st">"susceptible"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4"></a>                   <span class="dt">sample =</span> <span class="st">"Isolate"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5"></a>                   <span class="dt">gene =</span> <span class="st">"Rps"</span>,</span>
+<span id="cb4-6"><a href="#cb4-6"></a>                   <span class="dt">perc_susc =</span> <span class="st">"perc.susc"</span>)</span></code></pre></div>
 <p>Now that we have a list of arguments, we can now save time entering the same data for each function and also avoid typos or entering different cutoff values, etc. between the functions.</p>
 <hr>
 </div>
@@ -176,28 +176,28 @@
 <a href="#determination-of-effective-resistance-genes" class="anchor"></a>Determination of Effective Resistance Genes</h2>
 <p>Below is an example of tables and graphics that can be produced using the <code><a href="../reference/summarize_gene.html">summarize_gene()</a></code> function to identify effective resistance genes tested against the sampled <em>Phytophthora sojae</em> population.</p>
 <p>The <code><a href="../reference/summarize_gene.html">summarize_gene()</a></code> function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (<code>N_susc</code>), as well as offering a percentage of the isolates tested which are pathogenic on each gene (<code>percent_pathogenic</code>).</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">Rps.summary &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(summarize_gene, hagis_args)</a>
-<a class="sourceLine" id="cb5-2" title="2"></a>
-<a class="sourceLine" id="cb5-3" title="3">Rps.summary</a>
-<a class="sourceLine" id="cb5-4" title="4"><span class="co">#&gt;            gene N_susc percent_pathogenic</span></a>
-<a class="sourceLine" id="cb5-5" title="5"><span class="co">#&gt;  1: susceptible     21             100.00</span></a>
-<a class="sourceLine" id="cb5-6" title="6"><span class="co">#&gt;  2:          1a     21             100.00</span></a>
-<a class="sourceLine" id="cb5-7" title="7"><span class="co">#&gt;  3:          1b     15              71.43</span></a>
-<a class="sourceLine" id="cb5-8" title="8"><span class="co">#&gt;  4:          1c     20              95.24</span></a>
-<a class="sourceLine" id="cb5-9" title="9"><span class="co">#&gt;  5:          1d     16              76.19</span></a>
-<a class="sourceLine" id="cb5-10" title="10"><span class="co">#&gt;  6:          1k     18              85.71</span></a>
-<a class="sourceLine" id="cb5-11" title="11"><span class="co">#&gt;  7:           2     14              66.67</span></a>
-<a class="sourceLine" id="cb5-12" title="12"><span class="co">#&gt;  8:          3a      5              23.81</span></a>
-<a class="sourceLine" id="cb5-13" title="13"><span class="co">#&gt;  9:          3b     20              95.24</span></a>
-<a class="sourceLine" id="cb5-14" title="14"><span class="co">#&gt; 10:          3c      4              19.05</span></a>
-<a class="sourceLine" id="cb5-15" title="15"><span class="co">#&gt; 11:           4      5              23.81</span></a>
-<a class="sourceLine" id="cb5-16" title="16"><span class="co">#&gt; 12:           5     13              61.90</span></a>
-<a class="sourceLine" id="cb5-17" title="17"><span class="co">#&gt; 13:           6     11              52.38</span></a>
-<a class="sourceLine" id="cb5-18" title="18"><span class="co">#&gt; 14:           7     21             100.00</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a>Rps.summary &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(summarize_gene, hagis_args)</span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a>Rps.summary</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">#&gt;            gene N_susc percent_pathogenic</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="co">#&gt;  1: susceptible     21             100.00</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="co">#&gt;  2:          1a     21             100.00</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="co">#&gt;  3:          1b     15              71.43</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="co">#&gt;  4:          1c     20              95.24</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="co">#&gt;  5:          1d     16              76.19</span></span>
+<span id="cb5-10"><a href="#cb5-10"></a><span class="co">#&gt;  6:          1k     18              85.71</span></span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="co">#&gt;  7:           2     14              66.67</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a><span class="co">#&gt;  8:          3a      5              23.81</span></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="co">#&gt;  9:          3b     20              95.24</span></span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="co">#&gt; 10:          3c      4              19.05</span></span>
+<span id="cb5-15"><a href="#cb5-15"></a><span class="co">#&gt; 11:           4      5              23.81</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="co">#&gt; 12:           5     13              61.90</span></span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="co">#&gt; 13:           6     11              52.38</span></span>
+<span id="cb5-18"><a href="#cb5-18"></a><span class="co">#&gt; 14:           7     21             100.00</span></span></code></pre></div>
 <p>Using the <em>pander</em> library we can make the table much more attractive in Markdown.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pander)</a>
-<a class="sourceLine" id="cb6-2" title="2"></a>
-<a class="sourceLine" id="cb6-3" title="3"><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(Rps.summary)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(pander)</span>
+<span id="cb6-2"><a href="#cb6-2"></a></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(Rps.summary)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="19%">
@@ -287,10 +287,10 @@
 <a href="#plotting-rps-summary-data" class="anchor"></a>Plotting Rps Summary Data</h3>
 <p><em>hagis</em> also provides functions to quickly graph your data using <code>ggplot2</code>.</p>
 <p>Two functions are provided to plot the summary depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(Rps.summary, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(Rps.summary, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</span></code></pre></div>
 <p><img src="hagis_files/figure-html/plot-summary-1.png" width="576"></p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"></a>
-<a class="sourceLine" id="cb8-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"count"</span>)</span></code></pre></div>
 <p><img src="hagis_files/figure-html/plot-summary-2.png" width="576"></p>
 <hr>
 </div>
@@ -299,53 +299,53 @@
 <h2 class="hasAnchor">
 <a href="#pathotype-complexities" class="anchor"></a>Pathotype Complexities</h2>
 <p>Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the <code><a href="../reference/calculate_complexities.html">calculate_complexities()</a></code> function. This function will return a <code><a href="https://www.rdocumentation.org/packages/base/topics/list">list()</a></code> of two <code>data.table()</code> objects, <code>grouped_complexities</code> and <code>individual_complexities</code>.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">complexities &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(calculate_complexities, hagis_args)</a>
-<a class="sourceLine" id="cb9-2" title="2"></a>
-<a class="sourceLine" id="cb9-3" title="3">complexities</a>
-<a class="sourceLine" id="cb9-4" title="4"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-5" title="5"><span class="co">#&gt; Grouped Complexities</span></a>
-<a class="sourceLine" id="cb9-6" title="6"><span class="co">#&gt;     complexity frequency distribution</span></a>
-<a class="sourceLine" id="cb9-7" title="7"><span class="co">#&gt;  1:          1      0.00            0</span></a>
-<a class="sourceLine" id="cb9-8" title="8"><span class="co">#&gt;  2:          2      0.00            0</span></a>
-<a class="sourceLine" id="cb9-9" title="9"><span class="co">#&gt;  3:          3      0.00            0</span></a>
-<a class="sourceLine" id="cb9-10" title="10"><span class="co">#&gt;  4:          4      0.00            0</span></a>
-<a class="sourceLine" id="cb9-11" title="11"><span class="co">#&gt;  5:          5      4.76            1</span></a>
-<a class="sourceLine" id="cb9-12" title="12"><span class="co">#&gt;  6:          6      9.52            2</span></a>
-<a class="sourceLine" id="cb9-13" title="13"><span class="co">#&gt;  7:          7      9.52            2</span></a>
-<a class="sourceLine" id="cb9-14" title="14"><span class="co">#&gt;  8:          8     33.33            7</span></a>
-<a class="sourceLine" id="cb9-15" title="15"><span class="co">#&gt;  9:          9      0.00            0</span></a>
-<a class="sourceLine" id="cb9-16" title="16"><span class="co">#&gt; 10:         10     23.81            5</span></a>
-<a class="sourceLine" id="cb9-17" title="17"><span class="co">#&gt; 11:         11     14.29            3</span></a>
-<a class="sourceLine" id="cb9-18" title="18"><span class="co">#&gt; 12:         12      0.00            0</span></a>
-<a class="sourceLine" id="cb9-19" title="19"><span class="co">#&gt; 13:         13      4.76            1</span></a>
-<a class="sourceLine" id="cb9-20" title="20"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-21" title="21"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb9-22" title="22"><span class="co">#&gt; Individual Complexities</span></a>
-<a class="sourceLine" id="cb9-23" title="23"><span class="co">#&gt;     sample N_samp</span></a>
-<a class="sourceLine" id="cb9-24" title="24"><span class="co">#&gt;  1:      1     10</span></a>
-<a class="sourceLine" id="cb9-25" title="25"><span class="co">#&gt;  2:      2     10</span></a>
-<a class="sourceLine" id="cb9-26" title="26"><span class="co">#&gt;  3:      3     10</span></a>
-<a class="sourceLine" id="cb9-27" title="27"><span class="co">#&gt;  4:      4      8</span></a>
-<a class="sourceLine" id="cb9-28" title="28"><span class="co">#&gt;  5:      5      8</span></a>
-<a class="sourceLine" id="cb9-29" title="29"><span class="co">#&gt;  6:      6      8</span></a>
-<a class="sourceLine" id="cb9-30" title="30"><span class="co">#&gt;  7:      7      8</span></a>
-<a class="sourceLine" id="cb9-31" title="31"><span class="co">#&gt;  8:      8      8</span></a>
-<a class="sourceLine" id="cb9-32" title="32"><span class="co">#&gt;  9:      9      6</span></a>
-<a class="sourceLine" id="cb9-33" title="33"><span class="co">#&gt; 10:     10      5</span></a>
-<a class="sourceLine" id="cb9-34" title="34"><span class="co">#&gt; 11:     11      6</span></a>
-<a class="sourceLine" id="cb9-35" title="35"><span class="co">#&gt; 12:     12      8</span></a>
-<a class="sourceLine" id="cb9-36" title="36"><span class="co">#&gt; 13:     13      7</span></a>
-<a class="sourceLine" id="cb9-37" title="37"><span class="co">#&gt; 14:     14      8</span></a>
-<a class="sourceLine" id="cb9-38" title="38"><span class="co">#&gt; 15:     15     11</span></a>
-<a class="sourceLine" id="cb9-39" title="39"><span class="co">#&gt; 16:     16      7</span></a>
-<a class="sourceLine" id="cb9-40" title="40"><span class="co">#&gt; 17:     17     10</span></a>
-<a class="sourceLine" id="cb9-41" title="41"><span class="co">#&gt; 18:     18     10</span></a>
-<a class="sourceLine" id="cb9-42" title="42"><span class="co">#&gt; 19:     19     11</span></a>
-<a class="sourceLine" id="cb9-43" title="43"><span class="co">#&gt; 20:     20     11</span></a>
-<a class="sourceLine" id="cb9-44" title="44"><span class="co">#&gt; 21:     21     13</span></a>
-<a class="sourceLine" id="cb9-45" title="45"><span class="co">#&gt;     sample N_samp</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a>complexities &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(calculate_complexities, hagis_args)</span>
+<span id="cb9-2"><a href="#cb9-2"></a></span>
+<span id="cb9-3"><a href="#cb9-3"></a>complexities</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="co">#&gt; </span></span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="co">#&gt; Grouped Complexities</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="co">#&gt;     complexity frequency distribution</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co">#&gt;  1:          1      0.00            0</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co">#&gt;  2:          2      0.00            0</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="co">#&gt;  3:          3      0.00            0</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a><span class="co">#&gt;  4:          4      0.00            0</span></span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co">#&gt;  5:          5      4.76            1</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a><span class="co">#&gt;  6:          6      9.52            2</span></span>
+<span id="cb9-13"><a href="#cb9-13"></a><span class="co">#&gt;  7:          7      9.52            2</span></span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co">#&gt;  8:          8     33.33            7</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="co">#&gt;  9:          9      0.00            0</span></span>
+<span id="cb9-16"><a href="#cb9-16"></a><span class="co">#&gt; 10:         10     23.81            5</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="co">#&gt; 11:         11     14.29            3</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a><span class="co">#&gt; 12:         12      0.00            0</span></span>
+<span id="cb9-19"><a href="#cb9-19"></a><span class="co">#&gt; 13:         13      4.76            1</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="co">#&gt; </span></span>
+<span id="cb9-21"><a href="#cb9-21"></a><span class="co">#&gt; </span></span>
+<span id="cb9-22"><a href="#cb9-22"></a><span class="co">#&gt; Individual Complexities</span></span>
+<span id="cb9-23"><a href="#cb9-23"></a><span class="co">#&gt;     sample N_samp</span></span>
+<span id="cb9-24"><a href="#cb9-24"></a><span class="co">#&gt;  1:      1     10</span></span>
+<span id="cb9-25"><a href="#cb9-25"></a><span class="co">#&gt;  2:      2     10</span></span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="co">#&gt;  3:      3     10</span></span>
+<span id="cb9-27"><a href="#cb9-27"></a><span class="co">#&gt;  4:      4      8</span></span>
+<span id="cb9-28"><a href="#cb9-28"></a><span class="co">#&gt;  5:      5      8</span></span>
+<span id="cb9-29"><a href="#cb9-29"></a><span class="co">#&gt;  6:      6      8</span></span>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="co">#&gt;  7:      7      8</span></span>
+<span id="cb9-31"><a href="#cb9-31"></a><span class="co">#&gt;  8:      8      8</span></span>
+<span id="cb9-32"><a href="#cb9-32"></a><span class="co">#&gt;  9:      9      6</span></span>
+<span id="cb9-33"><a href="#cb9-33"></a><span class="co">#&gt; 10:     10      5</span></span>
+<span id="cb9-34"><a href="#cb9-34"></a><span class="co">#&gt; 11:     11      6</span></span>
+<span id="cb9-35"><a href="#cb9-35"></a><span class="co">#&gt; 12:     12      8</span></span>
+<span id="cb9-36"><a href="#cb9-36"></a><span class="co">#&gt; 13:     13      7</span></span>
+<span id="cb9-37"><a href="#cb9-37"></a><span class="co">#&gt; 14:     14      8</span></span>
+<span id="cb9-38"><a href="#cb9-38"></a><span class="co">#&gt; 15:     15     11</span></span>
+<span id="cb9-39"><a href="#cb9-39"></a><span class="co">#&gt; 16:     16      7</span></span>
+<span id="cb9-40"><a href="#cb9-40"></a><span class="co">#&gt; 17:     17     10</span></span>
+<span id="cb9-41"><a href="#cb9-41"></a><span class="co">#&gt; 18:     18     10</span></span>
+<span id="cb9-42"><a href="#cb9-42"></a><span class="co">#&gt; 19:     19     11</span></span>
+<span id="cb9-43"><a href="#cb9-43"></a><span class="co">#&gt; 20:     20     11</span></span>
+<span id="cb9-44"><a href="#cb9-44"></a><span class="co">#&gt; 21:     21     13</span></span>
+<span id="cb9-45"><a href="#cb9-45"></a><span class="co">#&gt;     sample N_samp</span></span></code></pre></div>
 <p>Once again, using <em>pander</em> we can make these tables much more attractive in Markdown. Since <code>complexities</code> is a <code><a href="https://www.rdocumentation.org/packages/base/topics/list">list()</a></code> object, we can refer to each object directly by name and print them as follows.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(complexities<span class="op">$</span>grouped_complexities)</a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(complexities<span class="op">$</span>grouped_complexities)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="18%">
@@ -425,8 +425,8 @@
 </tr>
 </tbody>
 </table>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1"></a>
-<a class="sourceLine" id="cb11-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(complexities<span class="op">$</span>indvidual_complexities)</a></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(complexities<span class="op">$</span>indvidual_complexities)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="12%">
@@ -524,7 +524,7 @@
 </tbody>
 </table>
 <p>Using <code><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary()</a></code> will return the mean, standard error (se) and standard deviation (sd) for pathotypes of a complexities object.</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(complexities))</a></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(<span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/summary">summary</a></span>(complexities))</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="11%">
@@ -546,10 +546,10 @@
 <h3 class="hasAnchor">
 <a href="#plotting-complexities-data" class="anchor"></a>Plotting Complexities Data</h3>
 <p>Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(complexties, type = "percentage")</a></code>, or if you desire the distribution <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot(complexities, type = "count")</a></code>. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"percentage"</span>)</span></code></pre></div>
 <p><img src="hagis_files/figure-html/complexities-plot-1.png" width="576"></p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"></a>
-<a class="sourceLine" id="cb14-2" title="2"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"count"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1"></a></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(complexities, <span class="dt">type =</span> <span class="st">"count"</span>)</span></code></pre></div>
 <p><img src="hagis_files/figure-html/complexities-plot-2.png" width="576"></p>
 <hr>
 </div>
@@ -558,22 +558,22 @@
 <h2 class="hasAnchor">
 <a href="#diversity-indices-frequency-of-unique-pathotypes-and-individual-isolate-pathotypes" class="anchor"></a>Diversity Indices, Frequency of Unique Pathotypes and Individual Isolate Pathotypes</h2>
 <p>Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the <code><a href="../reference/calculate_diversities.html">calculate_diversities()</a></code> function. Likewise, individual isolates’ pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated.</p>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">diversity &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(calculate_diversities, hagis_args)</a>
-<a class="sourceLine" id="cb15-2" title="2">diversity</a>
-<a class="sourceLine" id="cb15-3" title="3"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb15-4" title="4"><span class="co">#&gt; hagis Diversities</span></a>
-<a class="sourceLine" id="cb15-5" title="5"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb15-6" title="6"><span class="co">#&gt; Number of Samples 21</span></a>
-<a class="sourceLine" id="cb15-7" title="7"><span class="co">#&gt; Number of Pathotypes 19 </span></a>
-<a class="sourceLine" id="cb15-8" title="8"><span class="co">#&gt; </span></a>
-<a class="sourceLine" id="cb15-9" title="9"><span class="co">#&gt; Indices</span></a>
-<a class="sourceLine" id="cb15-10" title="10"><span class="co">#&gt; Simple   0.9047619 </span></a>
-<a class="sourceLine" id="cb15-11" title="11"><span class="co">#&gt; Gleason  5.912257 </span></a>
-<a class="sourceLine" id="cb15-12" title="12"><span class="co">#&gt; Shannon  2.912494 </span></a>
-<a class="sourceLine" id="cb15-13" title="13"><span class="co">#&gt; Simpson  0.9433107 </span></a>
-<a class="sourceLine" id="cb15-14" title="14"><span class="co">#&gt; Evenness  0.9891509</span></a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1"></a>diversity &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/do.call">do.call</a></span>(calculate_diversities, hagis_args)</span>
+<span id="cb15-2"><a href="#cb15-2"></a>diversity</span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="co">#&gt; </span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="co">#&gt; hagis Diversities</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="co">#&gt; </span></span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="co">#&gt; Number of Samples 21</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="co">#&gt; Number of Pathotypes 19 </span></span>
+<span id="cb15-8"><a href="#cb15-8"></a><span class="co">#&gt; </span></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="co">#&gt; Indices</span></span>
+<span id="cb15-10"><a href="#cb15-10"></a><span class="co">#&gt; Simple   0.9047619 </span></span>
+<span id="cb15-11"><a href="#cb15-11"></a><span class="co">#&gt; Gleason  5.912257 </span></span>
+<span id="cb15-12"><a href="#cb15-12"></a><span class="co">#&gt; Shannon  2.912494 </span></span>
+<span id="cb15-13"><a href="#cb15-13"></a><span class="co">#&gt; Simpson  0.9433107 </span></span>
+<span id="cb15-14"><a href="#cb15-14"></a><span class="co">#&gt; Evenness  0.9891509</span></span></code></pre></div>
 <p>Or using <code>pander</code> for reporting, a nice table is generated.</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(diversity)</a></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/pander/topics/pander">pander</a></span>(diversity)</span></code></pre></div>
 <table class="table">
 <caption>Diversity indices where n = 21 with 19 pathotypes.</caption>
 <colgroup>
@@ -602,7 +602,7 @@
 <h3 class="hasAnchor">
 <a href="#table-of-diversities" class="anchor"></a>Table of Diversities</h3>
 <p>To generate a table of diversities, use <code><a href="../reference/diversities_table.html">diversities_table()</a></code>. <em>hagis</em> will automatically create a <code>pander</code> object for you. This is because it is much easier to read the resulting table in the console than the raw <code>data.frame</code> and insert into reports.</p>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw"><a href="../reference/diversities_table.html">diversities_table</a></span>(diversity)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1"></a><span class="kw"><a href="../reference/diversities_table.html">diversities_table</a></span>(diversity)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="16%">
@@ -696,7 +696,7 @@
 <div id="table-of-individual-pathotypes" class="section level3">
 <h3 class="hasAnchor">
 <a href="#table-of-individual-pathotypes" class="anchor"></a>Table of Individual Pathotypes</h3>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw"><a href="../reference/individual_pathotypes.html">individual_pathotypes</a></span>(diversity)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1"></a><span class="kw"><a href="../reference/individual_pathotypes.html">individual_pathotypes</a></span>(diversity)</span></code></pre></div>
 <table class="table">
 <colgroup>
 <col width="12%">
@@ -802,58 +802,58 @@
 <h2 class="hasAnchor">
 <a href="#hagis-plot-objects" class="anchor"></a><em>hagis</em> plot Objects</h2>
 <p>Since <em>hagis</em> uses <code>ggplot2</code> to generate its plots, you can easily theme the outputs using common <code>ggplot2</code> themes and other options.</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb19-2" title="2"></a>
-<a class="sourceLine" id="cb19-3" title="3">Rps.plot &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</span>
+<span id="cb19-2"><a href="#cb19-2"></a></span>
+<span id="cb19-3"><a href="#cb19-3"></a>Rps.plot &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>)</span></code></pre></div>
 <p><img src="hagis_files/figure-html/set-up-adv.plot-1.png" width="576"></p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"></a>
-<a class="sourceLine" id="cb20-2" title="2">Rps.plot</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a></span>
+<span id="cb20-2"><a href="#cb20-2"></a>Rps.plot</span></code></pre></div>
 <p><img src="hagis_files/figure-html/set-up-adv.plot-2.png" width="576"></p>
 <div id="changing-the-ggplot2-theme" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changing-the-ggplot2-theme" class="anchor"></a>Changing the ggplot2 Theme</h3>
-<p>Use <em>ggplot2</em>’s <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal()</a></code> theme.</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_minimal</a></span>()</a>
-<a class="sourceLine" id="cb21-3" title="3"></a>
-<a class="sourceLine" id="cb21-4" title="4">Rps.plot</a></code></pre></div>
+<p>Use <em>ggplot2</em>’s <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code> theme.</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span>()</span>
+<span id="cb21-3"><a href="#cb21-3"></a></span>
+<span id="cb21-4"><a href="#cb21-4"></a>Rps.plot</span></code></pre></div>
 <p><img src="hagis_files/figure-html/change-plot-theme-1.png" width="576"></p>
 </div>
 <div id="changing-the-font" class="section level3">
 <h3 class="hasAnchor">
 <a href="#changing-the-font" class="anchor"></a>Changing the Font</h3>
 <p>Set the font to be a bold-face serif family font.</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb22-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
-<a class="sourceLine" id="cb22-3" title="3">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
-<a class="sourceLine" id="cb22-4" title="4">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
-<a class="sourceLine" id="cb22-5" title="5">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
-<a class="sourceLine" id="cb22-6" title="6">    ))</a>
-<a class="sourceLine" id="cb22-7" title="7"></a>
-<a class="sourceLine" id="cb22-8" title="8">Rps.plot</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(</span>
+<span id="cb22-3"><a href="#cb22-3"></a>    <span class="dt">text =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>(</span>
+<span id="cb22-4"><a href="#cb22-4"></a>      <span class="dt">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb22-5"><a href="#cb22-5"></a>      <span class="dt">family =</span> <span class="st">"serif"</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a>    ))</span>
+<span id="cb22-7"><a href="#cb22-7"></a></span>
+<span id="cb22-8"><a href="#cb22-8"></a>Rps.plot</span></code></pre></div>
 <p><img src="hagis_files/figure-html/change-plot-font-1.png" width="576"></p>
 </div>
 <div id="make-a-horizontal-plot" class="section level3">
 <h3 class="hasAnchor">
 <a href="#make-a-horizontal-plot" class="anchor"></a>Make a Horizontal Plot</h3>
 <p>If your <em>Rps</em> gene names are too long, flipping the axis can make the graph more legible without rotating the x-axis labels.</p>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1">Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></a>
-<a class="sourceLine" id="cb23-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/coord_flip">coord_flip</a></span>()</a>
-<a class="sourceLine" id="cb23-3" title="3"></a>
-<a class="sourceLine" id="cb23-4" title="4">Rps.plot</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>Rps.plot &lt;-<span class="st"> </span>Rps.plot <span class="op">+</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>()</span>
+<span id="cb23-3"><a href="#cb23-3"></a></span>
+<span id="cb23-4"><a href="#cb23-4"></a>Rps.plot</span></code></pre></div>
 <p><img src="hagis_files/figure-html/horizontal-plot-1.png" width="576"></p>
 </div>
 <div id="use-colors-in-plot-objects" class="section level3">
 <h3 class="hasAnchor">
 <a href="#use-colors-in-plot-objects" class="anchor"></a>Use Colors in plot Objects</h3>
-<p>You can use named, <em>e.g.</em> “red”, “yellow”, “blue” colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using <code><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw()</a></code> with a serif font.</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>, <span class="dt">color =</span> <span class="st">"#18453b"</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/ggtheme">theme_bw</a></span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb24-3" title="3"><span class="st">  </span><span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/theme">theme</a></span>(</a>
-<a class="sourceLine" id="cb24-4" title="4">    <span class="dt">text =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/ggplot2/topics/element">element_text</a></span>(</a>
-<a class="sourceLine" id="cb24-5" title="5">      <span class="dt">face =</span> <span class="st">"bold"</span>,</a>
-<a class="sourceLine" id="cb24-6" title="6">      <span class="dt">family =</span> <span class="st">"serif"</span></a>
-<a class="sourceLine" id="cb24-7" title="7">    ))</a></code></pre></div>
+<p>You can use named, <em>e.g.</em> “red”, “yellow”, “blue” colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw()</a></code> with a serif font.</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot</a></span>(Rps.summary, <span class="dt">type =</span> <span class="st">"percentage"</span>, <span class="dt">color =</span> <span class="st">"#18453b"</span>) <span class="op">+</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>() <span class="op">+</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(</span>
+<span id="cb24-4"><a href="#cb24-4"></a>    <span class="dt">text =</span> <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>(</span>
+<span id="cb24-5"><a href="#cb24-5"></a>      <span class="dt">face =</span> <span class="st">"bold"</span>,</span>
+<span id="cb24-6"><a href="#cb24-6"></a>      <span class="dt">family =</span> <span class="st">"serif"</span></span>
+<span id="cb24-7"><a href="#cb24-7"></a>    ))</span></code></pre></div>
 <p><img src="hagis_files/figure-html/use-Colors-1.png" width="576"><img src="hagis_files/figure-html/use-Colors-2.png" width="576"></p>
 </div>
 </div>
@@ -883,7 +883,7 @@
 
 
       <footer><div class="copyright">
-  <p>Developed by Austin McCoy, Zachary Noel, Adam H. Sparks, Martin Chilvers.</p>
+  <p>Developed by Austin G. McCoy, Zachary Noel, Adam H. Sparks, Martin Chilvers.</p>
 </div>
 
 <div class="pkgdown">
