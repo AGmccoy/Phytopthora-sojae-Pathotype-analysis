@@ -1,7 +1,6 @@
 
 ---
-title: "‘hagis’, an R Package Resource for Pathotype Analysis of _Phytophthora sojae_
-  Populations Causing Stem and Root Rot of Soybean"
+title: "‘hagis’, an R Package Resource for Pathotype Analysis of _Phytophthora sojae_ Populations Causing Stem and Root Rot of Soybean"
 author:
   - Austin G. McCoy:
       email: mccoyaus@msu.edu
