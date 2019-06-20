@@ -3,7 +3,7 @@ note <- sprintf("R package version %s", meta$Version)
 
 bibentry(bibtype = "Manual",
          title = "{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity",
-         author = c(person("Austin", "McCoy"),
+         author = c(person("Austin G.", "McCoy"),
                     person("Zachary", "Noel"),
                     person("Adam H.", "Sparks"),
                     person("Martin", "Chilvers")),
