@@ -19,8 +19,9 @@ Description: Analysis of plant pathogen pathotype survey data.  Functions
   provided calculate distribution of susceptibilities, distribution of
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for the Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for
-  pathotype analysis.
+  replacement for Herrmann, Löwer, Schachtel's (1999)
+  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',
+  previously used for pathotype analysis.
 Depends: R (>= 3.2.0)
 Imports: 
   data.table,
@@ -44,8 +45,8 @@ VignetteBuilder: knitr
 RoxygenNote: 6.1.1
 Roxygen: list(markdown = TRUE)
 Language: en-US
-URL: https://github.com/openplantpathology/hagis
+URL: https://github.com/openplantpathology/hagis, https://openplantpathology.github.io/hagis/
 BugReports: https://github.com/openplantpathology/hagis/issues
 X-schema.org-applicationCategory: Tools
-X-schema.org-keywords: plant-pathology, pathotype, pathogen-survey
+X-schema.org-keywords: plant-pathology, pathotype, pathogen-survey, virulence analysis, differential set, assessment scale
 X-schema.org-isPartOf: https://openplantpathology.org

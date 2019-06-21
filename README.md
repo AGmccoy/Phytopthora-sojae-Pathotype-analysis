@@ -37,12 +37,13 @@ sojae*.
 
 However, the package is not only useful for *P. sojae* work. It was
 built to be useful for other plant pathogen gene-for-gene interaction
-systems, *e.g.* rusts. The goal of this package is to provide all the
-necessary analyses needed when conducting a pathotype surveys,
-including: distribution of susceptibilities (effective and non-effective
-resistance genes), distribution of pathotype complexities with
-statistics, pathotype frequency distribution, as well as diversity
-indices for pathotypes in an efficient and reproducible manner.
+systems, *e.g.* rusts or canola blackleg, *Leptosphaeria maculans*. The
+goal of this package is to provide all the necessary analyses needed
+when conducting a pathotype surveys, including: distribution of
+susceptibilities (effective and non-effective resistance genes),
+distribution of pathotype complexities with statistics, pathotype
+frequency distribution, as well as diversity indices for pathotypes in
+an efficient and reproducible manner.
 
 New users are encouraged to visit the documentation,
 <https://openplantpathology.github.io/hagis/articles/hagis.html>, for
@@ -85,8 +86,8 @@ When you use *hagis*, please cite by using:
 ``` r
 citation("hagis")
 #> 
-#> McCoy AG, Noel Z, Sparks AH, Chilvers M (????). _hagis: Analysis
-#> of Plant Pathogen Pathotype Complexities, Distributions and
+#> McCoy A, Noel Z, Sparks A, Chilvers M (????). _hagis: Analysis of
+#> Plant Pathogen Pathotype Complexities, Distributions and
 #> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
 #> https://doi.org/10.5281/zenodo.2619820), R package version 2.0.0,
 #> <URL: https://openplantpathology.github.io/hagis/>.
@@ -95,7 +96,7 @@ citation("hagis")
 #> 
 #>   @Manual{,
 #>     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},
-#>     author = {Austin G. McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
+#>     author = {Austin McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
 #>     note = {R package version 2.0.0},
 #>     url = {https://openplantpathology.github.io/hagis/},
 #>     doi = {10.5281/zenodo.2619820},
@@ -103,8 +104,9 @@ citation("hagis")
 ```
 
 Please note that the *hagis* project is released with a [Contributor
-Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
-you agree to abide by its terms.
+Code of
+Conduct](https://github.com/openplantpathology/hagis/blob/master/CODE_OF_CONDUCT.md).
+By contributing to this project, you agree to abide by its terms.
 
 ## References
 

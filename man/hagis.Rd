@@ -10,13 +10,15 @@ Analysis of plant pathogen pathotype survey data.  Functions
   provided calculate distribution of susceptibilities, distribution of
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for the Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for
-  pathotype analysis.
+  replacement for Herrmann, Löwer, Schachtel's (1999)
+  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',
+  previously used for pathotype analysis.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://github.com/openplantpathology/hagis}
+  \item \url{https://openplantpathology.github.io/hagis/}
   \item Report bugs at \url{https://github.com/openplantpathology/hagis/issues}
 }
 
