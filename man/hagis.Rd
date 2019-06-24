@@ -24,6 +24,6 @@ Useful links:
 
 }
 \author{
-Austin McCoy, mccoyaus@msu.edu and Zachary Noel, noelzach@msu.edu and
+Austin G. McCoy, mccoyaus@msu.edu and Zachary Noel, noelzach@msu.edu and
 Adam H. Sparks, adam.sparks@usq.edu.au and Martin Chilvers, chilvers@msu.edu
 }
