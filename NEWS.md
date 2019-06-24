@@ -1,3 +1,5 @@
+# hagis (development version)
+
 # hagis 2.0.0
 
 * Initial CRAN release
