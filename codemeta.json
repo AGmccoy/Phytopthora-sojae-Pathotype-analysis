@@ -245,7 +245,7 @@
     "https://ci.appveyor.com/project/adamhsparks/hagis",
     "https://codecov.io/github/adamhsparks/hagis?branch=master"
   ],
-  "fileSize": "70.392KB",
+  "fileSize": "70.483KB",
   "applicationCategory": "Tools",
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
