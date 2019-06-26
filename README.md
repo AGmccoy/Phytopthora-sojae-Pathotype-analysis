@@ -110,7 +110,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## References
 
-> Herrmann, , Löwer, and Schachtel, (1999), A new tool for entry and
+> Herrmann, Löwer, and Schachtel, (1999), A new tool for entry and
 > analysis of virulence data for plant pathogens. Plant Pathology, 48:
 > 154-158. DOI:
 > [10.1046/j.1365-3059.1999.00325.x](https://doi.org/10.1046/j.1365-3059.1999.00325.x)
