@@ -30,7 +30,7 @@ The goal of _hagis_ is to provide analysis tools for plant pathogens with gene-f
 
 `hagis` was initially created for _Phytophthora sojae_ surveys by Austin McCoy and Zachary Noel at Michigan State University in the US where the disease has been managed primarily via deployment of resistance genes (_Rps_ genes, resistance to _P. sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
 
-However, the package is not only useful for _P. sojae_ work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, _e.g._ rusts. The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.
+However, the package is not only useful for _P. sojae_ work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, _e.g._ rusts or canola blackleg, _Leptosphaeria maculans_. The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.
 
 New users are encouraged to visit the documentation, <https://openplantpathology.github.io/hagis/articles/hagis.html>, for detailed information on how to use _hagis_ along with working examples using a built-in data set.
 
@@ -68,8 +68,7 @@ citation("hagis")
 ```
 
 Please note that the _hagis_ project is released with a
-[Contributor Code of Conduct](CODE_OF_CONDUCT.md).
-By contributing to this project, you agree to abide by its terms.
+[Contributor Code of Conduct](https://github.com/openplantpathology/hagis/blob/master/CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
 
 ## References
 

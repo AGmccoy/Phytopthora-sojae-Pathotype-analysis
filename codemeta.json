@@ -5,10 +5,10 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "hagis",
-  "description": "Analysis of plant pathogen pathotype survey data.  Functions\n  provided calculate distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for the Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for\n  pathotype analysis.",
+  "description": "Analysis of plant pathogen pathotype survey data.  Functions\n  provided calculate distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for Herrmann, Löwer, Schachtel's (1999)\n  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',\n  previously used for pathotype analysis.",
   "name": "hagis: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "2.0.0",
+  "version": "2.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -19,7 +19,7 @@
   "author": [
     {
       "@type": "Person",
-      "givenName": "Austin",
+      "givenName": "Austin G.",
       "familyName": "McCoy",
       "email": "mccoyaus@msu.edu",
       "@id": "https://orcid.org/0000-0003-2483-4184"
@@ -211,7 +211,7 @@
       "author": [
         {
           "@type": "Person",
-          "givenName": "Austin",
+          "givenName": ["Austin", "G."],
           "familyName": "McCoy"
         },
         {
@@ -221,7 +221,7 @@
         },
         {
           "@type": "Person",
-          "givenName": "Adam H.",
+          "givenName": ["Adam", "H."],
           "familyName": "Sparks"
         },
         {
@@ -245,8 +245,15 @@
     "https://ci.appveyor.com/project/adamhsparks/hagis",
     "https://codecov.io/github/adamhsparks/hagis?branch=master"
   ],
-  "fileSize": "23.549KB",
+  "fileSize": "70.392KB",
   "applicationCategory": "Tools",
   "isPartOf": "https://openplantpathology.org",
-  "keywords": ["plant-pathology", "pathotype", "pathogen-survey"]
+  "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
+  "relatedLink": "https://openplantpathology.github.io/hagis/",
+  "provider": {
+    "@id": "https://cran.r-project.org",
+    "@type": "Organization",
+    "name": "Comprehensive R Archive Network (CRAN)",
+    "url": "https://cran.r-project.org"
+  }
 }

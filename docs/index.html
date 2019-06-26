@@ -14,8 +14,9 @@
   provided calculate distribution of susceptibilities, distribution of
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for the Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for
-  pathotype analysis.">
+  replacement for Herrmann, Löwer, Schachtel's (1999)
+  &lt;doi:10.1046/j.1365-3059.1999.00325.x&gt; Habgood-Gilmour Spreadsheet, 'HaGiS',
+  previously used for pathotype analysis.">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
@@ -35,7 +36,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="index.html">hagis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0.9000</span>
       </span>
     </div>
 
@@ -93,7 +94,7 @@
 <h2 class="hasAnchor">
 <a href="#overview" class="anchor"></a>Overview</h2>
 <p><code>hagis</code> was initially created for <em>Phytophthora sojae</em> surveys by Austin McCoy and Zachary Noel at Michigan State University in the US where the disease has been managed primarily via deployment of resistance genes (<em>Rps</em> genes, resistance to <em>P. sojae</em>) in commercial soybean cultivars and by the application of fungicide seed treatments. However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective. To determine current effectiveness of resistance genes for managing <em>P. sojae</em>, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as “race”) structure within sampled population of <em>P. sojae</em>.</p>
-<p>However, the package is not only useful for <em>P. sojae</em> work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, <em>e.g.</em> rusts. The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.</p>
+<p>However, the package is not only useful for <em>P. sojae</em> work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, <em>e.g.</em> rusts or canola blackleg, <em>Leptosphaeria maculans</em>. The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.</p>
 <p>New users are encouraged to visit the documentation, <a href="https://openplantpathology.github.io/hagis/articles/hagis.html" class="uri">https://openplantpathology.github.io/hagis/articles/hagis.html</a>, for detailed information on how to use <em>hagis</em> along with working examples using a built-in data set.</p>
 </div>
 <div id="quick-start-install" class="section level2">
@@ -126,7 +127,7 @@
 <p>When you use <em>hagis</em>, please cite by using:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/citation">citation</a></span>(<span class="st">"hagis"</span>)</span>
 <span id="cb3-2"><a href="#cb3-2"></a><span class="co">#&gt; </span></span>
-<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; McCoy AG, Noel Z, Sparks AH, Chilvers M (????). _hagis: Analysis</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">#&gt; McCoy AG, Noel Z, Sparks AH, Chilvers M (2019). _hagis: Analysis</span></span>
 <span id="cb3-4"><a href="#cb3-4"></a><span class="co">#&gt; of Plant Pathogen Pathotype Complexities, Distributions and</span></span>
 <span id="cb3-5"><a href="#cb3-5"></a><span class="co">#&gt; Diversity_. doi: 10.5281/zenodo.2619820 (URL:</span></span>
 <span id="cb3-6"><a href="#cb3-6"></a><span class="co">#&gt; https://doi.org/10.5281/zenodo.2619820), R package version 2.0.0,</span></span>
@@ -137,11 +138,12 @@
 <span id="cb3-11"><a href="#cb3-11"></a><span class="co">#&gt;   @Manual{,</span></span>
 <span id="cb3-12"><a href="#cb3-12"></a><span class="co">#&gt;     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},</span></span>
 <span id="cb3-13"><a href="#cb3-13"></a><span class="co">#&gt;     author = {Austin G. McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},</span></span>
-<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt;     note = {R package version 2.0.0},</span></span>
-<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt;     url = {https://openplantpathology.github.io/hagis/},</span></span>
-<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt;     doi = {10.5281/zenodo.2619820},</span></span>
-<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt;   }</span></span></code></pre></div>
-<p>Please note that the <em>hagis</em> project is released with a <a href="CODE_OF_CONDUCT.html">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">#&gt;     year = {2019},</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">#&gt;     note = {R package version 2.0.0},</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">#&gt;     url = {https://openplantpathology.github.io/hagis/},</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">#&gt;     doi = {10.5281/zenodo.2619820},</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">#&gt;   }</span></span></code></pre></div>
+<p>Please note that the <em>hagis</em> project is released with a <a href="https://github.com/openplantpathology/hagis/blob/master/CODE_OF_CONDUCT.md">Contributor Code of Conduct</a>. By contributing to this project, you agree to abide by its terms.</p>
 </div>
 </div>
 <div id="references" class="section level2">
@@ -158,6 +160,8 @@
     <div class="links">
 <h2>Links</h2>
 <ul class="list-unstyled">
+<li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=hagis">https://​cloud.r-project.org/​package=hagis</a>
+</li>
 <li>Browse source code at <br><a href="https://github.com/openplantpathology/hagis">https://​github.com/​openplantpathology/​hagis</a>
 </li>
 <li>Report a bug at <br><a href="https://github.com/openplantpathology/hagis/issues">https://​github.com/​openplantpathology/​hagis/​issues</a>
