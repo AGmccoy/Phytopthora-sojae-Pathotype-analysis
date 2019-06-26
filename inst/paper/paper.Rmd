@@ -78,6 +78,6 @@ pander(Rps.summary,
 
 # Acknowledgements
 
-Funding for this work was provided by: Michigan Soy, Project GREEEN, **_Dorrance Grant information Here_** and GRDC Project DAQ00186 - Improving Grower Surveillance, Management Epidemiology Knowledge And Tools To Manage Crop Disease
+Funding for this work was provided by: Michigan Soy, Project GREEEN, North Central Soybean Research Program, and GRDC Project DAQ00186 - Improving Grower Surveillance, Management Epidemiology Knowledge And Tools To Manage Crop Disease
 
 # Literature Cited
