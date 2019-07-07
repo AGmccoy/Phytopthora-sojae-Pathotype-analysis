@@ -9,12 +9,15 @@ author:
       equal_contributor: true
   - name: Zachary Noel
     institute: MSU
+    correspondence: true
     equal_contributor: true
   - name: Adam H. Sparks
     institute: USQ
+    correspondence: true
     equal_contributor: true
   - name: Martin Chilvers
     institute: [MSU, ECO]
+    correspondence: true
 institute:
   - MSU: Department of Plant, Soil and Microbial Sciences, Michigan State University, East Lansing, MI 48824, USA
   - USQ: University of Southern Queensland, Centre for Crop Health, Toowoomba, Qld 4350, Australia
@@ -30,7 +33,7 @@ output:
 csl: "molecular-plant-microbe-interactions.csl"
 bibliography: references.bib
 abstract: |
-  _Phytophthora sojae_ is a significant pathogen of soybean worldwide. _Phytophthora sojae_ pathotype surveys are regularly conducted to monitor resistance gene efficacy and determine if new resistance genes need to be deployed. Valuable measurements for pathotype analysis include the distribution of susceptible reactions, pathotype complexity, pathotype frequency, and diversity indices for pathotype distributions. Previously the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft&reg; Excel, was used to obtain pathotype data. However, the growing popularity of the R programming language in plant pathology and desire for reproducible research made HaGiS a prime candidate for conversion into an R package. Here we report on the creation and use of an R package, ‘hagis’, that can be used to produce all outputs from the HaGiS Excel sheet for _P. sojae_ or other gene-for-gene pathosystem studies.
+  _Phytophthora sojae_ is a significant pathogen of soybean worldwide. _Phytophthora sojae_ pathotype surveys are conducted to monitor resistance gene efficacy and determine if new resistance genes are needed. Valuable measurements for pathotype analysis include the distribution of susceptible reactions, pathotype complexity, pathotype frequency, and diversity indices for pathotype distributions. Previously the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft&reg; Excel, was used for data analysis. However, the growing popularity of the R programming language in plant pathology and desire for reproducible research made HaGiS a prime candidate for conversion into an R package. Here we report on the creation and use of an R package, ‘hagis’, that can be used to produce all outputs from the HaGiS Excel sheet for _P. sojae_ or other gene-for-gene pathosystem studies.
 ---
 
 ```{r setup, include=FALSE}
@@ -43,13 +46,13 @@ library(pander)
 
 Uniform and healthy stand establishment is essential to maximizing soybean (_Glycine max_) yield. Oomycetes such as _Phytophthora sojae_ constitute a significant threat to stand establishment and yield. _Phytophthora sojae_ has been managed primarily via deployment of single resistance genes in commercial soybean cultivars, which interact with _P. sojae_ _Avr_ gene products to confer resistance [@Anderson2015]. Genetic resistance to _P. sojae_ is the most economical form of control for _P. sojae_ as it confers season-long protection to non-compatible pathotypes [@Dorrance2016]. However, _P. sojae_ pathotype surveys need to be regularly conducted to determine shifts in pathotypes over time and provide recommendations for effective resistance genes. Although state-wide pathotype surveys have been conducted for the past 60 years in the USA, there has been no significant advance in pathotype analysis since the development of the Habgood-Gilmour Spreadsheet (HaGiS), written in Microsoft&reg; Excel, in 1999 [@Herrmann1999; @Kaufmann1958].
 
-_Phytophthora sojae_ pathotype surveys monitor the efficacy of soybean resistance genes in relation to a single state's or multiple states' _P. sojae_ population(s). In doing so, large sets of virulence data are generated, potentially for hundreds of isolates [@Dorrance2016]. Using such large datasets within the HaGiS Excel-based program can be cumbersome and time intensive to transfer the data into and perform analysis. The R statistical programming language [@RCT2019] offers the ability to work with large data sets in an easy and efficient manner without additional data entry steps that the HaGiS Excel program requires, while treating the virulence data as read-only, thereby further reducing the chance for errors.
+_Phytophthora sojae_ pathotype surveys monitor the efficacy of soybean resistance genes in relation to _P. sojae_ population(s). In doing so, large sets of virulence data are generated, potentially for hundreds of isolates [@Dorrance2016]. Using such large datasets within the HaGiS Excel-based program can be cumbersome and time intensive to transfer the data into and perform analysis. The R statistical programming language [@RCT2019] offers the ability to work with large data sets in an easy and efficient manner without additional data entry steps that the HaGiS Excel program requires, while treating the virulence data as read-only, thereby further reducing the chance for errors.
 
 R has become widely used in plant pathology studies due to its open-source framework and amenability to conduct reproducible research [@Sparks2011; @Duku2016; @Bergna2018; @Wallace2018]. Using an R package for analyzing pathotype survey data can replicate all analyses provided by Excel-based programs. It allows users to create reproducible research and more detailed visualizations as well as allowing the plant pathology community to actively contribute to and build upon this code for future studies. For instance, McCoy and Noel [-@McCoy2018] produced R scripts to conduct these analyses originally performed with HaGiS, which were used to create the ‘hagis’ R package [@McCoy2019].
 
 For ease of use the package uses a single argument format, which works in all ‘hagis’ functions. Users provide their own data in the form of a spreadsheet, CSV or text file, specifying the proper fields for analysis. Functions are provided to calculate pathotype complexity and summarize the distribution of reactions for each gene tested. Simple, Shannon, Simpson, Gleason and Evenness diversity indices are calculated for the pathotype data set. Outputs from these analyses are given in publication ready graphics or tables and can be further modified by the user, *e.g.*, Table 1.
 
-The R language offers many advantages to Excel-based data analysis such as reproducibility and user customization. Furthermore, ‘hagis’ takes advantage of the ‘data.table’ package [@Dowle2019] to efficiently handle large data sets such as those produced through _P. sojae_ pathotype surveys rapidly and efficiently. Significantly, ‘hagis’ provides the first development in _P. sojae_ pathotype analysis in 20 years. While ‘hagis’ was produced to support _P. sojae_ pathotype surveys, it was designed to work with any pathotype analyses of gene-for-gene pathosystems to determine effective resistance genes in management.
+The R language offers many advantages to Excel-based data analysis such as reproducibility and user customization. Furthermore, ‘hagis’ takes advantage of the ‘data.table’ package [@Dowle2019] to efficiently handle large data sets such as those produced through _P. sojae_ pathotype surveys rapidly and efficiently. Significantly, ‘hagis’ provides the first development in _P. sojae_ pathotype analysis in 20 years. While ‘hagis’ was developed to support _P. sojae_ pathotype surveys, it was designed to work with any pathotype analyses of gene-for-gene pathosystems to determine effective resistance genes in management.
 
 The package source code, including the Rmarkdown code for this paper, more information and instructions on how to use ‘hagis’ can be found at <https://openplantpathology.github.io/hagis/>. The package can be downloaded and installed from the Comprehensive R Archive Network (CRAN) website (<https://CRAN.R-project.org/package=hagis>) and is released under the MIT licence. 
 
@@ -78,6 +81,6 @@ pander(Rps.summary,
 
 # Acknowledgements
 
-Funding for this work was provided by: Michigan Soy, Project GREEEN, North Central Soybean Research Program, and GRDC Project DAQ00186 - Improving Grower Surveillance, Management Epidemiology Knowledge And Tools To Manage Crop Disease
+Funding for this work was provided by: Michigan Soybean Promotion Committee, Project GREEEN, North Central Soybean Research Program, and GRDC Project DAQ00186 - Improving Grower Surveillance, Management Epidemiology Knowledge And Tools To Manage Crop Disease
 
 # Literature Cited
