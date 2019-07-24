@@ -9,15 +9,12 @@ author:
       equal_contributor: true
   - name: Zachary Noel
     institute: MSU
-    correspondence: true
     equal_contributor: true
   - name: Adam H. Sparks
     institute: USQ
-    correspondence: true
     equal_contributor: true
   - name: Martin Chilvers
     institute: [MSU, ECO]
-    correspondence: true
 institute:
   - MSU: Department of Plant, Soil and Microbial Sciences, Michigan State University, East Lansing, MI 48824, USA
   - USQ: University of Southern Queensland, Centre for Crop Health, Toowoomba, Qld 4350, Australia
