@@ -31,15 +31,15 @@
          "you have provided an improperly formatted item.\n",
          "Please check and try again.")
   }
-  data.table::setDT(.x)
-  data.table::setnames(.x, c(.perc_susc, .gene, .sample),
+  dt <- data.table::as.data.table(.x)
+  data.table::setnames(dt, c(.perc_susc, .gene, .sample),
                        c("perc_susc", "gene", "sample"))
   
   # set col types for the necessary cols
-  .x[, sample := as.character(sample)]
-  .x[, perc_susc := as.numeric(perc_susc)]
-  .x[, gene := as.character(gene)]
-  return(.x)
+  dt[, sample := as.character(sample)]
+  dt[, perc_susc := as.numeric(perc_susc)]
+  dt[, gene := as.character(gene)]
+  return(dt)
 }
 
 #' Create Binary Reaction Value
