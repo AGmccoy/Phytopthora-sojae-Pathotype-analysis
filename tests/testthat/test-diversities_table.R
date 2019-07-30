@@ -3,12 +3,27 @@
 context("diversities_table()")
 Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
 Ps <- read.csv(Ps)
+
+test_that("input is a data frame and not a data.table", {
+
+  expect_is(Ps, "data.frame")
+  expect_failure(expect_is(Ps, "data.table"))
+
+})
+
 diversities <- calculate_diversities(x = Ps,
                                      cutoff = 60,
                                      control = "susceptible",
                                      sample = "Isolate",
                                      gene = "Rps",
                                      perc_susc = "perc.susc")
+
+test_that("internal checker doesn't fail us", {
+
+  expect_is(Ps, "data.frame")
+  expect_failure(expect_is(Ps, "data.table"))
+
+})
 
 test_that("diversity_table() returns a pander object", { 
   expect_type(
