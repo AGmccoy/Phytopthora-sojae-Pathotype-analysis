@@ -102,7 +102,7 @@ test_that("print.hagis.complexities() returns a proper summary", {
   expect_type(x, "character")
   expect_equal(x[[2]], "Grouped Complexities")
   expect_equal(x[[3]], "    complexity frequency distribution")
-  expect_equal(x[[4]], " 1:          1      0.00            0")
+  expect_equal(x[[4]], " 1:          1         0            0")
   expect_equal(tail(x), c("18:     18     10",
                           "19:     19     11",
                           "20:     20     11",

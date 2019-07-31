@@ -97,7 +97,7 @@ context("pander.hagis.diversities")
 test_that("pander.hagis.diversities returns a proper table of indices and
           caption",
           {
-            x <- utils::capture.output(pander(diversities))
+            x <- utils::capture.output(pander::pander(diversities))
             expect_equal(
               head(x),
               c(
