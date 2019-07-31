@@ -89,9 +89,8 @@ calculate_complexities <- function(x,
   names(complexities) <- seq_along(1:n_gene)
   
   for (i in seq_along(1:n_gene)) {
-    complexities[[i]] <- round(
-      length(
-        which(individual_complexities[, N_samp == i])) / n_sample * 100, 2)
+    complexities[[i]] <- 
+      length(which(individual_complexities[, N_samp == i]) / n_sample * 100)
   }
   
   grouped_complexities <- data.table::setDT(utils::stack(complexities))

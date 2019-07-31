@@ -71,7 +71,7 @@ summarize_gene <- function(x,
   
   # create new data.table with percentages
   y <- x[, list(N_susc = sum(susceptible.1)), by = list(gene)]
-  y[, percent_pathogenic := round((N_susc) / max(N_susc) * 100, 2)]
+  y[, percent_pathogenic := (N_susc) / max(N_susc) * 100]
   
   # Set new class
   class(y) <- union("hagis.gene.summary", class(y))
