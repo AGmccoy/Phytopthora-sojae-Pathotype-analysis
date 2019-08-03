@@ -212,8 +212,8 @@ autoplot.hagis.complexities <-
 #'  "`percentage`", or as the count, "`count`". Character.
 #' @param color a named or hexadecimal color value to use for the bar color
 #' @param order sort the x-axis of the bar chart by ascending or descending
-#' order of `N_virulent_isolates` or `percent_pathogenic`. Accepts `ascending`
-#' or `descending` input values. Defaults to `gene` name. Character.
+#' order of `frequency`. Accepts `ascending` or `descending` input values.
+#' Defaults to `complexity` value. Character.
 #' @param ... passed to the chosen `geom(s)`
 #'
 #' @examples

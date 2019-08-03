@@ -19,8 +19,8 @@ whether to return a graph of the frequency of complexities as a percentage,
 \item{color}{a named or hexadecimal color value to use for the bar color}
 
 \item{order}{sort the x-axis of the bar chart by ascending or descending
-order of \code{N_virulent_isolates} or \code{percent_pathogenic}. Accepts \code{ascending}
-or \code{descending} input values. Defaults to \code{gene} name. Character.}
+order of \code{frequency}. Accepts \code{ascending} or \code{descending} input values.
+Defaults to \code{complexity} value. Character.}
 }
 \description{
 Creates a \pkg{ggplot2} object of the frequency of complexity
