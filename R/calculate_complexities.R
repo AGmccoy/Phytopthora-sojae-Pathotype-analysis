@@ -46,7 +46,6 @@ calculate_complexities <- function(x,
                                    sample,
                                    gene,
                                    perc_susc) {
-  
   # check inptuts and rename fields to work with this package
   x <- .check_inputs(
     .x = x,
@@ -89,11 +88,12 @@ calculate_complexities <- function(x,
   names(complexities) <- seq_along(1:n_gene)
   
   for (i in seq_along(1:n_gene)) {
-    complexities[[i]] <- 
+    complexities[[i]] <-
       length(which(individual_complexities[, N_samp == i]) / n_sample * 100)
   }
   
-  grouped_complexities <- data.table::setDT(utils::stack(complexities))
+  grouped_complexities <-
+    data.table::as.data.table(utils::stack(complexities))
   names(grouped_complexities) <- c("frequency", "N_samp")
   
   # distribution of complexity (counts)
@@ -123,71 +123,97 @@ calculate_complexities <- function(x,
 #' @method autoplot hagis.complexities
 #' @noRd
 
-autoplot.hagis.complexities <- function(object, type, color = NULL, ...) {
-  # create a single data.frame to use in the ggplot call
-  z <- object[[1]]
-  
-  plot_percentage <- function(.data, .color) {
-    #CRAN Note avoidance
-    complexity <- frequency <- gene <- NULL
-    perc_plot <- ggplot2::ggplot(data = .data,
-                                 ggplot2::aes(x = as.factor(complexity),
-                                              y = frequency)) +
-      ggplot2::labs(y = "Percent of samples",
-                    x = "Complexity") +
-      ggplot2::ggtitle("Percentage of isolates per complexity")
+autoplot.hagis.complexities <-
+  function(object,
+           type,
+           color = NULL,
+           order = NULL,
+           ...) {
+    # create a single data.frame to use in the ggplot call
+    z <- object[[1]]
     
-    if (!is.null(.color)) {
-      perc_plot +
-        ggplot2::geom_col(fill = .color,
-                          colour = .color)
+    # order cols based on user input
+    if (!is.null(order)) {
+      if (order == "ascending") {
+        data.table::setorder(x = z,
+                             cols = frequency)
+        z$order <- seq_along(1:nrow(z))
+      } else if (order == "descending") {
+        data.table::setorder(x = z,
+                             cols = -frequency)
+        z$order <- seq_along(1:nrow(z))
+      }
+    } else
+      # if no order is specified
+      data.table::setorder(x = z, cols = complexity)
+    z$order <- seq_along(1:nrow(z))
+    
+    
+    
+    plot_percentage <- function(.data, .color) {
+      #CRAN Note avoidance
+      complexity <- frequency <- gene <- NULL
+      perc_plot <- ggplot2::ggplot(data = .data,
+                                   ggplot2::aes(x = stats::reorder(complexity, order),
+                                                y = frequency)) +
+        ggplot2::labs(y = "Percent of samples",
+                      x = "Complexity") +
+        ggplot2::ggtitle("Percentage of isolates per complexity")
+      
+      if (!is.null(.color)) {
+        perc_plot +
+          ggplot2::geom_col(fill = .color,
+                            colour = .color)
+      } else {
+        perc_plot +
+          ggplot2::geom_col()
+      }
+    }
+    
+    plot_count <- function(.data, .color) {
+      #CRAN Note avoidance
+      complexity <- distribution <- gene <- NULL
+      num_plot <- ggplot2::ggplot(data = .data,
+                                  ggplot2::aes(x = stats::reorder(complexity, order),
+                                               y = distribution)) +
+        ggplot2::labs(y = "Number of samples",
+                      x = "Complexity") +
+        ggplot2::ggtitle("Number of samples per pathotype complexity")
+      
+      if (!is.null(.color)) {
+        num_plot +
+          ggplot2::geom_col(fill = .color,
+                            colour = .color)
+      } else {
+        num_plot +
+          ggplot2::geom_col()
+      }
+    }
+    
+    if (type == "percentage") {
+      plot_percentage(.data = z, .color = color)
+    } else if (type == "count") {
+      plot_count(.data = z, .color = color)
     } else {
-      perc_plot +
-        ggplot2::geom_col()
+      stop(.call = FALSE,
+           "You have entered an invalid `type`.")
     }
   }
-  
-  plot_count <- function(.data, .color) {
-    #CRAN Note avoidance
-    complexity <- distribution <- gene <- NULL
-    num_plot <- ggplot2::ggplot(data = .data,
-                                ggplot2::aes(x = as.factor(complexity),
-                                             y = distribution)) +
-      ggplot2::labs(y = "Number of samples",
-                    x = "Complexity") +
-      ggplot2::ggtitle("Number of samples per pathotype complexity")
-    
-    if (!is.null(.color)) {
-      num_plot +
-        ggplot2::geom_col(fill = .color,
-                          colour = .color)
-    } else {
-      num_plot +
-        ggplot2::geom_col()
-    }
-  }
-  
-  if (type == "percentage") {
-    plot_percentage(.data = z, .color = color)
-  } else if (type == "count") {
-    plot_count(.data = z, .color = color)
-  } else {
-    stop(.call = FALSE,
-         "You have entered an invalid `type`.")
-  }
-}
 
-#' Creates Simple Plot Function Wrapper for hagis Complexities Object
+#' Plot hagis Complexities Object
 #'
 #' @description Creates a \pkg{ggplot2} object of the frequency of complexity
-#'  (percent per complexity) calculated by [calculate_complexities()] or a
-#'   \pkg{ggplot2} object of the distribution (number per complexity).
-#' @param object a \pkg{hagis} `complexities` object generated by
+#'  (percent per complexity) or a \pkg{ggplot2} object of the distribution
+#'  (number per complexity) calculated by [calculate_complexities()].
+#' @param x a \pkg{hagis} `complexities` object generated by
 #'  [calculate_complexities()]. Character.
 #' @param type a vector of values for which the bar plot is desired. Specify
 #'  whether to return a graph of the frequency of complexities as a percentage,
-#'  `percentage`, or as the count, `count`. Character.
+#'  "`percentage`", or as the count, "`count`". Character.
 #' @param color a named or hexadecimal color value to use for the bar color
+#' @param order sort the x-axis of the bar chart by ascending or descending
+#' order of `N_virulent_isolates` or `percent_pathogenic`. Accepts `ascending`
+#' or `descending` input values. Defaults to `gene` name. Character.
 #' @param ... passed to the chosen `geom(s)`
 #'
 #' @examples
@@ -198,23 +224,20 @@ autoplot.hagis.complexities <- function(object, type, color = NULL, ...) {
 #' Ps <- read.csv(Ps)
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#'complexities <- calculate_complexities(x = Ps,
-#'                                       cutoff = 60,
-#'                                       control = "susceptible",
-#'                                       sample = "Isolate",
-#'                                       gene = "Rps",
-#'                                       perc_susc = "perc.susc")
+#' complexities <- calculate_complexities(x = Ps,
+#'                                        cutoff = 60,
+#'                                        control = "susceptible",
+#'                                        sample = "Isolate",
+#'                                        gene = "Rps",
+#'                                        perc_susc = "perc.susc")
 #'
 #' # Visualize the distribution (count or actual values)
-#' autoplot(object = complexities, type = "count")
+#' plot(object = complexities, type = "count")
 #'
 #' # Visualize the frequency (percentages)
 #' plot(object = complexities, type = "percentage")
 #'
-#' @param x A \pkg{hagis} `autoplot.hagis.complexities` object generated by
-#'  [autoplot.hagis.complexities()]. Character.
 #' @method plot hagis.complexities
-#' @noRd
 #' @export
 #' @importFrom graphics plot
 
@@ -283,7 +306,7 @@ print.summary.complexities <- function(x,
   invisible(x)
 }
 
-#' Pander Method for hagis Summary Complexities 
+#' Pander Method for hagis Summary Complexities
 #'
 #' Prints a hagis complexities summary in Pandoc's markdown.
 #' @param x a complexities object
