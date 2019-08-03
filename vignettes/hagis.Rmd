@@ -92,7 +92,7 @@ Now that we have a list of arguments, we can now save time entering the same dat
 
 Below is an example of tables and graphics that can be produced using the `summarize_gene()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
 
-The `summarize_gene()` function allows you to produce a detailed table showing the number of isolates each gene is susceptible to (`N_susc`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
+The `summarize_gene()` function allows you to produce a detailed table showing the number of virulent isolates (`N_virulent_isolates`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
 
 ```{r, echo=TRUE}
 Rps.summary <- do.call(summarize_gene, hagis_args)

@@ -1,4 +1,5 @@
 
+
 #' Calculate and Summarize Distribution of Susceptibilities by Gene
 #'
 #' @description This function will calculate the distribution of
@@ -39,7 +40,7 @@
 #'  containing the following components fields
 #'   \describe{
 #'     \item{gene}{the gene}
-#'     \item{N_susc}{the total number susceptible for a given gene in the
+#'     \item{N_virulent_isolates}{the total number susceptible for a given gene in the
 #'     gene field}
 #'     \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 #'   }
@@ -47,11 +48,11 @@
 #' @export summarize_gene
 
 summarize_gene <- function(x,
-                          cutoff,
-                          control,
-                          sample,
-                          gene,
-                          perc_susc) {
+                           cutoff,
+                           control,
+                           sample,
+                           gene,
+                           perc_susc) {
   # check inptuts and rename fields to work with this package
   x <- .check_inputs(
     .x = x,
@@ -63,15 +64,18 @@ summarize_gene <- function(x,
   )
   
   # CRAN NOTE avoidance
-  susceptible.1 <- percent_pathogenic <- N_susc <- NULL
+  susceptible.1 <- percent_pathogenic <- N_virulent_isolates <- NULL
   
   # summarise the reactions, create susceptible.1 field, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
   # create new data.table with percentages
-  y <- x[, list(N_susc = sum(susceptible.1)), by = list(gene)]
-  y[, percent_pathogenic := (N_susc) / max(N_susc) * 100]
+  y <-
+    x[, list(N_virulent_isolates = sum(susceptible.1)), by = list(gene)]
+  y[, percent_pathogenic := 
+      (N_virulent_isolates) / max(N_virulent_isolates) * 100]
+  data.table::setcolorder(c(2, 1, 3))
   
   # Set new class
   class(y) <- union("hagis.gene.summary", class(y))
@@ -111,10 +115,10 @@ autoplot.hagis.gene.summary <-
     }
     
     plot_count <- function(.data, .color) {
-      N_susc <- NULL
+      N_virulent_isolates <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
                                   ggplot2::aes(x = as.factor(gene),
-                                               y = N_susc)) +
+                                               y = N_virulent_isolates)) +
         ggplot2::labs(y = "Number of samples",
                       x = "Gene") +
         ggplot2::ggtitle(expression("Number of samples pathogenic"))
