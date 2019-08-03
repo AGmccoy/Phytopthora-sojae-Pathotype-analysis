@@ -28,8 +28,8 @@ An object of class \code{hagis.summaries} is a\cr \code{\link[data.table:data.ta
 containing the following components fields
 \describe{
 \item{gene}{the gene}
-\item{N_virulent_isolates}{the total number susceptible for a given gene in the
-gene field}
+\item{N_virulent_isolates}{the total number virulent isolates for a given
+gene in the gene field}
 \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 }
 }

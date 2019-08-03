@@ -40,8 +40,8 @@
 #'  containing the following components fields
 #'   \describe{
 #'     \item{gene}{the gene}
-#'     \item{N_virulent_isolates}{the total number susceptible for a given gene in the
-#'     gene field}
+#'     \item{N_virulent_isolates}{the total number virulent isolates for a given
+#'     gene in the gene field}
 #'     \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 #'   }
 #' @importFrom data.table ":="
@@ -75,7 +75,6 @@ summarize_gene <- function(x,
     x[, list(N_virulent_isolates = sum(susceptible.1)), by = list(gene)]
   y[, percent_pathogenic := 
       (N_virulent_isolates) / max(N_virulent_isolates) * 100]
-  data.table::setcolorder(c(2, 1, 3))
   
   # Set new class
   class(y) <- union("hagis.gene.summary", class(y))
