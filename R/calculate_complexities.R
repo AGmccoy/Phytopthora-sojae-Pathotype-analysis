@@ -124,13 +124,17 @@ calculate_complexities <- function(x,
 #' @noRd
 
 autoplot.hagis.complexities <-
-  function(object,
+  function(x,
            type,
-           color = NULL,
-           order = NULL,
+           color,
+           order,
            ...) {
+    
+    #CRAN Note avoidance
+    complexity <- frequency <- gene <- N_virulent_isolates <-  NULL
+    
     # create a single data.frame to use in the ggplot call
-    z <- object[[1]]
+    z <- x[[1]]
     
     # order cols based on user input
     if (!is.null(order)) {
@@ -148,13 +152,10 @@ autoplot.hagis.complexities <-
       data.table::setorder(x = z, cols = complexity)
     z$order <- seq_along(1:nrow(z))
     
-    
-    
     plot_percentage <- function(.data, .color) {
-      #CRAN Note avoidance
-      complexity <- frequency <- gene <- NULL
       perc_plot <- ggplot2::ggplot(data = .data,
-                                   ggplot2::aes(x = stats::reorder(complexity, order),
+                                   ggplot2::aes(x = stats::reorder(complexity,
+                                                                   order),
                                                 y = frequency)) +
         ggplot2::labs(y = "Percent of samples",
                       x = "Complexity") +
@@ -174,7 +175,8 @@ autoplot.hagis.complexities <-
       #CRAN Note avoidance
       complexity <- distribution <- gene <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
-                                  ggplot2::aes(x = stats::reorder(complexity, order),
+                                  ggplot2::aes(x = stats::reorder(complexity,
+                                                                  order),
                                                y = distribution)) +
         ggplot2::labs(y = "Number of samples",
                       x = "Complexity") +
@@ -232,17 +234,16 @@ autoplot.hagis.complexities <-
 #'                                        perc_susc = "perc.susc")
 #'
 #' # Visualize the distribution (count or actual values)
-#' plot(object = complexities, type = "count")
+#' plot(x = complexities, type = "count")
 #'
 #' # Visualize the frequency (percentages)
-#' plot(object = complexities, type = "percentage")
+#' plot(x = complexities, type = "percentage")
 #'
-#' @method plot hagis.complexities
 #' @export
 #' @importFrom graphics plot
 
-plot.hagis.complexities <- function(x, ...) {
-  print(autoplot(x, ...))
+plot.hagis.complexities <- function(x, type, color = NULL, order = NULL, ...) {
+  print(autoplot(x, type, color, order, ...))
 }
 
 #' Create Summary Table of Binary Reactions by Sample

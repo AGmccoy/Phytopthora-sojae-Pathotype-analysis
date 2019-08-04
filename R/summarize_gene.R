@@ -92,11 +92,11 @@ ggplot2::autoplot
 autoplot.hagis.gene.summary <-
   function(object,
            type,
-           color = NULL,
-           order = NULL,
+           color,
+           order,
            ...) {
     # CRAN NOTE avoidance
-    gene <- percent_pathogenic <- NULL
+    gene <- percent_pathogenic <-N_virulent_isolates <- NULL
     
     # order cols based on user input
     if (!is.null(order)) {
@@ -132,7 +132,7 @@ autoplot.hagis.gene.summary <-
       }
     }
     
-    plot_count <- function(.data, .color, .order) {
+    plot_count <- function(.data, .color) {
       N_virulent_isolates <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
                                   ggplot2::aes(x = stats::reorder(gene, order),
@@ -193,9 +193,8 @@ autoplot.hagis.gene.summary <-
 #' # Visualize the summary of genes
 #' plot(susc, type = "percentage")
 #'
-#' @method plot hagis.gene.summary
-#' @export plot.hagis.gene.summary
+#' @export
 #' @importFrom graphics plot
-plot.hagis.gene.summary <- function(x, ...) {
-  print(autoplot(x, ...))
+plot.hagis.gene.summary <- function(x, type, color = NULL, order = NULL, ...) {
+  print(autoplot(object = x, type, color, order, ...))
 }
