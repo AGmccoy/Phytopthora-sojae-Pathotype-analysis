@@ -28,7 +28,8 @@ The following examples are based on a dataset from Michigan State University _Ph
 First you'll want to load in your data set, for right now let's use a practice data set made for the *hagis* package and name it `Pathotype.Data`:
 
 ```{r load_data}
-Pathotype.Data <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+Pathotype.Data <-
+  system.file("extdata", "practice_data_set.csv", package = "hagis")
 Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
 head(Pathotype.Data)
 ```
@@ -36,7 +37,10 @@ head(Pathotype.Data)
 We see in the `gene` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
 
 ```{r remove-gene}
-Pathotype.Data$Rps <- gsub(pattern = "Rps ", replacement = "", x = Pathotype.Data$Rps)
+Pathotype.Data$Rps <-
+  gsub(pattern = "Rps ",
+       replacement = "",
+       x = Pathotype.Data$Rps)
 head(Pathotype.Data)
 ```
 
@@ -65,23 +69,27 @@ We have strived to make *hagis* as intuitive to use as possible. Part of that me
 Ordinarily you would use functions in _hagis_ or other R packages like this:
 
 ```{r example-function, eval=FALSE}
-Rps.summary <- summarize_gene(x = Pathotype.Data,
-                             cutoff = 60,
-                             control = "susceptible",
-                             sample = "Isolate",
-                             gene = "Rps",
-                             perc_susc = "perc.susc")
+Rps.summary <- summarize_gene(
+  x = Pathotype.Data,
+  cutoff = 60,
+  control = "susceptible",
+  sample = "Isolate",
+  gene = "Rps",
+  perc_susc = "perc.susc"
+)
 ```
 
 However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from *hagis*. First, we make a list of the arguments that `summarize_gene()`, `calculate_diversities()` and `calculate_complexities()` use that specify our inputs based on our example data:
 
 ```{r shared-args}
-hagis_args <- list(x = Pathotype.Data,
-                   cutoff = 60,
-                   control = "susceptible",
-                   sample = "Isolate",
-                   gene = "Rps",
-                   perc_susc = "perc.susc")
+hagis_args <- list(
+  x = Pathotype.Data,
+  cutoff = 60,
+  control = "susceptible",
+  sample = "Isolate",
+  gene = "Rps",
+  perc_susc = "perc.susc"
+)
 ```
 
 Now that we have a list of arguments, we can now save time entering the same data for each function and also avoid typos or entering different cutoff values, etc. between the functions.
@@ -115,9 +123,9 @@ pander(Rps.summary)
 Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `plot(Rps.summary, type = "percentage")`, or if you desire the distribution `plot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r plot-summary, echo=TRUE}
-plot(Rps.summary, type = "percentage")
+autoplot(Rps.summary, type = "percentage")
 
-plot(Rps.summary, type = "count")
+autoplot(Rps.summary, type = "count")
 ```
 
 ***
@@ -152,9 +160,9 @@ pander(summary(complexities))
 Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `plot(complexties, type = "percentage")`, or if you desire the distribution `plot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r complexities-plot}
-plot(complexities, type = "percentage")
+autoplot(complexities, type = "percentage")
 
-plot(complexities, type = "count")
+autoplot(complexities, type = "count")
 ```
 
 ***
@@ -193,14 +201,14 @@ individual_pathotypes(diversity)
 
 # Advanced Plotting {#AdvancedPlotting}
 
-## *hagis* plot Objects
+## *hagis* autoplot Objects
 
-Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options.
+Since *hagis* uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options provided by *hagis* directly through `autoplot()`.
 
 ```{r set-up-adv.plot}
 library(ggplot2)
 
-Rps.plot <- plot(Rps.summary, type = "percentage")
+Rps.plot <- autoplot(Rps.summary, type = "percentage")
 
 Rps.plot
 ```
@@ -222,11 +230,8 @@ Set the font to be a bold-face serif family font.
 
 ```{r change-plot-font}
 Rps.plot <- Rps.plot +
-  theme(
-    text = element_text(
-      face = "bold",
-      family = "serif"
-    ))
+  theme(text = element_text(face = "bold",
+                            family = "serif"))
 
 Rps.plot
 ```
@@ -243,16 +248,28 @@ Rps.plot <- Rps.plot +
 Rps.plot
 ```
 
-### Use Colors in plot Objects
+### Use Colors in Plot Objects
 
 You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using `theme_bw()` with a serif font.
 
 ```{r use-Colors}
-plot(Rps.summary, type = "percentage", color = "#18453b") +
+autoplot(Rps.summary, type = "percentage", color = "#18453b") +
   theme_bw() +
-  theme(
-    text = element_text(
-      face = "bold",
-      family = "serif"
-    ))
+  theme(text = element_text(face = "bold",
+                            family = "serif"))
+```
+
+### Sorting the x-axis
+
+You can sort the x-axis of any graph produced using `autoplot()` in an `ascending` or
+`descending` order using the `order` parameter in `autoplot()`.
+
+```{r sort-axis}
+autoplot(Rps.summary,
+          type = "percentage",
+          color = "#18453b",
+          order = "ascending") +
+  theme_bw() +
+  theme(text = element_text(face = "bold",
+                            family = "serif"))
 ```

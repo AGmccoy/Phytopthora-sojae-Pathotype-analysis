@@ -13,35 +13,36 @@ test_that("plot.hagis.complexities() returns a ggplot2 object", {
     gene = "Rps",
     perc_susc = "perc.susc"
   )
-  complexities_count <- plot(complexities, type = "count")
+  complexities_count <- autoplot(complexities, type = "count")
   expect_doppelganger("count_complexities",
                       complexities_count)
   
-  complexities_perc <- plot(complexities, type = "percentage")
+  complexities_perc <- autoplot(complexities, type = "percentage")
   expect_doppelganger("perc_complexities",
                       complexities_perc)
   
-  complexities_perc_blue <- plot(complexities, type = "percentage",
-                                 color = "blue")
+  complexities_perc_blue <-
+    autoplot(complexities, type = "percentage",
+             color = "blue")
   expect_doppelganger("perc_complexities_blue",
                       complexities_perc_blue)
   
   complexities_perc_desc_blue <-
-    plot(complexities,
-         type = "percentage",
-         color = "blue",
-         order = "descending")
+    autoplot(complexities,
+             type = "percentage",
+             color = "blue",
+             order = "descending")
   expect_doppelganger("perc_complexities_desc_blue",
                       complexities_perc_desc_blue)
   
   complexities_perc_asc_blue <-
-    plot(complexities,
-         type = "percentage",
-         color = "blue",
-         order = "ascending")
+    autoplot(complexities,
+             type = "percentage",
+             color = "blue",
+             order = "ascending")
   expect_doppelganger("perc_complexities_asc_blue",
                       complexities_perc_asc_blue)
-
-  expect_error(plot(complexities, type = "orange"),
+  
+  expect_error(autoplot(complexities, type = "orange"),
                regexp = "You have entered an invalid `type`.")
 })
