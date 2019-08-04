@@ -170,7 +170,7 @@ autoplot.hagis.complexities <-
     complexity <- frequency <- gene <- N_virulent_isolates <-  NULL
     
     # create a single data.frame to use in the ggplot call
-    z <- x[[1]]
+    z <- object[[1]]
     
     # order cols based on user input
     if (!is.null(order)) {
