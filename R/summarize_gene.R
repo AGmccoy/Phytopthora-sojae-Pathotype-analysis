@@ -31,9 +31,6 @@
 #'                      perc_susc = "perc.susc")
 #' susc
 #'
-#' # plot susceptibilities
-#' plot(susc, type = "percentage")
-#'
 #' @return  returns an object of [class()] `hagis.gene.summary`
 #' An object of class `hagis.summaries` is a\cr [data.table::data.table()]
 #'  containing the following components fields

@@ -46,9 +46,9 @@ complexities <- calculate_complexities(x = Ps,
                                        perc_susc = "perc.susc")
 
 # Visualize the distribution (count or actual values)
-autoplot(x = complexities, type = "count")
+autoplot(complexities, type = "count")
 
 # Visualize the frequency (percentages)
-autoplot(x = complexities, type = "percentage")
+autoplot(complexities, type = "percentage")
 
 }

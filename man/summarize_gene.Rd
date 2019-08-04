@@ -55,7 +55,4 @@ susc <- summarize_gene(x = Ps,
                      perc_susc = "perc.susc")
 susc
 
-# plot susceptibilities
-plot(susc, type = "percentage")
-
 }
