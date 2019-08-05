@@ -41,6 +41,14 @@ test_that("plot.hagis.complexities() returns a ggplot2 object", {
   expect_doppelganger("perc_complexities_asc_blue",
                       complexities_perc_asc_blue)
   
+  complexities_count_asc_blue <-
+    autoplot(complexities,
+             type = "count",
+             color = "blue",
+             order = "ascending")
+  expect_doppelganger("count_complexities_asc_blue",
+                      complexities_count_asc_blue)
+  
   expect_error(autoplot(complexities, type = "orange"),
                regexp = "You have entered an invalid `type`.")
 })
