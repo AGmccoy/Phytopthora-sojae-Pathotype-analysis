@@ -10,7 +10,7 @@
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' diversities <- calculate_diversities(x = Ps,
+#' diversities <- calculate_diversities(x = P_sojae_survey,
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
@@ -159,7 +159,7 @@ print.hagis.diversities <- function(x,
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' diversities <- calculate_diversities(x = Ps,
+#' diversities <- calculate_diversities(x = P_sojae_survey,
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
@@ -196,7 +196,7 @@ diversities_table <- function(x,...) {
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' diversities <- calculate_diversities(x = Ps,
+#' diversities <- calculate_diversities(x = P_sojae_survey,
 #'                                      cutoff = 60,
 #'                                      control = "susceptible",
 #'                                      sample = "Isolate",
