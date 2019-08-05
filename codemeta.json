@@ -12,10 +12,10 @@
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
-    "version": "3.6.0",
+    "version": "3.6.1",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 3.6.0 (2019-04-26)",
+  "runtimePlatform": "R version 3.6.1 (2019-07-05)",
   "author": [
     {
       "@type": "Person",
@@ -46,7 +46,14 @@
       "@id": "https://orcid.org/0000-0001-8832-1666"
     }
   ],
-  "contributor": {},
+  "contributor": [
+    {
+      "@type": "Person",
+      "givenName": "Zhian N.",
+      "familyName": "Kamvar",
+      "@id": "https://orcid.org/0000-0003-1458-7108"
+    }
+  ],
   "copyrightHolder": {},
   "funder": {},
   "maintainer": [
@@ -165,11 +172,6 @@
     },
     {
       "@type": "SoftwareApplication",
-      "identifier": "graphics",
-      "name": "graphics"
-    },
-    {
-      "@type": "SoftwareApplication",
       "identifier": "pander",
       "name": "pander",
       "provider": {
@@ -189,18 +191,6 @@
       "@type": "SoftwareApplication",
       "identifier": "utils",
       "name": "utils"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "vegan",
-      "name": "vegan",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=vegan"
     }
   ],
   "codeRepository": "https://github.com/openplantpathology/hagis",
@@ -245,7 +235,7 @@
     "https://ci.appveyor.com/project/adamhsparks/hagis",
     "https://codecov.io/github/adamhsparks/hagis?branch=master"
   ],
-  "fileSize": "70.483KB",
+  "fileSize": "76.046KB",
   "applicationCategory": "Tools",
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],

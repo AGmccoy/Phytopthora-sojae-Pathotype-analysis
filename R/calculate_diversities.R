@@ -1,7 +1,23 @@
 
-#' Calculate Diversities Indices
+#' Calculate diversities indices
 #'
-#' @description Calculates pathogen diversity index
+#' @description Calculates pathogen diversity indices.
+#' 
+#' This function calculates five diversity indices for the user.
+#' * Simple diversity index, which will show the proportion of unique pathotypes
+#'  to total samples. As the values gets closer to 1, there is greater diversity
+#'  in pathoypes within the population.
+#'  \deqn{SimpI = \frac{No. pathotypes}{No. samples} }{SimpI = No. pathotypes / No. samples }
+#'
+#' * Gleason diversity index, an alternate version of Simple diversity index.
+#'   This index is less sensitive to sample size than the simple index.
+#'   \deqn{GI = \frac{ (No. pathotypes - 1) }{ log( No. samples)}}{GI = (No. pathotypes -1) / log(No. Samples)}
+#'   
+#' * Shannon diversity index index is typically between 1.5 and 3.5. As richness and
+#    evenness of the population increase, so does the Shannon index value
+#' * Simpson Diversity Index, calculated as
+#' * Evenness Diversity Index, calculated as
+#' 
 #' @inheritParams summarize_gene
 #' @examples
 #' # Using the built-in data set, P_sojae_survey
@@ -20,6 +36,15 @@
 #' diversities
 #' 
 #' @export calculate_diversities
+#' @return hagis.diversities object containing
+#'   * Number of Samples
+#'   * Number of Pathotypes
+#'   * Simple Diversity Index
+#'   * Gleason Diversity Index
+#'   * Shannon Diversity Index
+#'   * Simpson Diversity Index
+#'   * Evenness Diversity Index
+#'
 
 calculate_diversities <- function(x,
                                   cutoff,
@@ -77,25 +102,21 @@ calculate_diversities <- function(x,
   N_pathotypes <- length(unique(individual_pathotypes[, Pathotype]))
   
   # indices --------------------------------------------------------------------
-  # simple diversity will show the proportion of unique pathotypes to total
-  # samples. As the values gets closer to 1, there is greater diversity in
-  # pathoypes within the population.
   Simple <- N_pathotypes / N_samples
-  
-  # An alternate version of Simple diversity index. This index is less
-  # sensitive to sample size than the simple index.
   Gleason <- (N_pathotypes - 1) / log(N_samples)
   
-  # Shannon diversity index is typically between 1.5 and 3.5. As richness and
-  # evenness of the population increase, so does the Shannon index value
-  Shannon <-
-    vegan::diversity(table_of_pathotypes[, Frequency], index = "shannon")
+  # Shannon diversity index
+  x <- table_of_pathotypes[, Frequency]/(total <- sum(table_of_pathotypes[, Frequency]))
+  x <- -x * log(x, exp(1))
+  # Shannon index
+  H <- sum(x, na.rm = TRUE)
   
-  # Simpson diversity index values range from 0 to 1. 1 represents high
-  # diversity and 0 represents no diversity.
-  Simpson <-
-    vegan::diversity(table_of_pathotypes[, Frequency], index = "simpson")
-  
+  # Simpson diversity index
+  x <- table_of_pathotypes[, Frequency]/(total <- sum(table_of_pathotypes[, Frequency]))
+  x <- x*x
+  H <- sum(x, na.rm = TRUE)
+  H <- 1 - H
+
   # Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
   # more even distribution of each pathoypes frequency within the population.
   Evenness <- Shannon / log(N_pathotypes)

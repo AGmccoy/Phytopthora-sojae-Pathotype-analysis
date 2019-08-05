@@ -1,5 +1,5 @@
 
-#' Calculate Distribution of Complexities by Sample
+#' Calculate distribution of complexities by sample
 #'
 #' @description This function will calculate the distribution of
 #' susceptibilities by sample
@@ -113,7 +113,7 @@ calculate_complexities <- function(x,
   return(complexities)
 }
 
-#' Plot hagis Complexities Object
+#' Plot hagis complexities objects
 #'
 #' @description Creates a \pkg{ggplot2} object of the frequency of complexity
 #'  (percent per complexity) or a \pkg{ggplot2} object of the distribution

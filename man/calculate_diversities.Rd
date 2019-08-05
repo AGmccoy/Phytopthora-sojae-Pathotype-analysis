@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_diversities.R
 \name{calculate_diversities}
 \alias{calculate_diversities}
-\title{Calculate Diversities Indices}
+\title{Calculate diversities indices}
 \usage{
 calculate_diversities(x, cutoff, control, sample, gene, perc_susc)
 }
@@ -22,8 +22,34 @@ tested. Character.}
 \item{perc_susc}{field providing the percent susceptible reactions.
 Character.}
 }
+\value{
+hagis.diversities object containing
+\itemize{
+\item Number of Samples
+\item Number of Pathotypes
+\item Simple Diversity Index
+\item Gleason Diversity Index
+\item Shannon Diversity Index
+\item Simpson Diversity Index
+\item Evenness Diversity Index
+}
+}
 \description{
-Calculates pathogen diversity index
+Calculates pathogen diversity indices.
+
+This function calculates five diversity indices for the user.
+\itemize{
+\item Simple diversity index, which will show the proportion of unique pathotypes
+to total samples. As the values gets closer to 1, there is greater diversity
+in pathoypes within the population.
+\deqn{SimpI = \frac{No. pathotypes}{No. samples} }{SimpI = No. pathotypes / No. samples }
+\item Gleason diversity index, an alternate version of Simple diversity index.
+This index is less sensitive to sample size than the simple index.
+\deqn{GI = \frac{ (No. pathotypes - 1) }{ log( No. samples)}}{GI = (No. pathotypes -1) / log(No. Samples)}
+\item Shannon diversity index index is typically between 1.5 and 3.5. As richness and
+\item Simpson Diversity Index, calculated as
+\item Evenness Diversity Index, calculated as
+}
 }
 \examples{
 # Using the built-in data set, P_sojae_survey

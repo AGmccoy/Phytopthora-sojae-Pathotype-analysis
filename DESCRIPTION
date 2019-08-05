@@ -28,11 +28,9 @@ Depends: R (>= 3.2.0)
 Imports: 
   data.table,
   ggplot2,
-  graphics,
   pander,
   stats,
-  utils,
-  vegan
+  utils
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true

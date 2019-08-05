@@ -2,7 +2,7 @@
 # data.table special symbols for package-wide use
 .SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- i.N <- NULL
 
-#' Check User Inputs
+#' Check user inputs
 #'
 #' Checks and validates user inputs before running functions
 #'
@@ -35,14 +35,20 @@
   data.table::setnames(dt, c(.perc_susc, .gene, .sample),
                        c("perc_susc", "gene", "sample"))
   
+  # validate that perc_susc is numeric
+  if (!is.numeric(dt$perc_susc))
+    stop("Data in the column `perc_susc`` must be numeric.")
+  # validate that no values in perc_susc < 0
+  if (any(dt$perc_susc < 0, na.rm = TRUE))
+    stop("Data in the column `perc_susc`` must be non-negative.")
+  
   # set col types for the necessary cols
   dt[, sample := as.character(sample)]
-  dt[, perc_susc := as.numeric(perc_susc)]
   dt[, gene := as.character(gene)]
   return(dt)
 }
 
-#' Create Binary Reaction Value
+#' Create binary reaction value
 #'
 #' Adds a column of 1 or 0 for the susceptible reaction cutoff
 #'
