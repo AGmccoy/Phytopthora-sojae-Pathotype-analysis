@@ -38,21 +38,18 @@ This function will calculate the distribution of
 susceptibilities by gene.
 }
 \examples{
+# Using the built-in data set, P_sojae_survey
+data(P_sojae_survey)
 
-# locate system file for import
-Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-
-# import 'practice_data_set.csv'
-Ps <- read.csv(Ps)
-head(Ps)
+P_sojae_survey
 
 # calculate susceptibilities with a 60 \% cutoff value
-susc <- summarize_gene(x = Ps,
-                     cutoff = 60,
-                     control = "susceptible",
-                     sample = "Isolate",
-                     gene = "Rps",
-                     perc_susc = "perc.susc")
+susc <- summarize_gene(x = P_sojae_survey,
+                      cutoff = 60,
+                      control = "susceptible",
+                      sample = "Isolate",
+                      gene = "Rps",
+                      perc_susc = "perc.susc")
 susc
 
 }

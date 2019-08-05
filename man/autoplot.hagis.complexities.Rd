@@ -32,13 +32,11 @@ Creates a \pkg{ggplot2} object of the frequency of complexity
 (number per complexity) calculated by \code{\link[=calculate_complexities]{calculate_complexities()}}.
 }
 \examples{
-Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-
-# import 'practice_data_set.csv'
-Ps <- read.csv(Ps)
+# Using the built-in data set, P_sojae_survey
+data(P_sojae_survey)
 
 # calculate susceptibilities with a 60 \% cutoff value
-complexities <- calculate_complexities(x = Ps,
+complexities <- calculate_complexities(x = P_sojae_survey,
                                        cutoff = 60,
                                        control = "susceptible",
                                        sample = "Isolate",

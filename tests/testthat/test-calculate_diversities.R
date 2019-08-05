@@ -1,9 +1,8 @@
 
 # test calculate diversities ---------------------------------------------------
 context("calculate_diversities()")
-Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-Ps <- read.csv(Ps)
-diversities <- calculate_diversities(x = Ps,
+data(P_sojae_survey)
+diversities <- calculate_diversities(x = P_sojae_survey,
                                      cutoff = 60,
                                      control = "susceptible",
                                      sample = "Isolate",

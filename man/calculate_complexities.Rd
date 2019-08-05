@@ -41,20 +41,18 @@ susceptibilities by sample
 }
 \examples{
 
-# locate system file for import
-Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+# Using the built-in data set, P_sojae_survey
+data(P_sojae_survey)
 
-# import 'practice_data_set.csv'
-Ps <- read.csv(Ps)
-head(Ps)
+P_sojae_survey
 
 # calculate susceptibilities with a 60 \% cutoff value
-complexities <- calculate_complexities(x = Ps,
-                                      cutoff = 60,
-                                      control = "susceptible",
-                                      sample = "Isolate",
-                                      gene = "Rps",
-                                      perc_susc = "perc.susc")
+complexities <- calculate_complexities(x = P_sojae_survey,
+                                       cutoff = 60,
+                                       control = "susceptible",
+                                       sample = "Isolate",
+                                       gene = "Rps",
+                                       perc_susc = "perc.susc")
 complexities
 
 summary(complexities)

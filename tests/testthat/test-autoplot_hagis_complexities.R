@@ -2,11 +2,9 @@
 # test plot.hagis.gene.summary ----------------------------------------------
 context("plot.hagis.complexities()")
 test_that("plot.hagis.complexities() returns a ggplot2 object", {
-  Ps <-
-    system.file("extdata", "practice_data_set.csv", package = "hagis")
-  Ps <- read.csv(Ps)
+  data(P_sojae_survey)
   complexities <- calculate_complexities(
-    x = Ps,
+    x = P_sojae_survey,
     cutoff = 60,
     control = "susceptible",
     sample = "Isolate",

@@ -14,21 +14,18 @@
 #'  Character.
 #'
 #' @examples
-#'
-#' # locate system file for import
-#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-#'
-#' # import 'practice_data_set.csv'
-#' Ps <- read.csv(Ps)
-#' head(Ps)
+#' # Using the built-in data set, P_sojae_survey
+#' data(P_sojae_survey)
+#' 
+#' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#'susc <- summarize_gene(x = Ps,
-#'                      cutoff = 60,
-#'                      control = "susceptible",
-#'                      sample = "Isolate",
-#'                      gene = "Rps",
-#'                      perc_susc = "perc.susc")
+#'susc <- summarize_gene(x = P_sojae_survey,
+#'                       cutoff = 60,
+#'                       control = "susceptible",
+#'                       sample = "Isolate",
+#'                       gene = "Rps",
+#'                       perc_susc = "perc.susc")
 #' susc
 #'
 #' @return  returns an object of [class()] `hagis.gene.summary`
@@ -98,14 +95,11 @@ ggplot2::autoplot
 #' @return A \link[ggplot2]{ggplot2} plot
 #' @method autoplot hagis.gene.summary
 #' @examples
-#  # locate system file for import
-#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-#'
-#' # import 'practice_data_set.csv'
-#' Ps <- read.csv(Ps)
+#' # Using the built-in data set, P_sojae_survey
+#' data(P_sojae_survey)
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#' susc <- summarize_gene(x = Ps,
+#' susc <- summarize_gene(x = P_sojae_survey,
 #'                        cutoff = 60,
 #'                        control = "susceptible",
 #'                        sample = "Isolate",

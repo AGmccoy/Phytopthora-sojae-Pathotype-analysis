@@ -1,15 +1,13 @@
 
 # test calculate complexities --------------------------------------------------
 context("calculate_complexities()")
-Ps <-
-  system.file("extdata", "practice_data_set.csv", package = "hagis")
-Ps <- read.csv(Ps)
+data(P_sojae_survey)
 complexities <- calculate_complexities(
-  x = Ps,
+  x = P_sojae_survey,
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
-  gene ="Rps",
+  gene = "Rps",
   perc_susc = "perc.susc"
 )
 
@@ -35,54 +33,72 @@ test_that("calculate_complexities() stops if lacking all params", {
   Ps <-
     system.file("extdata", "practice_data_set.csv", package = "hagis")
   Ps <- read.csv(Ps)
-  expect_error(calculate_complexities(
-    x = "y",
-    cutoff = 60,
-    control = "susceptible",
-    sample = "Isolate",
-    gene ="Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_complexities(
-    x = Ps,
-    cutoff = "sixty",
-    control = "susceptible",
-    sample = "Isolate",
-    gene ="Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_complexities(
-    x = Ps,
-    cutoff = 60,
-    control = NULL,
-    sample = "Isolate",
-    gene ="Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_complexities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = NULL,
-    gene ="Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_complexities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = "isolate",
-    gene =NULL,
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_complexities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = "isolate",
-    gene ="Rps",
-    perc_susc = 60
-  ), regexp = "You have failed to provide all necessary inputs")
+  expect_error(
+    calculate_complexities(
+      x = "y",
+      cutoff = 60,
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_complexities(
+      x = Ps,
+      cutoff = "sixty",
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_complexities(
+      x = Ps,
+      cutoff = 60,
+      control = NULL,
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_complexities(
+      x = Ps,
+      cutoff = 60,
+      control = "susceptible",
+      sample = NULL,
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_complexities(
+      x = Ps,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "isolate",
+      gene = NULL,
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_complexities(
+      x = Ps,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "isolate",
+      gene = "Rps",
+      perc_susc = 60
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
 })
 
 context("print.summary.complexities()")
@@ -103,22 +119,26 @@ test_that("print.hagis.complexities() returns a proper summary", {
   expect_equal(x[[2]], "Grouped Complexities")
   expect_equal(x[[3]], "    complexity frequency distribution")
   expect_equal(x[[4]], " 1:          1         0            0")
-  expect_equal(tail(x), c("18:     18     10",
-                          "19:     19     11",
-                          "20:     20     11",
-                          "21:     21     13",
-                          "    sample N_samp",
-                          ""))
+  expect_equal(tail(x),
+               c(
+                 "18:     18     10",
+                 "19:     19     11",
+                 "20:     20     11",
+                 "21:     21     13",
+                 "    sample N_samp",
+                 ""
+               ))
 })
 
 context("pander.summary.complexities")
-test_that("pander.summary.complexities returns a properly formatted table", {
-  x <- capture.output(pander(summary(complexities)))
-  expect_type(x, "character")
-  expect_equal(x[[1]], "")
-  expect_equal(x[[2]], "------------------------")
-  expect_equal(x[[3]], " Mean     SD       SE   ")
-  expect_equal(x[[4]], "------- ------- --------")
-  expect_equal(x[[5]], " 8.714   2.004   0.4372 ")
-  expect_equal(x[[6]], "------------------------")
-})
+test_that("pander.summary.complexities returns a properly formatted table",
+          {
+            x <- capture.output(pander(summary(complexities)))
+            expect_type(x, "character")
+            expect_equal(x[[1]], "")
+            expect_equal(x[[2]], "------------------------")
+            expect_equal(x[[3]], " Mean     SD       SE   ")
+            expect_equal(x[[4]], "------- ------- --------")
+            expect_equal(x[[5]], " 8.714   2.004   0.4372 ")
+            expect_equal(x[[6]], "------------------------")
+          })
