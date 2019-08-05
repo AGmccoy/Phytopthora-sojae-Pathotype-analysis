@@ -20,12 +20,10 @@ The resulting object is a \link{pander} table (a text object for Markdown) for
 ease of use in reporting and viewing in the console.
 }
 \examples{
-# locate system file for import
-Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
+# Using the built-in data set, P_sojae_survey
+data(P_sojae_survey)
 
-# import 'practice_data_set.csv'
-Ps <- read.csv(Ps)
-head(Ps)
+P_sojae_survey
 
 # calculate susceptibilities with a 60 \% cutoff value
 diversities <- calculate_diversities(x = Ps,

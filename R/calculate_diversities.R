@@ -4,12 +4,10 @@
 #' @description Calculates pathogen diversity index
 #' @inheritParams summarize_gene
 #' @examples
-#' # locate system file for import
-#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-#'
-#' # import 'practice_data_set.csv'
-#' Ps <- read.csv(Ps)
-#' head(Ps)
+#' # Using the built-in data set, P_sojae_survey
+#' data(P_sojae_survey)
+#' 
+#' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
 #' diversities <- calculate_diversities(x = Ps,
@@ -155,12 +153,10 @@ print.hagis.diversities <- function(x,
 #' @param ... other arguments passed to [pander::panderOptions()]
 #' 
 #' @examples 
-#' # locate system file for import
-#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-#'
-#' # import 'practice_data_set.csv'
-#' Ps <- read.csv(Ps)
-#' head(Ps)
+#' # Using the built-in data set, P_sojae_survey
+#' data(P_sojae_survey)
+#' 
+#' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
 #' diversities <- calculate_diversities(x = Ps,
@@ -188,18 +184,16 @@ diversities_table <- function(x,...) {
 #' Prints Individual Pathotypes for Each Sample
 #' 
 #' Print an object from a `hagis.diversities` object with individual pathotypes,
-#' _i.e._ each sample's pathotype. The resulting object is a [pander] table
+#' *i.e.* each sample's pathotype. The resulting object is a [pander] table
 #' (a text object for Markdown) for ease of use in reporting and viewing in the
 #' console.
 #' 
 #' @inheritParams diversities_table
 #' @examples 
-#' # locate system file for import
-#' Ps <- system.file("extdata", "practice_data_set.csv", package = "hagis")
-#'
-#' # import 'practice_data_set.csv'
-#' Ps <- read.csv(Ps)
-#' head(Ps)
+#' # Using the built-in data set, P_sojae_survey
+#' data(P_sojae_survey)
+#' 
+#' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
 #' diversities <- calculate_diversities(x = Ps,
