@@ -25,23 +25,21 @@ library(hagis)
 
 The following examples are based on a dataset from Michigan State University _Phytophthora sojae_ surveys for soybean phytophthora root rot pathotyping efforts.
 
-First you'll want to load in your data set, for right now let's use a practice data set made for the *hagis* package and name it `Pathotype.Data`:
+First you'll want to load in your data set, for right now let's use a practice data set made for the *hagis* package and name it `P_sojae_survey`:
 
 ```{r load_data}
-Pathotype.Data <-
-  system.file("extdata", "practice_data_set.csv", package = "hagis")
-Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
-head(Pathotype.Data)
+data(P_sojae_survey)
+P_sojae_survey
 ```
 
 We see in the `gene` column that each gene is prepended with "Rps". We can remove this to make the graphs cleaner and report the genes in tables as we would in a manuscript. Note that this will work for any string you enter as the first value, `pattern`. The second string, `replacement`, is the replacement value, the third, `x`, is where to look and make the changes.
 
 ```{r remove-gene}
-Pathotype.Data$Rps <-
+P_sojae_survey$Rps <-
   gsub(pattern = "Rps ",
        replacement = "",
-       x = Pathotype.Data$Rps)
-head(Pathotype.Data)
+       x = P_sojae_survey$Rps)
+head(P_sojae_survey)
 ```
 
 This practice data set contains 21 isolates', `Isolate`, virulence data on a set of 14 differential soybean cultivars, `Line`. This package uses the _percentage_ of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
@@ -54,7 +52,7 @@ To help ensure that the proper data are used in calculations, the user is asked 
 
 We have strived to make *hagis* as intuitive to use as possible. Part of that means that we have used the same arguments for the three main functions, `summarize_gene()`, `calculate_complexities()` and `calculate_diversities()`. Each of these functions take the same arguments:
 
-* `x` this is your data set name, _e.g._ `Pathotype.Data` from the example above, allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel spreadsheet)
+* `x` this is your data set name, _e.g._ `P_sojae_survey` from the example above, allows for the function to identify where it will be pulling these columns (and their associated row values) from to use (_i.e._ your data collection Excel spreadsheet)
 
 * `cutoff` this value sets the cutoff for susceptible reactions. For example, `cutoff = 60` means that all genes with 60% or more of the plants rated susceptible will be treated as susceptible. You can change this to whatever percentage you require for your study.
 
@@ -70,7 +68,7 @@ Ordinarily you would use functions in _hagis_ or other R packages like this:
 
 ```{r example-function, eval=FALSE}
 Rps.summary <- summarize_gene(
-  x = Pathotype.Data,
+  x = P_sojae_survey,
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
@@ -83,7 +81,7 @@ However, because the functions share arguments we can create a `list()` of argum
 
 ```{r shared-args}
 hagis_args <- list(
-  x = Pathotype.Data,
+  x = P_sojae_survey,
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
