@@ -1,80 +1,142 @@
 
+
 # test calculate diversities ---------------------------------------------------
 context("calculate_diversities()")
 data(P_sojae_survey)
-diversities <- calculate_diversities(x = P_sojae_survey,
-                                     cutoff = 60,
-                                     control = "susceptible",
-                                     sample = "Isolate",
-                                     gene = "Rps",
-                                     perc_susc = "perc.susc")
+diversities <- calculate_diversities(
+  x = P_sojae_survey,
+  cutoff = 60,
+  control = "susceptible",
+  sample = "Isolate",
+  gene = "Rps",
+  perc_susc = "perc.susc"
+)
 
 test_that("calculate_diversities() works properly", {
   expect_s3_class(diversities, "hagis.diversities")
   expect_length(diversities, 9)
-  expect_named(diversities, c("individual_pathotypes",
-                              "table_of_pathotypes",
-                              "number_of_samples",
-                              "number_of_pathotypes",
-                              "Simple",
-                              "Gleason",
-                              "Shannon",
-                              "Simpson",
-                              "Evenness"))
+  expect_named(
+    diversities,
+    c(
+      "individual_pathotypes",
+      "table_of_pathotypes",
+      "number_of_samples",
+      "number_of_pathotypes",
+      "Simple",
+      "Gleason",
+      "Shannon",
+      "Simpson",
+      "Evenness"
+    )
+  )
 })
 
 test_that("calculate_diversities() stops if lacking all params", {
-  Ps <-
-    system.file("extdata", "practice_data_set.csv", package = "hagis")
-  Ps <- read.csv(Ps)
-  expect_error(calculate_diversities(
-    x = "y",
-    cutoff = 60,
-    control = "susceptible",
-    sample = "Isolate",
-    gene = "Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_diversities(
-    x = Ps,
-    cutoff = "sixty",
-    control = "susceptible",
-    sample = "Isolate",
-    gene = "Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_diversities(
-    x = Ps,
-    cutoff = 60,
-    control = NULL,
-    sample = "Isolate",
-    gene = "Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_diversities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = NULL,
-    gene = "Rps",
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_diversities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = "isolate",
-    gene = NULL,
-    perc_susc = "perc.susc"
-  ), regexp = "You have failed to provide all necessary inputs")
-  expect_error(calculate_diversities(
-    x = Ps,
-    cutoff = 60,
-    control = "susceptible",
-    sample = "isolate",
-    gene = "Rps",
-    perc_susc = 60
-  ), regexp = "You have failed to provide all necessary inputs")
+  expect_error(
+    calculate_diversities(
+      x = "y",
+      cutoff = 60,
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = "sixty",
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = NULL,
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = "susceptible",
+      sample = NULL,
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "isolate",
+      gene = NULL,
+      perc_susc = "perc.susc"
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "isolate",
+      gene = "Rps",
+      perc_susc = 60
+    ),
+    regexp = "You have failed to provide all necessary inputs"
+  )
+})
+
+
+test_that("calculate_diversities() stops if data are not valid", {
+  # add non-numeric data to `perc.susc`
+  x <- P_sojae_survey[1,]
+  x[, 11] <- "X"
+  
+  P_sojae_survey <- rbind(P_sojae_survey, x)
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "Data in the column `perc_susc` must be numeric."
+  )
+  
+  rm(P_sojae_survey)
+  data(P_sojae_survey)
+  # add value < 0 to data
+  x <- P_sojae_survey[1,]
+  x[, 11] <- -1
+  
+  P_sojae_survey <- rbind(P_sojae_survey, x)
+  expect_error(
+    calculate_diversities(
+      x = P_sojae_survey,
+      cutoff = 60,
+      control = "susceptible",
+      sample = "Isolate",
+      gene = "Rps",
+      perc_susc = "perc.susc"
+    ),
+    regexp = "Data in the column `perc_susc` must be non-negative."
+  )
 })
 
 context("print.hagis.diversities()")
@@ -109,4 +171,3 @@ test_that("pander.hagis.diversities returns a proper table of indices and
               )
             )
           })
-
