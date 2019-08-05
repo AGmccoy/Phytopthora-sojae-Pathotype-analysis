@@ -118,7 +118,7 @@ pander(Rps.summary)
 
 *hagis* also provides functions to quickly graph your data using `ggplot2`. 
 
-Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `plot(Rps.summary, type = "percentage")`, or if you desire the distribution `plot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r plot-summary, echo=TRUE}
 autoplot(Rps.summary, type = "percentage")
@@ -155,7 +155,7 @@ pander(summary(complexities))
 
 ### Plotting Complexities Data
 
-Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `plot(complexties, type = "percentage")`, or if you desire the distribution `plot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
+Two functions are provided to plot the complexities depending on your needs. If you need the frequency, use `autoplot(complexties, type = "percentage")`, or if you desire the distribution `autoplot(complexities, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
 ```{r complexities-plot}
 autoplot(complexities, type = "percentage")
@@ -246,7 +246,7 @@ Rps.plot <- Rps.plot +
 Rps.plot
 ```
 
-### Use Colors in Plot Objects
+### Use Colors in Autoplot Objects
 
 You can use named, *e.g.* "red", "yellow", "blue" colors in R or you can use custom hexadecimal color codes. Illustrated below is using MSU Green, hex code #18453b, using `theme_bw()` with a serif font.
 
