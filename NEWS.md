@@ -12,6 +12,7 @@ is called, which can be troublesome when using *ggplot2* themes since it
 created two plots, the original with the base theme and the new themed plot
 * Add ability to sort graph x-axis in ascending or descending order based on the
 y-axis values rather than only by gene or complexity.
+* Move example data set into internal data and provide documentation for them
 
 # hagis 2.0.0
 
