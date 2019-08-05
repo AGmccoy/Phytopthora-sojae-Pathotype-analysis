@@ -106,7 +106,7 @@ Rps.summary <- do.call(summarize_gene, hagis_args)
 Rps.summary
 ```
 
-Using the _pander_ library we can make the table much more attractive in Markdown.
+Using the _pander_ library we can make the table much more attractive in RMarkdown.
 
 ```{r pander-print-Rps, echo=TRUE}
 library(pander)
@@ -139,7 +139,7 @@ complexities <- do.call(calculate_complexities, hagis_args)
 complexities
 ```
 
-Once again, using _pander_ we can make these tables much more attractive in Markdown. Since `complexities` is a `list()` object, we can refer to each object directly by name and print them as follows.
+Once again, using _pander_ we can make these tables much more attractive in RMarkdown. Since `complexities` is a `list()` object, we can refer to each object directly by name and print them as follows.
 
 ```{r pander-print-complexities}
 pander(complexities$grouped_complexities)
