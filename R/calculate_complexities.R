@@ -80,9 +80,9 @@ calculate_complexities <- function(x,
   
   # create an empty list to populate with frequency values
   complexities <- vector(mode = "list", length = n_gene)
-  names(complexities) <- seq_along(1:n_gene)
+  names(complexities) <- seq_len(n_gene)
   
-  for (i in seq_along(1:n_gene)) {
+  for (i in seq_len(n_gene)) {
     complexities[[i]] <-
       length(which(individual_complexities[, N_samp == i]) / n_sample * 100)
   }
@@ -169,16 +169,16 @@ autoplot.hagis.complexities <-
       if (order == "ascending") {
         data.table::setorder(x = z,
                              cols = frequency)
-        z$order <- seq_len(z)
+        z$order <- seq_len(nrow(z))
       } else if (order == "descending") {
         data.table::setorder(x = z,
                              cols = -frequency)
-        z$order <- seq_len(z)
+        z$order <- seq_len(nrow(z))
       }
     } else
       # if no order is specified
       data.table::setorder(x = z, cols = complexity)
-    z$order <- seq_len(z)
+    z$order <- seq_len(nrow(z))
     
     plot_percentage <- function(.data, .color) {
       perc_plot <- ggplot2::ggplot(data = .data,

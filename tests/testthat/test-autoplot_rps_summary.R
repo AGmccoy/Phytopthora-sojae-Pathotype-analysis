@@ -36,12 +36,12 @@ test_that("plot.hagis.gene.summary() returns a ggplot2 object", {
              order = "ascending")
   expect_doppelganger("perc_summary_asc_blue", rps_perc_asc_blue)
   
-  rps_num_asc_blue <-
+  rps_count_asc_blue <-
     autoplot(rps,
              type = "count",
              color = "blue",
              order = "ascending")
-  expect_doppelganger("count_summary_asc_blue", rps_perc_asc_blue)
+  expect_doppelganger("count_summary_asc_blue", rps_count_asc_blue)
   
   expect_error(autoplot(rps, type = "orange"),
                regexp = "You have entered an invalid `type`.")
