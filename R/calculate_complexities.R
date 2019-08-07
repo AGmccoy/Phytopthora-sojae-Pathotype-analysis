@@ -41,7 +41,7 @@ calculate_complexities <- function(x,
                                    sample,
                                    gene,
                                    perc_susc) {
-  # check inptuts and rename fields to work with this package
+  # check inputs and rename columns to work with this package
   x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
@@ -59,13 +59,13 @@ calculate_complexities <- function(x,
   #  it does not contain susceptible controls.
   x <- subset(x, gene != control)
   
-  # summarise the reactions, create susceptible.1 field, see
+  # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
-  # field
+  # column
   individual_complexities <- .create_summary_isolate(.y = x)
   
   # Frequency for each complexity (%) ------------------------------------------

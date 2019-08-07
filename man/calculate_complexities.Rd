@@ -12,14 +12,14 @@ calculate_complexities(x, cutoff, control, sample, gene, perc_susc)
 \item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
 \item{control}{value used to denote the susceptible control in the \code{gene}
-field. Character.}
+column. Character.}
 
-\item{sample}{field providing the unique identification for each sample being
+\item{sample}{column providing the unique identification for each sample being
 tested. Character.}
 
-\item{gene}{field providing the gene(s) being tested. Character.}
+\item{gene}{column providing the gene(s) being tested. Character.}
 
-\item{perc_susc}{field providing the percent susceptible reactions.
+\item{perc_susc}{column providing the percent susceptible reactions.
 Character.}
 }
 \value{

@@ -12,24 +12,24 @@ summarize_gene(x, cutoff, control, sample, gene, perc_susc)
 \item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
 \item{control}{value used to denote the susceptible control in the \code{gene}
-field. Character.}
+column. Character.}
 
-\item{sample}{field providing the unique identification for each sample being
+\item{sample}{column providing the unique identification for each sample being
 tested. Character.}
 
-\item{gene}{field providing the gene(s) being tested. Character.}
+\item{gene}{column providing the gene(s) being tested. Character.}
 
-\item{perc_susc}{field providing the percent susceptible reactions.
+\item{perc_susc}{column providing the percent susceptible reactions.
 Character.}
 }
 \value{
 returns an object of \code{\link[=class]{class()}} \code{hagis.gene.summary}
 An object of class \code{hagis.summaries} is a\cr \code{\link[data.table:data.table]{data.table::data.table()}}
-containing the following components fields
+containing the following components columns
 \describe{
 \item{gene}{the gene}
 \item{N_virulent_isolates}{the total number virulent isolates for a given
-gene in the gene field}
+gene in the \code{gene} column}
 \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 }
 }
@@ -45,11 +45,11 @@ P_sojae_survey
 
 # calculate susceptibilities with a 60 \% cutoff value
 susc <- summarize_gene(x = P_sojae_survey,
-                      cutoff = 60,
-                      control = "susceptible",
-                      sample = "Isolate",
-                      gene = "Rps",
-                      perc_susc = "perc.susc")
+                       cutoff = 60,
+                       control = "susceptible",
+                       sample = "Isolate",
+                       gene = "Rps",
+                       perc_susc = "perc.susc")
 susc
 
 }

@@ -9,11 +9,11 @@
 #' @param .x a `data.table` containing the values to be summarised
 #' @param .cutoff value for percent susceptible cutoff. Numeric.
 #' @param .control value used to denote the susceptible control in the `gene`
-#'  field. Character.
-#' @param .sample field providing the unique identification for each sample
+#'  column. Character.
+#' @param .sample column providing the unique identification for each sample
 #'  being tested. Character.
-#' @param .gene field providing the gene(s) being tested. Character.
-#' @param .perc_susc field providing the percent susceptible reactions.
+#' @param .gene column providing the gene(s) being tested. Character.
+#' @param .perc_susc column providing the percent susceptible reactions.
 #' Character.
 #' @importFrom data.table ":="
 #' @noRd

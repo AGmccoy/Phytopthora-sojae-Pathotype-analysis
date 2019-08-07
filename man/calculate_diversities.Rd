@@ -12,14 +12,14 @@ calculate_diversities(x, cutoff, control, sample, gene, perc_susc)
 \item{cutoff}{value for percent susceptible cutoff. Numeric.}
 
 \item{control}{value used to denote the susceptible control in the \code{gene}
-field. Character.}
+column. Character.}
 
-\item{sample}{field providing the unique identification for each sample being
+\item{sample}{column providing the unique identification for each sample being
 tested. Character.}
 
-\item{gene}{field providing the gene(s) being tested. Character.}
+\item{gene}{column providing the gene(s) being tested. Character.}
 
-\item{perc_susc}{field providing the percent susceptible reactions.
+\item{perc_susc}{column providing the percent susceptible reactions.
 Character.}
 }
 \value{
@@ -40,21 +40,30 @@ Calculates pathogen diversity indices.
 This function calculates five diversity indices for the user.
 \itemize{
 \item Simple diversity index, which will show the proportion of unique pathotypes
-to total samples. As the values gets closer to 1, there is greater diversity
-in pathoypes within the population.
-\deqn{S = \frac{N\,pathotypes}{N\,samples} }{S = N pathotypes / N samples }
+to total samples. As the values gets closer to 1, there is greater
+diversity in pathoypes within the population. Simple diversity is
+calculated as:
+\deqn{D = \frac{Np}{Ns} }{ D = Np / Ns }
+where \eqn{Np} is the number of pathotypes and \eqn{Ns} is the number of
+samples.
 \item Gleason diversity index, an alternate version of Simple diversity index, is
 less sensitive to sample size than the Simple index.
-\deqn{G = \frac{ (N\,pathotypes - 1) }{ log(N\,samples)}}{G = (N pathotypes -1) / log(N Samples)}
-\item Shannon diversity index is typically between 1.5 and 3.5. As richness and
+\deqn{D = \frac{ (Np - 1) }{ log(Ns)}}{ D = (Np -1) / log(Ns) }
+Where \eqn{Np} is the number of pathotypes and \eqn{Ns} is the number of
+samples.
+\item Shannon diversity index is typically between 1.5 and 3.5, as richness and
 evenness of the population increase, so does the Shannon index value.
-\deqn{H' = -\sum_i p_i \log p_i}{ H = -sum p_i \log p_i } Where \eqn{p_i} is
-the proportional abundance of species \eqn{i}.
-\item Simpson diversity index values range from 0 to 1. 1 represents high
-diversity and 0 represents no diversity. \deqn{ D = \sum p_i^2 }{ D = sum p_i^2 }
-\item Evenness ranges from 0 to 1. As the Eveness value approaches 1, there is a
+\deqn{D = -\sum_{i = 1}^{R} p_i \log p_i}{ D = -sum p_i log(p_i) } Where
+\eqn{p_i} is the proportional abundance of species \eqn{i}.
+\item Simpson diversity index values range from 0 to 1, 1 represents high
+diversity and 0 represents no diversity. Where diversity is calcuated as:
+\deqn{ D = \sum_{i = 1}^{R} p_i^2 }{ D = sum p_i^2 }
+\item Evenness ranges from 0 to 1, as the Eveness value approaches 1, there is a
 more even distribution of each pathoype's frequency within the population.
-\deqn{E = \frac{H'}{log(N\,pathotypes) }}{E = H' / log(N Pathotypes) }
+Where Evenness is calculated as:
+\deqn{D = \frac{H'}{log(Np) }}{ D = H' / log(Np) }
+where \eqn{H'} is the Shannon diversity index and \eqn{Np} is the number
+of pathotypes.
 }
 }
 \examples{

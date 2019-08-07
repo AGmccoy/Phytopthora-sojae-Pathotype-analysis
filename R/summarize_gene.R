@@ -6,11 +6,11 @@
 #' @param x a `data.frame` containing the data.
 #' @param cutoff value for percent susceptible cutoff. Numeric.
 #' @param control value used to denote the susceptible control in the `gene`
-#'  field. Character.
-#' @param sample field providing the unique identification for each sample being
+#'  column. Character.
+#' @param sample column providing the unique identification for each sample being
 #'  tested. Character.
-#' @param gene field providing the gene(s) being tested. Character.
-#' @param perc_susc field providing the percent susceptible reactions.
+#' @param gene column providing the gene(s) being tested. Character.
+#' @param perc_susc column providing the percent susceptible reactions.
 #'  Character.
 #'
 #' @examples
@@ -20,21 +20,21 @@
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
-#'susc <- summarize_gene(x = P_sojae_survey,
-#'                       cutoff = 60,
-#'                       control = "susceptible",
-#'                       sample = "Isolate",
-#'                       gene = "Rps",
-#'                       perc_susc = "perc.susc")
+#' susc <- summarize_gene(x = P_sojae_survey,
+#'                        cutoff = 60,
+#'                        control = "susceptible",
+#'                        sample = "Isolate",
+#'                        gene = "Rps",
+#'                        perc_susc = "perc.susc")
 #' susc
 #'
 #' @return  returns an object of [class()] `hagis.gene.summary`
 #' An object of class `hagis.summaries` is a\cr [data.table::data.table()]
-#'  containing the following components fields
+#'  containing the following components columns
 #'   \describe{
 #'     \item{gene}{the gene}
 #'     \item{N_virulent_isolates}{the total number virulent isolates for a given
-#'     gene in the gene field}
+#'     gene in the `gene` column}
 #'     \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 #'   }
 #' @importFrom data.table ":="
@@ -46,7 +46,7 @@ summarize_gene <- function(x,
                            sample,
                            gene,
                            perc_susc) {
-  # check inptuts and rename fields to work with this package
+  # check inputs and rename columns to work with this package
   x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
@@ -59,7 +59,7 @@ summarize_gene <- function(x,
   # CRAN NOTE avoidance
   susceptible.1 <- percent_pathogenic <- N_virulent_isolates <- NULL
   
-  # summarise the reactions, create susceptible.1 field, see
+  # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
