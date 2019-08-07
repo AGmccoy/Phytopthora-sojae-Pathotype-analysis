@@ -19,10 +19,13 @@ y-axis values rather than only by gene or complexity.
 
 * Move example data set into internal data and provide documentation for them
 
-* Provide documentation for how diversity indices are calculated
+* Provide documentation for how diversity indices are calculated along with
+mathematical notation where possible to display
 
 * Calculate Shannon and Simpson indices internally rather than rely on *vegan*
 to reduce number of Dependencies
+
+* Replace the term `field` with `column` in documentation
 
 # hagis 2.0.0
 
