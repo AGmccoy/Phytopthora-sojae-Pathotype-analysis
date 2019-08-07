@@ -6,6 +6,7 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
 [![Travis Build
 Status](https://travis-ci.org/openplantpathology/hagis.svg?branch=master)](https://travis-ci.org/openplantpathology/hagis)
 [![Appveyor Build
@@ -86,19 +87,18 @@ When you use *hagis*, please cite by using:
 ``` r
 citation("hagis")
 #> 
-#> McCoy AG, Noel Z, Sparks AH, Chilvers M (2019). _hagis: Analysis
+#> McCoy AG, Noel Z, Sparks AH, Chilvers M (????). _hagis: Analysis
 #> of Plant Pathogen Pathotype Complexities, Distributions and
 #> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
-#> https://doi.org/10.5281/zenodo.2619820), R package version 2.0.0,
-#> <URL: https://openplantpathology.github.io/hagis/>.
+#> https://doi.org/10.5281/zenodo.2619820), R package version
+#> 2.0.0.9000, <URL: https://openplantpathology.github.io/hagis/>.
 #> 
 #> A BibTeX entry for LaTeX users is
 #> 
 #>   @Manual{,
 #>     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},
 #>     author = {Austin G. McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
-#>     year = {2019},
-#>     note = {R package version 2.0.0},
+#>     note = {R package version 2.0.0.9000},
 #>     url = {https://openplantpathology.github.io/hagis/},
 #>     doi = {10.5281/zenodo.2619820},
 #>   }
