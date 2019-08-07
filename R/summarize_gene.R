@@ -124,16 +124,16 @@ autoplot.hagis.gene.summary <-
       if (order == "ascending") {
         data.table::setorder(object,
                              cols = N_virulent_isolates)
-        object$order <- seq_along(1:nrow(object))
+        object$order <- seq_len(object)
       } else if (order == "descending") {
         data.table::setorder(x = object,
                              cols = -N_virulent_isolates)
-        object$order <- seq_along(1:nrow(object))
+        object$order <- seq_len(object)
       }
     } else
       # if no order is specified
       data.table::setorder(object, cols = gene)
-    object$order <- seq_along(1:nrow(object))
+    object$order <- seq_len(object)
     
     plot_percentage <- function(.data, .color) {
       perc_plot <- ggplot2::ggplot(data = .data,

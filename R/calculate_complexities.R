@@ -169,16 +169,16 @@ autoplot.hagis.complexities <-
       if (order == "ascending") {
         data.table::setorder(x = z,
                              cols = frequency)
-        z$order <- seq_along(1:nrow(z))
+        z$order <- seq_len(z)
       } else if (order == "descending") {
         data.table::setorder(x = z,
                              cols = -frequency)
-        z$order <- seq_along(1:nrow(z))
+        z$order <- seq_len(z)
       }
     } else
       # if no order is specified
       data.table::setorder(x = z, cols = complexity)
-    z$order <- seq_along(1:nrow(z))
+    z$order <- seq_len(z)
     
     plot_percentage <- function(.data, .color) {
       perc_plot <- ggplot2::ggplot(data = .data,

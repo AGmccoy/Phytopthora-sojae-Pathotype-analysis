@@ -8,19 +8,19 @@
 #'   to total samples. As the values gets closer to 1, there is greater
 #'   diversity in pathoypes within the population. Simple diversity is
 #'   calculated as:
-#'   \deqn{D = \frac{Np}{Ns} }{ D = Np / Ns }
+#'   \deqn{ D = \frac{Np}{Ns} }{ D = Np / Ns }
 #'    where \eqn{Np} is the number of pathotypes and \eqn{Ns} is the number of
 #'    samples.
 #'
 #' * Gleason diversity index, an alternate version of Simple diversity index, is
 #'    less sensitive to sample size than the Simple index.
-#'    \deqn{D = \frac{ (Np - 1) }{ log(Ns)}}{ D = (Np -1) / log(Ns) }
+#'    \deqn{ D = \frac{ (Np - 1) }{ log(Ns)}}{ D = (Np -1) / log(Ns) }
 #'    Where \eqn{Np} is the number of pathotypes and \eqn{Ns} is the number of
 #'    samples.
 #'    
 #' * Shannon diversity index is typically between 1.5 and 3.5, as richness and 
 #'   evenness of the population increase, so does the Shannon index value.
-#'   \deqn{D = -\sum_{i = 1}^{R} p_i \log p_i}{ D = -sum p_i log(p_i) } Where
+#'   \deqn{ D = -\sum_{i = 1}^{R} p_i \log p_i }{ D = -sum p_i log(p_i) } Where
 #'   \eqn{p_i} is the proportional abundance of species \eqn{i}.
 #'
 #' * Simpson diversity index values range from 0 to 1, 1 represents high
@@ -30,7 +30,7 @@
 #' * Evenness ranges from 0 to 1, as the Eveness value approaches 1, there is a
 #'    more even distribution of each pathoype's frequency within the population.
 #'    Where Evenness is calculated as:
-#'    \deqn{D = \frac{H'}{log(Np) }}{ D = H' / log(Np) }
+#'    \deqn{ D = \frac{H'}{log(Np) }}{ D = H' / log(Np) }
 #'    where \eqn{H'} is the Shannon diversity index and \eqn{Np} is the number
 #'    of pathotypes.
 #'
