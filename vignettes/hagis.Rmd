@@ -132,6 +132,9 @@ autoplot(Rps.summary, type = "count")
 
 Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the `calculate_complexities()` function. This function will return
 a `list()` of two `data.table()` objects, `grouped_complexities` and `individual_complexities`.
+`grouped_complexities` returns a `list()` as a `data.table()` object showing the frequency and distribution of pathotype complexities for the sampled population. 
+`individual_complexities()` returns a `list()` as a `data.table()` object showing each individual isolates pathotype complexity.
+An isolates pathotype complexity refers to the number of resistance genes that it is able to overcome and cause idsease on. i,e, a pathotype complexity of 7 would mean that isolate can cause disease on 7 different resistance genes.
 
 ```{r complexities, echo=TRUE, message=FALSE, warning=FALSE}
 complexities <- do.call(calculate_complexities, hagis_args)
@@ -167,7 +170,7 @@ autoplot(complexities, type = "count")
 
 ## Diversity Indices, Frequency of Unique Pathotypes and Individual Isolate Pathotypes
 
-Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the sample population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
+Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the isolate population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
 
 Five diversity indices are calculated when calling `calculate_diversities()`.
 
