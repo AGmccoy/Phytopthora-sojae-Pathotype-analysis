@@ -1,7 +1,4 @@
 
-# data.table special symbols for package-wide use
-.SD <- .N <- .I <- .GRP <- .BY <- .EACHI <- i.N <- NULL
-
 #' Check user inputs
 #'
 #' Checks and validates user inputs before running functions
@@ -15,7 +12,7 @@
 #' @param .gene column providing the gene(s) being tested. Character.
 #' @param .perc_susc column providing the percent susceptible reactions.
 #' Character.
-#' @importFrom data.table ":="
+#' @import data.table
 #' @noRd
 .check_inputs <- function(.x, .cutoff, .control, .sample, .gene, .perc_susc) {
   # CRAN NOTE avoidance
@@ -31,8 +28,8 @@
          "you have provided an improperly formatted item.\n",
          "Please check and try again.")
   }
-  dt <- data.table::as.data.table(.x)
-  data.table::setnames(dt, c(.perc_susc, .gene, .sample),
+  dt <- as.data.table(.x)
+  setnames(dt, c(.perc_susc, .gene, .sample),
                        c("perc_susc", "gene", "sample"))
   
   # validate that perc_susc is numeric
@@ -55,7 +52,7 @@
 #' @param .x A `data.table` containing the values to be summarised
 #' @param .cutoff Cutoff value for susceptibility
 #' @return A `data.table` that tallies the results by gene
-#' @importFrom data.table ":="
+#' @import data.table
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
   susceptible.1 <- perc_susc <- NULL

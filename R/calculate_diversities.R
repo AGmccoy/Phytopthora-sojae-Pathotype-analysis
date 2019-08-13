@@ -50,7 +50,8 @@
 #'                                      perc_susc = "perc.susc")
 #'
 #' diversities
-#'
+#' 
+#' @import data.table
 #' @export calculate_diversities
 #' @return hagis.diversities object containing
 #'   * Number of Samples
@@ -99,16 +100,16 @@ calculate_diversities <- function(x,
                     x[, sample]),
               toString, character(1))
   
-  individual_pathotypes <- data.table::setDT(data.frame(
+  individual_pathotypes <- setDT(data.frame(
     Sample = as.numeric(names(y)),
     Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))
   
   table_of_pathotypes <-
-    data.table::as.data.table(table(individual_pathotypes$Pathotype))
-  data.table::setnames(table_of_pathotypes, c("Pathotype", "Frequency"))
-  data.table::setcolorder(table_of_pathotypes, c("Frequency", "Pathotype"))
+    as.data.table(table(individual_pathotypes$Pathotype))
+  setnames(table_of_pathotypes, c("Pathotype", "Frequency"))
+  setcolorder(table_of_pathotypes, c("Frequency", "Pathotype"))
   
   # determines the number of samples within the data
   N_samples <- length(unique(x[, sample]))

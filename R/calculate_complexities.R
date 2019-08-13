@@ -5,7 +5,7 @@
 #' susceptibilities by sample
 #' @inheritParams summarize_gene
 #' @examples
-#'
+#' 
 #' # Using the built-in data set, P_sojae_survey
 #' data(P_sojae_survey)
 #' 
@@ -33,6 +33,7 @@
 #'     \item{individual_complexities}{a [data.table::data.table()] object of
 #'       individual complexities}
 #'   }
+#' @import data.table
 #' @export calculate_complexities
 
 calculate_complexities <- function(x,
@@ -88,7 +89,7 @@ calculate_complexities <- function(x,
   }
   
   grouped_complexities <-
-    data.table::as.data.table(utils::stack(complexities))
+    as.data.table(utils::stack(complexities))
   names(grouped_complexities) <- c("frequency", "N_samp")
   
   # distribution of complexity (counts)
@@ -98,9 +99,9 @@ calculate_complexities <- function(x,
   
   # set NA to 0 for distribution
   grouped_complexities[is.na(distribution), distribution := 0]
-  data.table::setcolorder(grouped_complexities,
+  setcolorder(grouped_complexities,
                           neworder = c("N_samp", "frequency", "distribution"))
-  data.table::setnames(grouped_complexities,
+  setnames(grouped_complexities,
                        c("complexity", "frequency", "distribution"))
   complexities <-
     list(grouped_complexities, individual_complexities)
@@ -167,17 +168,17 @@ autoplot.hagis.complexities <-
     # order cols based on user input
     if (!is.null(order)) {
       if (order == "ascending") {
-        data.table::setorder(x = z,
+        setorder(x = z,
                              cols = frequency)
         z$order <- seq_len(nrow(z))
       } else if (order == "descending") {
-        data.table::setorder(x = z,
+        setorder(x = z,
                              cols = -frequency)
         z$order <- seq_len(nrow(z))
       }
     } else
       # if no order is specified
-      data.table::setorder(x = z, cols = complexity)
+      setorder(x = z, cols = complexity)
     z$order <- seq_len(nrow(z))
     
     plot_percentage <- function(.data, .color) {

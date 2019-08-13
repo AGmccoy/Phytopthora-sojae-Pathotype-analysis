@@ -37,7 +37,7 @@
 #'     gene in the `gene` column}
 #'     \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 #'   }
-#' @importFrom data.table ":="
+#' @import data.table
 #' @export summarize_gene
 
 summarize_gene <- function(x,
@@ -122,17 +122,17 @@ autoplot.hagis.gene.summary <-
     # order cols based on user input
     if (!is.null(order)) {
       if (order == "ascending") {
-        data.table::setorder(object,
+        setorder(object,
                              cols = N_virulent_isolates)
         object$order <- seq_len(nrow(object))
       } else if (order == "descending") {
-        data.table::setorder(x = object,
+        setorder(x = object,
                              cols = -N_virulent_isolates)
         object$order <- seq_len(nrow(object))
       }
     } else
       # if no order is specified
-      data.table::setorder(object, cols = gene)
+      setorder(object, cols = gene)
     object$order <- seq_len(nrow(object))
     
     plot_percentage <- function(.data, .color) {
