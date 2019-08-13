@@ -114,7 +114,7 @@ calculate_complexities <- function(x,
   return(complexities)
 }
 
-#' Plot hagis complexities objects
+#' Plot \pkg{hagis} complexities objects
 #'
 #' @description Creates a \pkg{ggplot2} object of the frequency of complexity
 #'  (percent per complexity) or a \pkg{ggplot2} object of the distribution
@@ -231,7 +231,7 @@ autoplot.hagis.complexities <-
     }
   }
 
-#' Create Summary Table of Binary Reactions by Sample
+#' Create summary table of binary reactions by sample
 #'
 #' Tally a summary by sample or isolate. This code takes the "Susceptible.1"
 #'  column and summarises it by gene for your total Isolates pathogenic on each
@@ -270,7 +270,7 @@ summary.hagis.complexities <- function(object, ...) {
   x
 }
 
-#' Prints summary.hagis Object for Complexities
+#' Prints summary.hagis object for complexities
 #'
 #' Custom [print()] method for \pkg{hagis} `summary.complexity` objects.
 #'
@@ -292,9 +292,9 @@ print.summary.complexities <- function(x,
   invisible(x)
 }
 
-#' Pander Method for hagis Summary Complexities
+#' Pander Method for \pkg{hagis} summary complexities
 #'
-#' Prints a hagis complexities summary in Pandoc's markdown.
+#' Prints a \pkg{hagis} complexities summary in Pandoc's markdown.
 #' @param x a complexities object
 #' @param caption caption (string) to be shown under the table
 #' @param ... optional parameters passed to raw \code{pandoc.table} function
@@ -310,7 +310,7 @@ pander.summary.complexities <-
     ))
   }
 
-#' Prints hagis.complexities Object
+#' Prints hagis.complexities object
 #'
 #' Custom [print()] method for `hagis.complexity` objects.
 #'

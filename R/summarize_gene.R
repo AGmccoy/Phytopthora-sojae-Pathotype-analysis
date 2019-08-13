@@ -78,7 +78,7 @@ summarize_gene <- function(x,
 #' @export
 ggplot2::autoplot
 
-#' Plot hagis summary objects
+#' Plot \pkg{hagis} summary objects
 #'
 #' @description Creates a \pkg{ggplot2} object of the gene summaries calculated
 #'  by [summarize_gene()]

@@ -2,7 +2,7 @@
 % Please edit documentation in R/calculate_diversities.R
 \name{individual_pathotypes}
 \alias{individual_pathotypes}
-\title{Prints Individual Pathotypes for Each Sample}
+\title{Prints individual pathotypes for each sample}
 \usage{
 individual_pathotypes(x, ...)
 }

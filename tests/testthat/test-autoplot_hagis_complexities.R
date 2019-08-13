@@ -1,7 +1,7 @@
 
 # test plot.hagis.gene.summary ----------------------------------------------
-context("plot.hagis.complexities()")
-test_that("plot.hagis.complexities() returns a ggplot2 object", {
+context("auto.plot.hagis.complexities()")
+test_that("auto.plot.hagis.complexities() returns a ggplot2 object", {
   data(P_sojae_survey)
   complexities <- calculate_complexities(
     x = P_sojae_survey,
