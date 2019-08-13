@@ -1,4 +1,4 @@
-#' *Phytophthora sojae* Survey Example Data
+#' *Phytophthora sojae* survey example data
 #'
 #' Data from a *Phytophthora sojae* survey
 #'
@@ -26,12 +26,12 @@
 #'   }
 #'
 #' @keywords datasets
-#' 
+#'
 #' @source Data from an ongoing 2017 *Phytophthora sojae* survey in Michigan,
 #' conducted by A. G. McCoy *et al.*.
 #'
 #' @examples
 #' data(P_sojae_survey)
 #' P_sojae_survey
-#' 
+#'
 "P_sojae_survey"

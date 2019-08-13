@@ -1,5 +1,5 @@
 
-#' Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity 
+#' Tools for analysis of plant pathogen pathotype complexities, distributions and diversity 
 #'
 #' @name hagis
 #' @author Austin G. McCoy, mccoyaus@@msu.edu and Zachary Noel, noelzach@@msu.edu and
