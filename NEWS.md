@@ -1,6 +1,8 @@
-# hagis (development version)
+# hagis 2.1.0
 
 ## Minor Changes
+ 
+* Rename output column `N_susc` to `N_virulent_isolates`
 
 * Don't round results from `summarize_gene()` or `calculate_complexities()`
 before returning values to user
