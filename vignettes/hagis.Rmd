@@ -2,7 +2,7 @@
 title: "hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity"
 author: "Austin McCoy and Zachary Noel"
 date: "`r Sys.Date()`"
-output: 
+output:
     rmarkdown::html_vignette:
         toc: true
 vignette: >
@@ -96,7 +96,7 @@ Now that we have a list of arguments, we can now save time entering the same dat
 
 ## Determination of Effective Resistance Genes
 
-Below is an example of tables and graphics that can be produced using the `summarize_gene()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population. 
+Below is an example of tables and graphics that can be produced using the `summarize_gene()` function to identify effective resistance genes tested against the sampled *Phytophthora sojae* population.
 
 The `summarize_gene()` function allows you to produce a detailed table showing the number of virulent isolates (`N_virulent_isolates`), as well as offering a percentage of the isolates tested which are pathogenic on each gene (`percent_pathogenic`).
 
@@ -116,7 +116,7 @@ pander(Rps.summary)
 
 ### Plotting Rps Summary Data
 
-*hagis* also provides functions to quickly graph your data using `ggplot2`. 
+*hagis* also provides functions to quickly graph your data using `ggplot2`.
 
 Two functions are provided to plot the summary depending on your needs. If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`. Both return the same graph, only the y-axis change; percent for frequency and n for distribution.
 
@@ -132,7 +132,7 @@ autoplot(Rps.summary, type = "count")
 
 Pathotype frequency, distribution as well as statistics such as mean pathotype complexity can be calculated using the `calculate_complexities()` function. This function will return
 a `list()` of two `data.table()` objects, `grouped_complexities` and `individual_complexities`.
-`grouped_complexities` returns a `list()` as a `data.table()` object showing the frequency and distribution of pathotype complexities for the sampled population. 
+`grouped_complexities` returns a `list()` as a `data.table()` object showing the frequency and distribution of pathotype complexities for the sampled population.
 `individual_complexities()` returns a `list()` as a `data.table()` object showing each individual isolates pathotype complexity.
 An isolates pathotype complexity refers to the number of resistance genes that it is able to overcome and cause disease on, *i.e.*, a pathotype complexity of "7" would mean that isolate can cause disease on 7 different resistance genes.
 
@@ -170,7 +170,7 @@ autoplot(complexities, type = "count")
 
 ## Diversity Indices, Frequency of Unique Pathotypes and Individual Isolate Pathotypes
 
-Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the isolate population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated. 
+Diversity indices are extremely useful when trying to identify differences between two populations. Here, pathotype diversities are calculated for the isolate population using the `calculate_diversities()` function. Likewise, individual isolates' pathotypes, number of isolates used in the study, number of pathotypes within the study are calculated.
 
 Five diversity indices are calculated when calling `calculate_diversities()`.
 
@@ -187,8 +187,8 @@ Five diversity indices are calculated when calling `calculate_diversities()`.
     $$D = \frac{ (Np - 1) }{ log(Ns)}$$
     Where $Np$ is the number of pathotypes and $Ns$ is the number of
     samples.
-    
- * Shannon diversity index is typically between 1.5 and 3.5, as richness and 
+
+ * Shannon diversity index is typically between 1.5 and 3.5, as richness and
    evenness of the population increase, so does the Shannon index value.
    $$D = -\sum_{i = 1}^{R} p_i \log p_i$$
    Where $p_i$ is the proportional abundance of species $i$.
