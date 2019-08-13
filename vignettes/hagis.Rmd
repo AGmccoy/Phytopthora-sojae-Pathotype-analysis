@@ -128,7 +128,7 @@ Pathotype frequency, distribution as well as statistics such as mean pathotype c
 a `list()` of two `data.table()` objects, `grouped_complexities` and `individual_complexities`.
 `grouped_complexities` returns a `list()` as a `data.table()` object showing the frequency and distribution of pathotype complexities for the sampled population. 
 `individual_complexities()` returns a `list()` as a `data.table()` object showing each individual isolates pathotype complexity.
-An isolates pathotype complexity refers to the number of resistance genes that it is able to overcome and cause idsease on. i,e, a pathotype complexity of 7 would mean that isolate can cause disease on 7 different resistance genes.
+An isolates pathotype complexity refers to the number of resistance genes that it is able to overcome and cause disease on. i,e, a pathotype complexity of 7 would mean that isolate can cause disease on 7 different resistance genes.
 
 ```{r complexities, echo=TRUE, message=FALSE, warning=FALSE}
 complexities <- do.call(calculate_complexities, hagis_args)
