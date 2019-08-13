@@ -66,7 +66,7 @@ console." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hagis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.0.0.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
       </span>
     </div>
 
@@ -147,27 +147,47 @@ console.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># locate system file for import</span>
-<span class='no'>Ps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/system.file'>system.file</a></span>(<span class='st'>"extdata"</span>, <span class='st'>"practice_data_set.csv"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"hagis"</span>)
+    <pre class="examples"><div class='input'><span class='co'># Using the built-in data set, P_sojae_survey</span>
+<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>P_sojae_survey</span>)
 
-<span class='co'># import 'practice_data_set.csv'</span>
-<span class='no'>Ps</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/read.table'>read.csv</a></span>(<span class='no'>Ps</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/head'>head</a></span>(<span class='no'>Ps</span>)</div><div class='output co'>#&gt;   Isolate         Line         Rps Total HR..1. Lesion..2.
-#&gt; 1       1     Williams susceptible    10      0          0
-#&gt; 2       1       Harlon      Rps 1a    10      4          0
-#&gt; 3       1 Harosoy 13xx      Rps 1b     8      0          0
-#&gt; 4       1     L75-3735      Rps 1c    10     10          0
-#&gt; 5       1    PI 103091      Rps 1d     9      2          0
-#&gt; 6       1  Williams 82      Rps 1k    10      0          0
-#&gt;   Lesion.to.cotyledon..3. Dead..4. total.susc total.resis perc.susc perc.resis
-#&gt; 1                       0       10         10           0       100          0
-#&gt; 2                       0        6          6           4        60         40
-#&gt; 3                       0        8          8           0       100          0
-#&gt; 4                       0        0          0          10         0        100
-#&gt; 5                       1        6          7           2        78         22
-#&gt; 6                       0       10         10           0       100          0</div><div class='input'>
+<span class='no'>P_sojae_survey</span></div><div class='output co'>#&gt;      Isolate         Line         Rps Total HR (1) Lesion (2)
+#&gt;   1:       1     Williams susceptible    10      0          0
+#&gt;   2:       1       Harlon      Rps 1a    10      4          0
+#&gt;   3:       1 Harosoy 13xx      Rps 1b     8      0          0
+#&gt;   4:       1     L75-3735      Rps 1c    10     10          0
+#&gt;   5:       1    PI 103091      Rps 1d     9      2          0
+#&gt;  ---                                                         
+#&gt; 290:      21   PRX 145-48      Rps 3c     8      3          1
+#&gt; 291:      21     L85-2352       Rps 4    10      3          1
+#&gt; 292:      21     L85-3059       Rps 5    10      0          4
+#&gt; 293:      21 Harosoy 62XX       Rps 6     8      2          1
+#&gt; 294:      21      Harosoy       Rps 7    10      0          0
+#&gt;      Lesion to cotyledon (3) Dead (4) total.susc total.resis perc.susc
+#&gt;   1:                       0       10         10           0       100
+#&gt;   2:                       0        6          6           4        60
+#&gt;   3:                       0        8          8           0       100
+#&gt;   4:                       0        0          0          10         0
+#&gt;   5:                       1        6          7           2        78
+#&gt;  ---                                                                  
+#&gt; 290:                       0        4          5           3        63
+#&gt; 291:                       4        2          7           3        70
+#&gt; 292:                       0        6         10           0       100
+#&gt; 293:                       0        5          6           2        75
+#&gt; 294:                       0       10         10           0       100
+#&gt;      perc.resis
+#&gt;   1:          0
+#&gt;   2:         40
+#&gt;   3:          0
+#&gt;   4:        100
+#&gt;   5:         22
+#&gt;  ---           
+#&gt; 290:         38
+#&gt; 291:         30
+#&gt; 292:          0
+#&gt; 293:         25
+#&gt; 294:          0</div><div class='input'>
 <span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>diversities</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='calculate_diversities.html'>calculate_diversities</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>Ps</span>,
+<span class='no'>diversities</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='calculate_diversities.html'>calculate_diversities</a></span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>P_sojae_survey</span>,
                                      <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
                                      <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
                                      <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,

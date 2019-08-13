@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Calculate and summarize distribution of susceptibilities by gene — summarize_gene • hagis</title>
+<title><em>Phytophthora sojae</em> survey example data — P_sojae_survey • hagis</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,10 +30,9 @@
 
 
 
-<meta property="og:title" content="Calculate and summarize distribution of susceptibilities by gene — summarize_gene" />
+<meta property="og:title" content="<em>Phytophthora sojae</em> survey example data — P_sojae_survey" />
 
-<meta property="og:description" content="This function will calculate the distribution of
-susceptibilities by gene." />
+<meta property="og:description" content="Data from a Phytophthora sojae survey" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -106,69 +105,47 @@ susceptibilities by gene." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Calculate and summarize distribution of susceptibilities by gene</h1>
-    <small class="dont-index">Source: <a href='https://github.com/openplantpathology/hagis/blob/master/R/summarize_gene.R'><code>R/summarize_gene.R</code></a></small>
-    <div class="hidden name"><code>summarize_gene.Rd</code></div>
+    <h1><em>Phytophthora sojae</em> survey example data</h1>
+    <small class="dont-index">Source: <a href='https://github.com/openplantpathology/hagis/blob/master/R/data.R'><code>R/data.R</code></a></small>
+    <div class="hidden name"><code>P_sojae_survey.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>This function will calculate the distribution of
-susceptibilities by gene.</p>
+    <p>Data from a <em>Phytophthora sojae</em> survey</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>summarize_gene</span>(<span class='no'>x</span>, <span class='no'>cutoff</span>, <span class='no'>control</span>, <span class='no'>sample</span>, <span class='no'>gene</span>, <span class='no'>perc_susc</span>)</pre>
-    
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>a <code>data.frame</code> containing the data.</p></td>
-    </tr>
-    <tr>
-      <th>cutoff</th>
-      <td><p>value for percent susceptible cutoff. Numeric.</p></td>
-    </tr>
-    <tr>
-      <th>control</th>
-      <td><p>value used to denote the susceptible control in the <code>gene</code>
-column. Character.</p></td>
-    </tr>
-    <tr>
-      <th>sample</th>
-      <td><p>column providing the unique identification for each sample being
-tested. Character.</p></td>
-    </tr>
-    <tr>
-      <th>gene</th>
-      <td><p>column providing the gene(s) being tested. Character.</p></td>
-    </tr>
-    <tr>
-      <th>perc_susc</th>
-      <td><p>column providing the percent susceptible reactions.
-Character.</p></td>
-    </tr>
-    </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+    <pre class="usage"><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>P_sojae_survey</span>)</pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>returns an object of <code><a href='https://www.rdocumentation.org/packages/base/topics/class'>class()</a></code> <code>hagis.gene.summary</code>
-An object of class <code>hagis.summaries</code> is a<br /> <code><a href='https://www.rdocumentation.org/packages/data.table/topics/data.table'>data.table::data.table()</a></code>
-containing the following components columns</p><dl class='dl-horizontal'>
-<dt>gene</dt><dd><p>the gene</p></dd>
-<dt>N_virulent_isolates</dt><dd><p>the total number virulent isolates for a given
-gene in the <code>gene</code> column</p></dd>
-<dt>percent_pathogenic</dt><dd><p>the frequency with which a gene is pathogenic</p></dd>
+    <p>An object of class <code>data.table</code> with 294 observations of 12 variables</p><dl class='dl-horizontal'>
+<dt>Isolate</dt><dd><p><em>P. sojae</em> isolate identifier</p></dd>
+<dt>Line</dt><dd><p>Soybean cultivar</p></dd>
+<dt>Rps</dt><dd><p><em>Rps</em> gene identifer</p></dd>
+<dt>Total</dt><dd><p>Total number of plants inoculated</p></dd>
+<dt>HR (1)</dt><dd><p>Number of plants that exhibit a hypersensitive response after
+inoculation</p></dd>
+<dt>Lesion (2)</dt><dd><p>Number of plants that develop a lesion at inoculation
+site</p></dd>
+<dt>Lesion to cotyledon (3)</dt><dd><p>Number of plants that develop a lesion,
+which advances to the hypocotyl of the seedling after infection</p></dd>
+<dt>Dead (4)</dt><dd><p>Number of dead plants that are observed after inoculation</p></dd>
+<dt>total.susc</dt><dd><p>The total number of susceptible plants (Lesion+Lesion to
+cotyledon+Dead)</p></dd>
+<dt>total.resis</dt><dd><p>The total number of resistant plants (equal to HR
+value)</p></dd>
 </dl>
+    
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
+    <p>Data from an ongoing 2017 <em>Phytophthora sojae</em> survey in Michigan,
+conducted by A. G. McCoy <em>et al.</em>.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='co'># Using the built-in data set, P_sojae_survey</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>P_sojae_survey</span>)
-
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='no'>P_sojae_survey</span>)
 <span class='no'>P_sojae_survey</span></div><div class='output co'>#&gt;      Isolate         Line         Rps Total HR (1) Lesion (2)
 #&gt;   1:       1     Williams susceptible    10      0          0
 #&gt;   2:       1       Harlon      Rps 1a    10      4          0
@@ -205,36 +182,15 @@ gene in the <code>gene</code> column</p></dd>
 #&gt; 292:          0
 #&gt; 293:         25
 #&gt; 294:          0</div><div class='input'>
-<span class='co'># calculate susceptibilities with a 60 % cutoff value</span>
-<span class='no'>susc</span> <span class='kw'>&lt;-</span> <span class='fu'>summarize_gene</span>(<span class='kw'>x</span> <span class='kw'>=</span> <span class='no'>P_sojae_survey</span>,
-                       <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='fl'>60</span>,
-                       <span class='kw'>control</span> <span class='kw'>=</span> <span class='st'>"susceptible"</span>,
-                       <span class='kw'>sample</span> <span class='kw'>=</span> <span class='st'>"Isolate"</span>,
-                       <span class='kw'>gene</span> <span class='kw'>=</span> <span class='st'>"Rps"</span>,
-                       <span class='kw'>perc_susc</span> <span class='kw'>=</span> <span class='st'>"perc.susc"</span>)
-<span class='no'>susc</span></div><div class='output co'>#&gt;            gene N_virulent_isolates percent_pathogenic
-#&gt;  1: susceptible                  21          100.00000
-#&gt;  2:      Rps 1a                  21          100.00000
-#&gt;  3:      Rps 1b                  15           71.42857
-#&gt;  4:      Rps 1c                  20           95.23810
-#&gt;  5:      Rps 1d                  16           76.19048
-#&gt;  6:      Rps 1k                  18           85.71429
-#&gt;  7:       Rps 2                  14           66.66667
-#&gt;  8:      Rps 3a                   5           23.80952
-#&gt;  9:      Rps 3b                  20           95.23810
-#&gt; 10:      Rps 3c                   4           19.04762
-#&gt; 11:       Rps 4                   5           23.80952
-#&gt; 12:       Rps 5                  13           61.90476
-#&gt; 13:       Rps 6                  11           52.38095
-#&gt; 14:       Rps 7                  21          100.00000</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
       
-      <li><a href="#value">Value</a></li>
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
       
       <li><a href="#examples">Examples</a></li>
     </ul>
