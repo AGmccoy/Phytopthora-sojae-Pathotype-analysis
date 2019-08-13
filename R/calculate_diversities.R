@@ -180,7 +180,7 @@ print.hagis.diversities <- function(x,
   invisible(x)
 }
 
-#' Prints Table of Diversities
+#' Prints table of diversities
 #'
 #' Print the frequency table of diversities from a `hagis.diversities` object
 #' The resulting object is a [pander] table (a text object for Markdown) for
@@ -218,7 +218,7 @@ diversities_table <- function(x, ...) {
   }
 }
 
-#' Prints Individual Pathotypes for Each Sample
+#' Prints individual pathotypes for each sample
 #'
 #' Print an object from a `hagis.diversities` object with individual pathotypes,
 #' *i.e.* each sample's pathotype. The resulting object is a [pander] table
@@ -257,7 +257,7 @@ individual_pathotypes <- function(x, ...) {
 }
 
 
-#' Pander Method for hagis diversities
+#' Pander method for \pkg{hagis} diversities
 #'
 #' Prints a hagis diversities in Pandoc's markdown.
 #' @param x a diversities object
