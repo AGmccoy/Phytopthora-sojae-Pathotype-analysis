@@ -53,7 +53,7 @@ calculate_complexities <- function(x,
   )
   
   # CRAN NOTE avoidance
-  distribution <- N_samp <- NULL
+  distribution <- N_samp <- i.N <- NULL # nocov
   
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that

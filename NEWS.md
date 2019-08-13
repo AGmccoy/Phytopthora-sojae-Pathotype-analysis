@@ -29,6 +29,8 @@ to reduce number of Dependencies
 
 * Replace the term `field` with `column` in documentation
 
+* Test coverage now 100 %
+
 # hagis 2.0.0
 
 * Initial CRAN release
