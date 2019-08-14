@@ -30,9 +30,6 @@ test_that("calculate_complexities() works properly", {
 })
 
 test_that("calculate_complexities() stops if lacking all params", {
-  Ps <-
-    system.file("extdata", "practice_data_set.csv", package = "hagis")
-  Ps <- read.csv(Ps)
   expect_error(
     calculate_complexities(
       x = "y",
@@ -46,7 +43,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
   expect_error(
     calculate_complexities(
-      x = Ps,
+      x = P_sojae_survey,
       cutoff = "sixty",
       control = "susceptible",
       sample = "Isolate",
@@ -57,7 +54,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
   expect_error(
     calculate_complexities(
-      x = Ps,
+      x = P_sojae_survey,
       cutoff = 60,
       control = NULL,
       sample = "Isolate",
@@ -68,7 +65,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
   expect_error(
     calculate_complexities(
-      x = Ps,
+      x = P_sojae_survey,
       cutoff = 60,
       control = "susceptible",
       sample = NULL,
@@ -79,7 +76,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
   expect_error(
     calculate_complexities(
-      x = Ps,
+      x = P_sojae_survey,
       cutoff = 60,
       control = "susceptible",
       sample = "isolate",
@@ -90,7 +87,7 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
   expect_error(
     calculate_complexities(
-      x = Ps,
+      x = P_sojae_survey,
       cutoff = 60,
       control = "susceptible",
       sample = "isolate",

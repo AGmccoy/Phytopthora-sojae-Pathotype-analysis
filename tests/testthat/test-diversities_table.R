@@ -1,9 +1,9 @@
 
 # test diversities table -------------------------------------------------------
 context("diversities_table()")
+data(P_sojae_survey)
 Ps <-
-  system.file("extdata", "practice_data_set.csv", package = "hagis")
-Ps <- read.csv(Ps)
+  as.data.frame(P_sojae_survey)
 
 test_that("input is a data frame and not a data.table", {
   expect_is(Ps, "data.frame")
