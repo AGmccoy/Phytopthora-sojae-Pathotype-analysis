@@ -71,7 +71,7 @@ names(Rps.summary) <-
   c("**Gene**", "**No. Susceptible**", "**Perc. Pathogenic**")
 
 pander(Rps.summary,
-       caption = "**Table 1.** Example of tabular output from ‘hagis’'s summarize_gene() at 60&nbsp;% susceptibility cut-off. This function produces a detailed table displaying the number of isolates each gene is susceptible to, as well as offering a percentage of the isolates tested which are pathogenic on each gene.")
+       caption = "**Table 1.** Example of tabular output from ‘hagis’'s summarize_gene() at 60&nbsp;% susceptibility cut-off. This function produces a detailed table displaying the number of isolates each gene is not effective against, as well as offering a percentage of the isolates tested which are pathogenic on each gene.")
 ```
 
 # Acknowledgements
