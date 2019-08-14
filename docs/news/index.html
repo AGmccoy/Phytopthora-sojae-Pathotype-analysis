@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">hagis</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">2.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">3.0.0</span>
       </span>
     </div>
 
@@ -106,10 +106,18 @@
       <small>Source: <a href='https://github.com/openplantpathology/hagis/blob/master/NEWS.md'><code>NEWS.md</code></a></small>
     </div>
 
-    <div id="hagis-210" class="section level1">
+    <div id="hagis-300" class="section level1">
 <h1 class="page-header">
-<a href="#hagis-210" class="anchor"></a>hagis 2.1.0<small> Unreleased </small>
+<a href="#hagis-300" class="anchor"></a>hagis 3.0.0<small> Unreleased </small>
 </h1>
+<div id="defunct-functions" class="section level2">
+<h2 class="hasAnchor">
+<a href="#defunct-functions" class="anchor"></a>Defunct functions</h2>
+<ul>
+<li>
+<code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code> is now defunct. Use <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot()</a></code> to plot <em>hagis</em> objects in place of <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code>. This is to avoid the side-effect of generating and displaying a plot every time <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code> is called, which can be troublesome when using <em>ggplot2</em> themes since it created two plots, the original with the base theme and the new themed plot</li>
+</ul>
+</div>
 <div id="minor-changes" class="section level2">
 <h2 class="hasAnchor">
 <a href="#minor-changes" class="anchor"></a>Minor Changes</h2>
@@ -117,7 +125,6 @@
 <li><p>Rename output column <code>N_susc</code> to <code>N_virulent_isolates</code></p></li>
 <li><p>Don’t round results from <code><a href="../reference/summarize_gene.html">summarize_gene()</a></code> or <code><a href="../reference/calculate_complexities.html">calculate_complexities()</a></code> before returning values to user</p></li>
 <li><p>Implement fix suggested by <a href='https://github.com/zkamvar'>@zkamvar</a> to ensure that the user-input data is not changed from a <code>data.frame</code> or <code>tibble</code> object to a <code>data.table</code> object in the R session</p></li>
-<li><p>Use <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html">autoplot()</a></code> to plot <em>hagis</em> objects in place of <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code>. This is to avoid the side-effect of generating and displaying a plot every time <code><a href="https://www.rdocumentation.org/packages/graphics/topics/plot">plot()</a></code> is called, which can be troublesome when using <em>ggplot2</em> themes since it created two plots, the original with the base theme and the new themed plot</p></li>
 <li><p>Add ability to sort graph x-axis in ascending or descending order based on the y-axis values rather than only by gene or complexity.</p></li>
 <li><p>Move example data set into internal data and provide documentation for them</p></li>
 <li><p>Provide documentation for how diversity indices are calculated along with mathematical notation where possible to display</p></li>
@@ -150,7 +157,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-        <li><a href="#hagis-210">2.1.0</a></li>
+        <li><a href="#hagis-300">3.0.0</a></li>
         <li><a href="#hagis-200">2.0.0</a></li>
         <li><a href="#hagis-100">1.0.0</a></li>
       </ul>
