@@ -67,7 +67,24 @@
     }
   ],
   "copyrightHolder": {},
-  "funder": {},
+  "funder": [
+    {
+      "@type": "Organization",
+      "name": "GRDC Project DAQ00186"
+    },
+    {
+      "@type": "Organization",
+      "name": "Michigan Soybean Promotion Committee"
+    },
+    {
+      "@type": "Organization",
+      "name": "North Central Soybean Research Program"
+    },
+    {
+      "@type": "Organization",
+      "name": "Project GREEEN"
+    }
+  ],
   "maintainer": [
     {
       "@type": "Person",
@@ -198,7 +215,7 @@
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "77.88KB",
+  "fileSize": "75.204KB",
   "contIntegration": [
     "https://travis-ci.org/openplantpathology/hagis",
     "https://ci.appveyor.com/project/adamhsparks/hagis/branch/master",
