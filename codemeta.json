@@ -1,11 +1,17 @@
 {
-  "@context": ["https://doi.org/10.5063/schema/codemeta-2.0", "http://schema.org"],
+  "@context": [
+    "https://doi.org/10.5063/schema/codemeta-2.0",
+    "http://schema.org"
+  ],
   "@type": "SoftwareSourceCode",
   "identifier": "hagis",
   "description": "Analysis of plant pathogen pathotype survey data.  Functions\n  provided calculate distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for Herrmann, Löwer, Schachtel's (1999)\n  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',\n  previously used for pathotype analysis.",
   "name": "hagis: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity",
   "codeRepository": "https://github.com/openplantpathology/hagis",
-  "relatedLink": ["https://openplantpathology.github.io/hagis/", "https://CRAN.R-project.org/package=hagis"],
+  "relatedLink": [
+    "https://openplantpathology.github.io/hagis/",
+    "https://CRAN.R-project.org/package=hagis"
+  ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
   "version": "3.0.0",
@@ -204,8 +210,12 @@
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "78.11KB",
-  "contIntegration": ["https://travis-ci.org/openplantpathology/hagis", "https://ci.appveyor.com/project/adamhsparks/hagis/branch/master", "https://codecov.io/gh/openplantpathology/hagis"],
+  "fileSize": "78.122KB",
+  "contIntegration": [
+    "https://travis-ci.org/openplantpathology/hagis",
+    "https://ci.appveyor.com/project/adamhsparks/hagis/branch/master",
+    "https://codecov.io/gh/openplantpathology/hagis"
+  ],
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
     {
