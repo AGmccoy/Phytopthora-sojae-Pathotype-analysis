@@ -37,7 +37,6 @@ LazyData: true
 Suggests: 
   covr,
   knitr,
-  pkgdown,
   rmarkdown,
   testthat,
   vdiffr
