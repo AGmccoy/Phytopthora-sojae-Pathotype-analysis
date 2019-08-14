@@ -54,15 +54,13 @@ The R language offers many advantages to Excel-based data analysis such as repro
 The package source code, including the Rmarkdown code for this paper, more information and instructions on how to use ‘hagis’ can be found at <https://openplantpathology.github.io/hagis/>. The package can be downloaded and installed from the Comprehensive R Archive Network (CRAN) website (<https://CRAN.R-project.org/package=hagis>) and is released under the MIT licence. 
 
 ```{r table}
-Pathotype.Data <-
-  system.file("extdata", "practice_data_set.csv", package = "hagis")
-Pathotype.Data <- read.csv(Pathotype.Data, stringsAsFactors = FALSE)
-Pathotype.Data$Rps <-
+data(P_sojae_survey)
+P_sojae_survey$Rps <-
   gsub(pattern = "Rps ",
        replacement = "",
-       x = Pathotype.Data$Rps)
+       x = P_sojae_survey$Rps)
 Rps.summary <- summarize_gene(
-  x = Pathotype.Data,
+  x = P_sojae_survey,
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
@@ -73,7 +71,7 @@ names(Rps.summary) <-
   c("**Gene**", "**No. Susceptible**", "**Perc. Pathogenic**")
 
 pander(Rps.summary,
-      caption = "**Table 1.** Example of tabular output from ‘hagis’'s summarize_gene() at 60&nbsp;% susceptibility cut-off. This function produces a detailed table displaying the number of isolates each gene is susceptible to, as well as offering a percentage of the isolates tested which are pathogenic on each gene.")
+       caption = "**Table 1.** Example of tabular output from ‘hagis’'s summarize_gene() at 60&nbsp;% susceptibility cut-off. This function produces a detailed table displaying the number of isolates each gene is susceptible to, as well as offering a percentage of the isolates tested which are pathogenic on each gene.")
 ```
 
 # Acknowledgements
