@@ -34,6 +34,8 @@ to reduce number of Dependencies
 
 * Test coverage now 100 %
 
+* Add funding agencies to DESCRIPTION Authors@R field
+
 # hagis 2.0.0
 
 * Initial CRAN release
