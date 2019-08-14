@@ -16,10 +16,10 @@ Authors@R: c(
   comment = c(ORCID = "0000-0001-8832-1666")),
   person(given = "Zhian N.", family = "Kamvar", role = c("ctb", "rev"),
   comment = c(ORCID = "0000-0003-1458-7108")),
-  person("GRDC Project DAQ00186", role = "fnd"),
   person("Michigan Soybean Promotion Committee", role = "fnd"),
-  person("North Central Soybean Research Program", role = "fnd"),
-  person("Project GREEEN", role = "fnd")
+  person("Project GREEEN", role = "fnd"),
+  person("North Central Soybean Research Program", role = "fnd")
+  person("GRDC Project DAQ00186", role = "fnd")
   )
 Description: Analysis of plant pathogen pathotype survey data.  Functions
   provided calculate distribution of susceptibilities, distribution of

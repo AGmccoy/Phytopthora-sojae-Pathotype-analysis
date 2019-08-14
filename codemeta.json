@@ -215,7 +215,6 @@
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "75.204KB",
   "contIntegration": [
     "https://travis-ci.org/openplantpathology/hagis",
     "https://ci.appveyor.com/project/adamhsparks/hagis/branch/master",
