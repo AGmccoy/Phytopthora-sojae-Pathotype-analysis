@@ -70,11 +70,11 @@
   "funder": [
     {
       "@type": "Organization",
-      "name": "GRDC Project DAQ00186"
+      "name": "Michigan Soybean Promotion Committee"
     },
     {
       "@type": "Organization",
-      "name": "Michigan Soybean Promotion Committee"
+      "name": "Project GREEEN"
     },
     {
       "@type": "Organization",
@@ -82,7 +82,7 @@
     },
     {
       "@type": "Organization",
-      "name": "Project GREEEN"
+      "name": "GRDC Project DAQ00186"
     }
   ],
   "maintainer": [
@@ -252,5 +252,6 @@
       "@id": "https://doi.org/10.5281/zenodo.2619820",
       "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
-  ]
+  ],
+  "fileSize": "75.201KB"
 }
