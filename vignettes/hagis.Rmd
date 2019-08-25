@@ -2,9 +2,6 @@
 title: "hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity"
 author: "Austin McCoy and Zachary Noel"
 date: "`r Sys.Date()`"
-output:
-    rmarkdown::html_vignette:
-        toc: true
 vignette: >
   %\VignetteIndexEntry{hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity}
   %\VignetteEngine{knitr::rmarkdown}
