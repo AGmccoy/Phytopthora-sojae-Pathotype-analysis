@@ -64,7 +64,7 @@ install_github("openplantpathology/hagis", build_vignettes = TRUE)
 
 When you use _hagis_, please cite by using:
 
-```{r}
+```{r, eva=TRUE}
 citation("hagis")
 ```
 

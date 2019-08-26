@@ -87,21 +87,25 @@ When you use *hagis*, please cite by using:
 ``` r
 citation("hagis")
 #> 
-#> McCoy AG, Noel Z, Sparks AH, Chilvers M (????). _hagis: Analysis
+#> Thank you for citing `hagis`.  To cite nasapower in publications,
+#> please use both the MPMI citation and the package version citation
+#> for reproducibility purposes.
+#> 
+#>   Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin
+#>   I. Chilvers (2019). `hagis', an R Package Resource for Pathotype
+#>   Analysis of Phytophthora sojae Populations Causing Stem and Root
+#>   Rot of Soybean. Molecular Plant-Microbe Interactions, 0:ja, DOI:
+#>   /10.1094/MPMI-07-19-0180-A
+#> 
+#> McCoy AG, Noel ZA, Sparks AH, Chilvers MI (2019). _hagis: Analysis
 #> of Plant Pathogen Pathotype Complexities, Distributions and
 #> Diversity_. doi: 10.5281/zenodo.2619820 (URL:
-#> https://doi.org/10.5281/zenodo.2619820), R package version
-#> 2.0.0.9000, <URL: https://openplantpathology.github.io/hagis/>.
+#> https://doi.org/10.5281/zenodo.2619820), R package version 3.0.0,
+#> <URL: https://openplantpathology.github.io/hagis/>.
 #> 
-#> A BibTeX entry for LaTeX users is
-#> 
-#>   @Manual{,
-#>     title = {{hagis}: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity},
-#>     author = {Austin G. McCoy and Zachary Noel and Adam H. Sparks and Martin Chilvers},
-#>     note = {R package version 2.0.0.9000},
-#>     url = {https://openplantpathology.github.io/hagis/},
-#>     doi = {10.5281/zenodo.2619820},
-#>   }
+#> To see these entries in BibTeX format, use 'print(<citation>,
+#> bibtex=TRUE)', 'toBibtex(.)', or set
+#> 'options(citation.bibtex.max=999)'.
 ```
 
 Please note that the *hagis* project is released with a [Contributor
