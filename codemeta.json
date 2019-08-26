@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.0",
+  "version": "3.0.0.9000",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -295,5 +295,5 @@
       "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
   ],
-  "fileSize": "75.484KB"
+  "fileSize": "75.537KB"
 }
