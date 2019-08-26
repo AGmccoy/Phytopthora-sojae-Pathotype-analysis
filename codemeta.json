@@ -223,16 +223,17 @@
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
     {
-      "@type": "SoftwareSourceCode",
+      "@type": "ScholarlyArticle",
+      "datePublished": "2019",
       "author": [
         {
           "@type": "Person",
-          "givenName": ["Austin", "G."],
+          "givenName": ["Austin", "Glenn"],
           "familyName": "McCoy"
         },
         {
           "@type": "Person",
-          "givenName": "Zachary",
+          "givenName": ["Zachary", "A."],
           "familyName": "Noel"
         },
         {
@@ -242,7 +243,48 @@
         },
         {
           "@type": "Person",
-          "givenName": "Martin",
+          "givenName": ["Martin", "I"],
+          "familyName": "Chilvers"
+        }
+      ],
+      "name": "`hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean",
+      "identifier": "10.1094/MPMI-07-19-0180-A",
+      "url": "https://doi.org/10.1094/MPMI-07-19-0180-A",
+      "paginiation": "0",
+      "@id": "https://doi.org/10.1094/MPMI-07-19-0180-A",
+      "sameAs": "https://doi.org/10.1094/MPMI-07-19-0180-A",
+      "isPartOf": {
+        "@type": "PublicationIssue",
+        "issueNumber": "ja",
+        "datePublished": "2019",
+        "isPartOf": {
+          "@type": ["PublicationVolume", "Periodical"],
+          "volumeNumber": "0",
+          "name": "Molecular Plant-Microbe Interactions"
+        }
+      }
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "author": [
+        {
+          "@type": "Person",
+          "givenName": ["Austin", "G."],
+          "familyName": "McCoy"
+        },
+        {
+          "@type": "Person",
+          "givenName": ["Zachary", "A."],
+          "familyName": "Noel"
+        },
+        {
+          "@type": "Person",
+          "givenName": ["Adam", "H."],
+          "familyName": "Sparks"
+        },
+        {
+          "@type": "Person",
+          "givenName": ["Martin", "I"],
           "familyName": "Chilvers"
         }
       ],
@@ -253,5 +295,5 @@
       "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
   ],
-  "fileSize": "75.201KB"
+  "fileSize": "75.484KB"
 }
