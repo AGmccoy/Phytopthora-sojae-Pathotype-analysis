@@ -15,13 +15,14 @@ citEntry(
         title = "`hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean",
         journal = "Molecular Plant-Microbe Interactions",
         year = "2019",
-        volume = "0",
-        number = "ja",
-        pages = "0",
+        volume = "32",
+        number = "12",
+        pages = "1574–1576",
+        month = "nov",
         doi = "10.1094/MPMI-07-19-0180-A",
         url = "https://doi.org/10.1094/MPMI-07-19-0180-A",
 
- textVersion = paste0("Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin I. Chilvers (2019). `hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean. Molecular Plant-Microbe Interactions, 0:ja, DOI: 10.1094/MPMI-07-19-0180-A"))
+ textVersion = paste0("Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin I. Chilvers (2019). `hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean. Molecular Plant-Microbe Interactions 32.12 (Nov 2019) p. 1574-1576. DOI: 10.1094/MPMI-07-19-0180-A"))
 
 
 bibentry(bibtype = "Manual",
