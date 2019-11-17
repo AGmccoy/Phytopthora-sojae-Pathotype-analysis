@@ -2,7 +2,7 @@ year <- sub("-.*", "", meta$Date)
 note <- sprintf("R package version %s", meta$Version)
 
 citHeader("Thank you for citing `hagis`.\n",
-          "To cite nasapower in publications, please use both the MPMI citation\n",
+          "To cite hagis in publications, please use both the MPMI citation\n",
           "and the package version citation for reproducibility purposes.")
 
 citEntry(
@@ -11,17 +11,18 @@ citEntry(
         author = c(person(c("Austin", "Glenn"), "McCoy"),
                   person(c("Zachary", "A."), "Noel"),
                   person(c("Adam", "H."), "Sparks"),
-                  person(c("Martin", "I"), "Chilvers")),
+                  person(c("Martin"), "Chilvers")),
         title = "`hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean",
         journal = "Molecular Plant-Microbe Interactions",
         year = "2019",
-        volume = "0",
-        number = "ja",
-        pages = "0",
+        volume = "32",
+        number = "12",
+        pages = "1574–1576",
+        month = "nov",
         doi = "10.1094/MPMI-07-19-0180-A",
         url = "https://doi.org/10.1094/MPMI-07-19-0180-A",
 
- textVersion = paste0("Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin I. Chilvers (2019). `hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean. Molecular Plant-Microbe Interactions, 0:ja, DOI: /10.1094/MPMI-07-19-0180-A"))
+ textVersion = paste0("Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin Chilvers (2019). `hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean. Molecular Plant-Microbe Interactions 32.12 (Nov 2019) p. 1574-1576. DOI: 10.1094/MPMI-07-19-0180-A"))
 
 
 bibentry(bibtype = "Manual",
