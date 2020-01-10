@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -243,23 +243,23 @@
         },
         {
           "@type": "Person",
-          "givenName": ["Martin", "I"],
+          "givenName": "Martin",
           "familyName": "Chilvers"
         }
       ],
       "name": "`hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean",
       "identifier": "10.1094/MPMI-07-19-0180-A",
       "url": "https://doi.org/10.1094/MPMI-07-19-0180-A",
-      "paginiation": "0",
+      "paginiation": "1574–1576",
       "@id": "https://doi.org/10.1094/MPMI-07-19-0180-A",
       "sameAs": "https://doi.org/10.1094/MPMI-07-19-0180-A",
       "isPartOf": {
         "@type": "PublicationIssue",
-        "issueNumber": "ja",
+        "issueNumber": "12",
         "datePublished": "2019",
         "isPartOf": {
           "@type": ["PublicationVolume", "Periodical"],
-          "volumeNumber": "0",
+          "volumeNumber": "32",
           "name": "Molecular Plant-Microbe Interactions"
         }
       }
@@ -295,5 +295,5 @@
       "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
   ],
-  "fileSize": "75.484KB"
+  "fileSize": "75.458KB"
 }

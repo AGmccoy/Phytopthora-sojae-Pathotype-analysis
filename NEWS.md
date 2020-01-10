@@ -1,4 +1,14 @@
-# hagis (development version)
+# hagis 3.0.1
+
+## Minor Changes
+
+* Update citation with full MPMI citation
+
+* Remove an extra "/" in the CITATION's DOI
+
+* Fix issue in CITATION file where `nasapower` was referred to in text
+
+* Use ROxygen 7.0.0
 
 # hagis 3.0.0
 
