@@ -45,7 +45,7 @@ Suggests:
   testthat,
   vdiffr
 VignetteBuilder: knitr
-RoxygenNote: 7.0.0
+RoxygenNote: 7.0.2
 Roxygen: list(markdown = TRUE)
 Language: en-US
 URL: https://github.com/openplantpathology/hagis, https://openplantpathology.github.io/hagis/
