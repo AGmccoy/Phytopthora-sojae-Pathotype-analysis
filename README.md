@@ -25,7 +25,7 @@ HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x
 ## Overview
 
 `hagis` was initially created for *Phytophthora sojae* surveys by Austin
-McCoy and Zachary Noel at Michigan State University in the US where the
+McCoy and Zachary Noel at Michigan State University in the US, where the
 disease has been managed primarily via deployment of resistance genes
 (*Rps* genes, resistance to *P. sojae*) in commercial soybean cultivars
 and by the application of fungicide seed treatments. However, repeated
