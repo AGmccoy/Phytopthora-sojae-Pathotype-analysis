@@ -4,7 +4,8 @@
 \name{P_sojae_survey}
 \alias{P_sojae_survey}
 \title{\emph{Phytophthora sojae} survey example data}
-\format{An object of class \code{data.table} with 294 observations of 12 variables
+\format{
+An object of class \code{data.table} with 294 observations of 12 variables
 \describe{
 \item{Isolate}{\emph{P. sojae} isolate identifier}
 \item{Line}{Soybean cultivar}
@@ -21,7 +22,8 @@ which advances to the hypocotyl of the seedling after infection}
 cotyledon+Dead)}
 \item{total.resis}{The total number of resistant plants (equal to HR
 value)}
-}}
+}
+}
 \source{
 Data from an ongoing 2017 \emph{Phytophthora sojae} survey in Michigan,
 conducted by A. G. McCoy \emph{et al.}.
