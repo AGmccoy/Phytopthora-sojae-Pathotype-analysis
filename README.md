@@ -6,11 +6,8 @@
 [![Project Status: Active – The project has reached a stable, usable
 state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+![R-CMD-check](https://github.com/openplantpathology/hagis/workflows/R-CMD-check/badge.svg)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
-[![Travis Build
-Status](https://travis-ci.org/openplantpathology/hagis.svg?branch=master)](https://travis-ci.org/openplantpathology/hagis)
-[![Appveyor Build
-Status](https://ci.appveyor.com/api/projects/status/qhkacm5n9twor80c/branch/master?svg=true)](https://ci.appveyor.com/project/adamhsparks/hagis/branch/master)
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 

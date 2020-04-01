@@ -14,8 +14,8 @@ calculate_complexities(x, cutoff, control, sample, gene, perc_susc)
 \item{control}{value used to denote the susceptible control in the \code{gene}
 column. Character.}
 
-\item{sample}{column providing the unique identification for each sample being
-tested. Character.}
+\item{sample}{column providing the unique identification for each sample
+being tested. Character.}
 
 \item{gene}{column providing the gene(s) being tested. Character.}
 

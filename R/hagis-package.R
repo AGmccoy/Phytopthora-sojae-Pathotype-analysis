@@ -1,9 +1,8 @@
-
-#' Tools for analysis of plant pathogen pathotype complexities, distributions and diversity 
-#'
-#' @name hagis
-#' @author Austin G. McCoy, mccoyaus@@msu.edu and Zachary Noel, noelzach@@msu.edu and
-#'  Adam H. Sparks, adam.sparks@@usq.edu.au and Martin Chilvers, chilvers@@msu.edu
-#' @docType package
-#'
+#' @keywords internal
 "_PACKAGE"
+
+# The following block is used by usethis to automatically manage
+# roxygen namespace tags. Modify with care!
+## usethis namespace: start
+## usethis namespace: end
+NULL

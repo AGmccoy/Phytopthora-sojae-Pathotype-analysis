@@ -17,8 +17,8 @@
 #'    \deqn{ D = \frac{ (Np - 1) }{ log(Ns)}}{ D = (Np -1) / log(Ns) }
 #'    Where \eqn{Np} is the number of pathotypes and \eqn{Ns} is the number of
 #'    samples.
-#'    
-#' * Shannon diversity index is typically between 1.5 and 3.5, as richness and 
+#'
+#' * Shannon diversity index is typically between 1.5 and 3.5, as richness and
 #'   evenness of the population increase, so does the Shannon index value.
 #'   \deqn{ D = -\sum_{i = 1}^{R} p_i \log p_i }{ D = -sum p_i log(p_i) } Where
 #'   \eqn{p_i} is the proportional abundance of species \eqn{i}.
@@ -50,7 +50,7 @@
 #'                                      perc_susc = "perc.susc")
 #'
 #' diversities
-#' 
+#'
 #' @import data.table
 #' @export calculate_diversities
 #' @return hagis.diversities object containing
@@ -78,65 +78,65 @@ calculate_diversities <- function(x,
     .gene = gene,
     .perc_susc = perc_susc
   )
-  
+
   # CRAN NOTE avoidance
   Pathotype <- Frequency <- susceptible.1 <- NULL
-  
+
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
   x <- subset(x, gene != control)
-  
+
   # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
+
   # remove resistant reactions from the data set, leaving only susceptible
   # reactions (pathotype)
   x <- subset(x, susceptible.1 != 0)
-  
+
   # split the data frame by sample and gene
   y <- vapply(split(x[, gene],
                     x[, sample]),
               toString, character(1))
-  
+
   individual_pathotypes <- setDT(data.frame(
     Sample = as.numeric(names(y)),
     Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))
-  
+
   table_of_pathotypes <-
     as.data.table(table(individual_pathotypes$Pathotype))
   setnames(table_of_pathotypes, c("Pathotype", "Frequency"))
   setcolorder(table_of_pathotypes, c("Frequency", "Pathotype"))
-  
+
   # determines the number of samples within the data
   N_samples <- length(unique(x[, sample]))
-  
+
   # Determines the number of unique pathotypes for this analysis
   N_pathotypes <- length(unique(individual_pathotypes[, Pathotype]))
-  
+
   # indices --------------------------------------------------------------------
   Simple <- N_pathotypes / N_samples
   Gleason <- (N_pathotypes - 1) / log(N_samples)
-  
+
   # Shannon and Simpson diversity indices
   x <-
     table_of_pathotypes[, Frequency] / sum(table_of_pathotypes[, Frequency])
-  
+
   # Shannon index
   Shannon <- -x * log(x, exp(1))
   Shannon <- sum(Shannon, na.rm = TRUE)
-  
+
   # Simpson diversity index
   x <- x * x
   H <- sum(x, na.rm = TRUE)
   Simpson <- 1 - H
-  
+
   # Evenness
   Evenness <- Shannon / log(N_pathotypes)
-  
+
   z <-
     list(
       individual_pathotypes = individual_pathotypes,
@@ -149,7 +149,7 @@ calculate_diversities <- function(x,
       Simpson = Simpson,
       Evenness = Evenness
     )
-  
+
   # Set new class
   class(z) <- union("hagis.diversities", class(z))
   return(z)
@@ -251,9 +251,7 @@ individual_pathotypes <- function(x, ...) {
     stop(call. = FALSE,
          "This is not a hagis.diversities object.")
   } else
-  {
-    pander::pander(x[[1]], ...)
-  }
+  {pander::pander(x[[1]], ...)}
 }
 
 
