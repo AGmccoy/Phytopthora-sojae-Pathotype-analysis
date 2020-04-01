@@ -7,8 +7,8 @@
 #' @param cutoff value for percent susceptible cutoff. Numeric.
 #' @param control value used to denote the susceptible control in the `gene`
 #'  column. Character.
-#' @param sample column providing the unique identification for each sample being
-#'  tested. Character.
+#' @param sample column providing the unique identification for each sample
+#'  being tested. Character.
 #' @param gene column providing the gene(s) being tested. Character.
 #' @param perc_susc column providing the percent susceptible reactions.
 #'  Character.
@@ -16,7 +16,7 @@
 #' @examples
 #' # Using the built-in data set, P_sojae_survey
 #' data(P_sojae_survey)
-#' 
+#'
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
@@ -55,20 +55,20 @@ summarize_gene <- function(x,
     .gene = gene,
     .perc_susc = perc_susc
   )
-  
+
   # CRAN NOTE avoidance
   susceptible.1 <- percent_pathogenic <- N_virulent_isolates <- NULL
-  
+
   # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
+
   # create new data.table with percentages
   y <-
     x[, list(N_virulent_isolates = sum(susceptible.1)), by = list(gene)]
   y[, percent_pathogenic :=
       (N_virulent_isolates) / max(N_virulent_isolates) * 100]
-  
+
   # Set new class
   class(y) <- union("hagis.gene.summary", class(y))
   return(y)
@@ -118,7 +118,7 @@ autoplot.hagis.gene.summary <-
            ...) {
     # CRAN NOTE avoidance
     gene <- percent_pathogenic <- N_virulent_isolates <- NULL
-    
+
     # order cols based on user input
     if (!is.null(order)) {
       if (order == "ascending") {
@@ -134,7 +134,7 @@ autoplot.hagis.gene.summary <-
       # if no order is specified
       setorder(object, cols = gene)
     object$order <- seq_len(nrow(object))
-    
+
     plot_percentage <- function(.data, .color) {
       perc_plot <- ggplot2::ggplot(data = .data,
                                    ggplot2::aes(x = stats::reorder(gene, order),
@@ -142,7 +142,7 @@ autoplot.hagis.gene.summary <-
         ggplot2::labs(y = "Percent of samples",
                       x = "Gene") +
         ggplot2::ggtitle(expression("Percentage of samples pathogenic"))
-      
+
       if (!is.null(.color)) {
         perc_plot +
           ggplot2::geom_col(fill = .color,
@@ -152,7 +152,7 @@ autoplot.hagis.gene.summary <-
           ggplot2::geom_col()
       }
     }
-    
+
     plot_count <- function(.data, .color) {
       N_virulent_isolates <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
@@ -161,7 +161,7 @@ autoplot.hagis.gene.summary <-
         ggplot2::labs(y = "Number of samples",
                       x = "Gene") +
         ggplot2::ggtitle(expression("Number of samples pathogenic"))
-      
+
       if (!is.null(.color)) {
         num_plot +
           ggplot2::geom_col(fill = .color,
@@ -171,7 +171,7 @@ autoplot.hagis.gene.summary <-
           ggplot2::geom_col()
       }
     }
-    
+
     if (type == "percentage") {
       plot_percentage(.data = object, .color = color)
     } else if (type == "count") {

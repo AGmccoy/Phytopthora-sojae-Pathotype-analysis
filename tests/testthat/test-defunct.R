@@ -26,4 +26,3 @@ test_that("plot.hagis.diversities() returns an error", {
   expect_error(
     plot(rps))
 })
-

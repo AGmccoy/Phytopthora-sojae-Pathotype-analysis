@@ -17,7 +17,7 @@ test_that("calculate_complexities() works properly", {
   expect_named(complexities,
                c("grouped_complexities",
                  "indvidual_complexities"))
-  
+
   # test summary.hagis.complexities
   expect_length(summary(complexities), 3)
   expect_equal(summary(complexities)[[1]], 8.714286,
@@ -129,8 +129,7 @@ test_that("print.hagis.complexities() returns a proper summary", {
 
 context("pander.summary.complexities")
 test_that("pander.summary.complexities returns a properly formatted table",
-          {
-            x <- capture.output(pander(summary(complexities)))
+          {x <- capture.output(pander(summary(complexities)))
             expect_type(x, "character")
             expect_equal(x[[1]], "")
             expect_equal(x[[2]], "------------------------")

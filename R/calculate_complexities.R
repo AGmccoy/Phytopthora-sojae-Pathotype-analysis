@@ -5,10 +5,10 @@
 #' susceptibilities by sample
 #' @inheritParams summarize_gene
 #' @examples
-#' 
+#'
 #' # Using the built-in data set, P_sojae_survey
 #' data(P_sojae_survey)
-#' 
+#'
 #' P_sojae_survey
 #'
 #' # calculate susceptibilities with a 60 % cutoff value
@@ -51,52 +51,51 @@ calculate_complexities <- function(x,
     .gene = gene,
     .perc_susc = perc_susc
   )
-  
+
   # CRAN NOTE avoidance
   distribution <- N_samp <- i.N <- NULL # nocov
-  
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
   x <- subset(x, gene != control)
-  
+
   # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
-  
+
   # Individual isolate complexities as calculated by grouping by "sample" and
   # then summarising the number of "1"s for each "sample" in the "susceptible.1"
   # column
   individual_complexities <- .create_summary_isolate(.y = x)
-  
+
   # Frequency for each complexity (%) ------------------------------------------
   # Percent frequency is calculated by taking the individual complexity of each
   # Isolate and grouping all Isolates by their complexity
-  
+
   # create an object of the number of genes in the data
   n_gene <- length(unique(x[, gene]))
-  
+
   # create an object of the number of samples in the data
   n_sample <- length(unique(x[, sample]))
-  
+
   # create an empty list to populate with frequency values
   complexities <- vector(mode = "list", length = n_gene)
   names(complexities) <- seq_len(n_gene)
-  
+
   for (i in seq_len(n_gene)) {
     complexities[[i]] <-
       length(which(individual_complexities[, N_samp == i]) / n_sample * 100)
   }
-  
+
   grouped_complexities <-
     as.data.table(utils::stack(complexities))
   names(grouped_complexities) <- c("frequency", "N_samp")
-  
+
   # distribution of complexity (counts)
   dist <- individual_complexities[, .N, by = N_samp]
   dist[, N_samp := as.factor(N_samp)]
   grouped_complexities[dist, on = "N_samp", distribution := i.N]
-  
+
   # set NA to 0 for distribution
   grouped_complexities[is.na(distribution), distribution := 0]
   setcolorder(grouped_complexities,
@@ -107,10 +106,10 @@ calculate_complexities <- function(x,
     list(grouped_complexities, individual_complexities)
   names(complexities) <-
     c("grouped_complexities", "indvidual_complexities")
-  
+
   # Set new class
   class(complexities) <- union("hagis.complexities", class(x))
-  
+
   return(complexities)
 }
 
@@ -158,13 +157,13 @@ autoplot.hagis.complexities <-
            color = NULL,
            order = NULL,
            ...) {
-    
+
     #CRAN Note avoidance
-    complexity <- frequency <- gene <- N_virulent_isolates <-  NULL
-    
+    complexity <- frequency <- NULL
+
     # create a single data.frame to use in the ggplot call
     z <- object[[1]]
-    
+
     # order cols based on user input
     if (!is.null(order)) {
       if (order == "ascending") {
@@ -180,7 +179,7 @@ autoplot.hagis.complexities <-
       # if no order is specified
       setorder(x = z, cols = complexity)
     z$order <- seq_len(nrow(z))
-    
+
     plot_percentage <- function(.data, .color) {
       perc_plot <- ggplot2::ggplot(data = .data,
                                    ggplot2::aes(x = stats::reorder(complexity,
@@ -189,7 +188,7 @@ autoplot.hagis.complexities <-
         ggplot2::labs(y = "Percent of samples",
                       x = "Complexity") +
         ggplot2::ggtitle("Percentage of isolates per complexity")
-      
+
       if (!is.null(.color)) {
         perc_plot +
           ggplot2::geom_col(fill = .color,
@@ -199,10 +198,10 @@ autoplot.hagis.complexities <-
           ggplot2::geom_col()
       }
     }
-    
+
     plot_count <- function(.data, .color) {
       #CRAN Note avoidance
-      complexity <- distribution <- gene <- NULL
+      complexity <- distribution <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
                                   ggplot2::aes(x = stats::reorder(complexity,
                                                                   order),
@@ -210,7 +209,7 @@ autoplot.hagis.complexities <-
         ggplot2::labs(y = "Number of samples",
                       x = "Complexity") +
         ggplot2::ggtitle("Number of samples per pathotype complexity")
-      
+
       if (!is.null(.color)) {
         num_plot +
           ggplot2::geom_col(fill = .color,
@@ -220,7 +219,7 @@ autoplot.hagis.complexities <-
           ggplot2::geom_col()
       }
     }
-    
+
     if (type == "percentage") {
       plot_percentage(.data = z, .color = color)
     } else if (type == "count") {
@@ -263,7 +262,7 @@ summary.hagis.complexities <- function(object, ...) {
     stats::var(object$indvidual_complexities$N_samp) /
       length(object$indvidual_complexities$N_samp)
   )
-  
+
   x <- data.frame(mn, sd, se)
   names(x) <- c("mean", "sd", "se")
   class(x) <- "summary.complexities"
