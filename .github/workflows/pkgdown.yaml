@@ -16,7 +16,7 @@ jobs:
 
       - name: Install brew packages
         run: |
-          brew install cairo libgit2 freetype xml2
+          brew install cairo libgit2 freetype xml2 zlib
           brew cask install XQuartz
 
       - name: Query dependencies
