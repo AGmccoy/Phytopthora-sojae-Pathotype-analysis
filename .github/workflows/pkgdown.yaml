@@ -14,6 +14,8 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: brew packages
+        run: brew install cairo
       - name: Query dependencies
         run: |
           install.packages('remotes')
