@@ -72,7 +72,7 @@ jobs:
 
       - name: Install R dependencies
         run: |
-          Sys.setenv(XML_CONFIG="/opt/local/bin/xml2-config")
+          Sys.setenv(XML_CONFIG="/usr/local/opt/libxml2/bin/xml2-config")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
