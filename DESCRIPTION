@@ -42,7 +42,7 @@ Description: Analysis of plant pathogen pathotype survey data.  Functions
   replacement for Herrmann, Löwer, Schachtel's (1999)
   <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',
   previously used for pathotype analysis.
-Depends: R (>= 3.2.0)
+Depends: R (>= 3.4.0)
 Imports: 
   data.table,
   ggplot2,
