@@ -14,8 +14,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: brew packages
-        run: brew install cairo
+      - name: Install brew packages
+        run: |
+          brew install cairo
+          brew cask install XQuartz
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
