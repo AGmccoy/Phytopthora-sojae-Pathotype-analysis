@@ -64,8 +64,10 @@ jobs:
       - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run: |
-          brew install cairo libgit2 libxml2 zlib
+          brew install cairo libgit2 pkg-config libxml2 zlib
           brew cask install XQuartz
+          export LDFLAGS="-L/usr/local/opt/libxml2/lib"
+          export CPPFLAGS="-I/usr/local/opt/libxml2/include"
 
       - name: Install R dependencies
         run: |
