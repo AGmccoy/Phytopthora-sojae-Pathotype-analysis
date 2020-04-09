@@ -64,7 +64,7 @@ jobs:
       - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run: |
-          brew install cairo libgit2
+          brew install cairo libgit2 freetype
           brew cask install XQuartz
 
       - name: Install R dependencies
