@@ -72,9 +72,9 @@ jobs:
 
       - name: Install R dependencies
         run: |
+          install.packages("xml2", configure.args = "PKG_CONFIG_PATH='/usr/local/opt/libxml2/lib/pkgconfig' PKG_CFLAGS='/usr/local/opt/libxml2/include' PKG_LIBS='/usr/local/opt/libxml2/lib' ")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-          install.packages("xml2", configure.args = "PKG_CONFIG_PATH='/usr/local/opt/libxml2/lib/pkgconfig' PKG_CFLAGS='/usr/local/opt/libxml2/include' PKG_LIBS='/usr/local/opt/libxml2/lib' ")
         shell: Rscript {0}
 
       - name: Check
