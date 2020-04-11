@@ -51,7 +51,6 @@
 #'
 #' diversities
 #'
-#' @import data.table
 #' @export calculate_diversities
 #' @return hagis.diversities object containing
 #'   * Number of Samples

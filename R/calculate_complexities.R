@@ -33,7 +33,6 @@
 #'     \item{individual_complexities}{a [data.table::data.table()] object of
 #'       individual complexities}
 #'   }
-#' @import data.table
 #' @export calculate_complexities
 
 calculate_complexities <- function(x,
