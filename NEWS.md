@@ -1,16 +1,27 @@
 # hagis (development version)
 
+## Major Changes
+
+* Add new function, `create_binary_matrix()` to format data for exporting beta
+diversity matrices representing the pathotype of each isolate.
+Users can export a binary pathotype data matrix which could then be used to
+visualize beta-diversity of pathotypes using vegan or ape in R.
+
+## Minor Changes
+
+Use ROxygen 7.1.0
+
 # hagis 3.0.1
 
 ## Minor Changes
 
 * Update citation with full MPMI citation
 
-* Remove an extra "/" in the CITATION's DOI
-
 * Fix issue in CITATION file where `nasapower` was referred to in text
 
 * Use ROxygen 7.0.0
+
+* Remove an extra "/" in the CITATION's DOI
 
 # hagis 3.0.0
 
