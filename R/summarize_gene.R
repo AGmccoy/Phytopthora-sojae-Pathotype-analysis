@@ -28,8 +28,8 @@
 #'                        perc_susc = "perc.susc")
 #' susc
 #'
-#' @return  returns an object of [class()] `hagis.gene.summary`
-#' An object of class `hagis.summaries` is a\cr [data.table::data.table()]
+#' @return  returns an object of [class] `hagis.gene.summary`
+#' An object of class `hagis.gene.summary` is a\cr [data.table::data.table()]
 #'  containing the following components columns
 #'   \describe{
 #'     \item{gene}{the gene}
@@ -37,7 +37,6 @@
 #'     gene in the `gene` column}
 #'     \item{percent_pathogenic}{the frequency with which a gene is pathogenic}
 #'   }
-#' @import data.table
 #' @export summarize_gene
 
 summarize_gene <- function(x,
