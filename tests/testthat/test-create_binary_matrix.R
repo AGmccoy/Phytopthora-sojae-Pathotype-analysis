@@ -16,7 +16,7 @@ test_that("create_binary_matrix() works properly", {
   expect_type(final_matrix, "double")
   expect_length(final_matrix, 273)
   expect_equal(
-    row.names(final_matrix),
+    colnames.names(final_matrix),
     c(
       "Rps 1a",
       "Rps 1b",

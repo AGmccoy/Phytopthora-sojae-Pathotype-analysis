@@ -56,9 +56,9 @@ create_binary_matrix <- function(x,
   x <- data.table(x[, c("sample", "gene", "susceptible.1")])
          
   x <-
-    as.matrix(dcast(melt(x, id.vars = c("sample", "gene")),
+    t(as.matrix(dcast(melt(x, id.vars = c("sample", "gene")),
                     gene  ~ sample, value.var = "value"),
-              rownames = "gene")
+              rownames = "gene"))
   
   return(x)
 }
