@@ -24,7 +24,7 @@ Character.}
 }
 \value{
 \code{create_binary_matrix} returns a binary matrix of pathotype data as
-a \link{data.table} object
+a \link{matrix} object
 }
 \description{
 Creates a binary data matrix from pathotype data representing

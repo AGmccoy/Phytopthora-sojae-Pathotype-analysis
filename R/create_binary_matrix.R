@@ -22,7 +22,7 @@
 #' final_matrix
 #'
 #' @return `create_binary_matrix` returns a binary matrix of pathotype data as
-#' a [data.table] object
+#' a [matrix] object
 #' 
 #' @export create_binary_matrix
 #' 
@@ -53,11 +53,12 @@ create_binary_matrix <- function(x,
   # remove susceptible so that Beta diversity is only calculated based on pathotype
   x <- subset(x, gene != control)
   
-  x <- data.table(x[, c(1, 3)], x[, "susceptible.1"])
+  x <- data.table(x[, c("sample", "gene", "susceptible.1")])
          
-  f <-
-    dcast(melt(x, id.vars = c("sample", "gene")),
-                    gene  ~ sample, value.var = "value")
+  x <-
+    as.matrix(dcast(melt(x, id.vars = c("sample", "gene")),
+                    gene  ~ sample, value.var = "value"),
+              rownames = "gene")
   
-  return(f)
+  return(x)
 }
