@@ -1,5 +1,4 @@
 
-
 # test calculate diversities ---------------------------------------------------
 context("calculate_diversities()")
 data(P_sojae_survey)
