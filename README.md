@@ -2,13 +2,13 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 # hagis
-
+<!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-![R-CMD-check](https://github.com/openplantpathology/hagis/workflows/R-CMD-check/badge.svg)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
+[![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=master)](https://github.com/openplantpathology/hagis/actions)
+![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
-
+<!-- badges: end -->
 ## Introduction
 
 The goal of *hagis* is to provide analysis tools for plant pathogens with gene-for-gene interactions in the R programming language that the original [Habgood-Gilmour Spreadsheet, HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x), (Herrmann, Löwer and Schachtel) provided.
