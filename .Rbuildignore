@@ -12,3 +12,5 @@
 ^CRAN-RELEASE$
 ^\.github$
 ^cran-comments\.md$
+^\.ccache$
+^tic\.R$
