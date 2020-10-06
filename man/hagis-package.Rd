@@ -24,7 +24,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Adam H. Sparks \email{adam.sparks@usq.edu.au} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
+\strong{Maintainer}: Adam H. Sparks \email{adamhsparks@gmail.com} (\href{https://orcid.org/0000-0002-0061-8359}{ORCID})
 
 Authors:
 \itemize{

@@ -14,7 +14,7 @@
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.0.1.9000",
+  "version": "3.1.0",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
@@ -46,7 +46,7 @@
       "@type": "Person",
       "givenName": "Adam H.",
       "familyName": "Sparks",
-      "email": "adam.sparks@usq.edu.au",
+      "email": "adamhsparks@gmail.com",
       "@id": "https://orcid.org/0000-0002-0061-8359"
     },
     {
@@ -89,7 +89,7 @@
       "@type": "Person",
       "givenName": "Adam H.",
       "familyName": "Sparks",
-      "email": "adam.sparks@usq.edu.au",
+      "email": "adamhsparks@gmail.com",
       "@id": "https://orcid.org/0000-0002-0061-8359"
     }
   ],
@@ -250,7 +250,7 @@
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "332.535KB",
+  "fileSize": "332.997KB",
   "contIntegration": "https://codecov.io/gh/openplantpathology/hagis",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
