@@ -5,3 +5,4 @@ inst/doc
 .Ruserdata
 inst/paper/references.bib.bak
 docs/
+.DS_Store
