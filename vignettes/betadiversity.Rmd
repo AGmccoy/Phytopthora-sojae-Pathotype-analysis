@@ -28,32 +28,30 @@ library(ggplot2)
 Import the data to be used in analysis, these example data are included in _hagis_ and so when loading _hagis_ they become available in your R session.
 
 ```{r load-data}
-final_data <- P_sojae_survey # survey sample data
-head(final_data)
+head(P_sojae_survey) # survey sample data
 
-pathotype_metadata <- sample_meta # metatada about the sample collection locations
-head(pathotype_metadata)
+head(sample_meta) # metatada about the sample collection locations
 ```
 
 This removes the "MPS17_" from the isolates, so that they will be read as numeric instead of character.
 This removes the "Rps " from the gene names, so that they will be read as numeric instead of character.
 
 ```{r clean-data}
-final_data$Isolate <-
+P_sojae_survey$Isolate <-
   gsub(pattern = "MPS17_",
        replacement = "",
-       x = final_data$Isolate)
-final_data$Rps <-
+       x = P_sojae_survey$Isolate)
+P_sojae_survey$Rps <-
   gsub(pattern = "Rps ",
        replacement = "",
-       x = final_data$Rps)
+       x = P_sojae_survey$Rps)
 ```
 
 Set up the _hagis_ arguments for analysis, see `vignette("hagis")` for more details on how to specify arguments for the functions in this package.
 
 ```{r hagis-arguments}
 hagis_args <- list(
-  x = final_data,
+  x = P_sojae_survey,
   cutoff = 60,
   control = "susceptible",
   sample = "Isolate",
@@ -67,25 +65,25 @@ hagis_args <- list(
 Using `create_binary_matrix()` transforms the data so that it is in the correct format (binary data matrix) for PCOA analysis.
 
 ```{r create-matrix}
-final_data.matrix <- do.call(create_binary_matrix, hagis_args)
+P_sojae_survey.matrix <- do.call(create_binary_matrix, hagis_args)
 
-final_data.matrix
+P_sojae_survey.matrix
 ```
 
-The `final_data.matrix` object contains the RPS genes numbered as rows and the columns are numbered isolates.
+The `P_sojae_survey.matrix` object contains the RPS genes numbered as rows and the columns are numbered isolates.
 A "1" indicates the isolate caused disease on the RPS gene, and a "0" means it did not.
 
 # Perform Principle Coordinates Analysis (PCOA)
 
-The following code will transpose the `final_data.matrix` and then calculate the Jaccard distances for each isolate.
+The following code will transpose the `P_sojae_survey.matrix` and then calculate the Jaccard distances for each isolate.
 Jaccard distance calculations need to be used as pathotype data is presence/absence for virulence.
 Lastly, PCOA is performed to identify the variance explained by each principal coordinate.
 This will be used later to visualise and identify distance pathotype groupings by geographic location.
 In this example, Jaccard distances are used as this is presence/absence data.
 
 ```{r distance-matrix}
-final_data.matrix.jaccard <-
-  vegdist(final_data.matrix, "jaccard", na.rm = TRUE)
+P_sojae_survey.matrix.jaccard <-
+  vegdist(P_sojae_survey.matrix, "jaccard", na.rm = TRUE)
 ```
 
 After performing the principal coordinates analysis, we see that the scree plot says that about 70% of the variation in Jaccard distances are explained within the first two dimensions (_i.e._, axes).
@@ -93,7 +91,7 @@ This is good.
 Usually a good rule of thumb is that if the second dimension is roughly half variation explained in the first dimension you don't need to look further at the third or n+1 dimensions.
 
 ```{r barplot}
-princoor.pathotype <- pcoa(final_data.matrix.jaccard) 
+princoor.pathotype <- pcoa(P_sojae_survey.matrix.jaccard) 
 
 barplot(princoor.pathotype$values$Relative_eig[1:10])
 ```
@@ -132,7 +130,7 @@ We will use `left_join()` from _dplyr_ to combine the `princoor.pathotype.data` 
 
 ```{r merge-metadata}
 princoor.pathotype.data <-
-  left_join(princoor.pathotype.data, pathotype_metadata, by = "Sample")
+  left_join(princoor.pathotype.data, sample_meta, by = "Sample")
 
 princoor.pathotype.data
 ```
@@ -183,7 +181,7 @@ groups <- factor(c(rep("Michigan_1", 11), rep("Michigan_2", 10)))
 
 length(groups) # this number shows how many isolates are in all "groups" lists combined
 
-length(unique(final_data$Isolate)) # this shows the number of isolates within your data set, these numbers should match for downstream analyses to work!! 
+length(unique(P_sojae_survey$Isolate)) # this shows the number of isolates within your data set, these numbers should match for downstream analyses to work!! 
 ```
 
 Next, beta-dispersion will be calculated using the Jaccard distance matrix made previously.
@@ -193,7 +191,7 @@ This can then be plotted to visualize how the beta-dispersion is different betwe
 
 ```{r beta-dispersion}
 pathotype.disp <-
-  betadisper(final_data.matrix.jaccard, groups) # calculates the beta-dispersion for each group, when comparing two or more groups
+  betadisper(P_sojae_survey.matrix.jaccard, groups) # calculates the beta-dispersion for each group, when comparing two or more groups
 
 pathotype.disp.anova <- anova(pathotype.disp) # tests if centroid distances are significantly different from each other
 pathotype.disp.anova
@@ -224,7 +222,7 @@ PERMANOVA tests if the centroids, similar to means, of each group are significan
 Likewise, an $R^2$ statistic is calculated, showing the percentage of the variance explained by the groups.
 
 ```{r adonis}
-pathotype.adonis <- adonis(final_data.matrix.jaccard ~ groups)
+pathotype.adonis <- adonis(P_sojae_survey.matrix.jaccard ~ groups)
 
 pathotype.adonis
 ```
@@ -241,7 +239,7 @@ Positive numbers suggest that there is more similarity within groups than there 
 Values close to zero indicate no difference between groups (_i.e._, similarities are the same between groups).
 
 ```{r anosim}
-pathotype.anosim <- anosim(final_data.matrix.jaccard, groups)
+pathotype.anosim <- anosim(P_sojae_survey.matrix.jaccard, groups)
 
 pathotype.anosim
 ```
