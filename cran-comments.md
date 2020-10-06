@@ -1,20 +1,20 @@
 ## Test environments
-* local macOS install, R 3.6.1
-* Ubuntu 16.04 (on travis-ci), R 3.6.1
+* local macOS install, R 4.0.2 (2020-06-22)
 * win-builder (devel and release)
 
-## Minor Changes
+This is a new minor release
 
-* Update citation with full MPMI citation
+## Minor changes
+* Adds new function and vignette to illustrate usage
 
-* Remove an extra "/" in the CITATION's DOI
+* Use ROxygen 7.1.1
 
-* Fix issue in CITATION file where `nasapower` was referred to in text
+* Spell checking in existing vignette
 
-* Use ROxygen 7.0.0
+* Update e-mail address of maintainer in DESCRIPTION to adamhsparks@gmail.com due to change of employment and loss of the e-mail address adam.sparks@usq.edu.au. This will be confirmed via an e-mail from myself using the USQ e-mail address as well.
 
 ## R CMD check results
-There were no ERRORs or WARNINGs. 
+There were no ERRORs or WARNINGs
 
 ## Downstream dependencies
 There are no downstream dependencies
