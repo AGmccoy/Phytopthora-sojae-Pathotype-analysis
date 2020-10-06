@@ -55,6 +55,7 @@ LazyData: true
 Suggests:
   ape,
   covr,
+  dplyr,
   knitr,
   rmarkdown,
   testthat,

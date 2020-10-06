@@ -120,6 +120,18 @@
     },
     {
       "@type": "SoftwareApplication",
+      "identifier": "dplyr",
+      "name": "dplyr",
+      "provider": {
+        "@id": "https://cran.r-project.org",
+        "@type": "Organization",
+        "name": "Comprehensive R Archive Network (CRAN)",
+        "url": "https://cran.r-project.org"
+      },
+      "sameAs": "https://CRAN.R-project.org/package=dplyr"
+    },
+    {
+      "@type": "SoftwareApplication",
       "identifier": "knitr",
       "name": "knitr",
       "provider": {
@@ -238,7 +250,7 @@
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
   "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "332.67KB",
+  "fileSize": "332.535KB",
   "contIntegration": "https://codecov.io/gh/openplantpathology/hagis",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
