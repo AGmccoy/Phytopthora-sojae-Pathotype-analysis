@@ -128,7 +128,7 @@ princoor.pathotype.data <-
 # Add Metadata to your PCOA Data
 
 You will Information on the sample collection location or other data to help identify different pathotype groupings based on geographic or other factors.
-We will use `left_join()` to combine the `pca.data` with the metadata that we've already loaded, `sample_meta`.
+We will use `left_join()` from _dplyr_ to combine the `princoor.pathotype.data` with the metadata that we've already loaded, `sample_meta`.
 
 ```{r merge-metadata}
 princoor.pathotype.data <-
