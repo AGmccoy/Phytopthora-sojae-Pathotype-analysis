@@ -11,7 +11,7 @@ Users can export a binary pathotype data matrix which could then be used to visu
 
 * Use ROxygen 7.1.1
 
-* Spell check in vignette
+* Spell check and correct spelling errors
 
 # hagis 3.0.1
 

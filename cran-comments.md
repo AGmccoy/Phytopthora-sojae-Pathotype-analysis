@@ -9,7 +9,7 @@ This is a new minor release
 
 * Use ROxygen 7.1.1
 
-* Spell checking in existing vignette
+* Spell check and correct spelling erros in package
 
 * Update e-mail address of maintainer in DESCRIPTION to <adamhsparks@gmail.com> due to change of employment and loss of the e-mail address adam.sparks@usq.edu.au. This will be confirmed via an e-mail from myself using the USQ e-mail address as well.
 
