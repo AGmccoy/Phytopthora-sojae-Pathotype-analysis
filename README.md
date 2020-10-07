@@ -4,9 +4,9 @@
 # hagis
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
-[![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=master)](https://github.com/openplantpathology/hagis/actions)
+[![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=main)](https://github.com/openplantpathology/hagis/actions)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
-[![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
+[![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 <!-- badges: end -->
 ## Introduction
@@ -39,7 +39,7 @@ install.packages("hagis")
 
 A development version is available from from GitHub.
 If you wish to install the development version that may have new features or bug fixes before the CRAN version does (but also may not work properly), please install the remotes package, available from CRAN.
-We strive to keep the master branch on GitHub functional and working properly.
+We strive to keep the main branch on GitHub functional and working properly.
 
 ``` r
 if (!require("remotes")) {
@@ -80,7 +80,7 @@ citation("hagis")
 #> 'options(citation.bibtex.max=999)'.
 ```
 
-Please note that the *hagis* project is released with a [Contributor Code of Conduct](https://github.com/openplantpathology/hagis/blob/master/CODE_OF_CONDUCT.md).
+Please note that the *hagis* project is released with a [Contributor Code of Conduct](https://github.com/openplantpathology/hagis/blob/main/CODE_OF_CONDUCT.md).
 By contributing to this project, you agree to abide by its terms.
 
 ## References
