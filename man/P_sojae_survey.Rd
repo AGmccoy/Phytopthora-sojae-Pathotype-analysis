@@ -9,7 +9,7 @@ An object of class \code{data.table} with 294 observations of 12 variables
 \describe{
 \item{Isolate}{\emph{P. sojae} isolate identifier}
 \item{Line}{Soybean cultivar}
-\item{Rps}{\emph{Rps} gene identifer}
+\item{Rps}{\emph{Rps} gene identifier}
 \item{Total}{Total number of plants inoculated}
 \item{HR (1)}{Number of plants that exhibit a hypersensitive response after
 inoculation}

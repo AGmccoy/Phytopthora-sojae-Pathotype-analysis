@@ -10,7 +10,7 @@
 #' \describe{
 #'   \item{Isolate}{*P. sojae* isolate identifier}
 #'   \item{Line}{Soybean cultivar}
-#'   \item{Rps}{*Rps* gene identifer}
+#'   \item{Rps}{*Rps* gene identifier}
 #'   \item{Total}{Total number of plants inoculated}
 #'   \item{HR (1)}{Number of plants that exhibit a hypersensitive response after
 #'    inoculation}

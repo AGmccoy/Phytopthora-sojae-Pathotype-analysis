@@ -56,9 +56,9 @@ evenness of the population increase, so does the Shannon index value.
 \deqn{ D = -\sum_{i = 1}^{R} p_i \log p_i }{ D = -sum p_i log(p_i) } Where
 \eqn{p_i} is the proportional abundance of species \eqn{i}.
 \item Simpson diversity index values range from 0 to 1, 1 represents high
-diversity and 0 represents no diversity. Where diversity is calcuated as:
+diversity and 0 represents no diversity. Where diversity is calculated as:
 \deqn{ D = \sum_{i = 1}^{R} p_i^2 }{ D = sum p_i^2 }
-\item Evenness ranges from 0 to 1, as the Eveness value approaches 1, there is a
+\item Evenness ranges from 0 to 1, as the Evenness value approaches 1, there is a
 more even distribution of each pathoype's frequency within the population.
 Where Evenness is calculated as:
 \deqn{ D = \frac{H'}{log(Np) }}{ D = H' / log(Np) }
