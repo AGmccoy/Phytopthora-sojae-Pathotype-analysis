@@ -9,9 +9,9 @@ This is a new minor release
 
 * Use ROxygen 7.1.1
 
-* Spell check and correct spelling erros in package
+* Spell check and correct spelling errors in package
 
-* Update e-mail address of maintainer in DESCRIPTION to <adamhsparks@gmail.com> due to change of employment and loss of the e-mail address adam.sparks@usq.edu.au. This will be confirmed via an e-mail from myself using the USQ e-mail address as well.
+* Update e-mail address of maintainer in DESCRIPTION to <adamhsparks@gmail.com> due to change of employment and loss of the e-mail address <adam.sparks@usq.edu.au>. This will be confirmed via an e-mail from myself using the USQ e-mail address as well.
 
 ## R CMD check results
 There were no ERRORs or WARNINGs
