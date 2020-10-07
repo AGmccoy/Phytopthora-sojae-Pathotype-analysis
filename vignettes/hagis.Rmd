@@ -6,6 +6,7 @@ vignette: >
   %\VignetteIndexEntry{hagis: Tools for Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{pander}
 ---
 
 ```{r setup, include = FALSE}

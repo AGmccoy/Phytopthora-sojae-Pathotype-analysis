@@ -1,12 +1,16 @@
 ---
-title: "Beta-diversity Analyses"
+title: "Beta-diversity Analysis"
 author: "Austin McCoy"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Beta-diversity Analyses}
+  %\VignetteIndexEntry{Beta-diversity Analysis}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteDepends{ape}
+  %\VignetteDepends{ggplot2}
+  %\VignetteDepends{vegan}
+  %\VignetteDepends{dplyr}
 ---
 
 ```{r setup, include=FALSE}
@@ -78,7 +82,7 @@ A "1" indicates the isolate caused disease on the RPS gene, and a "0" means it d
 The following code will transpose the `P_sojae_survey.matrix` and then calculate the Jaccard distances for each isolate.
 Jaccard distance calculations need to be used as pathotype data is presence/absence for virulence.
 Lastly, PCOA is performed to identify the variance explained by each principal coordinate.
-This will be used later to visualise and identify distance pathotype groupings by geographic location.
+This will be used later to visualize and identify distance pathotype groupings by geographic location.
 In this example, Jaccard distances are used as this is presence/absence data.
 
 ```{r distance-matrix}
@@ -211,7 +215,7 @@ As expected, since we have identified no significant differences, the two groups
 Again this shows that pathotype dispersion between the groups is homogeneous and not different in this instance.
 
 If we were working with a data set that had groups with significantly different dispersion we would expect to see a significant ANOVA p-value (p < 0.05) as well as significance when using the Tukey HSD test.
-Lastly, plotted dispersions will form distinct, separate, groups which can be observed.
+Lastly, the plotted dispersion will form distinct, separate, groups which can be observed.
 
 Differences in beta-dispersion may indicate separate pathotype groups which should be further investigated with Permutation Based Analysis of Variance (PERMANOVA) and Analysis of Similarity (ANOSIM) analysis.
 Groups which have similar dispersion may still be significantly different in regards to their centroids, which will be tested using a PERMANOVA.
@@ -228,7 +232,7 @@ pathotype.adonis
 ```
 
 The PERMANOVA identified no significant differences between the groups centroids, or means (_p_ =  `r pathotype.adonis[[1]][[6]][[1]]`).
-In addition to identifying significances between group centroids, the PERMANOVA also calculates how much of the variance can be explained by the specified groups (see the $R^2$ column in the PERMANOVA output).
+In addition to identifying significance between group centroids, the PERMANOVA also calculates how much of the variance can be explained by the specified groups (see the $R^2$ column in the PERMANOVA output).
 In this case, the $R^2$ is `r pathotype.adonis[[1]][[6]][[1]]`, so  `r round(pathotype.adonis[[1]][[6]][[1]], 3) * 100`% of the variance is explained by the groups used in analysis.
 Based on the PERMANOVA results we can conclude that these two groups are not different from each other and likely have similar pathotypes to each other.
 
