@@ -54,7 +54,6 @@ Encoding: UTF-8
 LazyData: true
 Suggests:
   ape,
-  covr,
   dplyr,
   knitr,
   rmarkdown,
