@@ -5,7 +5,7 @@
   ],
   "@type": "SoftwareSourceCode",
   "identifier": "hagis",
-  "description": "Analysis of plant pathogen pathotype survey data.  Functions\n  provided calculate distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for Herrmann, Löwer, Schachtel's (1999)\n  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',\n  previously used for pathotype analysis.",
+  "description": "Analysis of plant pathogen pathotype survey data.  Functions\n  provided calculate distribution of susceptibilities, distribution of\n  complexities with statistics, pathotype frequency distribution, as well as\n  diversity indices for pathotypes.  This package is meant to be a direct\n  replacement for Herrmann, Löwer and Schachtel's (1999)\n  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',\n  previously used for pathotype analysis.",
   "name": "hagis: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity",
   "codeRepository": "https://github.com/openplantpathology/hagis",
   "relatedLink": [
@@ -237,7 +237,7 @@
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "readme": "https://github.com/openplantpathology/hagis/blob/main/README.md",
-  "fileSize": "333.393KB",
+  "fileSize": "333.031KB",
   "contIntegration": "https://codecov.io/gh/openplantpathology/hagis",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
