@@ -29,7 +29,7 @@ a \link{matrix} object
 \description{
 Creates a binary data matrix from pathotype data representing
 the pathotype of each isolate. This binary data matrix can be used to
-visualize beta-diversity of pathotypes using \pkg{vegan} and \pkg{ape}.
+visualize beta-diversity of pathotypes using \CRANpkg{vegan} and \CRANpkg{ape}.
 }
 \examples{
 
