@@ -1,4 +1,10 @@
-# hagis (development version)
+# hagis 3.1.1
+
+## Minor Changes
+
+* Use _vidiffr_ conditionally
+
+* Better documentation formatting
 
 # hagis 3.1.0
 
