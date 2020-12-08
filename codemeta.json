@@ -14,13 +14,13 @@
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.2 (2020-06-22)",
+  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -105,18 +105,6 @@
         "url": "https://cran.r-project.org"
       },
       "sameAs": "https://CRAN.R-project.org/package=ape"
-    },
-    {
-      "@type": "SoftwareApplication",
-      "identifier": "covr",
-      "name": "covr",
-      "provider": {
-        "@id": "https://cran.r-project.org",
-        "@type": "Organization",
-        "name": "Comprehensive R Archive Network (CRAN)",
-        "url": "https://cran.r-project.org"
-      },
-      "sameAs": "https://CRAN.R-project.org/package=covr"
     },
     {
       "@type": "SoftwareApplication",
@@ -248,9 +236,8 @@
   "applicationCategory": "Tools",
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
-  "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md",
-  "readme": "https://github.com/openplantpathology/hagis/blob/master/README.md",
-  "fileSize": "332.997KB",
+  "readme": "https://github.com/openplantpathology/hagis/blob/main/README.md",
+  "fileSize": "333.393KB",
   "contIntegration": "https://codecov.io/gh/openplantpathology/hagis",
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
