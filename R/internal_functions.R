@@ -39,14 +39,14 @@
     setnames(dt,
              c(.perc_susc, .gene, .sample),
              c("perc_susc", "gene", "sample"))
-    
+
     # validate that perc_susc is numeric
     if (!is.numeric(dt$perc_susc))
       stop("Data in the column `perc_susc` must be numeric.")
     # validate that no values in perc_susc < 0
     if (any(dt$perc_susc < 0, na.rm = TRUE))
       stop("Data in the column `perc_susc` must be non-negative.")
-    
+
     # set col types for the necessary cols
     dt[, sample := as.character(sample)]
     dt[, gene := as.character(gene)]
