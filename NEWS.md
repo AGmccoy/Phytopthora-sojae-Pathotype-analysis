@@ -2,7 +2,9 @@
 
 ## Minor Changes
 
-* Use _vidiffr_ conditionally
+* Use _ape_, _vegan_, _dplyr_ and _vidiffr_ packages conditionally
+
+* Remove _covr_ from Suggests
 
 * Better documentation formatting
 
