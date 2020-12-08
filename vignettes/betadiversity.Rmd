@@ -34,7 +34,8 @@ library(hagis)
 library(ggplot2)
 ```
 
-Import the data to be used in analysis, these example data are included in _hagis_ and so when loading _hagis_ they become available in your R session.
+Import the data to be used in analysis.
+These example data are included in _hagis_ and so when loading _hagis_ they become available in your R session.
 
 ```{r load-data}
 head(P_sojae_survey) # survey sample data
@@ -43,7 +44,7 @@ head(sample_meta) # metatada about the sample collection locations
 ```
 
 This removes the "MPS17_" from the isolates, so that they will be read as numeric instead of character.
-This removes the "Rps " from the gene names, so that they will be read as numeric instead of character.
+The next step removes the "Rps " from the gene names, so that they will be read as numeric instead of character.
 
 ```{r clean-data}
 P_sojae_survey$Isolate <-
@@ -56,7 +57,8 @@ P_sojae_survey$Rps <-
        x = P_sojae_survey$Rps)
 ```
 
-Set up the _hagis_ arguments for analysis, see `vignette("hagis")` for more details on how to specify arguments for the functions in this package.
+Set up the _hagis_ arguments for analysis.
+Please see `vignette("hagis")` for more details on how to specify arguments for the functions in this package.
 
 ```{r hagis-arguments}
 hagis_args <- list(
