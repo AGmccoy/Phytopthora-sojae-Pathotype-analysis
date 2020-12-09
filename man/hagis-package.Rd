@@ -10,7 +10,7 @@ Analysis of plant pathogen pathotype survey data.  Functions
   provided calculate distribution of susceptibilities, distribution of
   complexities with statistics, pathotype frequency distribution, as well as
   diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for Herrmann, Löwer, Schachtel's (1999)
+  replacement for Herrmann, Löwer and Schachtel's (1999)
   <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',
   previously used for pathotype analysis.
 }
