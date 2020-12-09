@@ -1,6 +1,4 @@
 
-<!-- README.md is generated from README.Rmd. Please edit that file -->
-
 # hagis
 <!-- badges: start -->
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
@@ -9,6 +7,7 @@
 [![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 <!-- badges: end -->
+
 ## Introduction
 
 The goal of *hagis* is to provide analysis tools for plant pathogens with gene-for-gene interactions in the R programming language that the original [Habgood-Gilmour Spreadsheet, HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x), (Herrmann, Löwer and Schachtel) provided.
@@ -20,7 +19,8 @@ The goal of *hagis* is to provide analysis tools for plant pathogens with gene-f
 However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective.
 To determine current effectiveness of resistance genes for managing *P. sojae*, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as “race”) structure within sampled population of *P. sojae*.
 
-However, the package is not only useful for *P. sojae* work. It was built to be useful for other plant pathogen gene-for-gene interaction systems, *e.g.* rusts or canola blackleg, *Leptosphaeria maculans*.
+However, the package is not only useful for *P. sojae* work.
+It was built to be useful for other plant pathogen gene-for-gene interaction systems, *e.g.* rusts or canola blackleg, *Leptosphaeria maculans*.
 The goal of this package is to provide all the necessary analyses needed when conducting a pathotype surveys, including: distribution of susceptibilities (effective and non-effective resistance genes), distribution of pathotype complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes in an efficient and reproducible manner.
 
 New users are encouraged to visit the documentation, <https://openplantpathology.github.io/hagis/articles/hagis.html>, for detailed information on how to use *hagis* along with working examples using a built-in data set.
@@ -85,7 +85,7 @@ By contributing to this project, you agree to abide by its terms.
 
 ## References
 
-> Herrmann, Löwer, and Schachtel, (1999), A new tool for entry and
+> Herrmann, Löwer and Schachtel, (1999), A new tool for entry and
 > analysis of virulence data for plant pathogens. Plant Pathology, 48:
 > 154-158. DOI:
 > [10.1046/j.1365-3059.1999.00325.x](https://doi.org/10.1046/j.1365-3059.1999.00325.x)
