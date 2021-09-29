@@ -289,7 +289,9 @@ You can use named, _e.g._ "red", "yellow", "blue", colors in R or you can use cu
 Illustrated below is using Michigan State University (MSU) Green, hex code #18453b, using `theme_bw()` with a serif font.
 
 ```{r use-Colors}
-autoplot(Rps.summary, type = "percentage", color = "#18453b") +
+autoplot(Rps.summary,
+         type = "percentage",
+         color = "#18453b") +
   theme_bw() +
   theme(text = element_text(face = "bold",
                             family = "serif"))
