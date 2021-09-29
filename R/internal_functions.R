@@ -12,6 +12,7 @@
 #' @param .gene column providing the gene(s) being tested. Character.
 #' @param .perc_susc column providing the percent susceptible reactions as a
 #' numeric value. Character.
+#' @keywords internal
 #' @noRd
 .check_inputs <-
   function(.x,
@@ -60,6 +61,7 @@
 #' @param .x A `data.table` containing the values to be summarised
 #' @param .cutoff Cutoff value for susceptibility
 #' @return A `data.table` that tallies the results by gene
+#' @keywords internal
 #' @noRd
 .binary_cutoff <- function(.x, .cutoff) {
   susceptible.1 <- perc_susc <- NULL
