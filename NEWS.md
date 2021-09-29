@@ -1,3 +1,9 @@
+# hagis (development version)
+
+* Improved documentation formatting
+
+* Update roxygen details
+
 # hagis 3.1.1
 
 ## Minor Changes
