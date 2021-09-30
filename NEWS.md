@@ -14,6 +14,8 @@
 
 * Prefer "_" to "*" for _italics_
 
+* More verbose handling of importing _data.table_ as a whole package using "R/utils-data.table.R" in place of "R/zzz.R"
+
 # hagis 3.1.1
 
 ## Minor Changes
