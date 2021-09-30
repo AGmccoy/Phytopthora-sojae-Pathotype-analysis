@@ -19,7 +19,7 @@ Authors@R: c(
          comment = c(ORCID = "0000-0002-0061-8359")),
   person(given = "Martin",
          family = "Chilvers", 
-         role = "aut",
+         role = c("aut", "ths"),
          email = "chilvers@msu.edu ",
          comment = c(ORCID = "0000-0001-8832-1666")),
   person(given = "Zhian N.",
