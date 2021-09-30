@@ -1,19 +1,10 @@
 ## Test environments
-* local macOS install, R 4.0.3 (2020-10-10)
+* local MacOS 11.6, R installation, R 4.1.1 aarch64-apple-darwin20
+* Ubuntu 21.04 (on GitHub Actions), R 4.1.1
 * win-builder (devel and release)
 
-This is a new patch release
-
-## Minor Changes
-
-* Use _ape_, _vegan_, _dplyr_ and _vidiffr_ packages conditionally
-
-* Better documentation formatting
-
-* Remove _covr_ from Suggests
-
 ## R CMD check results
-There were no ERRORs or WARNINGs
 
-## Downstream dependencies
-There are no downstream dependencies
+0 errors | 0 warnings | 1 note
+
+* This is a new patch release.
