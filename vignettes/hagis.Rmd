@@ -26,7 +26,7 @@ First you'll want to load in your data set, for right now let's use a practice d
 The data set is available in your R session automatically when you load the _hagis_ package.
 
 ```{r load_data}
-library(hagis)
+library("hagis")
 head(P_sojae_survey)
 ```
 

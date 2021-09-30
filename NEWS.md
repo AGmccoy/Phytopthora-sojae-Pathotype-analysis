@@ -1,8 +1,18 @@
 # hagis (development version)
 
+## Minor changes
+
 * Improved documentation formatting
 
 * Update roxygen details
+
+* Fixes incomplete end of line in test-create_binary_matrix.R
+
+* Add wordlist of allowed words for spellchecking
+
+* More consistent code styling in vignettes
+
+* Prefer "_" to "*" for _italics_
 
 # hagis 3.1.1
 
