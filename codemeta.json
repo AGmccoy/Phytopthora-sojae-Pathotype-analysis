@@ -14,13 +14,13 @@
   ],
   "issueTracker": "https://github.com/openplantpathology/hagis/issues",
   "license": "https://spdx.org/licenses/MIT",
-  "version": "3.1.1",
+  "version": "3.1.2",
   "programmingLanguage": {
     "@type": "ComputerLanguage",
     "name": "R",
     "url": "https://r-project.org"
   },
-  "runtimePlatform": "R version 4.0.3 (2020-10-10)",
+  "runtimePlatform": "R version 4.1.1 (2021-08-10)",
   "provider": {
     "@id": "https://cran.r-project.org",
     "@type": "Organization",
@@ -63,6 +63,13 @@
       "givenName": "Zhian N.",
       "familyName": "Kamvar",
       "@id": "https://orcid.org/0000-0003-1458-7108"
+    },
+    {
+      "@type": "Person",
+      "givenName": "Martin",
+      "familyName": "Chilvers",
+      "email": "chilvers@msu.edu ",
+      "@id": "https://orcid.org/0000-0001-8832-1666"
     }
   ],
   "copyrightHolder": {},
@@ -237,8 +244,8 @@
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
   "readme": "https://github.com/openplantpathology/hagis/blob/main/README.md",
-  "fileSize": "333.031KB",
-  "contIntegration": "https://codecov.io/gh/openplantpathology/hagis",
+  "fileSize": "321.655KB",
+  "contIntegration": ["https://github.com/openplantpathology/hagis/actions", "https://codecov.io/gh/openplantpathology/hagis"],
   "developmentStatus": "https://www.repostatus.org/#active",
   "citation": [
     {
@@ -313,5 +320,6 @@
       "@id": "https://doi.org/10.5281/zenodo.2619820",
       "sameAs": "https://doi.org/10.5281/zenodo.2619820"
     }
-  ]
+  ],
+  "releaseNotes": "https://github.com/openplantpathology/hagis/blob/master/NEWS.md"
 }

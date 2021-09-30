@@ -6,13 +6,7 @@
 \alias{hagis-package}
 \title{hagis: Analysis of Plant Pathogen Pathotype Complexities, Distributions and Diversity}
 \description{
-Analysis of plant pathogen pathotype survey data.  Functions
-  provided calculate distribution of susceptibilities, distribution of
-  complexities with statistics, pathotype frequency distribution, as well as
-  diversity indices for pathotypes.  This package is meant to be a direct
-  replacement for Herrmann, Löwer and Schachtel's (1999)
-  <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS',
-  previously used for pathotype analysis.
+Analysis of plant pathogen pathotype survey data. Functions provided calculate distribution of susceptibilities, distribution of complexities with statistics, pathotype frequency distribution, as well as diversity indices for pathotypes. This package is meant to be a direct replacement for Herrmann, Löwer and Schachtel's (1999) <doi:10.1046/j.1365-3059.1999.00325.x> Habgood-Gilmour Spreadsheet, 'HaGiS', previously used for pathotype analysis.
 }
 \seealso{
 Useful links:
@@ -30,7 +24,7 @@ Authors:
 \itemize{
   \item Austin G. McCoy \email{mccoyaus@msu.edu} (\href{https://orcid.org/0000-0003-2483-4184}{ORCID}) [conceptor]
   \item Zachary Noel \email{noelzach@msu.edu} (\href{https://orcid.org/0000-0001-6375-8300}{ORCID}) [conceptor]
-  \item Martin Chilvers \email{chilvers@msu.edu } (\href{https://orcid.org/0000-0001-8832-1666}{ORCID})
+  \item Martin Chilvers \email{chilvers@msu.edu } (\href{https://orcid.org/0000-0001-8832-1666}{ORCID}) [thesis advisor]
 }
 
 Other contributors:

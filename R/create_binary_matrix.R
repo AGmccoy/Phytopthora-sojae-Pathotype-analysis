@@ -3,7 +3,8 @@
 #'
 #' @description Creates a binary data matrix from pathotype data representing
 #'  the pathotype of each isolate. This binary data matrix can be used to
-#'  visualize beta-diversity of pathotypes using \CRANpkg{vegan} and \CRANpkg{ape}.
+#'  visualize beta-diversity of pathotypes using \CRANpkg{vegan} and
+#'  \CRANpkg{ape}.
 #' @inheritParams summarize_gene
 #' @examples
 #'
@@ -50,7 +51,7 @@ create_binary_matrix <- function(x,
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
   
-  # remove susceptible so that Beta diversity is only calculated based on pathotype
+  # remove susceptible so Beta diversity is only calculated based on pathotype
   x <- subset(x, gene != control)
   
   x <- data.table(x[, c("sample", "gene", "susceptible.1")])

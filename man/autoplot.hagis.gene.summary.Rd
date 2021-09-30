@@ -2,7 +2,7 @@
 % Please edit documentation in R/summarize_gene.R
 \name{autoplot.hagis.gene.summary}
 \alias{autoplot.hagis.gene.summary}
-\title{Plot \pkg{hagis} summary objects}
+\title{Plot hagis summary objects}
 \usage{
 \method{autoplot}{hagis.gene.summary}(object, type, color = NULL, order = NULL, ...)
 }
@@ -12,7 +12,7 @@ Character.}
 
 \item{type}{a vector of values for which the bar plot is desired. Specify
 whether to return a graph of the percent pathogenic isolates, \code{percentage},
-or as the count, "\code{count}". Character.}
+or as the count, \code{count}. Character.}
 
 \item{color}{a named or hexadecimal color value to use for the bar color}
 
@@ -23,11 +23,11 @@ or \code{descending} input values. Defaults to \code{gene} name. Character.}
 \item{...}{passed to the chosen \code{geom(s)}}
 }
 \value{
-A \link[ggplot2]{ggplot2} plot
+A \CRANpkg{ggplot2} plot
 }
 \description{
-Creates a \pkg{ggplot2} object of the gene summaries calculated
-by \code{\link[=summarize_gene]{summarize_gene()}}
+Creates a \CRANpkg{ggplot2} object of the gene summaries
+calculated by \code{\link[=summarize_gene]{summarize_gene()}}
 }
 \examples{
 # Using the built-in data set, P_sojae_survey

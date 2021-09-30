@@ -1,6 +1,6 @@
-#' *Phytophthora sojae* survey example data
+#' _Phytophthora sojae_ survey example data
 #'
-#' Data from a *Phytophthora sojae* survey
+#' Data from a _Phytophthora sojae_ survey
 #'
 #' @docType data
 #'
@@ -8,9 +8,9 @@
 #'
 #' @format An object of class `data.table` with 294 observations of 12 variables
 #' \describe{
-#'   \item{Isolate}{*P. sojae* isolate identifier}
+#'   \item{Isolate}{_P. sojae_ isolate identifier}
 #'   \item{Line}{Soybean cultivar}
-#'   \item{Rps}{*Rps* gene identifier}
+#'   \item{Rps}{_Rps_ gene identifier}
 #'   \item{Total}{Total number of plants inoculated}
 #'   \item{HR (1)}{Number of plants that exhibit a hypersensitive response after
 #'    inoculation}
@@ -27,8 +27,8 @@
 #'
 #' @keywords datasets
 #'
-#' @source Data from an ongoing 2017 *Phytophthora sojae* survey in Michigan,
-#' conducted by A. G. McCoy *et al.*.
+#' @source Data from an ongoing 2017 _Phytophthora sojae_ survey in Michigan,
+#' conducted by A. G. McCoy _et al._.
 #'
 #' @examples
 #' data(P_sojae_survey)
@@ -36,9 +36,9 @@
 #'
 "P_sojae_survey"
 
-#' *Phytophthora sojae* survey example metadata
+#' _Phytophthora sojae_ survey example metadata
 #'
-#' Metadata to accompany internal data from a *Phytophthora sojae* survey used
+#' Metadata to accompany internal data from a _Phytophthora sojae_ survey used
 #' for an example in the "Beta-diversity Analyses" vignette.
 #'
 #' @docType data
@@ -47,14 +47,14 @@
 #'
 #' @format An object of class `data.frame` with 21 observations of 2 variables
 #' \describe{
-#'   \item{Sample}{*P. sojae* sample identifier}
+#'   \item{Sample}{_P. sojae_ sample identifier}
 #'   \item{Locale}{US State where sample was collected, limited to Michigan}
 #'   }
 #'
 #' @keywords datasets
 #'
-#' @source Data from an ongoing 2017 *Phytophthora sojae* survey in Michigan,
-#' conducted by A. G. McCoy *et al.*.
+#' @source Data from an ongoing 2017 _Phytophthora sojae_ survey in Michigan,
+#' conducted by A. G. McCoy _et al._.
 #'
 #' @examples
 #' data(sample_meta)

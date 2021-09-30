@@ -26,7 +26,7 @@ First you'll want to load in your data set, for right now let's use a practice d
 The data set is available in your R session automatically when you load the _hagis_ package.
 
 ```{r load_data}
-library(hagis)
+library("hagis")
 head(P_sojae_survey)
 ```
 
@@ -289,7 +289,9 @@ You can use named, _e.g._ "red", "yellow", "blue", colors in R or you can use cu
 Illustrated below is using Michigan State University (MSU) Green, hex code #18453b, using `theme_bw()` with a serif font.
 
 ```{r use-Colors}
-autoplot(Rps.summary, type = "percentage", color = "#18453b") +
+autoplot(Rps.summary,
+         type = "percentage",
+         color = "#18453b") +
   theme_bw() +
   theme(text = element_text(face = "bold",
                             family = "serif"))

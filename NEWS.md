@@ -1,3 +1,21 @@
+# hagis 3.1.2
+
+## Minor changes
+
+* Improved documentation formatting
+
+* Update roxygen details
+
+* Fixes incomplete end of line in test-create_binary_matrix.R
+
+* Add wordlist of allowed words for spellchecking
+
+* More consistent code styling in vignettes
+
+* Prefer "_" to "*" for _italics_
+
+* More verbose handling of importing _data.table_ as a whole package using "R/utils-data.table.R" in place of "R/zzz.R"
+
 # hagis 3.1.1
 
 ## Minor Changes
