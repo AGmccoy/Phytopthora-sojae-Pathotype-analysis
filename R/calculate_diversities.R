@@ -100,7 +100,7 @@ calculate_diversities <- function(x,
               toString, character(1))
 
   individual_pathotypes <- setDT(data.frame(
-    Sample = as.numeric(names(y)),
+    Sample = names(y),
     Pathotype = unname(y),
     stringsAsFactors = FALSE
   ))

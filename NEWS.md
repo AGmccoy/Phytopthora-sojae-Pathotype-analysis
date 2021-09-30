@@ -1,5 +1,11 @@
 # hagis (development version)
 
+## Minor changes
+
+* Sample names in `calculate_diversities()` are not required to be numeric values.
+Previously, this column was converted to `numeric` so if `character` values were present, these values became `NA`.
+This allows for greater flexibility when analysing the data as sample names are often more descriptive tha just a numerical value.
+
 # hagis 3.1.2
 
 ## Minor changes
