@@ -68,7 +68,7 @@ calculate_diversities <- function(x,
                                   sample,
                                   gene,
                                   perc_susc) {
-  # check inptuts and rename columns to work with this package
+  # check inputs and rename columns to work with this package
   x <- .check_inputs(
     .x = x,
     .cutoff = cutoff,
