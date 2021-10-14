@@ -8,7 +8,9 @@ This allows for greater flexibility when analysing the data as sample names are 
 
 * Spelling corrections in code comments
 
-* Updated spelling wordlist of allowed words
+* Clean up CITATION file
+
+* README is now more complete with information and links to the _MPMI_ paper
 
 # hagis 3.1.2
 
