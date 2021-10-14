@@ -8,7 +8,7 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=main)](https://github.com/openplantpathology/hagis/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
-[![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://codecov.io/gh/openplantpathology/hagis)
+[![codecov](https://app.codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://app.codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 <!-- badges: end -->
 
@@ -17,12 +17,16 @@ developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.re
 The goal of *hagis* is to provide analysis tools for plant pathogens
 with gene-for-gene interactions in the R programming language that the
 original [Habgood-Gilmour Spreadsheet,
-HaGiS](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1365-3059.1999.00325.x),
-(Herrmann, Löwer and Schachtel) provided.
+HaGiS](https://doi.org/10.1046/j.1365-3059.1999.00325.x), (Herrmann,
+Löwer and Schachtel) provided.
+
+This R package has been published in *MPMI* as a resource announcement
+[(McCoy *et al.* 2019)](https://doi.org/10.1094/MPMI-07-19-0180-A). You
+may wish to refer to that paper for further information on this package.
 
 ## Overview
 
-`hagis` was initially created for *Phytophthora sojae* surveys by Austin
+*hagis* was initially created for *Phytophthora sojae* surveys by Austin
 McCoy and Zachary Noel at Michigan State University in the US, where the
 disease has been managed primarily via deployment of resistance genes
 (*Rps* genes, resistance to *P. sojae*) in commercial soybean cultivars
@@ -87,9 +91,10 @@ citation("hagis")
 ```
 
     ## 
-    ## Thank you for citing `hagis`.  To cite hagis in publications, please
+    ## Thank you for citing `hagis`. To cite `hagis` in publications, please
     ## use both the MPMI citation and the package version citation for
-    ## reproducibility purposes.
+    ## reproducibility purposes so changes. to the package over time may be
+    ## accounted for in publications.
     ## 
     ##   Austin Glenn McCoy, Zachary A. Noel, Adam H. Sparks and Martin
     ##   Chilvers (2019). `hagis', an R Package Resource for Pathotype
@@ -97,26 +102,32 @@ citation("hagis")
     ##   of Soybean. Molecular Plant-Microbe Interactions 32.12 (Nov 2019) p.
     ##   1574-1576. DOI: 10.1094/MPMI-07-19-0180-A
     ## 
-    ## McCoy AG, Noel ZA, Sparks AH, Chilvers MI (2020). _hagis: Analysis of
+    ## McCoy AG, Noel ZA, Sparks AH, Chilvers MI (????). _hagis: Analysis of
     ## Plant Pathogen Pathotype Complexities, Distributions and Diversity_.
     ## doi: 10.5281/zenodo.2619820 (URL:
-    ## https://doi.org/10.5281/zenodo.2619820), R package version 3.1.1, <URL:
-    ## https://openplantpathology.github.io/hagis/>.
+    ## https://doi.org/10.5281/zenodo.2619820), R package version 3.1.2.9000,
+    ## <URL: https://openplantpathology.github.io/hagis/>.
     ## 
     ## To see these entries in BibTeX format, use 'print(<citation>,
     ## bibtex=TRUE)', 'toBibtex(.)', or set
     ## 'options(citation.bibtex.max=999)'.
 
-## Code of Conduct
+### Code of Conduct
 
-Please note that the hagis project is released with a [Contributor Code
-of
+Please note that the *hagis* project is released with a [Contributor
+Code of
 Conduct](https://contributor-covenant.org/version/2/0/CODE_OF_CONDUCT.html).
 By contributing to this project, you agree to abide by its terms.
 
 ## References
 
-> Herrmann, Löwer and Schachtel, (1999), A new tool for entry and
+> Herrmann, Löwer and Schachtel. (1999), A new tool for entry and
 > analysis of virulence data for plant pathogens. Plant Pathology, 48:
 > 154-158. DOI:
 > [10.1046/j.1365-3059.1999.00325.x](https://doi.org/10.1046/j.1365-3059.1999.00325.x)
+
+> McCoy, Noel, Sparks and Chilvers. (2019). ‘hagis’, an R Package
+> Resource for Pathotype Analysis of *Phytophthora sojae* Populations
+> Causing Stem and Root Rot of Soybean. Molecular Plant-Microbe
+> Interactions 32.12 (Nov 2019) p. 1574-1576. DOI:
+> [10.1094/MPMI-07-19-0180-A](https://doi.org/10.1094/MPMI-07-19-0180-A)
