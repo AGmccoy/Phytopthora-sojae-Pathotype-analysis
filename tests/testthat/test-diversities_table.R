@@ -1,6 +1,5 @@
 
 # test diversities table -------------------------------------------------------
-context("diversities_table()")
 data(P_sojae_survey)
 Ps <-
   as.data.frame(P_sojae_survey)

@@ -1,6 +1,5 @@
 
 # test create_binary_matrix ----------------------------------------------------
-context("create_binary_matrix()")
 data(P_sojae_survey)
 final_matrix <- create_binary_matrix(
   x = P_sojae_survey,

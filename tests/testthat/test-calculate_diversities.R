@@ -1,6 +1,5 @@
 
 # test calculate diversities ---------------------------------------------------
-context("calculate_diversities()")
 data(P_sojae_survey)
 diversities <- calculate_diversities(
   x = P_sojae_survey,
@@ -138,7 +137,6 @@ test_that("calculate_diversities() stops if data are not valid", {
   )
 })
 
-context("print.hagis.diversities()")
 test_that("print.hagis.diversities() returns a proper summary", {
   x <- utils::capture.output(print(diversities))
   expect_type(x, "character")
@@ -153,7 +151,6 @@ test_that("print.hagis.diversities() returns a proper summary", {
   expect_equal(x[[13]], "")
 })
 
-context("pander.hagis.diversities")
 test_that("pander.hagis.diversities returns a proper table of indices and
           caption",
           {x <- utils::capture.output(pander::pander(diversities))

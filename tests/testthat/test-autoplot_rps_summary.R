@@ -1,6 +1,5 @@
 
 # test plot.hagis.gene.summary ----------------------------------------------
-context("autoplot.hagis.gene.summary")
 test_that("autoplot.hagis.gene.summary() returns a ggplot2 object", {
   data(P_sojae_survey)
   rps <- summarize_gene(

@@ -1,6 +1,5 @@
 
 # test diversities table -------------------------------------------------------
-context("individual_pathotypes()")
 data(P_sojae_survey)
 diversities <- calculate_diversities(x = P_sojae_survey,
                                      cutoff = 60,

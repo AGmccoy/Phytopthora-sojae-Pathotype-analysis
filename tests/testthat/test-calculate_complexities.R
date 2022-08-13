@@ -1,6 +1,5 @@
 
 # test calculate complexities --------------------------------------------------
-context("calculate_complexities()")
 data(P_sojae_survey)
 complexities <- calculate_complexities(
   x = P_sojae_survey,
@@ -98,7 +97,6 @@ test_that("calculate_complexities() stops if lacking all params", {
   )
 })
 
-context("print.summary.complexities()")
 test_that("print.summary.complexities() returns a proper summary", {
   x <- capture.output(summary(complexities))
   expect_type(x, "character")
@@ -115,7 +113,8 @@ test_that("print.hagis.complexities() returns a proper summary", {
   expect_type(x, "character")
   expect_equal(x[[2]], "Grouped Complexities")
   expect_equal(x[[3]], "    complexity frequency distribution")
-  expect_equal(x[[4]], " 1:          1         0            0")
+  expect_equal(x[[4]], "        <fctr>     <int>        <int>")
+  expect_equal(x[[5]], " 1:          1         0            0")
   expect_equal(tail(x),
                c(
                  "18:     18     10",
@@ -127,7 +126,6 @@ test_that("print.hagis.complexities() returns a proper summary", {
                ))
 })
 
-context("pander.summary.complexities")
 test_that("pander.summary.complexities returns a properly formatted table",
           {x <- capture.output(pander(summary(complexities)))
             expect_type(x, "character")
