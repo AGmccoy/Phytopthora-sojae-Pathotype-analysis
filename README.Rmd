@@ -7,7 +7,7 @@ output: github_document
 [![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=main)](https://github.com/openplantpathology/hagis/actions)
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
-[![codecov](https://app.codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://app.codecov.io/gh/openplantpathology/hagis)
+[![codecov](https://codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://app.codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 <!-- badges: end -->
 
@@ -23,7 +23,7 @@ You may wish to refer to that paper for further information on this package.
 _hagis_ was initially created for _Phytophthora sojae_ surveys by Austin McCoy and Zachary Noel at Michigan State University in the US, where the disease has been managed primarily via deployment of resistance genes
 (_Rps_ genes, resistance to _P. sojae_) in commercial soybean cultivars and by the application of fungicide seed treatments.
 However, repeated use of resistance genes can cause populations to adapt over time rendering these resistance genes ineffective.
-To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as “race”) structure within sampled population of _P. sojae_.
+To determine current effectiveness of resistance genes for managing _P. sojae_, state-wide surveys (in the US) are conducted to determine the pathotype (previously referred to as "race") structure within sampled population of _P. sojae_.
 
 However, the package is not only useful for _P. sojae_ work.
 It was built to be useful for other plant pathogen gene-for-gene interaction systems, _e.g._ rusts or canola blackleg, _Leptosphaeria maculans_.
