@@ -10,11 +10,7 @@
 Previously, this column was converted to `numeric` so if `character` values were present, these values became `NA`.
 This allows for greater flexibility when analysing the data as sample names are often more descriptive than just a numerical value.
 
-* Spelling corrections in code comments
-
-* Clean up CITATION file
-
-* README is now more complete with information and links to the _MPMI_ paper
+* Update test infrastructure.
 
 # hagis 3.1.2
 
