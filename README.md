@@ -8,7 +8,7 @@ state and is being actively
 developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![tic](https://github.com/openplantpathology/hagis/workflows/tic/badge.svg?branch=main)](https://github.com/openplantpathology/hagis/actions)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/hagis)](https://cran.r-project.org/package=hagis)
-[![codecov](https://app.codecov.io/gh/openplantpathology/hagis/branch/master/graph/badge.svg?token=rDU481XSrx)](https://app.codecov.io/gh/openplantpathology/hagis)
+[![codecov](https://app.codecov.io/gh/openplantpathology/hagis/branch/main/graph/badge.svg)](https://app.codecov.io/gh/openplantpathology/hagis)
 [![DOI](https://zenodo.org/badge/164751172.svg)](https://zenodo.org/badge/latestdoi/164751172)
 <!-- badges: end -->
 
@@ -102,11 +102,11 @@ citation("hagis")
     ##   of Soybean. Molecular Plant-Microbe Interactions 32.12 (Nov 2019) p.
     ##   1574-1576. DOI: 10.1094/MPMI-07-19-0180-A
     ## 
-    ## McCoy AG, Noel ZA, Sparks AH, Chilvers MI (2021). _hagis: Analysis of
-    ## Plant Pathogen Pathotype Complexities, Distributions and Diversity_.
-    ## doi: 10.5281/zenodo.2619820 (URL:
-    ## https://doi.org/10.5281/zenodo.2619820), R package version 3.1.3, <URL:
-    ## https://openplantpathology.github.io/hagis/>.
+    ##   McCoy AG, Noel ZA, Sparks AH, Chilvers MI (2021). _hagis: Analysis of
+    ##   Plant Pathogen Pathotype Complexities, Distributions and Diversity_.
+    ##   doi:10.5281/zenodo.2619820 <https://doi.org/10.5281/zenodo.2619820>,
+    ##   R package version 3.1.3,
+    ##   <https://openplantpathology.github.io/hagis/>.
     ## 
     ## To see these entries in BibTeX format, use 'print(<citation>,
     ## bibtex=TRUE)', 'toBibtex(.)', or set
