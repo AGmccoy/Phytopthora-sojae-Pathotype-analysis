@@ -14,3 +14,4 @@
 ^cran-comments\.md$
 ^\.ccache$
 ^tic\.R$
+^CRAN-SUBMISSION$
