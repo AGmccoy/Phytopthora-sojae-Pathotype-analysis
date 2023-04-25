@@ -35,7 +35,7 @@ library("ggplot2")
 ```
 
 Import the data to be used in analysis.
-These example data are included in _hagis_ and so when loading _hagis_ they become available in your R session.
+These example data are included in {hagis} and so when loading {hagis} they become available in your R session.
 
 ```{r load-data}
 head(P_sojae_survey) # survey sample data
@@ -57,7 +57,7 @@ P_sojae_survey$Rps <-
        x = P_sojae_survey$Rps)
 ```
 
-Set up the _hagis_ arguments for analysis.
+Set up the {hagis} arguments for analysis.
 Please see `vignette("hagis")` for more details on how to specify arguments for the functions in this package.
 
 ```{r hagis-arguments}

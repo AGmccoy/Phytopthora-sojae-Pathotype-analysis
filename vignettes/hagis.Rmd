@@ -18,12 +18,12 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Getting Started With _hagis_
+## Getting Started With {hagis}
 
 The following examples are based on a dataset from Michigan State University _Phytophthora sojae_ surveys for soybean phytophthora root rot pathotyping efforts.
 
-First you'll want to load in your data set, for right now let's use a practice data set made for the _hagis_ package, named `P_sojae_survey`.
-The data set is available in your R session automatically when you load the _hagis_ package.
+First you'll want to load in your data set, for right now let's use a practice data set made for the {hagis} package, named `P_sojae_survey`.
+The data set is available in your R session automatically when you load the {hagis} package.
 
 ```{r load_data}
 library("hagis")
@@ -46,13 +46,13 @@ head(P_sojae_survey)
 This practice data set contains 21 isolates', `Isolate`, virulence data on a set of 14 differential soybean cultivars, `Line`.
 This package uses the _percentage_ of susceptible, inoculated, plants to determine effective resistance genes, pathotype diversity and frequency, as well as individual isolates pathotypes.
 
-To help ensure that the proper data are used in calculations, the user is asked to provide some information that instruct _hagis_ about what data to use.
+To help ensure that the proper data are used in calculations, the user is asked to provide some information that instruct {hagis} about what data to use.
 
 ***
 
 ## Function Arguments Used in hagis
 
-We have striven to make _hagis_ as intuitive to use as possible.
+We have striven to make {hagis} as intuitive to use as possible.
 Part of that means that we have used the same arguments for the three main functions, `summarize_gene()`, `calculate_complexities()` and `calculate_diversities()`.
 Each of these functions take the same arguments:
 
@@ -70,7 +70,7 @@ You can change this to whatever percentage you require for your study.
 
 * `perc_susc` specifies the column header for the column which identifies the percent susceptible plants for each gene
 
-Ordinarily you would use functions in _hagis_ or other R packages like this:
+Ordinarily you would use functions in {hagis} or other R packages like this:
 
 ```{r example-function, eval=FALSE}
 Rps.summary <- summarize_gene(
@@ -83,7 +83,7 @@ Rps.summary <- summarize_gene(
 )
 ```
 
-However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from _hagis_.
+However, because the functions share arguments we can create a `list()` of arguments and share them with some of the functions from {hagis}.
 First, we make a list of the arguments that `summarize_gene()`, `calculate_diversities()` and `calculate_complexities()` use that specify our inputs based on our example data:
 
 ```{r shared-args}
@@ -123,7 +123,7 @@ pander(Rps.summary)
 
 ### Plotting Rps Summary Data
 
-_hagis_ also provides functions to quickly graph your data using `ggplot2`.
+{hagis} also provides functions to quickly graph your data using `ggplot2`.
 
 Two functions are provided to plot the summary depending on your needs.
 If you need the frequency, use `autoplot(Rps.summary, type = "percentage")`, or if you desire the distribution `autoplot(Rps.summary, type = "count")`.
@@ -218,7 +218,7 @@ pander(diversity)
 ### Table of Diversities
 
 To generate a table of diversities, use `diversities_table()`.
-_hagis_ will automatically create a `pander` object for you.
+{hagis} will automatically create a `pander` object for you.
 This is because it is much easier to read the resulting table in the console than the raw `data.frame` and insert into reports.
 
 ```{r diversities-table}
@@ -227,7 +227,7 @@ diversities_table(diversity)
 
 To generate a table of individual pathotypes, use `individual_pathotypes()`.
 Here again,
-_hagis_ provides a `pander` object for ease of use.
+{hagis} provides a `pander` object for ease of use.
 
 ### Table of Individual Pathotypes
 
@@ -239,7 +239,7 @@ individual_pathotypes(diversity)
 
 ## hagis autoplot Objects
 
-Since _hagis_ uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options provided by _hagis_ directly through `autoplot()`.
+Since {hagis} uses `ggplot2` to generate its plots, you can easily theme the outputs using common `ggplot2` themes and other options provided by {hagis} directly through `autoplot()`.
 
 ```{r set-up-adv.plot}
 library(ggplot2)

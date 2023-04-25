@@ -45,15 +45,15 @@ This allows for greater flexibility when analysing the data as sample names are 
 
 * Prefer "_" to "*" for _italics_
 
-* More verbose handling of importing _data.table_ as a whole package using "R/utils-data.table.R" in place of "R/zzz.R"
+* More verbose handling of importing {data.table} as a whole package using "R/utils-data.table.R" in place of "R/zzz.R"
 
 # hagis 3.1.1
 
 ## Minor Changes
 
-* Use _ape_, _vegan_, _dplyr_ and _vidiffr_ packages conditionally
+* Use {ape}, {vegan}, {dplyr} and {vidiffr} packages conditionally
 
-* Remove _covr_ from Suggests
+* Remove {covr} from Suggests
 
 * Better documentation formatting
 
@@ -62,7 +62,7 @@ This allows for greater flexibility when analysing the data as sample names are 
 ## Major Changes
 
 * Add new function, `create_binary_matrix()` to format data for exporting beta diversity matrices representing the pathotype of each isolate.
-Users can export a binary pathotype data matrix which could then be used to visualize beta-diversity of pathotypes using _vegan_ or _ape_ in R
+Users can export a binary pathotype data matrix which could then be used to visualize beta-diversity of pathotypes using {vegan} or {ape} in R
 
 * Add new vignette, "Beta-diversity Analyses", to illustrate the use of the new functionality
 
@@ -78,7 +78,7 @@ Users can export a binary pathotype data matrix which could then be used to visu
 
 * Update citation with full MPMI citation
 
-* Fix issue in CITATION file where `nasapower` was referred to in text
+* Fix issue in CITATION file where {nasapower} was referred to in text
 
 * Use ROxygen 7.0.0
 
@@ -88,8 +88,8 @@ Users can export a binary pathotype data matrix which could then be used to visu
 
 ## Defunct functions
 
-* `plot()` is now defunct. Use `autoplot()` to plot _hagis_ objects in place of `plot()`.
-This is to avoid the side-effect of generating and displaying a plot every time `plot()` is called, which can be troublesome when using _ggplot2_ themes since it created two plots, the original with the base theme and the new themed plot
+* `plot()` is now defunct. Use `autoplot()` to plot {hagis} objects in place of `plot()`.
+This is to avoid the side-effect of generating and displaying a plot every time `plot()` is called, which can be troublesome when using {ggplot2} themes since it created two plots, the original with the base theme and the new themed plot
 
 ## Minor Changes
  
@@ -106,7 +106,7 @@ before returning values to user
 
 * Provide documentation for how diversity indices are calculated along with mathematical notation where possible to display
 
-* Calculate Shannon and Simpson indices internally rather than rely on _vegan_ to reduce number of Dependencies
+* Calculate Shannon and Simpson indices internally rather than rely on {vegan} to reduce number of Dependencies
 
 * Replace the term `field` with `column` in documentation
 
