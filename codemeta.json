@@ -237,7 +237,7 @@
   "applicationCategory": "Tools",
   "isPartOf": "https://openplantpathology.org",
   "keywords": ["plant-pathology", "pathotype", "pathogen-survey", "virulenceanalysis", "differentialset", "assessmentscale"],
-  "fileSize": "178.435KB",
+  "fileSize": "177.356KB",
   "citation": [
     {
       "@type": "ScholarlyArticle",
@@ -264,7 +264,7 @@
           "familyName": "Chilvers"
         }
       ],
-      "name": "`hagis', an R Package Resource for Pathotype Analysis of Phytophthora sojae Populations Causing Stem and Root Rot of Soybean",
+      "name": "{hagis}, an {R} Package Resource for Pathotype Analysis of {Phytophthora sojae} Populations Causing Stem and Root Rot of Soybean",
       "identifier": "10.1094/MPMI-07-19-0180-A",
       "url": "https://doi.org/10.1094/MPMI-07-19-0180-A",
       "pagination": "1574–1576",
