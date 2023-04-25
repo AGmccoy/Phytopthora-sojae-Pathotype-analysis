@@ -41,7 +41,7 @@ susceptibilities by sample
 }
 \examples{
 
-# Using the built-in data set, P_sojae_survey
+# Using the built-in data set, `P_sojae_survey`
 data(P_sojae_survey)
 
 P_sojae_survey
