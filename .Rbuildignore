@@ -16,3 +16,4 @@
 ^tic\.R$
 ^CRAN-SUBMISSION$
 ^\.covrignore$
+^revdep$
