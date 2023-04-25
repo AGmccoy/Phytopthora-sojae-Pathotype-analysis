@@ -233,7 +233,6 @@ autoplot.hagis.complexities <-
 #'  [calculate_complexities()]. `Character`.
 #' @return A `data.table` that tallies the results by sample.
 #' @noRd
-#' @export
 .create_summary_isolate <- function(.y) {
   .y <- .y[, list(N_samp = sum(susceptible.1)), by = list(sample)]
   return(.y)

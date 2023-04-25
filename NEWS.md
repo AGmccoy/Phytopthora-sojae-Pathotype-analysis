@@ -1,4 +1,11 @@
 
+# hagis 3.1.6
+
+## Bug fixes
+
+* Fixes bug where `.create_summary_isolate()`, an internal function, was exported.
+It should not be user-facing and is now no longer exported or documented.
+
 # hagis 3.1.5
 
 ## Minor changes
@@ -8,6 +15,8 @@
 * Improved handling of internal global variables.
 
 * Further updates to test infrastructure.
+
+* Update CITATION to follow CRAN's desired format.
 
 # hagis 3.1.4
 
