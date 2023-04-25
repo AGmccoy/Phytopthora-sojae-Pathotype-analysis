@@ -9,18 +9,18 @@ summarize_gene(x, cutoff, control, sample, gene, perc_susc)
 \arguments{
 \item{x}{a \code{data.frame} containing the data.}
 
-\item{cutoff}{value for percent susceptible cutoff. Numeric.}
+\item{cutoff}{value for percent susceptible cutoff. \code{Numeric}.}
 
 \item{control}{value used to denote the susceptible control in the \code{gene}
-column. Character.}
+column. \code{Character}.}
 
 \item{sample}{column providing the unique identification for each sample
-being tested. Character.}
+being tested. \code{Character}.}
 
-\item{gene}{column providing the gene(s) being tested. Character.}
+\item{gene}{column providing the gene(s) being tested. \code{Character}.}
 
 \item{perc_susc}{column providing the percent susceptible reactions.
-Character.}
+\code{Character}.}
 }
 \value{
 returns an object of \link{class} \code{hagis.gene.summary}
@@ -38,7 +38,7 @@ This function will calculate the distribution of
 susceptibilities by gene.
 }
 \examples{
-# Using the built-in data set, P_sojae_survey
+# Using the built-in data set, `P_sojae_survey`
 data(P_sojae_survey)
 
 P_sojae_survey
