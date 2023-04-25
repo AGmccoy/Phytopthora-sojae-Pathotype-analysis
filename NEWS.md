@@ -1,4 +1,12 @@
 
+# hagis 3.1.5
+
+## Minor changes
+
+* Improved documentation formatting.
+
+* Improved handling of internal global variables.
+
 # hagis 3.1.4
 
 ## Minor changes
