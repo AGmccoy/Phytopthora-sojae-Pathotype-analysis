@@ -1,0 +1,15 @@
+utils::globalVariables(
+  c(
+    "susceptible.1",
+    "percent_pathogenic",
+    "N_virulent_isolates",
+    "gene",
+    "percent_pathogenic",
+    "N_virulent_isolates",
+    "distribution",
+    "N_samp",
+    "i.N",
+    "complexity",
+    "frequency"
+  )
+)

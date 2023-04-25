@@ -55,9 +55,6 @@ summarize_gene <- function(x,
     .perc_susc = perc_susc
   )
 
-  # CRAN NOTE avoidance
-  susceptible.1 <- percent_pathogenic <- N_virulent_isolates <- NULL
-
   # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
@@ -115,8 +112,6 @@ autoplot.hagis.gene.summary <-
            color = NULL,
            order = NULL,
            ...) {
-    # CRAN NOTE avoidance
-    gene <- percent_pathogenic <- N_virulent_isolates <- NULL
 
     # order cols based on user input
     if (!is.null(order)) {

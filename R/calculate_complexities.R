@@ -50,9 +50,7 @@ calculate_complexities <- function(x,
     .gene = gene,
     .perc_susc = perc_susc
   )
-
-  # CRAN NOTE avoidance
-  distribution <- N_samp <- i.N <- NULL # nocov
+  
   # The susceptible control is removed from all samples in the data set so that
   #  it will not affect complexity calculations and a new data set is made that
   #  it does not contain susceptible controls.
@@ -158,9 +156,6 @@ autoplot.hagis.complexities <-
            order = NULL,
            ...) {
 
-    #CRAN Note avoidance
-    complexity <- frequency <- NULL
-
     # create a single data.frame to use in the ggplot call
     z <- object[[1]]
 
@@ -200,8 +195,6 @@ autoplot.hagis.complexities <-
     }
 
     plot_count <- function(.data, .color) {
-      #CRAN Note avoidance
-      complexity <- distribution <- NULL
       num_plot <- ggplot2::ggplot(data = .data,
                                   ggplot2::aes(x = stats::reorder(complexity,
                                                                   order),

@@ -44,9 +44,6 @@ create_binary_matrix <- function(x,
     .perc_susc = perc_susc
   )
 
-  # CRAN NOTE avoidance
-  susceptible.1 <- NULL
-  
   # summarise the reactions, create susceptible.1 column, see
   # internal_functions.R
   x <- .binary_cutoff(.x = x, .cutoff = cutoff)
