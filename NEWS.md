@@ -7,6 +7,8 @@
 
 * Improved handling of internal global variables.
 
+* Further updates to test infrastructure.
+
 # hagis 3.1.4
 
 ## Minor changes
