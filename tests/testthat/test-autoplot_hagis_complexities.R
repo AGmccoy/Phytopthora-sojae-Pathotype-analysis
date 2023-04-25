@@ -11,17 +11,17 @@ test_that("auto.plot.hagis.complexities() returns a ggplot2 object", {
     perc_susc = "perc.susc"
   )
   complexities_count <- autoplot(complexities, type = "count")
-  expect_doppelganger("count_complexities",
+  vdiffr::expect_doppelganger("count_complexities",
                       complexities_count)
 
   complexities_perc <- autoplot(complexities, type = "percentage")
-  expect_doppelganger("perc_complexities",
+  vdiffr::expect_doppelganger("perc_complexities",
                       complexities_perc)
 
   complexities_perc_blue <-
     autoplot(complexities, type = "percentage",
              color = "blue")
-  expect_doppelganger("perc_complexities_blue",
+  vdiffr::expect_doppelganger("perc_complexities_blue",
                       complexities_perc_blue)
 
   complexities_perc_desc_blue <-
@@ -29,7 +29,7 @@ test_that("auto.plot.hagis.complexities() returns a ggplot2 object", {
              type = "percentage",
              color = "blue",
              order = "descending")
-  expect_doppelganger("perc_complexities_desc_blue",
+  vdiffr::expect_doppelganger("perc_complexities_desc_blue",
                       complexities_perc_desc_blue)
 
   complexities_perc_asc_blue <-
@@ -37,7 +37,7 @@ test_that("auto.plot.hagis.complexities() returns a ggplot2 object", {
              type = "percentage",
              color = "blue",
              order = "ascending")
-  expect_doppelganger("perc_complexities_asc_blue",
+  vdiffr::expect_doppelganger("perc_complexities_asc_blue",
                       complexities_perc_asc_blue)
 
   complexities_count_asc_blue <-
@@ -45,7 +45,7 @@ test_that("auto.plot.hagis.complexities() returns a ggplot2 object", {
              type = "count",
              color = "blue",
              order = "ascending")
-  expect_doppelganger("count_complexities_asc_blue",
+  vdiffr::expect_doppelganger("count_complexities_asc_blue",
                       complexities_count_asc_blue)
 
   expect_error(autoplot(complexities, type = "orange"),
