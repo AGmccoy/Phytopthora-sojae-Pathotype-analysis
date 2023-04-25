@@ -1,7 +1,7 @@
 ## Test environments
-* local MacOS 11.6, R installation, R 4.2.1 aarch64-apple-darwin20
-* Ubuntu 21.04 (on GitHub Actions), R 4.2.1
-* win-builder (devel and release)
+* local MacOS 11.6, R installation, R 4.3.0 aarch64-apple-darwin20
+* x86_64-pc-linux-gnu (64-bit) (on GitHub Actions), R 4.3.0
+* win-builder R Under development (unstable) (2023-04-24 r84317 ucrt)
 
 ## NOTES
 
